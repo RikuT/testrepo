@@ -3,5 +3,58 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="iJL-Hn-6Uw">
+            <objects>
+                <viewController id="GEw-b3-7Qf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SRB-aU-Qnd"/>
+                        <viewControllerLayoutGuide type="bottom" id="8jW-wP-bDD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WBE-8N-Vzy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backBlur" translatesAutoresizingMaskIntoConstraints="NO" id="gDO-Yy-V3c">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logoStylist" translatesAutoresizingMaskIntoConstraints="NO" id="Fo9-jV-gMm">
+                                <rect key="frame" x="30" y="105" width="251" height="103"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0Q-Ao-lVj">
+                                <rect key="frame" x="38" y="257" width="243" height="73"/>
+                                <state key="normal" title="Sign Up" image="signupBtn">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tza-vU-hx4">
+                                <rect key="frame" x="38" y="348" width="243" height="73"/>
+                                <state key="normal" title="Login" image="loginBtn">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXd-uv-lJW">
+                                <rect key="frame" x="121" y="434" width="78" height="63"/>
+                                <state key="normal" title="Button" image="twitterlogoBtn">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D3L-dJ-zEb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="615" y="554"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="backBlur" width="640" height="1136"/>
+        <image name="loginBtn" width="489" height="129"/>
+        <image name="logoStylist" width="498" height="205"/>
+        <image name="signupBtn" width="489" height="129"/>
+        <image name="twitterlogoBtn" width="1139" height="926"/>
+    </resources>
 </document>
