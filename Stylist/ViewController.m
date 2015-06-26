@@ -23,10 +23,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-//HI
 
-//Hi people hihohio
-
-//hdisfaop aio
-//safja @sdjfia@
 @end
