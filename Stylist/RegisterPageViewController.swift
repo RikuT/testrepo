@@ -11,7 +11,7 @@ import Parse
 
 
 
-class RegisterPageViewController: UIViewController {
+class RegisterPageViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var userUserNameTextField: UITextField!
     @IBOutlet weak var userEmailTextField: UITextField!
@@ -26,6 +26,14 @@ class RegisterPageViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        
+        return true;
+        
     }
     
     @IBAction func registerButtonTapped(sender: AnyObject) {
