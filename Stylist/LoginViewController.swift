@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import Parse
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var userUserNameTextField: UITextField!
+    @IBOutlet weak var userPasswordTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +24,26 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func loginButtonTapped(sender: AnyObject) {
+        let userUserName = userUserNameTextField.text
+        let userPassword = userPasswordTextField.text
+        
+        
+        PFUser.logInWithUsernameInBackground(userUserNameTextField.text, password: userPasswordTextField.text) {
+            (user: PFUser?, error: NSError?) -> Void in
+            if user != nil{
+                //ログインできた！！
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isUserLoggedIn")
+                NSUserDefaults.standardUserDefaults().synchronize()
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            else{
+                //Parse がユーザーが何も返さない場合はケンティー怒る
+                println("User Name or Password is not correct")
+            }
+            
+
+        }
 
     /*
     // MARK: - Navigation
@@ -32,4 +55,4 @@ class LoginViewController: UIViewController {
     }
     */
 
-}
+    }}
