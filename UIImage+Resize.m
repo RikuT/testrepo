@@ -1,8 +1,9 @@
 //
-//  UIImage+Resize.m
 //
-//  Created by Olivier Halligon on 12/08/09.
-//  Copyright 2009 AliSoftware. All rights reserved.
+//  Stylist
+//
+//  Created by 田畑リク on 2015/06/29.
+//  Copyright (c) 2015年 xxx. All rights reserved.
 //
 
 #import "UIImage+Resize.h"

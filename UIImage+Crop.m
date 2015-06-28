@@ -1,9 +1,9 @@
 //
 //  UIImage+Crop.m
-//  LLSimpleCamera
+//  Stylist
 //
-//  Created by Ömer Faruk Gül on 27/10/14.
-//  Copyright (c) 2014 Ömer Faruk Gül. All rights reserved.
+//  Created by 田畑リク on 2015/06/29.
+//  Copyright (c) 2015年 xxx. All rights reserved.
 //
 
 #import "UIImage+Crop.h"

@@ -1,9 +1,9 @@
 //
 //  HomeViewController.m
-//  LLSimpleCameraExample
+//  Stylist
 //
-//  Created by Ömer Faruk Gül on 29/10/14.
-//  Copyright (c) 2014 Ömer Faruk Gül. All rights reserved.
+//  Created by 田畑リク on 2015/06/29.
+//  Copyright (c) 2015年 xxx. All rights reserved.
 //
 
 #import "HomeViewController.h"
@@ -39,7 +39,6 @@
     // attach to a view controller
     [self.camera attachToViewController:self withFrame:CGRectMake(0, 0, screenRect.size.width, screenRect.size.height)];
     
-    // read: http://stackoverflow.com/questions/5427656/ios-uiimagepickercontroller-result-image-orientation-after-upload
     // you probably will want to set this to YES, if you are going view the image outside iOS.
     self.camera.fixOrientationAfterCapture = NO;
     

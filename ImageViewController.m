@@ -1,9 +1,9 @@
 //
 //  ImageViewController.m
-//  LLSimpleCameraExample
+//  Stylist
 //
-//  Created by Ömer Faruk Gül on 15/11/14.
-//  Copyright (c) 2014 Ömer Faruk Gül. All rights reserved.
+//  Created by 田畑リク on 2015/06/29.
+//  Copyright (c) 2015年 xxx. All rights reserved.
 //
 
 #import "ImageViewController.h"
