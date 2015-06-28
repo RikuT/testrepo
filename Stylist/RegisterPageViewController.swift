@@ -55,13 +55,14 @@ class RegisterPageViewController: UIViewController {
         //パスワードが一致するか確認して見るケンティー
         
         if (userPasword != userRepeatPassword){
-         //またしてもケンティー怒るからアラート表示
-         //またしてもケンティーはアラートを下のファンクションから取り出す
+         //一致しなかったらケンティー怒るからアラート表示
+         //アラート表示するには上に書いてあるファンクションを呼ぶでー　おーい！　はいつまんないね　すいません　というかトシキ並のつまんなさ
             displayMyAlertMessage ("Password does not match")
             return
         }
         
-       //ここでPARSE に保存させる
+       //ここでPARSE に保存させるでよ　緊張の瞬間ですぜぃ
+        
         let myUser:PFUser = PFUser()
         myUser.username = userUserName
         myUser.password = userPasword
@@ -69,10 +70,10 @@ class RegisterPageViewController: UIViewController {
         
         myUser.signUpInBackgroundWithBlock { (succeeded, error) -> Void in
             if error == nil {
-                println("User Successfully Registered")
+                println("User Successfully Registered by ケンティーの守り神")
             } else {
                 println("\(error)");
-                // Show the errorString somewhere and let the user try again.
+                // エラー後で書く
             }
         }
         var myAlert = UIAlertController(title:"Alert", message: "Registeration is Successful. Thank you!", preferredStyle:UIAlertControllerStyle.Alert)

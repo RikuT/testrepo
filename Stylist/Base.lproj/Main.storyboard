@@ -81,10 +81,10 @@
             </objects>
             <point key="canvasLocation" x="1717" y="554"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="14v-YN-nJg">
             <objects>
-                <viewController id="PNQ-ru-7to" sceneMemberID="viewController">
+                <viewController id="PNQ-ru-7to" customClass="LoginViewController" customModule="Stylist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MjP-fI-nOb"/>
                         <viewControllerLayoutGuide type="bottom" id="3G4-zb-vS3"/>

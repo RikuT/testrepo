@@ -29,6 +29,7 @@
 		B6EC661C1B3FDDAD00B5BC58 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EC661B1B3FDDAD00B5BC58 /* libz.dylib */; };
 		B6EC661E1B3FDDC200B5BC58 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EC661D1B3FDDC200B5BC58 /* libsqlite3.dylib */; };
 		B6EC66261B3FE60C00B5BC58 /* MyConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EC66251B3FE60C00B5BC58 /* MyConnector.m */; };
+		B6EC66281B3FFA8400B5BC58 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EC66271B3FFA8400B5BC58 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		B6EC66231B3FE19200B5BC58 /* Stylist-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stylist-Bridging-Header.h"; sourceTree = "<group>"; };
 		B6EC66241B3FE60C00B5BC58 /* MyConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyConnector.h; sourceTree = "<group>"; };
 		B6EC66251B3FE60C00B5BC58 /* MyConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyConnector.m; sourceTree = "<group>"; };
+		B6EC66271B3FFA8400B5BC58 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				B6EC66251B3FE60C00B5BC58 /* MyConnector.m */,
 				B6EC66001B3FD31900B5BC58 /* ViewController.swift */,
 				B6EC66021B3FD4F700B5BC58 /* RegisterPageViewController.swift */,
+				B6EC66271B3FFA8400B5BC58 /* LoginViewController.swift */,
 				B6CD246D1B3D8BD50061E451 /* Main.storyboard */,
 				B6CD24701B3D8BD50061E451 /* Images.xcassets */,
 				B6CD24721B3D8BD50061E451 /* LaunchScreen.xib */,
@@ -287,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6EC66281B3FFA8400B5BC58 /* LoginViewController.swift in Sources */,
 				B6EC66031B3FD4F700B5BC58 /* RegisterPageViewController.swift in Sources */,
 				B6EC66261B3FE60C00B5BC58 /* MyConnector.m in Sources */,
 				B6EC66011B3FD31900B5BC58 /* ViewController.swift in Sources */,
