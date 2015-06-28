@@ -33,10 +33,10 @@ class ViewController: UIViewController {
         NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
         NSUserDefaults.standardUserDefaults().synchronize()
         
-        PFUser.logOutInBackgroundWithBlock({ (error:NSError!) -> Void in
-            self.performSegueWithIdentifier("loginView", sender: self)
-        })
-    }
+        PFUser.logOut()
+        self.performSegueWithIdentifier("loginView", sender: self)
+        }
+    
 
 
 }
