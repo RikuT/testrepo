@@ -33,7 +33,7 @@ class RegisterPageViewController: UIViewController {
         let userUserName = userUserNameTextField.text
         let userEmail = userEmailTextField.text
         let userPasword = userPasswordTextField.text
-        let userRepeatPassword = userPasswordTextField.text
+        let userRepeatPassword = repeatPasswordTextField.text
         
         //まずはアラートのファンクション
 
@@ -52,6 +52,21 @@ class RegisterPageViewController: UIViewController {
             displayMyAlertMessage ("All Field are required")
             return
         }
+        //ケンティー悪質ユーザー排除だぁぁぁぁああああああ
+        if (count(userUserName.utf16) <= 4){
+            //ケンティー怒るからアラート表示
+            //ここではアラートをファンクションから引っ張ってくる
+            displayMyAlertMessage ("User Name should be greater than 4 letters")
+            return
+        }
+        //ケンティーパスワード問題の対策を考えるざます
+        if (count(userPasword.utf16) <= 5){
+            //ケンティー怒るからアラート表示
+            //ここではアラートをファンクションから引っ張ってくる
+            displayMyAlertMessage ("Password should be greater than 5 letters")
+            return
+        }
+        
         //パスワードが一致するか確認して見るケンティー
         
         if (userPasword != userRepeatPassword){
@@ -80,10 +95,12 @@ class RegisterPageViewController: UIViewController {
         let okAction = UIAlertAction (title:"OK" , style: UIAlertActionStyle.Default, handler: nil)
         myAlert.addAction(okAction)
         self.presentViewController(myAlert, animated:true, completion:nil)
+
         }
-        
+
     
     }
+
     
 
 

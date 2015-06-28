@@ -35,7 +35,8 @@ class LoginViewController: UIViewController {
                 //ログインできた！！
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isUserLoggedIn")
                 NSUserDefaults.standardUserDefaults().synchronize()
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.performSegueWithIdentifier("letslogin", sender: self)
+
             }
             else{
                 //Parse がユーザーが何も返さない場合はケンティー怒る
