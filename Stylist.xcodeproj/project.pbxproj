@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B69DF0481B3DB7D600FD10BA /* Login .swift in Sources */ = {isa = PBXBuildFile; fileRef = B69DF0471B3DB7D600FD10BA /* Login .swift */; };
 		B6CD24661B3D8BD50061E451 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CD24651B3D8BD50061E451 /* main.m */; };
 		B6CD24691B3D8BD50061E451 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CD24681B3D8BD50061E451 /* AppDelegate.m */; };
 		B6CD246F1B3D8BD50061E451 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6CD246D1B3D8BD50061E451 /* Main.storyboard */; };
 		B6CD24711B3D8BD50061E451 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6CD24701B3D8BD50061E451 /* Images.xcassets */; };
 		B6CD24741B3D8BD50061E451 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6CD24721B3D8BD50061E451 /* LaunchScreen.xib */; };
 		B6CD24801B3D8BD50061E451 /* StylistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CD247F1B3D8BD50061E451 /* StylistTests.m */; };
+		B6EC66011B3FD31900B5BC58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EC66001B3FD31900B5BC58 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +27,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B69DF0461B3DB7D500FD10BA /* Stylist-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stylist-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		B69DF0471B3DB7D600FD10BA /* Login .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Login .swift"; path = "../Login .swift"; sourceTree = "<group>"; };
 		B6CD24601B3D8BD50061E451 /* Stylist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stylist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6CD24641B3D8BD50061E451 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6CD24651B3D8BD50061E451 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +38,7 @@
 		B6CD24791B3D8BD50061E451 /* StylistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StylistTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6CD247E1B3D8BD50061E451 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6CD247F1B3D8BD50061E451 /* StylistTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StylistTests.m; sourceTree = "<group>"; };
+		B6EC66001B3FD31900B5BC58 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +82,7 @@
 			children = (
 				B6CD24671B3D8BD50061E451 /* AppDelegate.h */,
 				B6CD24681B3D8BD50061E451 /* AppDelegate.m */,
-				B69DF0461B3DB7D500FD10BA /* Stylist-Bridging-Header.h */,
-				B69DF0471B3DB7D600FD10BA /* Login .swift */,
+				B6EC66001B3FD31900B5BC58 /* ViewController.swift */,
 				B6CD246D1B3D8BD50061E451 /* Main.storyboard */,
 				B6CD24701B3D8BD50061E451 /* Images.xcassets */,
 				B6CD24721B3D8BD50061E451 /* LaunchScreen.xib */,
@@ -219,7 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B69DF0481B3DB7D600FD10BA /* Login .swift in Sources */,
+				B6EC66011B3FD31900B5BC58 /* ViewController.swift in Sources */,
 				B6CD24691B3D8BD50061E451 /* AppDelegate.m in Sources */,
 				B6CD24661B3D8BD50061E451 /* main.m in Sources */,
 			);
@@ -351,7 +349,6 @@
 				INFOPLIST_FILE = Stylist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Stylist-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -364,7 +361,6 @@
 				INFOPLIST_FILE = Stylist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Stylist-Bridging-Header.h";
 			};
 			name = Release;
 		};
