@@ -28,6 +28,7 @@
 		B6EC661A1B3FDDA100B5BC58 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EC66191B3FDDA100B5BC58 /* SystemConfiguration.framework */; };
 		B6EC661C1B3FDDAD00B5BC58 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EC661B1B3FDDAD00B5BC58 /* libz.dylib */; };
 		B6EC661E1B3FDDC200B5BC58 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EC661D1B3FDDC200B5BC58 /* libsqlite3.dylib */; };
+		B6EC66261B3FE60C00B5BC58 /* MyConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EC66251B3FE60C00B5BC58 /* MyConnector.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,9 @@
 		B6EC66191B3FDDA100B5BC58 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B6EC661B1B3FDDAD00B5BC58 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B6EC661D1B3FDDC200B5BC58 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		B6EC66231B3FE19200B5BC58 /* Stylist-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stylist-Bridging-Header.h"; sourceTree = "<group>"; };
+		B6EC66241B3FE60C00B5BC58 /* MyConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyConnector.h; sourceTree = "<group>"; };
+		B6EC66251B3FE60C00B5BC58 /* MyConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyConnector.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 		B6CD24571B3D8BD50061E451 = {
 			isa = PBXGroup;
 			children = (
+				B6EC66231B3FE19200B5BC58 /* Stylist-Bridging-Header.h */,
 				B6EC66041B3FDD1300B5BC58 /* Frameworks */,
 				B6CD24621B3D8BD50061E451 /* Stylist */,
 				B6CD247C1B3D8BD50061E451 /* StylistTests */,
@@ -124,6 +129,8 @@
 			children = (
 				B6CD24671B3D8BD50061E451 /* AppDelegate.h */,
 				B6CD24681B3D8BD50061E451 /* AppDelegate.m */,
+				B6EC66241B3FE60C00B5BC58 /* MyConnector.h */,
+				B6EC66251B3FE60C00B5BC58 /* MyConnector.m */,
 				B6EC66001B3FD31900B5BC58 /* ViewController.swift */,
 				B6EC66021B3FD4F700B5BC58 /* RegisterPageViewController.swift */,
 				B6CD246D1B3D8BD50061E451 /* Main.storyboard */,
@@ -281,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6EC66031B3FD4F700B5BC58 /* RegisterPageViewController.swift in Sources */,
+				B6EC66261B3FE60C00B5BC58 /* MyConnector.m in Sources */,
 				B6EC66011B3FD31900B5BC58 /* ViewController.swift in Sources */,
 				B6CD24691B3D8BD50061E451 /* AppDelegate.m in Sources */,
 				B6CD24661B3D8BD50061E451 /* main.m in Sources */,

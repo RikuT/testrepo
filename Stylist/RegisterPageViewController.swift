@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Parse
+
+
 
 class RegisterPageViewController: UIViewController {
 
     @IBOutlet weak var userUserNameTextField: UITextField!
-    @IBOutlet weak var userIdTextField: UITextField!
     @IBOutlet weak var userEmailTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
@@ -29,13 +31,22 @@ class RegisterPageViewController: UIViewController {
     @IBAction func registerButtonTapped(sender: AnyObject) {
         
         let userUserName = userUserNameTextField.text
-        let userID = userIdTextField.text
         let userEmail = userEmailTextField.text
         let userPasword = userPasswordTextField.text
         let userRepeatPassword = userPasswordTextField.text
         
+        //まずはアラートのファンクション
+
+        func displayMyAlertMessage (userMessage: String ){
+            var myAlert = UIAlertController(title:"Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction (title:"OK" , style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
+            
+        }
+        
         //空白欄がないかチェックするコードでもケンティーは書くかな
-        if (userUserName.isEmpty || userID.isEmpty || userEmail.isEmpty || userPasword.isEmpty || userRepeatPassword.isEmpty){
+        if (userUserName.isEmpty || userEmail.isEmpty || userPasword.isEmpty || userRepeatPassword.isEmpty){
             //ケンティー怒るからアラート表示
             //ここではアラートをファンクションから引っ張ってくる
             displayMyAlertMessage ("All Field are required")
@@ -50,19 +61,30 @@ class RegisterPageViewController: UIViewController {
             return
         }
         
-    
+       //ここでPARSE に保存させる
+        let myUser:PFUser = PFUser()
+        myUser.username = userUserName
+        myUser.password = userPasword
+        myUser.email = userEmail
         
-        //アラートでもつけるか
-        
-    }
-    
-    func displayMyAlertMessage(userMessage: String ){
-        var myAlert = UIAlertController(title:"Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        myUser.signUpInBackgroundWithBlock { (succeeded, error) -> Void in
+            if error == nil {
+                println("User Successfully Registered")
+            } else {
+                println("\(error)");
+                // Show the errorString somewhere and let the user try again.
+            }
+        }
+        var myAlert = UIAlertController(title:"Alert", message: "Registeration is Successful. Thank you!", preferredStyle:UIAlertControllerStyle.Alert)
         let okAction = UIAlertAction (title:"OK" , style: UIAlertActionStyle.Default, handler: nil)
         myAlert.addAction(okAction)
         self.presentViewController(myAlert, animated:true, completion:nil)
+        }
         
+    
     }
+    
+
 
     /*
     // MARK: - Navigation
@@ -75,4 +97,4 @@ class RegisterPageViewController: UIViewController {
     */
 
 
-}
+    
