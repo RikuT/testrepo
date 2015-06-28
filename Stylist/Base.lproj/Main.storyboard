@@ -47,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D3L-dJ-zEb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="335" y="540"/>
+            <point key="canvasLocation" x="489" y="538"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="DST-HZ-LTP">
@@ -146,12 +146,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YgJ-Mv-3hu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2195" y="554"/>
+            <point key="canvasLocation" x="2121" y="554"/>
         </scene>
-        <!--View Controller-->
+        <!--Register Page View Controller-->
         <scene sceneID="mbv-tN-eWA">
             <objects>
-                <viewController id="4SH-an-xaz" sceneMemberID="viewController">
+                <viewController id="4SH-an-xaz" customClass="RegisterPageViewController" customModule="Stylist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vHE-OS-8V5"/>
                         <viewControllerLayoutGuide type="bottom" id="ZCY-uE-Uc8"/>
@@ -168,6 +168,9 @@
                                 <state key="normal" title="Register">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="registerButtonTapped:" destination="4SH-an-xaz" eventType="touchUpInside" id="R6Y-V7-BiK"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="CGK-qc-HUx">
                                 <rect key="frame" x="16" y="188" width="282" height="30"/>
@@ -240,10 +243,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="repeatPasswordTextField" destination="3m7-OT-ol4" id="Mcj-x0-WSJ"/>
+                        <outlet property="userEmailTextField" destination="Amc-Tn-dHm" id="qbA-Gg-AeR"/>
+                        <outlet property="userIdTextField" destination="CGK-qc-HUx" id="l8f-ba-VYL"/>
+                        <outlet property="userPasswordTextField" destination="ZE6-VQ-Tjo" id="MAL-FQ-BR7"/>
+                        <outlet property="userUserNameTextField" destination="KSp-EB-091" id="kd0-gy-nYW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bu0-Ri-43P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2581" y="554"/>
+            <point key="canvasLocation" x="2532" y="554"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oat-39-jVB">
