@@ -42,12 +42,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 //ログインできた！！
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isUserLoggedIn")
                 NSUserDefaults.standardUserDefaults().synchronize()
-                self.performSegueWithIdentifier("letslogin", sender: self)
+                self.dismissViewControllerAnimated(true, completion: nil)
 
             }
             else{
                 //Parse がユーザーが何も返さない場合はケンティー怒る
                 println("User Name or Password is not correct")
+                var myAlert = UIAlertController(title:"Alert", message: "User Name or Password is not Correct", preferredStyle:UIAlertControllerStyle.Alert)
+                
+                let okAction = UIAlertAction (title:"OK" , style: UIAlertActionStyle.Default){
+                    action in                }
+                myAlert.addAction(okAction)
+                self.presentViewController(myAlert, animated:true, completion:nil)
+
             }
             
 
