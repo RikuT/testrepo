@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B600E2311B415FFF007F8FDA /* SingleRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2301B415FFF007F8FDA /* SingleRowCell.swift */; };
 		B600E2331B416541007F8FDA /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2321B416541007F8FDA /* UploadViewController.swift */; };
+		B600E2351B41765D007F8FDA /* SingleRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2341B41765D007F8FDA /* SingleRowCell.swift */; };
+		B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2361B417868007F8FDA /* TopsViewController.swift */; };
 		B65331DD1B411D1B00B19268 /* PasswordRecoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65331DC1B411D1B00B19268 /* PasswordRecoverViewController.swift */; };
 		B6CD24661B3D8BD50061E451 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CD24651B3D8BD50061E451 /* main.m */; };
 		B6CD24691B3D8BD50061E451 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CD24681B3D8BD50061E451 /* AppDelegate.m */; };
@@ -46,8 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B600E2301B415FFF007F8FDA /* SingleRowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleRowCell.swift; sourceTree = "<group>"; };
 		B600E2321B416541007F8FDA /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		B600E2341B41765D007F8FDA /* SingleRowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleRowCell.swift; sourceTree = "<group>"; };
+		B600E2361B417868007F8FDA /* TopsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopsViewController.swift; sourceTree = "<group>"; };
 		B65331DC1B411D1B00B19268 /* PasswordRecoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordRecoverViewController.swift; sourceTree = "<group>"; };
 		B6CD24601B3D8BD50061E451 /* Stylist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stylist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6CD24641B3D8BD50061E451 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -143,8 +145,9 @@
 				B6EC66021B3FD4F700B5BC58 /* RegisterPageViewController.swift */,
 				B6EC66271B3FFA8400B5BC58 /* LoginViewController.swift */,
 				B65331DC1B411D1B00B19268 /* PasswordRecoverViewController.swift */,
-				B600E2301B415FFF007F8FDA /* SingleRowCell.swift */,
 				B600E2321B416541007F8FDA /* UploadViewController.swift */,
+				B600E2341B41765D007F8FDA /* SingleRowCell.swift */,
+				B600E2361B417868007F8FDA /* TopsViewController.swift */,
 				B6CD246D1B3D8BD50061E451 /* Main.storyboard */,
 				B6CD24701B3D8BD50061E451 /* Images.xcassets */,
 				B6CD24721B3D8BD50061E451 /* LaunchScreen.xib */,
@@ -299,10 +302,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B600E2311B415FFF007F8FDA /* SingleRowCell.swift in Sources */,
+				B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */,
 				B6EC66281B3FFA8400B5BC58 /* LoginViewController.swift in Sources */,
 				B6EC66031B3FD4F700B5BC58 /* RegisterPageViewController.swift in Sources */,
 				B6EC66261B3FE60C00B5BC58 /* MyConnector.m in Sources */,
+				B600E2351B41765D007F8FDA /* SingleRowCell.swift in Sources */,
 				B600E2331B416541007F8FDA /* UploadViewController.swift in Sources */,
 				B65331DD1B411D1B00B19268 /* PasswordRecoverViewController.swift in Sources */,
 				B6EC66011B3FD31900B5BC58 /* ViewController.swift in Sources */,
