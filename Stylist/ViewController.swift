@@ -27,11 +27,12 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        var isUserLoggedIn = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
-        if(isUserLoggedIn)
-        {
-        self.performSegueWithIdentifier("loginView", sender: self)
-    }
+       let isUserLoggedIn =
+        NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
+        
+        if(!isUserLoggedIn){
+            self.performSegueWithIdentifier("loginView", sender: self)
+        }
     }
     
     @IBAction func logoutButtonTapped(sender: AnyObject) {

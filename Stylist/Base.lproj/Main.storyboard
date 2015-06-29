@@ -44,7 +44,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <segue destination="PNQ-ru-7to" kind="presentation" identifier="loginView" animates="NO" id="KBR-72-rru"/>
+                        <segue destination="PNQ-ru-7to" kind="presentation" identifier="loginView" animates="NO" id="BK8-ow-a7u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1J-0Z-pgo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -73,7 +73,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginButtonTapped:" destination="PNQ-ru-7to" eventType="touchUpInside" id="oW0-2x-AQ6"/>
-                                    <segue destination="8vQ-e4-Iq2" kind="presentation" identifier="letslogin" id="OJ3-eu-0sZ"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="pan-81-KQI">
@@ -110,7 +109,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="4SH-an-xaz" kind="presentation" identifier="registerView" id="Em9-24-TC5"/>
+                                    <segue destination="4SH-an-xaz" kind="presentation" identifier="registerView" animates="NO" id="Q48-wl-UJx"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logoStylist" translatesAutoresizingMaskIntoConstraints="NO" id="UkM-Q5-pef">
@@ -211,9 +210,6 @@
                                 <state key="normal" title="Already have account Login">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="PNQ-ru-7to" kind="presentation" id="CxM-x1-5Xq"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="THT-ej-qJq">
                                 <rect key="frame" x="128" y="410" width="57" height="30"/>
@@ -264,8 +260,4 @@
         <image name="loginBtn" width="489" height="129"/>
         <image name="logoStylist" width="498" height="205"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="CxM-x1-5Xq"/>
-        <segue reference="92p-7F-r2P"/>
-    </inferredMetricsTieBreakers>
 </document>

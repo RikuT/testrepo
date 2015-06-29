@@ -91,23 +91,33 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         myUser.password = userPasword
         myUser.email = userEmail
         
+      
         myUser.signUpInBackgroundWithBlock { (succeeded, error) -> Void in
             if error == nil {
                 println("User Successfully Registered by ケンティーの守り神")
-            } else {
-                println("\(error)");
-                // エラー後で書く
+                var myAlert = UIAlertController(title:"Alert", message: "Registeration is Successful. Thank you!", preferredStyle:UIAlertControllerStyle.Alert)
+                
+                let okAction = UIAlertAction (title:"OK" , style: UIAlertActionStyle.Default){
+                    action in
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+                myAlert.addAction(okAction)
+                self.presentViewController(myAlert, animated:true, completion:nil)
+                
             }
-        }
-        var myAlert = UIAlertController(title:"Alert", message: "Registeration is Successful. Thank you!", preferredStyle:UIAlertControllerStyle.Alert)
-        let okAction = UIAlertAction (title:"OK" , style: UIAlertActionStyle.Default, handler: nil)
-        myAlert.addAction(okAction)
-        self.presentViewController(myAlert, animated:true, completion:nil)
+            else {
+                println("\(error)");
+                // Show the errorString somewhere and let the user try again.
+            }
+        
+            
+        //できた！のアラート表示　（修正済み6/29）
+    
 
         }
 
     
-    }
+    }}
 
     
 
