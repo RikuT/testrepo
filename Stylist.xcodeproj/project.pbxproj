@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320019191B406A4900BFF955 /* LLSimpleCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 320019161B406A4900BFF955 /* LLSimpleCamera.m */; };
+		3200191A1B406A4900BFF955 /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 320019181B406A4900BFF955 /* UIImage+FixOrientation.m */; };
+		320019251B406ABB00BFF955 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3200191C1B406ABB00BFF955 /* HomeViewController.m */; };
+		320019261B406ABB00BFF955 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3200191E1B406ABB00BFF955 /* ImageViewController.m */; };
+		320019271B406ABB00BFF955 /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 320019201B406ABB00BFF955 /* UIImage+Crop.m */; };
+		320019281B406ABB00BFF955 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 320019221B406ABB00BFF955 /* UIImage+Resize.m */; };
+		320019291B406ABB00BFF955 /* ViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 320019241B406ABB00BFF955 /* ViewUtils.m */; };
 		B6CD24661B3D8BD50061E451 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CD24651B3D8BD50061E451 /* main.m */; };
 		B6CD24691B3D8BD50061E451 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CD24681B3D8BD50061E451 /* AppDelegate.m */; };
 		B6CD246F1B3D8BD50061E451 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6CD246D1B3D8BD50061E451 /* Main.storyboard */; };
@@ -43,6 +50,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		320019151B406A4900BFF955 /* LLSimpleCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLSimpleCamera.h; sourceTree = "<group>"; };
+		320019161B406A4900BFF955 /* LLSimpleCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLSimpleCamera.m; sourceTree = "<group>"; };
+		320019171B406A4900BFF955 /* UIImage+FixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixOrientation.h"; sourceTree = "<group>"; };
+		320019181B406A4900BFF955 /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
+		3200191B1B406ABB00BFF955 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ../../testrepo/HomeViewController.h; sourceTree = "<group>"; };
+		3200191C1B406ABB00BFF955 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = ../../testrepo/HomeViewController.m; sourceTree = "<group>"; };
+		3200191D1B406ABB00BFF955 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageViewController.h; path = ../../testrepo/ImageViewController.h; sourceTree = "<group>"; };
+		3200191E1B406ABB00BFF955 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageViewController.m; path = ../../testrepo/ImageViewController.m; sourceTree = "<group>"; };
+		3200191F1B406ABB00BFF955 /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Crop.h"; path = "../../testrepo/UIImage+Crop.h"; sourceTree = "<group>"; };
+		320019201B406ABB00BFF955 /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Crop.m"; path = "../../testrepo/UIImage+Crop.m"; sourceTree = "<group>"; };
+		320019211B406ABB00BFF955 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Resize.h"; path = "../../testrepo/UIImage+Resize.h"; sourceTree = "<group>"; };
+		320019221B406ABB00BFF955 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Resize.m"; path = "../../testrepo/UIImage+Resize.m"; sourceTree = "<group>"; };
+		320019231B406ABB00BFF955 /* ViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewUtils.h; path = ../../testrepo/ViewUtils.h; sourceTree = "<group>"; };
+		320019241B406ABB00BFF955 /* ViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewUtils.m; path = ../../testrepo/ViewUtils.m; sourceTree = "<group>"; };
 		B6CD24601B3D8BD50061E451 /* Stylist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stylist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6CD24641B3D8BD50061E451 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6CD24651B3D8BD50061E451 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -106,6 +127,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		320019141B406A4900BFF955 /* Camera Related */ = {
+			isa = PBXGroup;
+			children = (
+				3200191B1B406ABB00BFF955 /* HomeViewController.h */,
+				3200191C1B406ABB00BFF955 /* HomeViewController.m */,
+				3200191D1B406ABB00BFF955 /* ImageViewController.h */,
+				3200191E1B406ABB00BFF955 /* ImageViewController.m */,
+				3200191F1B406ABB00BFF955 /* UIImage+Crop.h */,
+				320019201B406ABB00BFF955 /* UIImage+Crop.m */,
+				320019211B406ABB00BFF955 /* UIImage+Resize.h */,
+				320019221B406ABB00BFF955 /* UIImage+Resize.m */,
+				320019231B406ABB00BFF955 /* ViewUtils.h */,
+				320019241B406ABB00BFF955 /* ViewUtils.m */,
+				320019151B406A4900BFF955 /* LLSimpleCamera.h */,
+				320019161B406A4900BFF955 /* LLSimpleCamera.m */,
+				320019171B406A4900BFF955 /* UIImage+FixOrientation.h */,
+				320019181B406A4900BFF955 /* UIImage+FixOrientation.m */,
+			);
+			name = "Camera Related";
+			path = "../../LLSimpleCamera-master/LLSimpleCamera";
+			sourceTree = "<group>";
+		};
 		B6CD24571B3D8BD50061E451 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +179,7 @@
 				B6EC66001B3FD31900B5BC58 /* ViewController.swift */,
 				B6EC66021B3FD4F700B5BC58 /* RegisterPageViewController.swift */,
 				B6EC66271B3FFA8400B5BC58 /* LoginViewController.swift */,
+				320019141B406A4900BFF955 /* Camera Related */,
 				B6CD246D1B3D8BD50061E451 /* Main.storyboard */,
 				B6CD24701B3D8BD50061E451 /* Images.xcassets */,
 				B6CD24721B3D8BD50061E451 /* LaunchScreen.xib */,
@@ -290,9 +334,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				320019261B406ABB00BFF955 /* ImageViewController.m in Sources */,
 				B6EC66281B3FFA8400B5BC58 /* LoginViewController.swift in Sources */,
+				320019191B406A4900BFF955 /* LLSimpleCamera.m in Sources */,
+				3200191A1B406A4900BFF955 /* UIImage+FixOrientation.m in Sources */,
+				320019291B406ABB00BFF955 /* ViewUtils.m in Sources */,
+				320019271B406ABB00BFF955 /* UIImage+Crop.m in Sources */,
+				320019281B406ABB00BFF955 /* UIImage+Resize.m in Sources */,
 				B6EC66031B3FD4F700B5BC58 /* RegisterPageViewController.swift in Sources */,
 				B6EC66261B3FE60C00B5BC58 /* MyConnector.m in Sources */,
+				320019251B406ABB00BFF955 /* HomeViewController.m in Sources */,
 				B6EC66011B3FD31900B5BC58 /* ViewController.swift in Sources */,
 				B6CD24691B3D8BD50061E451 /* AppDelegate.m in Sources */,
 				B6CD24661B3D8BD50061E451 /* main.m in Sources */,
