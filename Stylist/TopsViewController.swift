@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class TopsViewController: UIViewController, UITableViewDelegate {
+class TopsViewController: UIViewController, UITableViewDelegate{
 
     @IBOutlet weak var topsTableView: UITableView!
     //Create arrays of images from parse
@@ -18,9 +18,10 @@ class TopsViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		
 
         // Do any additional setup after loading the view.
-        var query = PFQuery(className: "Posts")
+        var query = PFQuery(className: "Tops")
         query.orderByDescending("createdAt")
         query.findObjectsInBackgroundWithBlock{
             (posts: [AnyObject]?, error: NSError?) -> Void in
@@ -51,9 +52,7 @@ class TopsViewController: UIViewController, UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let singleCell:SingleRowCell = tableView.dequeueReusableCellWithIdentifier("mySingleCell")as! SingleRowCell
-        //ケンティーのリマインドノート　↓ONLY label
         singleCell.topsLabel.text = imageText [indexPath.row]
-        //イメージとってくるぜよ　もどってこーーーーい
         imageFiles[indexPath.row].getDataInBackgroundWithBlock{
           (imageData: NSData?, error: NSError?) -> Void in
         if imageData != nil {
@@ -67,10 +66,30 @@ class TopsViewController: UIViewController, UITableViewDelegate {
         return singleCell
         }}
 
-    
-    
-    
-    
+	func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool{
+		return true
+	}
+
+
+
+      func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+	if editingStyle == .Delete {
+		let objectToDelete = imageFiles?[indexPath.row] as! PFFile
+		objectToDelete.deleteInBackgroundWithBlock {
+			(success: Bool, error: NSError?) -> Void in
+			if (success) {
+				self.loadObjects()
+			} else {
+			}
+		}
+	} else if editingStyle == .Insert {
+	}
+}
+
+
+
+
+
     /*
     // MARK: - Navigation
 

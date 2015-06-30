@@ -58,7 +58,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1J-0Z-pgo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2923" y="590"/>
+            <point key="canvasLocation" x="2923" y="554"/>
         </scene>
         <!--Upload View Controller-->
         <scene sceneID="3au-rI-g5K">
@@ -148,7 +148,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krf-WI-mYQ">
-                                                    <rect key="frame" x="21" y="278" width="42" height="21"/>
+                                                    <rect key="frame" x="21" y="278" width="291" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -181,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6d5-AW-rn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2923" y="-21"/>
+            <point key="canvasLocation" x="2923" y="-71"/>
         </scene>
         <!--Password Recover View Controller-->
         <scene sceneID="GAR-ma-ixj">
@@ -231,7 +231,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfM-f2-VMm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3549" y="-71"/>
+            <point key="canvasLocation" x="3373" y="-71"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="14v-YN-nJg">
@@ -317,7 +317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YgJ-Mv-3hu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3549" y="554"/>
+            <point key="canvasLocation" x="3373" y="554"/>
         </scene>
         <!--Register Page View Controller-->
         <scene sceneID="mbv-tN-eWA">
@@ -424,7 +424,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bu0-Ri-43P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4095" y="554"/>
+            <point key="canvasLocation" x="3825" y="554"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LF5-6K-NVd">
@@ -445,7 +445,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fc4-fJ-QkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2383" y="590"/>
+            <point key="canvasLocation" x="2520" y="554"/>
         </scene>
     </scenes>
     <resources>
