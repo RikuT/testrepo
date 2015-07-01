@@ -52,7 +52,7 @@ class UploadViewController: UIViewController,UIImagePickerControllerDelegate, UI
             println("Image not uploaded")
         }else {
             
-            var posts = PFObject(className: "Posts")
+            var posts = PFObject(className: "Tops")
             posts["imageText"] = imageText
             posts["uploader"] = PFUser.currentUser()
             posts.saveInBackgroundWithBlock({
