@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32C9C89B1B4DA28200983181 /* Img1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C8951B4DA28200983181 /* Img1.jpg */; };
+		32C9C89C1B4DA28200983181 /* Img2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C8961B4DA28200983181 /* Img2.jpg */; };
+		32C9C89D1B4DA28200983181 /* Img3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C8971B4DA28200983181 /* Img3.jpg */; };
+		32C9C89E1B4DA28200983181 /* Img4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C8981B4DA28200983181 /* Img4.jpg */; };
+		32C9C89F1B4DA28200983181 /* Img5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C8991B4DA28200983181 /* Img5.jpg */; };
+		32C9C8A01B4DA28200983181 /* dottedLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C89A1B4DA28200983181 /* dottedLine.png */; };
+		32C9C8A21B4DA2D400983181 /* SwipableClothesTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C9C8A11B4DA2D400983181 /* SwipableClothesTester.swift */; };
 		B600E2331B416541007F8FDA /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2321B416541007F8FDA /* UploadViewController.swift */; };
 		B600E2351B41765D007F8FDA /* SingleRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2341B41765D007F8FDA /* SingleRowCell.swift */; };
 		B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2361B417868007F8FDA /* TopsViewController.swift */; };
@@ -47,6 +54,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		32C9C8951B4DA28200983181 /* Img1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Img1.jpg; sourceTree = "<group>"; };
+		32C9C8961B4DA28200983181 /* Img2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Img2.jpg; sourceTree = "<group>"; };
+		32C9C8971B4DA28200983181 /* Img3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Img3.jpg; sourceTree = "<group>"; };
+		32C9C8981B4DA28200983181 /* Img4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Img4.jpg; sourceTree = "<group>"; };
+		32C9C8991B4DA28200983181 /* Img5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Img5.jpg; sourceTree = "<group>"; };
+		32C9C89A1B4DA28200983181 /* dottedLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dottedLine.png; sourceTree = "<group>"; };
+		32C9C8A11B4DA2D400983181 /* SwipableClothesTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipableClothesTester.swift; sourceTree = "<group>"; };
 		B600E2321B416541007F8FDA /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		B600E2341B41765D007F8FDA /* SingleRowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleRowCell.swift; sourceTree = "<group>"; };
 		B600E2361B417868007F8FDA /* TopsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopsViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -148,8 +162,15 @@
 				B600E2321B416541007F8FDA /* UploadViewController.swift */,
 				B600E2341B41765D007F8FDA /* SingleRowCell.swift */,
 				B600E2361B417868007F8FDA /* TopsViewController.swift */,
+				32C9C8A11B4DA2D400983181 /* SwipableClothesTester.swift */,
 				B6CD246D1B3D8BD50061E451 /* Main.storyboard */,
 				B6CD24701B3D8BD50061E451 /* Images.xcassets */,
+				32C9C8951B4DA28200983181 /* Img1.jpg */,
+				32C9C8961B4DA28200983181 /* Img2.jpg */,
+				32C9C8971B4DA28200983181 /* Img3.jpg */,
+				32C9C8981B4DA28200983181 /* Img4.jpg */,
+				32C9C8991B4DA28200983181 /* Img5.jpg */,
+				32C9C89A1B4DA28200983181 /* dottedLine.png */,
 				B6CD24721B3D8BD50061E451 /* LaunchScreen.xib */,
 				B6CD24631B3D8BD50061E451 /* Supporting Files */,
 			);
@@ -283,8 +304,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6CD246F1B3D8BD50061E451 /* Main.storyboard in Resources */,
+				32C9C89F1B4DA28200983181 /* Img5.jpg in Resources */,
+				32C9C8A01B4DA28200983181 /* dottedLine.png in Resources */,
+				32C9C89B1B4DA28200983181 /* Img1.jpg in Resources */,
+				32C9C89C1B4DA28200983181 /* Img2.jpg in Resources */,
 				B6CD24741B3D8BD50061E451 /* LaunchScreen.xib in Resources */,
+				32C9C89E1B4DA28200983181 /* Img4.jpg in Resources */,
 				B6CD24711B3D8BD50061E451 /* Images.xcassets in Resources */,
+				32C9C89D1B4DA28200983181 /* Img3.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */,
+				32C9C8A21B4DA2D400983181 /* SwipableClothesTester.swift in Sources */,
 				B6EC66281B3FFA8400B5BC58 /* LoginViewController.swift in Sources */,
 				B6EC66031B3FD4F700B5BC58 /* RegisterPageViewController.swift in Sources */,
 				B6EC66261B3FE60C00B5BC58 /* MyConnector.m in Sources */,
