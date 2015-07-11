@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SwipableClothesTester: UIViewController {
+class SwipeableClothesTester: UIViewController {
     //var movingCount: Int = 1
     
     var bottomViewHeight: Float? {
@@ -188,6 +188,8 @@ class SwipableClothesTester: UIViewController {
       println("bottomViewSet")
         
     }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

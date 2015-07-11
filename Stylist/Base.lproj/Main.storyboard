@@ -68,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1J-0Z-pgo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1204" y="532"/>
+            <point key="canvasLocation" x="1249" y="549"/>
         </scene>
         <!--Upload View Controller-->
         <scene sceneID="3au-rI-g5K">
@@ -193,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6d5-AW-rn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1226" y="-152"/>
+            <point key="canvasLocation" x="926" y="-198"/>
         </scene>
         <!--Password Recover View Controller-->
         <scene sceneID="GAR-ma-ixj">
@@ -472,10 +472,10 @@
             </objects>
             <point key="canvasLocation" x="689" y="516"/>
         </scene>
-        <!--Swipable Clothes Tester-->
+        <!--Swipeable Clothes Tester-->
         <scene sceneID="P6U-l5-kP1">
             <objects>
-                <viewController id="Gk5-7l-8RI" customClass="SwipableClothesTester" customModule="Stylist" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Gk5-7l-8RI" customClass="SwipeableClothesTester" customModule="Stylist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ylR-Rx-au1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -515,7 +515,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1204" y="1212"/>
+            <point key="canvasLocation" x="1114" y="1383"/>
         </scene>
     </scenes>
     <resources>
