@@ -16,6 +16,8 @@ class TopsViewController: UIViewController, UITableViewDelegate{
     //Create arrays of images from parse
     var imageFiles = [PFFile]()
     var imageText = [String]()
+	var ImageArray = [UIImage]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -19,7 +19,11 @@ class UploadViewController: UIViewController,UIImagePickerControllerDelegate, UI
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -95,6 +99,9 @@ class UploadViewController: UIViewController,UIImagePickerControllerDelegate, UI
         
         
     }
+
+
+    
 
     /*
     // MARK: - Navigation
