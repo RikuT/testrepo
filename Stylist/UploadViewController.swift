@@ -10,26 +10,26 @@ import UIKit
 import Parse
 
 class UploadViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-//まずは繋げるで～
+    //まずは繋げるで～
     @IBOutlet weak var uploadPreviewImageView: UIImageView!
     @IBOutlet weak var uploadMessage: UITextField!
     @IBOutlet weak var uploadImageText: UIButton!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
-
+        
     }
     
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     @IBAction func uploadImageFromSource(sender: AnyObject) {
         
@@ -47,7 +47,7 @@ class UploadViewController: UIViewController,UIImagePickerControllerDelegate, UI
         
         uploadImageText.titleLabel?.text = "Retake Photo"
     }
-            //ImageViewに入ってるものをパースに飛んでけー！
+    //ImageViewに入ってるものをパースに飛んでけー！
     @IBAction func uploadButton(sender: AnyObject) {
         var imageText = uploadMessage.text
         
@@ -63,7 +63,7 @@ class UploadViewController: UIViewController,UIImagePickerControllerDelegate, UI
                 (success: Bool, error: NSError?) -> Void in
                 
                 if error == nil {
-                  //保存するざます
+                    //保存するざます
                     
                     var imageData = UIImagePNGRepresentation(self.uploadPreviewImageView.image)
                     //パースファイルを作る
@@ -95,22 +95,22 @@ class UploadViewController: UIViewController,UIImagePickerControllerDelegate, UI
             
             
         }
-
+        
         
         
     }
-
-
     
-
+    
+    
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

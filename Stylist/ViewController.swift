@@ -19,6 +19,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // 「ud」というインスタンスをつくる。
+        let ud = NSUserDefaults.standardUserDefaults()
+        // キーidに「taro」という値を格納。（idは任意の文字列でok）
+        ud.removeObjectForKey("closeAlertKeyNote")
+        ud.removeObjectForKey("closeAlertKey")
+
     }
 
     override func didReceiveMemoryWarning() {

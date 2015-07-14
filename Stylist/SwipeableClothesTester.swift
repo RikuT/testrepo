@@ -6,6 +6,12 @@
 //  Copyright (c) 2015年 Riku Tabata. All rights reserved.
 //
 
+
+//*******************TODO LIST***************************
+//Stop activity indicator when no photo in user's file(show alert to add photos)
+//Hide dottedLineView when not touching screen
+//Show alert when not connected to the internet or when error
+
 import UIKit
 import Parse
 
@@ -14,6 +20,7 @@ class SwipeableClothesTester: UIViewController {
     //var movingCount: Int = 1
     
     
+    //下のscrollviewの大きさが変わったら認知
     var bottomViewHeight: Float? {
         didSet {
             //処理を軽くしたい場合は追加する。半分の処理になる
@@ -37,14 +44,12 @@ class SwipeableClothesTester: UIViewController {
     var imageArray = [UIImage]()
     var imageGlob = [UIImage]()
     var resizedImageArray = [UIImage]()
+    var viewDidAppearInt: Int = 0
     
     @IBOutlet weak var goBackButt: UIButton!
     
     //洋服の数 -1に設定して、誤作動を防止
     var pictNumber: Int = -1
-    
-    //とりあえずテスト用に一つだけUIImageをいれた
-    var resizedImagetest = UIImage()
     
     @IBOutlet weak var dottedLineView: UIImageView!
     //UIScrollViewを作成します
@@ -53,7 +58,7 @@ class SwipeableClothesTester: UIViewController {
     
     var checkInt: Int? {
         didSet {
-            //処理を軽くしたい場合は追加する。半分の処理になる
+            //すべての画像がParseから読み込まれたか確認。読み込まれたら、scrollViewを入れる。
             if(self.pictNumber == self.imageArray.count){
                 println("done")
                 println("Image array \(imageArray)")
@@ -88,12 +93,14 @@ class SwipeableClothesTester: UIViewController {
                 
                 //Setting the number of pictures in the folder
                 self.pictNumber = self.imageFiles.count
-                println(self.pictNumber)
+                println("hi\(self.pictNumber)")
+                if(self.pictNumber == 0){
+                    self.showError()
+                }
                 
                 
                 
                 
-                //  dispatch_async(dispatch_get_main_queue()) {
                 
                 
                 let test = 1
@@ -184,8 +191,14 @@ class SwipeableClothesTester: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.retrieveImg()
+        // 「ud」というインスタンスをつくる。
+        let ud = NSUserDefaults.standardUserDefaults()
+        // キーidに「taro」という値を格納。（idは任意の文字列でok）
+        ud.removeObjectForKey("closeAlertKeyNote")
+        ud.removeObjectForKey("closeAlertKey")
         
-        
+        self.showActivityIndicatory(self.view)
+        println("ViewDidLoad appearInt = \(viewDidAppearInt)")
     }
     
     
@@ -211,32 +224,19 @@ class SwipeableClothesTester: UIViewController {
         let width = Int(self.view.frame.width)
         
         for var i = 0; i < intPictNumber; ++i {
+            //新しい画像のサイズを定義する
             let resizedSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height);
             UIGraphicsBeginImageContext(resizedSize);
-            
+            //もともとの画像のarrayから一枚づつ画像を取り出す
             var originalImage = imageArray[i]
             println(originalImage)
             originalImage.drawInRect(CGRectMake(0, 0, resizedSize.width, resizedSize.height))
             var resizedImage = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
             println(resizedImage)
+            //画面の大きさに合わせた画像を新しいArrayに追加する
             self.resizedImageArray.append(resizedImage)
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        let resizedSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height);
-        UIGraphicsBeginImageContext(resizedSize);
-        let orgImg = UIImage(named: "Img2.jpg")
-        UIGraphicsBeginImageContext(resizedSize);
-        orgImg?.drawInRect(CGRectMake(0, 0, resizedSize.width, resizedSize.height))
-        resizedImagetest = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
         
     }
     
@@ -261,7 +261,7 @@ class SwipeableClothesTester: UIViewController {
         //scrollview のcontent の全体のサイズ
         scrView2.contentSize = CGSizeMake(CGFloat(width * intPictNumber), CGFloat(bottomViewLocationH))
         
-        
+        //画像をscrollviewに位置を合わせて入れる。これにより、viewに対しての画像の位置が変わらない。
         for var i = 0; i < intPictNumber; ++i {
             var image = resizedImageArray[i]
             println(image)
@@ -311,11 +311,69 @@ class SwipeableClothesTester: UIViewController {
         
     }
     
+    func showActivityIndicatory(uiView: UIView) {
+
+        var container: UIView = UIView()
+        container.frame = uiView.frame
+        container.center = uiView.center
+        container.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        
+        var loadingView: UIView = UIView()
+        loadingView.frame = CGRectMake(0, 0, 100, 100)
+        loadingView.center = uiView.center
+        //loadingView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+        
+        var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+        actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+        actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
+        actInd.center = CGPointMake(loadingView.frame.size.width / 2,
+            loadingView.frame.size.height / 2);
+        loadingView.addSubview(actInd)
+        container.addSubview(loadingView)
+        uiView.addSubview(container)
+        actInd.startAnimating()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    func showError() {
+        SCLAlertView().showError("Error", subTitle:"You have not put in any photos in your library.", closeButtonTitle:"OK")
+        // 「ud」というインスタンスをつくる。
+        let ud = NSUserDefaults.standardUserDefaults()
+        println("errorshow")
+        // キーidに「taro」という値を格納。（idは任意の文字列でok）
+        ud.setInteger(1, forKey: "closeAlertKey")
+        ud.removeObjectForKey("closeAlertKeyNote")
+
+        println("scla to 1")
+       //        SCLAlertView().showError(self, title: kErrorTitle, subTitle: kSubtitle)
+        var timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("performSegueToHome"), userInfo: nil, repeats: true)
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        println("viewDidAppear!!")
+    viewDidAppearInt = 1
+    }
+    
+    func performSegueToHome(){
+        if(viewDidAppearInt == 1){
+            
+        let ud = NSUserDefaults.standardUserDefaults()
+        var udId : Int! = ud.integerForKey("closeAlertKeyNote")
+        if(udId == 1){
+            ud.removeObjectForKey("closeAlertKeyNote")
+            ud.removeObjectForKey("closeAlertKey")
+            performSegueWithIdentifier("swipeableToHome",sender: nil)
+
+println("self to 0")
+            }}
+    }
+
     override func viewDidDisappear(animated: Bool) {
         /*
         imageArray = []
