@@ -124,11 +124,13 @@ class SwipeableClothesTester: UIViewController {
                     
                 }
             }
+/*
         println("failure")
             self.errorNumber = 2
             self.showError()
-
-        }}
+*/
+        }
+}
     
     func setScrView(){
         
@@ -199,6 +201,7 @@ class SwipeableClothesTester: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.retrieveImg()
+        self.errorNumber = 0
         // 「ud」というインスタンスをつくる。
         let ud = NSUserDefaults.standardUserDefaults()
         // キーidに「taro」という値を格納。（idは任意の文字列でok）
@@ -350,6 +353,7 @@ class SwipeableClothesTester: UIViewController {
     
     func showError() {
         self.view.bringSubviewToFront(self.goBackButt)
+        println("Error number is \(self.errorNumber)")
         if (self.errorNumber == 1){
             SCLAlertView().showError("Error", subTitle:"You have not put in any photos in your library.", closeButtonTitle:"OK")
         }
