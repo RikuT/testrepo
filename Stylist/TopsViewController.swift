@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 
-class TopsViewController: UIViewController, UITableViewDelegate{
+class TopsViewController: UICollectionViewController, UITableViewDelegate{
 	
 	@IBOutlet weak var topsTableView: UITableView!
 	//Create arrays of images from parse
@@ -47,15 +47,12 @@ class TopsViewController: UIViewController, UITableViewDelegate{
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
+
+
+
 	
-	//テーブルビューのコードかくかく、これがめんどい
-	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-		return imageFiles.count
-		
-	}
-	
-	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let singleCell:SingleRowCell = tableView.dequeueReusableCellWithIdentifier("mySingleCell")as! SingleRowCell
+	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+		let singleCell:SingleRowCell = collectionView.dequeueReusableCellWithReuseIdentifier("mySingleCell")as! SingleRowCell
 		singleCell.topsLabel.text = imageText [indexPath.row]
 		imageFiles[indexPath.row].getDataInBackgroundWithBlock{
 			(imageData: NSData?, error: NSError?) -> Void in
@@ -66,12 +63,15 @@ class TopsViewController: UIViewController, UITableViewDelegate{
 				println(error)
 			}}
 		
-		
 		return singleCell
-	}}
-
-
-
+	}
+	override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+		return 1
+	}
+ 	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return 20;
+	}
+}
 
 
 
@@ -85,5 +85,4 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 // Pass the selected object to the new view controller.
 }
 */
-
 

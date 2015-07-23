@@ -19,6 +19,8 @@
 		B600E2351B41765D007F8FDA /* SingleRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2341B41765D007F8FDA /* SingleRowCell.swift */; };
 		B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2361B417868007F8FDA /* TopsViewController.swift */; };
 		B65331DD1B411D1B00B19268 /* PasswordRecoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65331DC1B411D1B00B19268 /* PasswordRecoverViewController.swift */; };
+		B69BFAD21B615E7200A14CBE /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69BFAD11B615E7200A14CBE /* CameraViewController.m */; };
+		B69BFAD41B61699600A14CBE /* SingleRowCellC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69BFAD31B61699600A14CBE /* SingleRowCellC.swift */; };
 		B6CD24661B3D8BD50061E451 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CD24651B3D8BD50061E451 /* main.m */; };
 		B6CD24691B3D8BD50061E451 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CD24681B3D8BD50061E451 /* AppDelegate.m */; };
 		B6CD246F1B3D8BD50061E451 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6CD246D1B3D8BD50061E451 /* Main.storyboard */; };
@@ -67,6 +69,9 @@
 		B600E2341B41765D007F8FDA /* SingleRowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleRowCell.swift; sourceTree = "<group>"; };
 		B600E2361B417868007F8FDA /* TopsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopsViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		B65331DC1B411D1B00B19268 /* PasswordRecoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordRecoverViewController.swift; sourceTree = "<group>"; };
+		B69BFAD01B615E7200A14CBE /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		B69BFAD11B615E7200A14CBE /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		B69BFAD31B61699600A14CBE /* SingleRowCellC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleRowCellC.swift; sourceTree = "<group>"; };
 		B6CD24601B3D8BD50061E451 /* Stylist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stylist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6CD24641B3D8BD50061E451 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6CD24651B3D8BD50061E451 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -162,7 +167,10 @@
 				B6EC66271B3FFA8400B5BC58 /* LoginViewController.swift */,
 				B65331DC1B411D1B00B19268 /* PasswordRecoverViewController.swift */,
 				B600E2321B416541007F8FDA /* UploadViewController.swift */,
+				B69BFAD01B615E7200A14CBE /* CameraViewController.h */,
+				B69BFAD11B615E7200A14CBE /* CameraViewController.m */,
 				B600E2341B41765D007F8FDA /* SingleRowCell.swift */,
+				B69BFAD31B61699600A14CBE /* SingleRowCellC.swift */,
 				B600E2361B417868007F8FDA /* TopsViewController.swift */,
 				32C9C8A11B4DA2D400983181 /* SwipeableClothesTester.swift */,
 				32F3F1F81B52BA9C0051050B /* SCLAlertView.swift */,
@@ -336,7 +344,9 @@
 				32C9C8A21B4DA2D400983181 /* SwipeableClothesTester.swift in Sources */,
 				B6EC66281B3FFA8400B5BC58 /* LoginViewController.swift in Sources */,
 				B6EC66031B3FD4F700B5BC58 /* RegisterPageViewController.swift in Sources */,
+				B69BFAD41B61699600A14CBE /* SingleRowCellC.swift in Sources */,
 				B6EC66261B3FE60C00B5BC58 /* MyConnector.m in Sources */,
+				B69BFAD21B615E7200A14CBE /* CameraViewController.m in Sources */,
 				B600E2351B41765D007F8FDA /* SingleRowCell.swift in Sources */,
 				B600E2331B416541007F8FDA /* UploadViewController.swift in Sources */,
 				B65331DD1B411D1B00B19268 /* PasswordRecoverViewController.swift in Sources */,
