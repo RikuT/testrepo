@@ -45,6 +45,7 @@ class SwipeableClothesTester: UIViewController {
     var imageGlob = [UIImage]()
     var resizedImageArray = [UIImage]()
     var viewDidAppearInt: Int = 0
+    var errorNumber: Int = 0
     
     @IBOutlet weak var goBackButt: UIButton!
     
@@ -95,7 +96,9 @@ class SwipeableClothesTester: UIViewController {
                 self.pictNumber = self.imageFiles.count
                 println("hi\(self.pictNumber)")
                 if(self.pictNumber == 0){
+                    self.errorNumber = 1
                     self.showError()
+
                 }
                 
                 
@@ -120,7 +123,14 @@ class SwipeableClothesTester: UIViewController {
                         }}
                     
                 }
-            }}}
+            }
+/*
+        println("failure")
+            self.errorNumber = 2
+            self.showError()
+*/
+        }
+}
     
     func setScrView(){
         
@@ -191,6 +201,7 @@ class SwipeableClothesTester: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.retrieveImg()
+        self.errorNumber = 0
         // 「ud」というインスタンスをつくる。
         let ud = NSUserDefaults.standardUserDefaults()
         // キーidに「taro」という値を格納。（idは任意の文字列でok）
@@ -341,14 +352,25 @@ class SwipeableClothesTester: UIViewController {
     }
     
     func showError() {
-        SCLAlertView().showError("Error", subTitle:"You have not put in any photos in your library.", closeButtonTitle:"OK")
+        self.view.bringSubviewToFront(self.goBackButt)
+        println("Error number is \(self.errorNumber)")
+        if (self.errorNumber == 1){
+            SCLAlertView().showError("Error", subTitle:"You have not put in any photos in your library.", closeButtonTitle:"OK")
+        }
+        else if (self.errorNumber == 2){
+            SCLAlertView().showError("Error", subTitle:"An error occured. Please check your internet connection.", closeButtonTitle:"OK")
+        }
+        else{
+            SCLAlertView().showError("Error", subTitle:"An error occured.", closeButtonTitle:"OK")
+        }
+
         // 「ud」というインスタンスをつくる。
         let ud = NSUserDefaults.standardUserDefaults()
         println("errorshow")
-        // キーidに「taro」という値を格納。（idは任意の文字列でok）
+        
+        // OKボタンを押した時に、Homeに戻るようにする
         ud.setInteger(1, forKey: "closeAlertKey")
         ud.removeObjectForKey("closeAlertKeyNote")
-
         println("scla to 1")
        //        SCLAlertView().showError(self, title: kErrorTitle, subTitle: kSubtitle)
         var timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("performSegueToHome"), userInfo: nil, repeats: true)
