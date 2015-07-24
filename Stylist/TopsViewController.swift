@@ -135,7 +135,7 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	// Process collectionView cell selection
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		let currentObject = tops[indexPath.row]
-		performSegueWithIdentifier("CollectionViewToDetailView", sender: currentObject)
+		performSegueWithIdentifier("CollectionViewToDetailView", sender: self)
 	}
 	
 	// In a storyboard-based application, you will often want to do a little preparation before navigation

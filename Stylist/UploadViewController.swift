@@ -63,18 +63,16 @@ class UploadViewController: UIViewController,UIImagePickerControllerDelegate, UI
                 (success: Bool, error: NSError?) -> Void in
                 
                 if error == nil {
-                    //保存するざます
                     
                     var imageData = UIImagePNGRepresentation(self.uploadPreviewImageView.image)
-                    //パースファイルを作る
                     var parseImageFile = PFFile(name: "uploaded_image.png", data: imageData)
                     posts["imageFile"] = parseImageFile
                     posts.saveInBackgroundWithBlock({
                         (success: Bool, error: NSError?) -> Void in
                         
                         if error == nil {
-                            //よし終わりだからホームへ帰宅
-                            println("データ飛んでったぞー　byケンティーの守り神")
+                           
+                            println("finished")
                             self.performSegueWithIdentifier("goHomeFromUpload", sender: self)
                             
                         }else {

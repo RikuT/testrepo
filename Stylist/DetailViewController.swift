@@ -61,13 +61,13 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate {
 
             
             // Display standard question image
-            var initialThumbnail = UIImage(named: "tops")
+            var initialThumbnail = UIImage(named: "question")
             topsImageView.image = initialThumbnail
             
             // Replace question image if an image exists on the parse platform
             if let thumbnail = object["topsImageView"] as? PFFile {
                 topsImageView.file = thumbnail
-                topsImageView.loadInBackground()
+                topsImageView.loadInBackgroundWithBlock
             }
         }
     }
