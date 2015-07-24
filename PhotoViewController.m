@@ -27,7 +27,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    // NSUserDefaultsの取得
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setBool:NO forKey:@"photoVCtoVCKey"];
+
     self.view.backgroundColor = [UIColor blackColor];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
@@ -156,6 +159,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    // NSUserDefaultsの取得
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    BOOL segueBool = [ud boolForKey:@"photoVCtoVCKey"];
+    if (segueBool == YES) {
+        [self performSegueWithIdentifier:@"photoVCToVC" sender:self];
+    }
+
     // start the camera
     [self.camera start];
 }
@@ -174,7 +184,7 @@
 }
 
 - (void)quitButtonPressed:(UIButton *)button {
-    [self performSegueWithIdentifier:@"photoToHome" sender:self];
+    [self performSegueWithIdentifier:@"photoVCToVC" sender:self];
 }
 
 - (NSURL *)applicationDocumentsDirectory {
@@ -213,7 +223,7 @@
                 
                 // show the image
                 ImagePreviewViewController *imageVC = [[ImagePreviewViewController alloc] initWithImage:image];
-                [self presentViewController:imageVC animated:NO completion:nil];
+                [self presentViewController:imageVC animated:YES completion:nil];
             }
             else {
                 NSLog(@"An error has occured: %@", error);

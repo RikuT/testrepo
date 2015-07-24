@@ -52,14 +52,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="c91-2h-Ekl">
-                                <rect key="frame" x="-44" y="324" width="408" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <state key="normal" title="Take photo (not working based on the original camera view)">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dAG-jn-oSc">
                                 <rect key="frame" x="16" y="189" width="117" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -233,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IZh-UG-9nC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="71" y="-967"/>
+            <point key="canvasLocation" x="96" y="-959"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="J00-nZ-Yq8">
@@ -704,12 +696,30 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="8vQ-e4-Iq2" kind="modal" identifier="photoToHome" id="sTT-Xr-KH7"/>
+                        <segue destination="8vQ-e4-Iq2" kind="modal" identifier="photoVCToVC" id="sTT-Xr-KH7"/>
+                        <segue destination="ENT-4W-3wG" kind="modal" id="Tb3-Rz-OX5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqO-5T-Hk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1187" y="-105"/>
+            <point key="canvasLocation" x="1152" y="-590"/>
+        </scene>
+        <!--Image Preview View Controller-->
+        <scene sceneID="7fz-OJ-T6u">
+            <objects>
+                <viewController id="ENT-4W-3wG" customClass="ImagePreviewViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tdK-ma-mjy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="8vQ-e4-Iq2" kind="modal" identifier="imagePreviewVCToVC" id="pKa-lc-iQd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c9M-t0-aJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1618" y="-638"/>
         </scene>
     </scenes>
     <resources>
@@ -724,7 +734,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="MQg-n3-HQo"/>
-        <segue reference="sTT-Xr-KH7"/>
+        <segue reference="i8v-OW-VyQ"/>
+        <segue reference="pKa-lc-iQd"/>
     </inferredMetricsTieBreakers>
 </document>

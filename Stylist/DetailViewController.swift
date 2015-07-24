@@ -67,7 +67,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate {
             // Replace question image if an image exists on the parse platform
             if let thumbnail = object["topsImageView"] as? PFFile {
                 topsImageView.file = thumbnail
-                topsImageView.loadInBackgroundWithBlock
+               // topsImageView.loadInBackgroundWithBlock
             }
         }
     }

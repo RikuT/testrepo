@@ -7,7 +7,7 @@
 //
 #import "ImagePreviewViewController.h"
 #import "ViewUtils.h"
-#import "UIImage+Crop.h"
+//#import "UIImage+Crop.h"
 
 @interface ImagePreviewViewController ()
 @property (strong, nonatomic) UIImage *image;
@@ -77,8 +77,41 @@
 }
 
 -(void)uploadImage:(UIButton*)button{
+    NSString *clothesName = self.clothesNameTextField.text;
     // ここでimageをparseにアップロードする
     NSLog(@"upload");
+    NSLog(@"%@,and %@", clothesName, self.image);
+    
+    if (self.imageView.image == NULL) {
+        NSLog(@"error");
+    }else{
+        NSData *imageData = UIImageJPEGRepresentation(self.image, 1.0);
+        PFFile *parseImageFile = [PFFile fileWithName:@"uploaded_image.png" data:imageData];
+        [parseImageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                if (succeeded) {
+                    //Putting the photo in Parse
+                    PFObject* posts = [PFObject objectWithClassName:@"Tops"];
+                    posts[@"imageText"] = clothesName;
+                    posts[@"uploader"] = [PFUser currentUser];
+                    posts[@"imageFile"] = parseImageFile;
+                    [posts saveInBackground];
+                    NSLog(@"success!!");
+                    
+                    [self dismissViewControllerAnimated:NO completion:nil];
+                    // NSUserDefaultsの取得
+                    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+                    [ud setBool:YES forKey:@"photoVCtoVCKey"];
+                }
+            } else {
+                // Handle error
+                NSLog(@"ERROR");
+            }        
+        }];
+    }
+    
+
+
 }
 
 
