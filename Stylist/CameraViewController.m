@@ -16,7 +16,7 @@
 
 @implementation CameraViewController
 
-@synthesize imagePreview, captureImage, stillImageOutput, cameraSwitch;
+@synthesize imagePreview, captureImage, stillImageOutput, cameraSwitch, clothesImg;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,6 +31,8 @@
 }
 
 - (void)initCamera {
+    NSLog(@"initCamera");
+
     AVCaptureSession *session = [[AVCaptureSession alloc] init];
     session.sessionPreset = AVCaptureSessionPresetPhoto;
     
@@ -86,6 +88,7 @@
 }
 
 - (void) capImage {
+    NSLog(@"capImage");
     AVCaptureConnection *videoConnection = nil;
     for (AVCaptureConnection *connection in stillImageOutput.connections) {
         for (AVCaptureInputPort *port in [connection inputPorts]) {
@@ -110,7 +113,9 @@
 }
 
 - (void) processImage:(UIImage *)image {
-    
+    NSLog(@"processImage");
+
+    //ここは必要だかわからないからとりあえず残しておいた。要確認
     // Device is iPad
     if ([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPad) {
         UIGraphicsBeginImageContext(CGSizeMake(image.size.width, image.size.height));
@@ -122,13 +127,14 @@
         CGRect cropRect = CGRectMake(0, 0, image.size.width, image.size.width);
         CGImageRef imageRef = CGImageCreateWithImageInRect([smallImage CGImage], cropRect);
         
-        [captureImage setImage:[UIImage imageWithCGImage:imageRef]];
+        clothesImg = [UIImage imageWithCGImage:imageRef];
+        [captureImage setImage:clothesImg];
         CGImageRelease(imageRef);
         
         captureImage.hidden = NO;
         imagePreview.hidden = YES;
     }
-    
+    //ここは必要だかわからないからとりあえず残しておいた。要確認
     // Device is iPhone
     if ([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPhone) {
         UIGraphicsBeginImageContext(CGSizeMake(image.size.width, image.size.height));
@@ -140,15 +146,19 @@
         CGRect cropRect = CGRectMake(0, 0, image.size.width, image.size.width);
         CGImageRef imageRef = CGImageCreateWithImageInRect([smallImage CGImage], cropRect);
         
-        [captureImage setImage:
-         [UIImage imageWithCGImage:imageRef]];
+        clothesImg = [UIImage imageWithCGImage:imageRef];
+        [captureImage setImage:clothesImg];
         CGImageRelease(imageRef);
         
         captureImage.hidden = NO;
         imagePreview.hidden = YES;
     }
     
-        
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSData *imageData = UIImageJPEGRepresentation(clothesImg, 1.0);
+    [ud setObject:imageData forKey:@"imgDataKey"];
+    
+    [self performSegueWithIdentifier:@"toImgPreview" sender:self];
     
 }
 

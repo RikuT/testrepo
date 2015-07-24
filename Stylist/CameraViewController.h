@@ -18,6 +18,7 @@ BOOL FrontCamera;
 @property (strong, nonatomic) IBOutlet UIView *imagePreview;
 @property (strong, nonatomic) IBOutlet UIImageView *captureImage;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *cameraSwitch;
+@property (strong, nonatomic) UIImage *clothesImg;
 
 - (IBAction)snapImage:(id)sender;
 - (IBAction)switchCamera:(id)sender;

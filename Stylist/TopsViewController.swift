@@ -49,8 +49,8 @@ class TopsViewController: UICollectionViewController, UITableViewDelegate{
 	}
 
 
-
-	
+//テスト用に一時的に消した
+	/*
 	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		let singleCell:SingleRowCell = collectionView.dequeueReusableCellWithReuseIdentifier("mySingleCell")as! SingleRowCell
 		singleCell.topsLabel.text = imageText [indexPath.row]
@@ -70,9 +70,9 @@ class TopsViewController: UICollectionViewController, UITableViewDelegate{
 	}
  	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return 20;
-	}
-}
+	}*/
 
+}
 
 
 
