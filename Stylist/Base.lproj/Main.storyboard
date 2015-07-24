@@ -80,7 +80,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="4H1-83-9jU" kind="modal" id="CCu-iC-iQa"/>
+                                    <segue destination="4H1-83-9jU" kind="modal" id="i8v-OW-VyQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -815,7 +815,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="sTT-Xr-KH7"/>
+        <segue reference="i8v-OW-VyQ"/>
         <segue reference="xok-EZ-dwa"/>
-        <segue reference="MQg-n3-HQo"/>
     </inferredMetricsTieBreakers>
 </document>

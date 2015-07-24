@@ -72,21 +72,19 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
 	{
-		self.performSegueWithIdentifier("showImage", sender: self)
+		self.performSegueWithIdentifier("showImage", sender: indexPath)
 	}
-
+	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
 	{
 		if segue.identifier == "showImage"
 		{
-			let indexPaths = self.collectionView!.indexPathsForSelectedItems()!
-			let indexPath = indexPaths[0] as NSIndexPath
+			let indexPath : NSIndexPath = sender as! NSIndexPath
 			let vc = segue.destinationViewController as! NewViewController
-			vc.image = self.imageArray[indexPath.row]!
-			vc.title = self.appleProducts[indexPath.row]
+			vc.image = self.topsImageView[indexPath.row]!
+			vc.title = self.topsLabel[indexPath.row]
 		}
 	}
-
 }
 
 

@@ -200,6 +200,16 @@
 			name = CollectionView;
 			sourceTree = "<group>";
 		};
+		B69677621B62361500EC2F9A /* Login/Registeration */ = {
+			isa = PBXGroup;
+			children = (
+				B6EC66021B3FD4F700B5BC58 /* RegisterPageViewController.swift */,
+				B6EC66271B3FFA8400B5BC58 /* LoginViewController.swift */,
+				B65331DC1B411D1B00B19268 /* PasswordRecoverViewController.swift */,
+			);
+			name = Login/Registeration;
+			sourceTree = "<group>";
+		};
 		B6CD24571B3D8BD50061E451 = {
 			isa = PBXGroup;
 			children = (
@@ -228,12 +238,10 @@
 				B6CD24681B3D8BD50061E451 /* AppDelegate.m */,
 				B6EC66241B3FE60C00B5BC58 /* MyConnector.h */,
 				B6EC66251B3FE60C00B5BC58 /* MyConnector.m */,
-				B696775E1B6218E600EC2F9A /* Camera */,
 				B6EC66001B3FD31900B5BC58 /* ViewController.swift */,
+				B696775E1B6218E600EC2F9A /* Camera */,
 				B696775F1B6229A300EC2F9A /* CollectionView */,
-				B6EC66021B3FD4F700B5BC58 /* RegisterPageViewController.swift */,
-				B6EC66271B3FFA8400B5BC58 /* LoginViewController.swift */,
-				B65331DC1B411D1B00B19268 /* PasswordRecoverViewController.swift */,
+				B69677621B62361500EC2F9A /* Login/Registeration */,
 				B600E2321B416541007F8FDA /* UploadViewController.swift */,
 				324FEC2B1B61C85E000E6537 /* CameraViewController.h */,
 				324FEC2C1B61C85E000E6537 /* CameraViewController.m */,
