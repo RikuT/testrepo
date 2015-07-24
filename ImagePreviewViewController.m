@@ -86,7 +86,7 @@
         NSLog(@"error");
     }else{
         NSData *imageData = UIImageJPEGRepresentation(self.image, 1.0);
-        PFFile *parseImageFile = [PFFile fileWithName:@"uploaded_image.png" data:imageData];
+        PFFile *parseImageFile = [PFFile fileWithName:@"uploaded_image.jpg" data:imageData];
         [parseImageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 if (succeeded) {

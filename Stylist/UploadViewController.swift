@@ -6,6 +6,8 @@
 //  Copyright (c) 2015年 xxx. All rights reserved.
 //
 
+
+//CAN BE DELETED　削除すること
 import UIKit
 import Parse
 
