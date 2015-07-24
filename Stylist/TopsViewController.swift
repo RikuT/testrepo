@@ -9,93 +9,198 @@
 import UIKit
 import Parse
 
+var tops = [PFObject]()
 
-class TopsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+class TopsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
 	
-    @IBOutlet weak var topsCollectionView: UICollectionView!
-	//Create arrays of images from parse
-	var imageFiles = [PFFile]()
-	var imageText = [String]()
-	var ImageArray = [UIImage]()
+	// Connection to the search bar
+	@IBOutlet weak var searchBar: UISearchBar!
 	
+	// Connection to the collection view
+	@IBOutlet weak var collectionView: UICollectionView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		// Do any additional setup after loading the view.
-		var query = PFQuery(className: "Tops")
-		query.whereKey("uploader", equalTo: PFUser.currentUser()!)
-		query.orderByDescending("createdAt")
-		query.findObjectsInBackgroundWithBlock{
-			(posts: [AnyObject]?, error: NSError?) -> Void in
+		// Wire up search bar delegate so that we can react to button selections
+		searchBar.delegate = self
+		
+		// Resize size of collection view items in grid so that we achieve 3 boxes across
+		let cellWidth = ((UIScreen.mainScreen().bounds.width) - 32 - 30 ) / 3
+		let cellLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+		cellLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
+	}
+	
+	/*
+	==========================================================================================
+	Ensure data within the collection view is updated when ever it is displayed
+	==========================================================================================
+	*/
+	
+	// Load data into the collectionView when the view appears
+	override func viewDidAppear(animated: Bool) {
+		loadCollectionViewData()
+	}
+	
+	/*
+	==========================================================================================
+	Fetch data from the Parse platform
+	==========================================================================================
+	*/
+	
+	func loadCollectionViewData() {
+		
+		// Build a parse query object
+		var query = PFQuery(className:"Tops")
+		
+		// Check to see if there is a search term
+		if searchBar.text != "" {
+			query.whereKey("uploader", containsString: searchBar.text.lowercaseString)
+		}
+		
+		// Fetch data from the parse platform
+		query.findObjectsInBackgroundWithBlock {
+			(objects: [AnyObject]?, error: NSError?) -> Void in
+			
+			// The find succeeded now rocess the found objects into the countries array
 			if error == nil {
-				for post in posts!{
-					self.imageFiles.append(post["imageFile"]as! PFFile)
-					self.imageText.append(post["imageText"]as! String)
+				
+				// Clear existing country data
+				tops.removeAll(keepCapacity: true)
+				
+				// Add country objects to our array
+				if let objects = objects as? [PFObject] {
+					tops = Array(objects.generate())
 				}
 				
-				
-				println(self.imageFiles.count)
-				self.topsCollectionView.reloadData()
+				// reload our data into the collection view
+				self.collectionView.reloadData()
 				
 			} else {
-				println(error)
-			}}}
+				// Log details of the failure
+				println("Error: \(error!) \(error!.userInfo!)")
+			}
+		}
+	}
+	
+	/*
+	==========================================================================================
+	UICollectionView protocol required methods
+	==========================================================================================
+	*/
+	
+	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+		return 1
+	}
+	
+	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return tops.count
+	}
+	
+	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+		
+		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mySingleCell", forIndexPath: indexPath) as! SingleRowCell
+	
+		
+		// Display the country name
+		if let value = tops[indexPath.row]["topsLabel"] as? String {
+			cell.topsLabel.text = value
+		}
+		
+		// Display "initial" flag image
+		var initialThumbnail = UIImage(named: "question")
+			cell.topsImageView.image = initialThumbnail
+		
+		// Fetch final flag image - if it exists
+		if let value = tops[indexPath.row]["tops"] as? PFFile {
+			let finalImage = tops[indexPath.row]["tops"] as? PFFile
+			finalImage!.getDataInBackgroundWithBlock {
+				(imageData: NSData?, error: NSError?) -> Void in
+				if error == nil {
+					if let imageData = imageData {
+						cell.topsImageView.image = UIImage(data:imageData)
+					}
+				}
+			}
+		}
+		return cell
+	}
+	
+	/*
+	==========================================================================================
+	Segue methods
+	==========================================================================================
+	*/
+	
+	// Process collectionView cell selection
+	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+		let currentObject = tops[indexPath.row]
+		performSegueWithIdentifier("CollectionViewToDetailView", sender: currentObject)
+	}
+	
+	// In a storyboard-based application, you will often want to do a little preparation before navigation
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		
+		// If a cell has been selected within the colleciton view - set currentObjact to selected
+		var currentObject : PFObject?
+		if let country = sender as? PFObject{
+			currentObject = sender as? PFObject
+		} else {
+			// No cell selected in collectionView - must be a new country record being created
+			currentObject = PFObject(className:"Tops")
+		}
+		
+		// Get a handle on the next story board controller and set the currentObject ready for the viewDidLoad method
+		var detailScene = segue.destinationViewController as! DetailViewController
+		detailScene.currentObject = (currentObject)
+	}
+	
+	
+	/*
+	==========================================================================================
+	Process Search Bar interaction
+	==========================================================================================
+	*/
+	
+	func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+		
+		// Dismiss the keyboard
+		searchBar.resignFirstResponder()
+		
+		// Reload of table data
+		self.loadCollectionViewData()
+	}
+	
+	func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+		
+		// Dismiss the keyboard
+		searchBar.resignFirstResponder()
+		
+		// Reload of table data
+		self.loadCollectionViewData()
+	}
+	
+	func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+		
+		// Clear any search criteria
+		searchBar.text = ""
+		
+		// Dismiss the keyboard
+		searchBar.resignFirstResponder()
+		
+		// Reload of table data
+		self.loadCollectionViewData()
+	}
+	
+	/*
+	==========================================================================================
+	Process memory issues
+	To be completed
+	==========================================================================================
+	*/
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
-	}
-
-
-
-	 func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		let singleCell: SingleRowCell = collectionView.dequeueReusableCellWithReuseIdentifier("mySingleCell", forIndexPath: indexPath) as! SingleRowCell
-		singleCell.topsLabel.text = imageText [indexPath.row]
-		imageFiles[indexPath.row].getDataInBackgroundWithBlock{
-			(imageData: NSData?, error: NSError?) -> Void in
-			if imageData != nil {
-				let image = UIImage(data: imageData!)
-				singleCell.topsImageView.image = image
-			}else {
-				println(error)
-			}}
-		
-		return singleCell
-	}
-	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-		return 1
-	}
- 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 20;
-	}
-	
-	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
-	{
-		self.performSegueWithIdentifier("showImage", sender: indexPath)
-	}
-	
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-	{
-		if segue.identifier == "showImage"
-		{
-			let indexPath : NSIndexPath = sender as! NSIndexPath
-			let vc = segue.destinationViewController as! NewViewController
-			vc.image = self.topsImageView[indexPath.row]!
-			vc.title = self.topsLabel[indexPath.row]
-		}
-	}
 }
-
-
-
-/*
-// MARK: - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-// Get the new view controller using segue.destinationViewController.
-// Pass the selected object to the new view controller.
 }
-*/
-
