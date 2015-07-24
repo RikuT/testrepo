@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SingleRowCellC: UICollectionViewCell {
+class SingleRowCell: UICollectionViewCell {
     @IBOutlet weak var topsImageView: UIImageView!
     @IBOutlet weak var topsLabel: UILabel!
     override func awakeFromNib() {

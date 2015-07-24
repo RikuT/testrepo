@@ -10,9 +10,9 @@ import UIKit
 import Parse
 
 
-class TopsViewController: UICollectionViewController, UITableViewDelegate{
+class TopsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
 	
-	@IBOutlet weak var topsTableView: UITableView!
+    @IBOutlet weak var topsCollectionView: UICollectionView!
 	//Create arrays of images from parse
 	var imageFiles = [PFFile]()
 	var imageText = [String]()
@@ -21,7 +21,6 @@ class TopsViewController: UICollectionViewController, UITableViewDelegate{
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
 		
 		// Do any additional setup after loading the view.
 		var query = PFQuery(className: "Tops")
@@ -37,7 +36,7 @@ class TopsViewController: UICollectionViewController, UITableViewDelegate{
 				
 				
 				println(self.imageFiles.count)
-				self.topsTableView.reloadData()
+				self.topsCollectionView.reloadData()
 				
 			} else {
 				println(error)
@@ -49,10 +48,9 @@ class TopsViewController: UICollectionViewController, UITableViewDelegate{
 	}
 
 
-//テスト用に一時的に消した
-	/*
-	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		let singleCell:SingleRowCell = collectionView.dequeueReusableCellWithReuseIdentifier("mySingleCell")as! SingleRowCell
+
+	 func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+		let singleCell: SingleRowCell = collectionView.dequeueReusableCellWithReuseIdentifier("mySingleCell", forIndexPath: indexPath) as! SingleRowCell
 		singleCell.topsLabel.text = imageText [indexPath.row]
 		imageFiles[indexPath.row].getDataInBackgroundWithBlock{
 			(imageData: NSData?, error: NSError?) -> Void in
@@ -65,12 +63,29 @@ class TopsViewController: UICollectionViewController, UITableViewDelegate{
 		
 		return singleCell
 	}
-	override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
 		return 1
 	}
- 	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+ 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return 20;
-	}*/
+	}
+	
+	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
+	{
+		self.performSegueWithIdentifier("showImage", sender: self)
+	}
+
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+	{
+		if segue.identifier == "showImage"
+		{
+			let indexPaths = self.collectionView!.indexPathsForSelectedItems()!
+			let indexPath = indexPaths[0] as NSIndexPath
+			let vc = segue.destinationViewController as! NewViewController
+			vc.image = self.imageArray[indexPath.row]!
+			vc.title = self.appleProducts[indexPath.row]
+		}
+	}
 
 }
 
