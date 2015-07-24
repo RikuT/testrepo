@@ -219,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6d5-AW-rn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="616" y="-154"/>
+            <point key="canvasLocation" x="616" y="-111"/>
         </scene>
         <!--Password Recover View Controller-->
         <scene sceneID="GAR-ma-ixj">
@@ -559,7 +559,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqO-5T-Hk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1262" y="-624"/>
+            <point key="canvasLocation" x="616" y="-816"/>
         </scene>
         <!--Image Preview View Controller-->
         <scene sceneID="7fz-OJ-T6u">
@@ -570,13 +570,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <segue destination="8vQ-e4-Iq2" kind="modal" identifier="imagePreviewVCToVC" id="pKa-lc-iQd"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9M-t0-aJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1618" y="-638"/>
+            <point key="canvasLocation" x="1212" y="-816"/>
         </scene>
     </scenes>
     <resources>
@@ -592,6 +589,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="B2n-ch-nEt"/>
-        <segue reference="i8v-OW-VyQ"/>
+        <segue reference="TKa-A3-oIM"/>
     </inferredMetricsTieBreakers>
 </document>
