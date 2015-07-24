@@ -246,7 +246,7 @@
                                     <navigationItem title="Image" id="JSB-qi-OC1">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="o8N-Jk-atb">
                                             <connections>
-                                                <action selector="saveButton:" destination="Rz1-LF-e1Z" id="ire-b0-FZa"/>
+                                                <segue destination="4H1-83-9jU" kind="modal" animates="NO" id="6oU-KH-svg"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -268,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6KV-Ki-CzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="39" y="-283"/>
+            <point key="canvasLocation" x="113" y="-105"/>
         </scene>
         <!--Tops View Controller-->
         <scene sceneID="9o3-eY-HEm">
@@ -290,6 +290,9 @@
                                                 <state key="normal" title="Finish">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="8vQ-e4-Iq2" kind="modal" animates="NO" id="B2n-ch-nEt"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="j87-MH-Jrf"/>
@@ -321,7 +324,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1cb-Sz-UJM">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1cb-Sz-UJM" customClass="PFImageView">
                                                     <rect key="frame" x="4" y="0.0" width="85" height="137"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
@@ -356,13 +359,14 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="topsCollectionView" destination="EaR-ET-k4R" id="PjW-rz-tB2"/>
+                        <outlet property="collectionView" destination="EaR-ET-k4R" id="mM4-wQ-PcB"/>
+                        <outlet property="searchBar" destination="mlt-5h-nGT" id="1HE-F1-nK7"/>
                         <segue destination="Rz1-LF-e1Z" kind="modal" identifier="showImage" id="6Si-2s-eq2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6d5-AW-rn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="502" y="-283"/>
+            <point key="canvasLocation" x="616" y="-154"/>
         </scene>
         <!--Password Recover View Controller-->
         <scene sceneID="GAR-ma-ixj">
@@ -684,7 +688,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="502" y="549"/>
+            <point key="canvasLocation" x="616" y="559"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="xGl-vL-tbG">

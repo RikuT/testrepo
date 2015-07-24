@@ -34,7 +34,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate {
         // Update the object
         if let updateObject = updateObject {
             
-            updateObject["topsLabel"] = topsLabel.text
+            updateObject["imageText"] = topsLabel.text
             
             // Create a string of text that is used by search capabilites
             var searchText = (topsLabel.text).lowercaseString
@@ -56,7 +56,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate {
         
         // Unwrap the current object object
         if let object = currentObject {
-            if let value = object["topsLabel"] as? String {
+            if let value = object["imageText"] as? String {
                 topsLabel.text = value
 
             
@@ -65,7 +65,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate {
             topsImageView.image = initialThumbnail
             
             // Replace question image if an image exists on the parse platform
-            if let thumbnail = object["topsImageView"] as? PFFile {
+            if let thumbnail = object["imageFile"] as? PFFile {
                 topsImageView.file = thumbnail
                // topsImageView.loadInBackgroundWithBlock
             }

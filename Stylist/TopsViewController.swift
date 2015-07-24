@@ -13,10 +13,15 @@ var tops = [PFObject]()
 
 class TopsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
 	
+	
+	var objectToSend : PFObject?
+	
 	// Connection to the search bar
+	
 	@IBOutlet weak var searchBar: UISearchBar!
 	
 	// Connection to the collection view
+	
 	@IBOutlet weak var collectionView: UICollectionView!
 	
 	override func viewDidLoad() {
@@ -29,6 +34,8 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		let cellWidth = ((UIScreen.mainScreen().bounds.width) - 32 - 30 ) / 3
 		let cellLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
 		cellLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
+		
+		loadCollectionViewData()
 	}
 	
 	/*
@@ -39,7 +46,7 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	
 	// Load data into the collectionView when the view appears
 	override func viewDidAppear(animated: Bool) {
-		loadCollectionViewData()
+		//	loadCollectionViewData()
 	}
 	
 	/*
@@ -52,6 +59,8 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		
 		// Build a parse query object
 		var query = PFQuery(className:"Tops")
+		query.whereKey("uploader", equalTo: PFUser.currentUser()!)
+		
 		
 		// Check to see if there is a search term
 		if searchBar.text != "" {
@@ -62,11 +71,14 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		query.findObjectsInBackgroundWithBlock {
 			(objects: [AnyObject]?, error: NSError?) -> Void in
 			
+			println("objects: \(objects)")
+			println("error\(error)")
+			
 			// The find succeeded now rocess the found objects into the countries array
 			if error == nil {
 				
 				// Clear existing country data
-				tops.removeAll(keepCapacity: true)
+				tops.removeAll(keepCapacity: false)
 				
 				// Add country objects to our array
 				if let objects = objects as? [PFObject] {
@@ -100,28 +112,32 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mySingleCell", forIndexPath: indexPath) as! SingleRowCell
-	
+		
 		
 		// Display the country name
-		if let value = tops[indexPath.row]["topsLabel"] as? String {
+		if let value = tops[indexPath.row]["imageText"] as? String {
 			cell.topsLabel.text = value
 		}
 		
 		// Display "initial" flag image
 		var initialThumbnail = UIImage(named: "question")
-			cell.topsImageView.image = initialThumbnail
+		cell.topsImageView.image = initialThumbnail
 		
 		// Fetch final flag image - if it exists
-		if let value = tops[indexPath.row]["tops"] as? PFFile {
-			let finalImage = tops[indexPath.row]["tops"] as? PFFile
-			finalImage!.getDataInBackgroundWithBlock {
-				(imageData: NSData?, error: NSError?) -> Void in
-				if error == nil {
-					if let imageData = imageData {
-						cell.topsImageView.image = UIImage(data:imageData)
-					}
+		if let value = tops[indexPath.row]["imageFile"] as? PFFile {
+			
+			cell.topsImageView.file = value
+			cell.topsImageView.loadInBackground({ (image: UIImage?, error: NSError?) -> Void in
+				
+				if error != nil {
+					
+					
 				}
-			}
+				
+			})
+			
+			//	let finalImage = tops[indexPath.row]["tops"] as? PFFile
+			
 		}
 		return cell
 	}
@@ -134,25 +150,18 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	
 	// Process collectionView cell selection
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-		let currentObject = tops[indexPath.row]
-		performSegueWithIdentifier("CollectionViewToDetailView", sender: self)
+		objectToSend = tops[indexPath.row]
+		performSegueWithIdentifier("showImage", sender: self)
 	}
 	
 	// In a storyboard-based application, you will often want to do a little preparation before navigation
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		
-		// If a cell has been selected within the colleciton view - set currentObjact to selected
-		var currentObject : PFObject?
-		if let country = sender as? PFObject{
-			currentObject = sender as? PFObject
-		} else {
-			// No cell selected in collectionView - must be a new country record being created
-			currentObject = PFObject(className:"Tops")
+		if segue.identifier == "showImage" {
+			
+			let detailsVc = segue.destinationViewController as! DetailViewController
+			detailsVc.currentObject = objectToSend
 		}
-		
-		// Get a handle on the next story board controller and set the currentObject ready for the viewDidLoad method
-		var detailScene = segue.destinationViewController as! DetailViewController
-		detailScene.currentObject = (currentObject)
 	}
 	
 	
@@ -194,13 +203,13 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	
 	/*
 	==========================================================================================
-	Process memory issues
-	To be completed
-	==========================================================================================
-	*/
+	Process memory issues 
+	To be completed 
+	========================================================================================== 
+	*/ 
 	
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-}
+	override func didReceiveMemoryWarning() { 
+		super.didReceiveMemoryWarning() 
+		// Dispose of any resources that can be recreated. 
+	} 
 }
