@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		324FEC2E1B61C85E000E6537 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FEC2C1B61C85E000E6537 /* CameraViewController.m */; };
 		324FEC2F1B61C85E000E6537 /* cameraImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324FEC2D1B61C85E000E6537 /* cameraImagePreviewViewController.swift */; };
+		326B13B21B61D0FC003A871D /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13A91B61D0FB003A871D /* PhotoViewController.m */; };
+		326B13B31B61D0FC003A871D /* ImagePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13AB1B61D0FC003A871D /* ImagePreviewViewController.m */; };
+		326B13B41B61D0FC003A871D /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13AD1B61D0FC003A871D /* UIImage+Crop.m */; };
+		326B13B51B61D0FC003A871D /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13AF1B61D0FC003A871D /* UIImage+Resize.m */; };
+		326B13B61B61D0FC003A871D /* ViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13B11B61D0FC003A871D /* ViewUtils.m */; };
+		326B13BC1B61D17E003A871D /* LLSimpleCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13B91B61D17E003A871D /* LLSimpleCamera.m */; };
+		326B13BD1B61D17E003A871D /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13BB1B61D17E003A871D /* UIImage+FixOrientation.m */; };
+		326B13BF1B61DA15003A871D /* whiteCancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 326B13BE1B61DA15003A871D /* whiteCancel.png */; };
+		326B13C11B61E9A4003A871D /* pictogram.png in Resources */ = {isa = PBXBuildFile; fileRef = 326B13C01B61E9A4003A871D /* pictogram.png */; };
 		32C9C89B1B4DA28200983181 /* Img1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C8951B4DA28200983181 /* Img1.jpg */; };
 		32C9C89C1B4DA28200983181 /* Img2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C8961B4DA28200983181 /* Img2.jpg */; };
 		32C9C89D1B4DA28200983181 /* Img3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C8971B4DA28200983181 /* Img3.jpg */; };
@@ -61,6 +70,22 @@
 		324FEC2B1B61C85E000E6537 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
 		324FEC2C1B61C85E000E6537 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		324FEC2D1B61C85E000E6537 /* cameraImagePreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraImagePreviewViewController.swift; sourceTree = "<group>"; };
+		326B13A81B61D0FB003A871D /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoViewController.h; path = ../PhotoViewController.h; sourceTree = "<group>"; };
+		326B13A91B61D0FB003A871D /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoViewController.m; path = ../PhotoViewController.m; sourceTree = "<group>"; };
+		326B13AA1B61D0FC003A871D /* ImagePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagePreviewViewController.h; path = ../ImagePreviewViewController.h; sourceTree = "<group>"; };
+		326B13AB1B61D0FC003A871D /* ImagePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagePreviewViewController.m; path = ../ImagePreviewViewController.m; sourceTree = "<group>"; };
+		326B13AC1B61D0FC003A871D /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Crop.h"; path = "../UIImage+Crop.h"; sourceTree = "<group>"; };
+		326B13AD1B61D0FC003A871D /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Crop.m"; path = "../UIImage+Crop.m"; sourceTree = "<group>"; };
+		326B13AE1B61D0FC003A871D /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Resize.h"; path = "../UIImage+Resize.h"; sourceTree = "<group>"; };
+		326B13AF1B61D0FC003A871D /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Resize.m"; path = "../UIImage+Resize.m"; sourceTree = "<group>"; };
+		326B13B01B61D0FC003A871D /* ViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewUtils.h; path = ../ViewUtils.h; sourceTree = "<group>"; };
+		326B13B11B61D0FC003A871D /* ViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewUtils.m; path = ../ViewUtils.m; sourceTree = "<group>"; };
+		326B13B81B61D17E003A871D /* LLSimpleCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLSimpleCamera.h; sourceTree = "<group>"; };
+		326B13B91B61D17E003A871D /* LLSimpleCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLSimpleCamera.m; sourceTree = "<group>"; };
+		326B13BA1B61D17E003A871D /* UIImage+FixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixOrientation.h"; sourceTree = "<group>"; };
+		326B13BB1B61D17E003A871D /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
+		326B13BE1B61DA15003A871D /* whiteCancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteCancel.png; sourceTree = "<group>"; };
+		326B13C01B61E9A4003A871D /* pictogram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pictogram.png; sourceTree = "<group>"; };
 		32C9C8951B4DA28200983181 /* Img1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Img1.jpg; sourceTree = "<group>"; };
 		32C9C8961B4DA28200983181 /* Img2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Img2.jpg; sourceTree = "<group>"; };
 		32C9C8971B4DA28200983181 /* Img3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Img3.jpg; sourceTree = "<group>"; };
@@ -137,12 +162,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		326B13B71B61D17E003A871D /* LLSimpleCamera */ = {
+			isa = PBXGroup;
+			children = (
+				326B13B81B61D17E003A871D /* LLSimpleCamera.h */,
+				326B13B91B61D17E003A871D /* LLSimpleCamera.m */,
+				326B13BA1B61D17E003A871D /* UIImage+FixOrientation.h */,
+				326B13BB1B61D17E003A871D /* UIImage+FixOrientation.m */,
+			);
+			path = LLSimpleCamera;
+			sourceTree = "<group>";
+		};
 		B6CD24571B3D8BD50061E451 = {
 			isa = PBXGroup;
 			children = (
 				B6EC66231B3FE19200B5BC58 /* Stylist-Bridging-Header.h */,
 				B6EC66041B3FDD1300B5BC58 /* Frameworks */,
 				B6CD24621B3D8BD50061E451 /* Stylist */,
+				326B13B71B61D17E003A871D /* LLSimpleCamera */,
 				B6CD247C1B3D8BD50061E451 /* StylistTests */,
 				B6CD24611B3D8BD50061E451 /* Products */,
 			);
@@ -178,13 +215,25 @@
 				32C9C8A11B4DA2D400983181 /* SwipeableClothesTester.swift */,
 				32F3F1F81B52BA9C0051050B /* SCLAlertView.swift */,
 				B6CD246D1B3D8BD50061E451 /* Main.storyboard */,
+				326B13A81B61D0FB003A871D /* PhotoViewController.h */,
+				326B13A91B61D0FB003A871D /* PhotoViewController.m */,
+				326B13AA1B61D0FC003A871D /* ImagePreviewViewController.h */,
+				326B13AB1B61D0FC003A871D /* ImagePreviewViewController.m */,
+				326B13AC1B61D0FC003A871D /* UIImage+Crop.h */,
+				326B13AD1B61D0FC003A871D /* UIImage+Crop.m */,
+				326B13AE1B61D0FC003A871D /* UIImage+Resize.h */,
+				326B13AF1B61D0FC003A871D /* UIImage+Resize.m */,
+				326B13B01B61D0FC003A871D /* ViewUtils.h */,
+				326B13B11B61D0FC003A871D /* ViewUtils.m */,
 				B6CD24701B3D8BD50061E451 /* Images.xcassets */,
 				32C9C8951B4DA28200983181 /* Img1.jpg */,
 				32C9C8961B4DA28200983181 /* Img2.jpg */,
 				32C9C8971B4DA28200983181 /* Img3.jpg */,
 				32C9C8981B4DA28200983181 /* Img4.jpg */,
 				32C9C8991B4DA28200983181 /* Img5.jpg */,
+				326B13BE1B61DA15003A871D /* whiteCancel.png */,
 				32C9C89A1B4DA28200983181 /* dottedLine.png */,
+				326B13C01B61E9A4003A871D /* pictogram.png */,
 				B6CD24721B3D8BD50061E451 /* LaunchScreen.xib */,
 				B6CD24631B3D8BD50061E451 /* Supporting Files */,
 			);
@@ -318,8 +367,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6CD246F1B3D8BD50061E451 /* Main.storyboard in Resources */,
+				326B13C11B61E9A4003A871D /* pictogram.png in Resources */,
 				32C9C89F1B4DA28200983181 /* Img5.jpg in Resources */,
 				32C9C8A01B4DA28200983181 /* dottedLine.png in Resources */,
+				326B13BF1B61DA15003A871D /* whiteCancel.png in Resources */,
 				32C9C89B1B4DA28200983181 /* Img1.jpg in Resources */,
 				32C9C89C1B4DA28200983181 /* Img2.jpg in Resources */,
 				B6CD24741B3D8BD50061E451 /* LaunchScreen.xib in Resources */,
@@ -343,16 +394,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				326B13BD1B61D17E003A871D /* UIImage+FixOrientation.m in Sources */,
 				B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */,
 				32C9C8A21B4DA2D400983181 /* SwipeableClothesTester.swift in Sources */,
 				324FEC2F1B61C85E000E6537 /* cameraImagePreviewViewController.swift in Sources */,
 				B6EC66281B3FFA8400B5BC58 /* LoginViewController.swift in Sources */,
 				B6EC66031B3FD4F700B5BC58 /* RegisterPageViewController.swift in Sources */,
+				326B13B51B61D0FC003A871D /* UIImage+Resize.m in Sources */,
+				326B13B61B61D0FC003A871D /* ViewUtils.m in Sources */,
 				B69BFAD41B61699600A14CBE /* SingleRowCellC.swift in Sources */,
 				324FEC2E1B61C85E000E6537 /* CameraViewController.m in Sources */,
+				326B13B21B61D0FC003A871D /* PhotoViewController.m in Sources */,
 				B6EC66261B3FE60C00B5BC58 /* MyConnector.m in Sources */,
+				326B13B41B61D0FC003A871D /* UIImage+Crop.m in Sources */,
 				B600E2351B41765D007F8FDA /* SingleRowCell.swift in Sources */,
+				326B13B31B61D0FC003A871D /* ImagePreviewViewController.m in Sources */,
 				B600E2331B416541007F8FDA /* UploadViewController.swift in Sources */,
+				326B13BC1B61D17E003A871D /* LLSimpleCamera.m in Sources */,
 				B65331DD1B411D1B00B19268 /* PasswordRecoverViewController.swift in Sources */,
 				B6EC66011B3FD31900B5BC58 /* ViewController.swift in Sources */,
 				B6CD24691B3D8BD50061E451 /* AppDelegate.m in Sources */,

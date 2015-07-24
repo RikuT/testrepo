@@ -1,29 +1,33 @@
 //
-//  HomeViewController.m
+//  PhotoViewController.m
 //  Stylist
 //
 //  Created by 田畑リク on 2015/06/29.
 //  Copyright (c) 2015年 xxx. All rights reserved.
 //
 
-#import "HomeViewController.h"
+#import "PhotoViewController.h"
 #import "ViewUtils.h"
-#import "ImageViewController.h"
+#import "ImagePreviewViewController.h"
 
-@interface HomeViewController ()
+@interface PhotoViewController ()
 @property (strong, nonatomic) LLSimpleCamera *camera;
 @property (strong, nonatomic) UILabel *errorLabel;
 @property (strong, nonatomic) UIButton *snapButton;
 @property (strong, nonatomic) UIButton *switchButton;
 @property (strong, nonatomic) UIButton *flashButton;
+@property (strong, nonatomic) UIButton *quitButton;
+
+@property (strong, nonatomic) UIImageView *clothesGuide;
+
 @property (strong, nonatomic) UISegmentedControl *segmentedControl;
 @end
 
-@implementation HomeViewController
+@implementation PhotoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.view.backgroundColor = [UIColor blackColor];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
@@ -39,6 +43,7 @@
     // attach to a view controller
     [self.camera attachToViewController:self withFrame:CGRectMake(0, 0, screenRect.size.width, screenRect.size.height)];
     
+    // read: http://stackoverflow.com/questions/5427656/ios-uiimagepickercontroller-result-image-orientation-after-upload
     // you probably will want to set this to YES, if you are going view the image outside iOS.
     self.camera.fixOrientationAfterCapture = NO;
     
@@ -91,6 +96,14 @@
         }
     }];
     
+    //////////////////////////////////////////////
+    //服を合わせるためのoverlay　適当に変えといてください
+    UIImage *testImg = [UIImage imageNamed:@"pictogram.png"];
+    self.clothesGuide = [[UIImageView alloc]initWithImage:testImg];
+    self.clothesGuide.frame = CGRectMake(0, 15, self.view.frame.size.width, self.view.frame.size.height-30);
+    [self.view addSubview:self.clothesGuide];
+
+    
     // ----- camera buttons -------- //
     
     // snap button to capture image
@@ -124,7 +137,17 @@
     [self.switchButton addTarget:self action:@selector(switchButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.switchButton];
     
-    }
+    // button to quit taking photos
+    self.quitButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.quitButton.frame = CGRectMake(0, 0, 21.0f + 20.0f, 21.0f + 20.0f);
+    self.quitButton.tintColor = [UIColor whiteColor];
+    [self.quitButton setImage:[UIImage imageNamed:@"whiteCancel.png"] forState:UIControlStateNormal];
+    self.quitButton.imageEdgeInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
+    [self.quitButton addTarget:self action:@selector(quitButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.quitButton];
+
+    
+}
 
 - (void)segmentedControlValueChanged:(UISegmentedControl *)control {
     NSLog(@"Segment value changed!");
@@ -139,7 +162,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-
+    
     // stop the camera
     [self.camera stop];
 }
@@ -148,6 +171,10 @@
 
 - (void)switchButtonPressed:(UIButton *)button {
     [self.camera togglePosition];
+}
+
+- (void)quitButtonPressed:(UIButton *)button {
+    [self performSegueWithIdentifier:@"photoToHome" sender:self];
 }
 
 - (NSURL *)applicationDocumentsDirectory {
@@ -185,7 +212,7 @@
                 [camera stop];
                 
                 // show the image
-                ImageViewController *imageVC = [[ImageViewController alloc] initWithImage:image];
+                ImagePreviewViewController *imageVC = [[ImagePreviewViewController alloc] initWithImage:image];
                 [self presentViewController:imageVC animated:NO completion:nil];
             }
             else {

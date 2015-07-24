@@ -1,5 +1,5 @@
 //
-//  ImageViewController.h
+//  PhotoViewController.h
 //  Stylist
 //
 //  Created by 田畑リク on 2015/06/29.
@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LLSimpleCamera.h"
 
-@interface ImageViewController : UIViewController
-- (instancetype)initWithImage:(UIImage *)image;
+@interface PhotoViewController : UIViewController
+
 @end

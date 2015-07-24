@@ -63,13 +63,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="c91-2h-Ekl">
-                                <rect key="frame" x="129" y="448" width="114" height="30"/>
+                                <rect key="frame" x="-44" y="393" width="408" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Take photo (test)">
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <state key="normal" title="Take photo (not working based on the original camera view)">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="FMo-Le-N0d" kind="modal" id="HJJ-dh-rmC"/>
+                                    <segue destination="FMo-Le-N0d" kind="modal" id="xok-EZ-dwa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dAG-jn-oSc">
+                                <rect key="frame" x="102" y="489" width="117" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Take photo (new)">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="mvh-Qb-4CR" kind="modal" id="gWV-GM-2Mg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -608,6 +619,23 @@
             </objects>
             <point key="canvasLocation" x="687" y="1219"/>
         </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="xGl-vL-tbG">
+            <objects>
+                <viewController id="mvh-Qb-4CR" customClass="PhotoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D2Z-Xg-VFS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="8vQ-e4-Iq2" kind="modal" identifier="photoToHome" id="sTT-Xr-KH7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lqO-5T-Hk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="959" y="-855"/>
+        </scene>
         <!--Camera View Controller-->
         <scene sceneID="And-i6-773">
             <objects>
@@ -661,7 +689,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eP5-3H-Xqk" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1223" y="-741"/>
+            <point key="canvasLocation" x="1426" y="-927"/>
         </scene>
         <!--Camera Image Preview View Controller-->
         <scene sceneID="x5q-yl-Ni2">
@@ -684,6 +712,16 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XSj-jf-aVL">
+                                <rect key="frame" x="8" y="525" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="FMo-Le-N0d" kind="modal" id="DRi-Yg-0Np"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -691,7 +729,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xez-47-ipb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1798" y="-801"/>
+            <point key="canvasLocation" x="1824" y="-885"/>
         </scene>
     </scenes>
     <resources>
@@ -706,7 +744,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="92p-7F-r2P"/>
+        <segue reference="sTT-Xr-KH7"/>
         <segue reference="375-ZN-Tl0"/>
+        <segue reference="DRi-Yg-0Np"/>
     </inferredMetricsTieBreakers>
 </document>
