@@ -6,10 +6,13 @@
 //  Copyright (c) 2015年 xxx. All rights reserved.
 //
 
+
+
 import UIKit
+import ParseUI
 
 class SingleRowCell: UICollectionViewCell {
-    @IBOutlet weak var topsImageView: UIImageView!
+    @IBOutlet weak var topsImageView: PFImageView!
     @IBOutlet weak var topsLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
