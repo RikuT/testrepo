@@ -34,8 +34,10 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		let cellWidth = ((UIScreen.mainScreen().bounds.width) - 10 - 30 ) / 3
 		let cellLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
 		cellLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
-		
 		loadCollectionViewData()
+
+		
+		
 	}
 	
 	/*
@@ -46,7 +48,6 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	
 	// Load data into the collectionView when the view appears
 	override func viewDidAppear(animated: Bool) {
-		//	loadCollectionViewData()
 	}
 	
 	/*
@@ -115,9 +116,12 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mySingleCell", forIndexPath: indexPath) as! SingleRowCell
 		
 		
+		
 		// Display the country name
 		if let value = tops[indexPath.row]["imageText"] as? String {
 			cell.topsLabel.text = value
+			println("it should be there")
+
 		}
 		
 		// Display "initial" flag image

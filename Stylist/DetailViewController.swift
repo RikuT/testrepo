@@ -27,6 +27,13 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate {
 
     var updateObject : PFObject?
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        
+        return true;
+        
+    }
     // The save button
     @IBAction func saveButton(sender: AnyObject) {
         
