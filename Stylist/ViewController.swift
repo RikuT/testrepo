@@ -14,6 +14,8 @@ import Parse
 
 
 class ViewController: UIViewController {
+    @IBAction func unwindToTrend(segue: UIStoryboardSegue) {
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
