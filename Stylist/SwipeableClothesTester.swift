@@ -124,11 +124,13 @@ class SwipeableClothesTester: UIViewController {
                     
                 }
             }
-/*
+
         println("failure")
+            /*
+            if(self.errorNumber != 1){
             self.errorNumber = 2
             self.showError()
-*/
+            }*/
         }
 }
     

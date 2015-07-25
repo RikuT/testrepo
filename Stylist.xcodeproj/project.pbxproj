@@ -19,6 +19,7 @@
 		32862E5D1B631B530070FA05 /* SCLAlertViewStyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 32862E551B631B530070FA05 /* SCLAlertViewStyleKit.m */; };
 		32862E5E1B631B530070FA05 /* SCLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 32862E571B631B530070FA05 /* SCLButton.m */; };
 		32862E5F1B631B530070FA05 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 32862E5A1B631B530070FA05 /* UIImage+ImageEffects.m */; };
+		32862E611B63326F0070FA05 /* userSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32862E601B63326F0070FA05 /* userSettingViewController.swift */; };
 		32C9C89B1B4DA28200983181 /* Img1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C8951B4DA28200983181 /* Img1.jpg */; };
 		32C9C89C1B4DA28200983181 /* Img2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C8961B4DA28200983181 /* Img2.jpg */; };
 		32C9C89D1B4DA28200983181 /* Img3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C8971B4DA28200983181 /* Img3.jpg */; };
@@ -92,6 +93,7 @@
 		32862E581B631B530070FA05 /* SCLMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLMacros.h; sourceTree = "<group>"; };
 		32862E591B631B530070FA05 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		32862E5A1B631B530070FA05 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		32862E601B63326F0070FA05 /* userSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = userSettingViewController.swift; path = ../userSettingViewController.swift; sourceTree = "<group>"; };
 		32C9C8951B4DA28200983181 /* Img1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Img1.jpg; sourceTree = "<group>"; };
 		32C9C8961B4DA28200983181 /* Img2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Img2.jpg; sourceTree = "<group>"; };
 		32C9C8971B4DA28200983181 /* Img3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Img3.jpg; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				B696775F1B6229A300EC2F9A /* CollectionView */,
 				B69677621B62361500EC2F9A /* Login/Registeration */,
 				B600E2321B416541007F8FDA /* UploadViewController.swift */,
+				32862E601B63326F0070FA05 /* userSettingViewController.swift */,
 				32C9C8A11B4DA2D400983181 /* SwipeableClothesTester.swift */,
 				32862E4F1B631B530070FA05 /* SCLAlertView */,
 				B6CD246D1B3D8BD50061E451 /* Main.storyboard */,
@@ -446,6 +449,7 @@
 				B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */,
 				32C9C8A21B4DA2D400983181 /* SwipeableClothesTester.swift in Sources */,
 				B6EC66281B3FFA8400B5BC58 /* LoginViewController.swift in Sources */,
+				32862E611B63326F0070FA05 /* userSettingViewController.swift in Sources */,
 				B69677611B622B7500EC2F9A /* DetailViewController.swift in Sources */,
 				B6EC66031B3FD4F700B5BC58 /* RegisterPageViewController.swift in Sources */,
 				32862E5E1B631B530070FA05 /* SCLButton.m in Sources */,
