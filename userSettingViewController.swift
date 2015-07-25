@@ -13,7 +13,6 @@ class userSettingViewController: UIViewController {
 
     @IBOutlet weak var displaynameTextF: UITextField!
     @IBOutlet weak var emailTextF: UITextField!
-    @IBOutlet weak var passwordTextF: UITextField!
     @IBOutlet weak var profileImgBut: UIButton!
     @IBOutlet weak var sexSelect: UISegmentedControl!
     @IBOutlet weak var heightTextF: UITextField!
@@ -24,7 +23,6 @@ class userSettingViewController: UIViewController {
     var displayName = "platoLove132"
     var emailAdd = "xxxxx@xxx.com"
     var userName = "Aristotle"
-    var password = [NSString]()
     var profileImg = [UIImage]()
     var sex = 2
     var height = 170
@@ -37,9 +35,6 @@ class userSettingViewController: UIViewController {
         self.view.addGestureRecognizer(tapGesture)
         
         //Retrieve user info from parse
-        
-        var query = PFQuery(className: "_User");
-        
         PFUser.currentUser()!.fetchInBackgroundWithBlock({
             (currentUser: PFObject?, error: NSError?) -> Void in
             
@@ -95,27 +90,46 @@ class userSettingViewController: UIViewController {
         })
     }
     
-/*
+
     @IBAction func updateSetting() {
         var newDisplayName = displaynameTextF.text
+        var newHeight = heightTextF.text.toInt()
         var newEmail = emailTextF.text
-        var posts = PFObject(className: "Tops");
-        var user = PFUser.currentUser()
+        var newSex = sexSelect.selectedSegmentIndex
+        let user = PFUser.currentUser()
         user!.email = newEmail
+        
         //user["displayName"]
-        //posts["displayName"] = newDisplayName
+
+        var userFileObj = PFObject (withoutDataWithClassName: "_User", objectId: PFUser.currentUser()?.objectId)
+        userFileObj["displayName"] = newDisplayName
+        userFileObj["height"] = newHeight
+        userFileObj["sex"] = newSex
         
-        var testDeleteObj = PFObject(withoutDataWithClassName: "Tops", objectId: "doOOGuKUIi")
-        testDeleteObj.delete()
-        
-        
-        
+        //Saving user infomation that is necessary in Parse before saving other optional materials
         PFUser.currentUser()!.saveInBackgroundWithBlock({
             (success: Bool, error: NSError?) -> Void in
             
             if error == nil {
             
                 println("success")
+                
+                userFileObj.saveInBackgroundWithBlock({
+                    (success: Bool, error: NSError?) -> Void in
+                    
+                    if error == nil {
+                        
+                        println("success")
+                        
+                    }else {
+                        
+                        println("failure")
+                        
+                        
+                    }
+                    
+                })
+
                 
             }else {
                 println("failure")
@@ -128,8 +142,9 @@ class userSettingViewController: UIViewController {
         
         
         
+        
     }
-*/
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -141,6 +156,12 @@ class userSettingViewController: UIViewController {
                 
     }
 
+    @IBAction func changePassword() {
+        var checkOrigin = "fromUserSettingVC"
+        let ud = NSUserDefaults.standardUserDefaults()
+        ud.setObject(checkOrigin, forKey: "passwordOriginCheckKey")
+        
+    }
     func textFieldShouldReturn(textField: UITextField) -> Bool{
         
         // キーボードを閉じる

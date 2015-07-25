@@ -52,11 +52,27 @@ class PasswordRecoverViewController: UIViewController {
     }
     
     
-    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        
+        return true;
+        
+    }
+
     
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
+        //Looking up in userDefaults to detect where the user came from
+        let ud = NSUserDefaults.standardUserDefaults()
+        var checkOriginObject: AnyObject? = ud.objectForKey("passwordOriginCheckKey")
+        var checkOrigin: NSString = "\(checkOriginObject)"
+        if checkOrigin == "fromUserSettingVC"{
+        performSegueWithIdentifier("changePassToUserSetting", sender: self)
+        }else{
         self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        ud.removeObjectForKey("passwordOriginCheckKey")
     }
     
     
