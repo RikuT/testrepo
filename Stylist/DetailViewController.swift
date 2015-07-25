@@ -160,12 +160,35 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate {
             }
     
     func deletePhotoProcess(){
+        //Choosing which object in Parse to delete
         var selectedObjId = currentObject?.objectId
         var object = PFObject(withoutDataWithClassName: "Tops", objectId: selectedObjId)
         
-        //I dont know how I can change delete() to deleteInBackgroundWithBlock
-        object.delete()
-        self.performSegueWithIdentifier("detailVCtoTopsVC", sender: self)
+        self.showActivityIndicatory(self.view)
+
+        object.deleteInBackgroundWithBlock({
+            (success: Bool, error: NSError?) -> Void in
+            
+            if error == nil {
+                //Hide activity indicator and go back to collection view when done deleting
+                self.hideActivityIndicator(self.view)
+                self.performSegueWithIdentifier("detailVCtoTopsVC", sender: self)
+                
+            }else {
+                
+                println(error)
+                //Show alert that error occured
+                let errorAlert = SCLAlertView()
+                errorAlert.showError("Error", subTitle:"An error occured.", closeButtonTitle:"Close")
+                self.hideActivityIndicator(self.view)
+
+            }
+            
+            
+        })
+
+        
+        
     }
     
     func showActivityIndicatory(uiView: UIView) {
