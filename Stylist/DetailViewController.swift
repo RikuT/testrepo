@@ -19,6 +19,12 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var topsLabel: UITextField!
     @IBOutlet weak var topsImageView: PFImageView!
     
+    //For showing activity indicator
+    var container: UIView = UIView()
+    var loadingView: UIView = UIView()
+    var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+
+
     var updateObject : PFObject?
     
     // The save button
@@ -53,6 +59,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.whiteColor()
         
         // Unwrap the current object object
         if let object = currentObject {
@@ -74,7 +81,96 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
 }
+    
+    @IBAction func postToPublic() {
+        let alert = SCLAlertView()
+        alert.addButton("Post!", target:self, selector:Selector("postingProcess"))
+        alert.showNotice("Confirmation", subTitle:"Do you want to post this photo?", closeButtonTitle:"Cancel")
 
+    }
+    
+    func postingProcess(){
+        self.showActivityIndicatory(self.view)
+
+        //Posted images are in "Posts" class of parse
+        var posts = PFObject(className: "Posts")
+        posts["imageText"] = topsLabel.text
+        posts["uploader"] = PFUser.currentUser()
+        posts.saveInBackgroundWithBlock({
+            (success: Bool, error: NSError?) -> Void in
+            
+            if error == nil {
+                
+                var imageData = UIImageJPEGRepresentation(self.topsImageView.image, 1.0)
+                var parseImageFile = PFFile(name: "uploaded_image.jpg", data: imageData)
+                posts["imageFile"] = parseImageFile
+                posts.saveInBackgroundWithBlock({
+                    (success: Bool, error: NSError?) -> Void in
+                    
+                    if error == nil {
+                        
+                        println("finished")
+                        let successAlert = SCLAlertView()
+                        successAlert.showSuccess("Posted", subTitle:"The photo was uploaded successfully!", closeButtonTitle:"Close")
+                        self.hideActivityIndicator(self.view)
+                        
+                        
+                    }else {
+                        
+                        println(error)
+                        let errorAlert = SCLAlertView()
+                        errorAlert.showError("Error", subTitle:"An error occured.", closeButtonTitle:"Close")
+                        self.hideActivityIndicator(self.view)
+
+
+                    }
+                    
+                    
+                })
+                
+                
+            }else {
+                println(error)
+                let errorAlert = SCLAlertView()
+                errorAlert.showError("Error", subTitle:"An error occured.", closeButtonTitle:"Close")
+                self.hideActivityIndicator(self.view)
+                
+            }
+            
+        })
+        
+        
+    
+
+    
+    }
+    
+    func showActivityIndicatory(uiView: UIView) {
+        
+        container.frame = uiView.frame
+        container.center = uiView.center
+        container.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        
+        loadingView.frame = CGRectMake(0, 0, 100, 100)
+        loadingView.center = uiView.center
+        //loadingView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+        
+        actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+        actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
+        actInd.center = CGPointMake(loadingView.frame.size.width / 2,
+            loadingView.frame.size.height / 2);
+        loadingView.addSubview(actInd)
+        container.addSubview(loadingView)
+        uiView.addSubview(container)
+        actInd.startAnimating()
+    }
+    
+    func hideActivityIndicator(uiView: UIView) {
+        actInd.stopAnimating()
+        container.removeFromSuperview()
+    }
 
     /*
     // MARK: - Navigation

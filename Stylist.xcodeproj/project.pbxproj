@@ -14,6 +14,11 @@
 		326B13BD1B61D17E003A871D /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13BB1B61D17E003A871D /* UIImage+FixOrientation.m */; };
 		326B13BF1B61DA15003A871D /* whiteCancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 326B13BE1B61DA15003A871D /* whiteCancel.png */; };
 		326B13C11B61E9A4003A871D /* pictogram.png in Resources */ = {isa = PBXBuildFile; fileRef = 326B13C01B61E9A4003A871D /* pictogram.png */; };
+		32862E5B1B631B530070FA05 /* SCLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32862E511B631B530070FA05 /* SCLAlertView.m */; };
+		32862E5C1B631B530070FA05 /* SCLAlertViewResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 32862E531B631B530070FA05 /* SCLAlertViewResponder.m */; };
+		32862E5D1B631B530070FA05 /* SCLAlertViewStyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 32862E551B631B530070FA05 /* SCLAlertViewStyleKit.m */; };
+		32862E5E1B631B530070FA05 /* SCLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 32862E571B631B530070FA05 /* SCLButton.m */; };
+		32862E5F1B631B530070FA05 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 32862E5A1B631B530070FA05 /* UIImage+ImageEffects.m */; };
 		32C9C89B1B4DA28200983181 /* Img1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C8951B4DA28200983181 /* Img1.jpg */; };
 		32C9C89C1B4DA28200983181 /* Img2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C8961B4DA28200983181 /* Img2.jpg */; };
 		32C9C89D1B4DA28200983181 /* Img3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C8971B4DA28200983181 /* Img3.jpg */; };
@@ -76,6 +81,17 @@
 		326B13BB1B61D17E003A871D /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
 		326B13BE1B61DA15003A871D /* whiteCancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteCancel.png; sourceTree = "<group>"; };
 		326B13C01B61E9A4003A871D /* pictogram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pictogram.png; sourceTree = "<group>"; };
+		32862E501B631B530070FA05 /* SCLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertView.h; sourceTree = "<group>"; };
+		32862E511B631B530070FA05 /* SCLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertView.m; sourceTree = "<group>"; };
+		32862E521B631B530070FA05 /* SCLAlertViewResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertViewResponder.h; sourceTree = "<group>"; };
+		32862E531B631B530070FA05 /* SCLAlertViewResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertViewResponder.m; sourceTree = "<group>"; };
+		32862E541B631B530070FA05 /* SCLAlertViewStyleKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertViewStyleKit.h; sourceTree = "<group>"; };
+		32862E551B631B530070FA05 /* SCLAlertViewStyleKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertViewStyleKit.m; sourceTree = "<group>"; };
+		32862E561B631B530070FA05 /* SCLButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLButton.h; sourceTree = "<group>"; };
+		32862E571B631B530070FA05 /* SCLButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLButton.m; sourceTree = "<group>"; };
+		32862E581B631B530070FA05 /* SCLMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLMacros.h; sourceTree = "<group>"; };
+		32862E591B631B530070FA05 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		32862E5A1B631B530070FA05 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		32C9C8951B4DA28200983181 /* Img1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Img1.jpg; sourceTree = "<group>"; };
 		32C9C8961B4DA28200983181 /* Img2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Img2.jpg; sourceTree = "<group>"; };
 		32C9C8971B4DA28200983181 /* Img3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Img3.jpg; sourceTree = "<group>"; };
@@ -83,7 +99,7 @@
 		32C9C8991B4DA28200983181 /* Img5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Img5.jpg; sourceTree = "<group>"; };
 		32C9C89A1B4DA28200983181 /* dottedLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dottedLine.png; sourceTree = "<group>"; };
 		32C9C8A11B4DA2D400983181 /* SwipeableClothesTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableClothesTester.swift; sourceTree = "<group>"; };
-		32F3F1F81B52BA9C0051050B /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
+		32F3F1F81B52BA9C0051050B /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCLAlertView.swift; path = Stylist/SCLAlertView.swift; sourceTree = SOURCE_ROOT; };
 		B600E2321B416541007F8FDA /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		B600E2341B41765D007F8FDA /* SingleRowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleRowCell.swift; sourceTree = "<group>"; };
 		B600E2361B417868007F8FDA /* TopsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopsViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -166,6 +182,25 @@
 			path = ../LLSimpleCamera;
 			sourceTree = "<group>";
 		};
+		32862E4F1B631B530070FA05 /* SCLAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				32F3F1F81B52BA9C0051050B /* SCLAlertView.swift */,
+				32862E501B631B530070FA05 /* SCLAlertView.h */,
+				32862E511B631B530070FA05 /* SCLAlertView.m */,
+				32862E521B631B530070FA05 /* SCLAlertViewResponder.h */,
+				32862E531B631B530070FA05 /* SCLAlertViewResponder.m */,
+				32862E541B631B530070FA05 /* SCLAlertViewStyleKit.h */,
+				32862E551B631B530070FA05 /* SCLAlertViewStyleKit.m */,
+				32862E561B631B530070FA05 /* SCLButton.h */,
+				32862E571B631B530070FA05 /* SCLButton.m */,
+				32862E581B631B530070FA05 /* SCLMacros.h */,
+				32862E591B631B530070FA05 /* UIImage+ImageEffects.h */,
+				32862E5A1B631B530070FA05 /* UIImage+ImageEffects.m */,
+			);
+			path = SCLAlertView;
+			sourceTree = "<group>";
+		};
 		B696775E1B6218E600EC2F9A /* Camera */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,7 +268,7 @@
 				B69677621B62361500EC2F9A /* Login/Registeration */,
 				B600E2321B416541007F8FDA /* UploadViewController.swift */,
 				32C9C8A11B4DA2D400983181 /* SwipeableClothesTester.swift */,
-				32F3F1F81B52BA9C0051050B /* SCLAlertView.swift */,
+				32862E4F1B631B530070FA05 /* SCLAlertView */,
 				B6CD246D1B3D8BD50061E451 /* Main.storyboard */,
 				B6CD24701B3D8BD50061E451 /* Images.xcassets */,
 				32C9C8951B4DA28200983181 /* Img1.jpg */,
@@ -406,21 +441,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				326B13BD1B61D17E003A871D /* UIImage+FixOrientation.m in Sources */,
+				32862E5B1B631B530070FA05 /* SCLAlertView.m in Sources */,
+				32862E5D1B631B530070FA05 /* SCLAlertViewStyleKit.m in Sources */,
 				B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */,
 				32C9C8A21B4DA2D400983181 /* SwipeableClothesTester.swift in Sources */,
 				B6EC66281B3FFA8400B5BC58 /* LoginViewController.swift in Sources */,
 				B69677611B622B7500EC2F9A /* DetailViewController.swift in Sources */,
 				B6EC66031B3FD4F700B5BC58 /* RegisterPageViewController.swift in Sources */,
+				32862E5E1B631B530070FA05 /* SCLButton.m in Sources */,
 				326B13B61B61D0FC003A871D /* ViewUtils.m in Sources */,
 				326B13B21B61D0FC003A871D /* PhotoViewController.m in Sources */,
 				B6EC66261B3FE60C00B5BC58 /* MyConnector.m in Sources */,
 				B600E2351B41765D007F8FDA /* SingleRowCell.swift in Sources */,
 				326B13B31B61D0FC003A871D /* ImagePreviewViewController.m in Sources */,
 				B600E2331B416541007F8FDA /* UploadViewController.swift in Sources */,
+				32862E5F1B631B530070FA05 /* UIImage+ImageEffects.m in Sources */,
 				326B13BC1B61D17E003A871D /* LLSimpleCamera.m in Sources */,
 				B65331DD1B411D1B00B19268 /* PasswordRecoverViewController.swift in Sources */,
 				B6EC66011B3FD31900B5BC58 /* ViewController.swift in Sources */,
 				B6CD24691B3D8BD50061E451 /* AppDelegate.m in Sources */,
+				32862E5C1B631B530070FA05 /* SCLAlertViewResponder.m in Sources */,
 				32F3F1F91B52BA9C0051050B /* SCLAlertView.swift in Sources */,
 				B6CD24661B3D8BD50061E451 /* main.m in Sources */,
 			);

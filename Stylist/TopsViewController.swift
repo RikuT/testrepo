@@ -31,7 +31,7 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		searchBar.delegate = self
 		
 		// Resize size of collection view items in grid so that we achieve 3 boxes across
-		let cellWidth = ((UIScreen.mainScreen().bounds.width) - 32 - 30 ) / 3
+		let cellWidth = ((UIScreen.mainScreen().bounds.width) - 10 - 30 ) / 3
 		let cellLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
 		cellLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
 		
@@ -111,6 +111,7 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		
+
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mySingleCell", forIndexPath: indexPath) as! SingleRowCell
 		
 		
@@ -139,6 +140,7 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 			//	let finalImage = tops[indexPath.row]["tops"] as? PFFile
 			
 		}
+		
 		return cell
 	}
 	
@@ -201,10 +203,11 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		self.loadCollectionViewData()
 	}
 	
+	
 	/*
 	==========================================================================================
-	Process memory issues 
-	To be completed 
+	Process memory issues
+	To be completed
 	========================================================================================== 
 	*/ 
 	

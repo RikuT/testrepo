@@ -7,6 +7,7 @@
 //
 #import "ImagePreviewViewController.h"
 #import "ViewUtils.h"
+#import "SCLAlertView.h"
 //#import "UIImage+Crop.h"
 
 @interface ImagePreviewViewController ()
@@ -85,6 +86,7 @@
     if (self.imageView.image == NULL) {
         NSLog(@"error");
     }else{
+        [self activityIndicator];
         NSData *imageData = UIImageJPEGRepresentation(self.image, 1.0);
         PFFile *parseImageFile = [PFFile fileWithName:@"uploaded_image.jpg" data:imageData];
         [parseImageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -97,21 +99,87 @@
                     posts[@"imageFile"] = parseImageFile;
                     [posts saveInBackground];
                     NSLog(@"success!!");
-                    
-                    [self dismissViewControllerAnimated:NO completion:nil];
-                    // NSUserDefaultsの取得
-                    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-                    [ud setBool:YES forKey:@"photoVCtoVCKey"];
+                    [self backToCollectionView];
                 }
             } else {
                 // Handle error
                 NSLog(@"ERROR");
-            }        
+                [self showError];
+            }
         }];
     }
     
 
 
+}
+
+-(void)backToCollectionView{
+    [self dismissViewControllerAnimated:NO completion:nil];
+    // NSUserDefaultsの取得
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setBool:YES forKey:@"photoVCtoVCKey"];
+
+}
+
+- (void)showError{
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+    
+    [alert showError:self title:@"Error"
+            subTitle:@"An error occured. Please check the Internet connection."
+    closeButtonTitle:@"OK" duration:0.0f];
+    
+    // 「ud」というインスタンスをつくる。
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    
+    // OKボタンを押した時に、Homeに戻るようにする
+    [ud setInteger:2 forKey:@"closeAlertKey"];
+    [ud removeObjectForKey:@"closeAlertKeyNote"];
+    //        SCLAlertView().showError(self, title: kErrorTitle, subTitle: kSubtitle)
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.1f
+                                     target:self
+                                   selector:@selector(performSegueToHome:)
+                                   userInfo:nil
+                                    repeats:YES
+     ];
+
+}
+
+-(void)performSegueToHome:(NSTimer*)timer{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    int udId = (int)[ud integerForKey:@"closeAlertKeyNote"];
+    if (udId == 1) {
+        [ud removeObjectForKey:@"closeAlertKeyNote"];
+        [ud removeObjectForKey:@"closeAlertKey"];
+        [self backToCollectionView];
+    }
+    
+}
+
+
+- (void)activityIndicator{
+    self.uploadButton.enabled = NO;
+    // UIActivityIndicatorViewのインスタンス化
+    CGRect rect = CGRectMake(0, 0, 100, 100);
+    UIActivityIndicatorView *indicator =
+    [[UIActivityIndicatorView alloc]initWithFrame:rect];
+    
+    // 位置を指定
+    indicator.center = self.view.center;
+    
+    // アクティビティインジケータのスタイルをセット
+    indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+    
+    // UIActivityIndicatorViewのインスタンスをビューに追加
+    [self.view addSubview:indicator];
+    
+    // くるくるを表示
+    [indicator startAnimating];
+    
+    // くるくるしているか?
+    //    if (indicator.isAnimating) { // yes
+    //        // くるくるを止める
+    //        [indicator stopAnimating];
+    //    }
 }
 
 
