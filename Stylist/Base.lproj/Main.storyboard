@@ -105,7 +105,7 @@
                                     <navigationItem title="Image" id="JSB-qi-OC1">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="o8N-Jk-atb">
                                             <connections>
-                                                <segue destination="4H1-83-9jU" kind="modal" animates="NO" id="6oU-KH-svg"/>
+                                                <segue destination="4H1-83-9jU" kind="modal" identifier="detailVCtoTopsVC" animates="NO" id="6oU-KH-svg"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -128,6 +128,16 @@
                                     <action selector="postToPublic" destination="Rz1-LF-e1Z" eventType="touchUpInside" id="9Fl-6F-Ida"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rlv-LD-nor">
+                                <rect key="frame" x="17" y="528" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deletePhoto" destination="Rz1-LF-e1Z" eventType="touchUpInside" id="E3v-Ng-da4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -138,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6KV-Ki-CzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="65" y="-116"/>
+            <point key="canvasLocation" x="-170" y="-37"/>
         </scene>
         <!--Tops View Controller-->
         <scene sceneID="9o3-eY-HEm">
@@ -798,6 +808,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="HhR-mA-QwG"/>
-        <segue reference="i8v-OW-VyQ"/>
+        <segue reference="6oU-KH-svg"/>
     </inferredMetricsTieBreakers>
 </document>

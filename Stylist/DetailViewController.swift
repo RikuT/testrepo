@@ -152,6 +152,22 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate {
     
     }
     
+    @IBAction func deletePhoto() {
+        let alert = SCLAlertView()
+        alert.addButton("Delete", target:self, selector:Selector("deletePhotoProcess"))
+        alert.showWarning("Confirmation", subTitle:"Are you sure you want to delete the photo?", closeButtonTitle:"Cancel")
+        
+            }
+    
+    func deletePhotoProcess(){
+        var selectedObjId = currentObject?.objectId
+        var object = PFObject(withoutDataWithClassName: "Tops", objectId: selectedObjId)
+        
+        //I dont know how I can change delete() to deleteInBackgroundWithBlock
+        object.delete()
+        self.performSegueWithIdentifier("detailVCtoTopsVC", sender: self)
+    }
+    
     func showActivityIndicatory(uiView: UIView) {
         
         container.frame = uiView.frame
