@@ -31,9 +31,6 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		searchBar.delegate = self
 		
 		// Resize size of collection view items in grid so that we achieve 3 boxes across
-		let cellWidth = ((UIScreen.mainScreen().bounds.width) - 10 - 30 ) / 3
-		let cellLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-		cellLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
 		loadCollectionViewData()
 
 		
