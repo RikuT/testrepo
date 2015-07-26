@@ -195,18 +195,18 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mySingleCell" id="DDi-I9-OMB" customClass="SingleRowCell" customModule="Stylist" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="93" height="174"/>
+                                        <rect key="frame" x="10" y="10" width="145" height="174"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="93" height="174"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="145" height="174"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1cb-Sz-UJM" customClass="PFImageView">
-                                                    <rect key="frame" x="4" y="0.0" width="85" height="137"/>
+                                                    <rect key="frame" x="4" y="0.0" width="137" height="137"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" id="9nO-ko-1lH">
-                                                    <rect key="frame" x="26" y="139" width="40" height="35"/>
+                                                    <rect key="frame" x="8" y="139" width="129" height="35"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -216,7 +216,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <size key="customSize" width="93" height="174"/>
+                                        <size key="customSize" width="145" height="174"/>
                                         <connections>
                                             <outlet property="topsImageView" destination="1cb-Sz-UJM" id="UM5-wf-HZw"/>
                                             <outlet property="topsLabel" destination="9nO-ko-1lH" id="JyE-HF-eGM"/>
