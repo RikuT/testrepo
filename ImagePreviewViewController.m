@@ -32,6 +32,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIScrollView *scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+   
+    scrollview.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height *2);
+    
+    
+    
     
     self.imageView.backgroundColor = [UIColor blackColor];
     
@@ -43,7 +49,8 @@
     
     //この画像を直接Parseに入れられるはず
     self.imageView.image = self.image;
-    [self.view addSubview:self.imageView];
+    [scrollview addSubview:self.imageView];
+    scrollview.backgroundColor = [UIColor whiteColor];
     
 
     
@@ -54,14 +61,14 @@
     [self.quitButton setImage:[UIImage imageNamed:@"whiteCancel.png"] forState:UIControlStateNormal];
     self.quitButton.imageEdgeInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
     [self.quitButton addTarget:self action:@selector(quitButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.quitButton];
+    [scrollview addSubview:self.quitButton];
     
     //Change textfield design over here
     self.clothesNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(75, 15, self.view.bounds.size.width-90, 30)];
     self.clothesNameTextField.borderStyle = UITextBorderStyleBezel;
     self.clothesNameTextField.textColor = [UIColor blackColor];
     self.clothesNameTextField.placeholder = @"Clothes name";
-    [self.view addSubview:self.clothesNameTextField];
+    [scrollview addSubview:self.clothesNameTextField];
     self.clothesNameTextField.delegate = self;
     
     
@@ -74,7 +81,9 @@
     [self.uploadButton addTarget:self action:@selector(uploadImage:)forControlEvents:UIControlEventTouchDown];
     UIColor *btnColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
     self.uploadButton.backgroundColor = btnColor;
-    [self.view addSubview:self.uploadButton];
+    [scrollview addSubview:self.uploadButton];
+    
+    [self.view addSubview:scrollview];
 }
 
 -(void)uploadImage:(UIButton*)button{
