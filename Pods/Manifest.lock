@@ -1,0 +1,45 @@
+PODS:
+  - Rover (0.32.1):
+    - Rover/Core (= 0.32.1)
+    - Rover/Model (= 0.32.1)
+    - Rover/Networking (= 0.32.1)
+    - Rover/UI (= 0.32.1)
+    - RSBarcodes (~> 0.1)
+    - SDWebImage
+    - UIActivityIndicator-for-SDWebImage (~> 1.2)
+  - Rover/Core (0.32.1):
+    - Rover/Model
+    - RSBarcodes (~> 0.1)
+    - SDWebImage
+    - UIActivityIndicator-for-SDWebImage (~> 1.2)
+  - Rover/Model (0.32.1):
+    - RSBarcodes (~> 0.1)
+    - SDWebImage
+    - UIActivityIndicator-for-SDWebImage (~> 1.2)
+  - Rover/Networking (0.32.1):
+    - Rover/Model
+    - RSBarcodes (~> 0.1)
+    - SDWebImage
+    - UIActivityIndicator-for-SDWebImage (~> 1.2)
+  - Rover/UI (0.32.1):
+    - Rover/Model
+    - RSBarcodes (~> 0.1)
+    - SDWebImage
+    - UIActivityIndicator-for-SDWebImage (~> 1.2)
+  - RSBarcodes (0.1.2)
+  - SDWebImage (3.7.3):
+    - SDWebImage/Core (= 3.7.3)
+  - SDWebImage/Core (3.7.3)
+  - UIActivityIndicator-for-SDWebImage (1.2):
+    - SDWebImage (~> 3.7)
+
+DEPENDENCIES:
+  - Rover
+
+SPEC CHECKSUMS:
+  Rover: fc40be8f00c6e1835f851c9be6786d513493290c
+  RSBarcodes: b8896467f7eb051fe0f92946a1a63cb4987b4237
+  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
+
+COCOAPODS: 0.38.2

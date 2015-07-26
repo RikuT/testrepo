@@ -61,14 +61,17 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
                     // The object has been saved.
+
                 } else {
                     // There was a problem, check error.description
                 }
             }
 
             print("saved")
+            self.navigationController?.popViewControllerAnimated(true)
+
         }
-        self.navigationController?.popViewControllerAnimated(true)
+      //  self.navigationController?.popViewControllerAnimated(true)
 
             }
     

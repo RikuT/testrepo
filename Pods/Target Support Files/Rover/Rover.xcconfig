@@ -1,0 +1,1 @@
+ROVER_OTHER_LDFLAGS = -framework "Accelerate" -framework "CoreLocation"

@@ -171,7 +171,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="o3U-2Q-uRg" kind="unwind" unwindAction="unwindToTrend:" id="S1h-ht-1BZ"/>
+                                                    <segue destination="o3U-2Q-uRg" kind="unwind" unwindAction="unwindToTrend:" id="UAt-Zw-QJy"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -778,27 +778,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="ENT-4W-3wG" kind="modal" id="Tb3-Rz-OX5"/>
                         <segue destination="4H1-83-9jU" kind="modal" identifier="photoVCToVC" id="TKa-A3-oIM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqO-5T-Hk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="616" y="-816"/>
-        </scene>
-        <!--Image Preview View Controller-->
-        <scene sceneID="7fz-OJ-T6u">
-            <objects>
-                <viewController id="ENT-4W-3wG" customClass="ImagePreviewViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tdK-ma-mjy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c9M-t0-aJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1212" y="-816"/>
         </scene>
     </scenes>
     <resources>
