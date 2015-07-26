@@ -105,7 +105,7 @@
                                     <navigationItem title="Image" id="JSB-qi-OC1">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="o8N-Jk-atb">
                                             <connections>
-                                                <segue destination="4H1-83-9jU" kind="modal" identifier="detailVCtoTopsVC" animates="NO" id="6oU-KH-svg"/>
+                                                <action selector="saveButton:" destination="Rz1-LF-e1Z" id="afe-8I-98k"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -148,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6KV-Ki-CzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="76" y="-116"/>
+            <point key="canvasLocation" x="60" y="-37"/>
         </scene>
         <!--Tops View Controller-->
         <scene sceneID="9o3-eY-HEm">
@@ -231,10 +231,14 @@
                                     <outlet property="delegate" destination="4H1-83-9jU" id="Khg-1K-X5g"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" id="mlt-5h-nGT">
+                            <searchBar contentMode="redraw" showsCancelButton="YES" id="mlt-5h-nGT">
                                 <rect key="frame" x="0.0" y="44" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -246,7 +250,7 @@
                     <connections>
                         <outlet property="collectionView" destination="EaR-ET-k4R" id="mM4-wQ-PcB"/>
                         <outlet property="searchBar" destination="mlt-5h-nGT" id="1HE-F1-nK7"/>
-                        <segue destination="Rz1-LF-e1Z" kind="modal" identifier="showImage" id="6Si-2s-eq2"/>
+                        <segue destination="Rz1-LF-e1Z" kind="modal" identifier="showImage" animates="NO" id="6Si-2s-eq2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6d5-AW-rn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -809,9 +813,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="HhR-mA-QwG"/>
-        <segue reference="Ie9-er-xeu"/>
+        <segue reference="92p-7F-r2P"/>
+        <segue reference="i8v-OW-VyQ"/>
         <segue reference="xnA-Pc-bIb"/>
-        <segue reference="6oU-KH-svg"/>
+        <segue reference="Ie9-er-xeu"/>
     </inferredMetricsTieBreakers>
 </document>

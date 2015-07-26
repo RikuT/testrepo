@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import <Rover/Rover.h>
 
 
 @interface AppDelegate ()
@@ -26,6 +27,19 @@
     [Parse setApplicationId:@"ZEczNFa87TVNAqxZWtIacRXzcxpRHscd5M2CbKrz"
                   clientKey:@"giGCYLa2fAxnZMn9CgvgaUUZ4xsFmxjmei6DEH6n"];
     return YES;
+    
+    RVConfig *config = [RVConfig defaultConfig];
+    config.applicationToken = @"<ba1b7681897651674c46b5adf5e0f9ed>";
+    [config addBeaconUUID:@"<9E51D480-9270-44D0-AC79-7F874C0123CA>"];
+    
+    Rover *rover = [Rover setup:config];
+    [rover startMonitoring];
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    if ([[Rover shared] handleDidReceiveLocalNotification:notification]) {
+        return;
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

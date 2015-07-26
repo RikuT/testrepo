@@ -38,7 +38,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate {
     @IBAction func saveButton(sender: AnyObject) {
         
         // Use the sent country object or create a new country PFObject
-        if let updateObjectTest = currentObject as PFObject? {
+        if let saveInBackWithBlock = currentObject as PFObject? {
             updateObject = currentObject! as PFObject
         } else {
             updateObject = PFObject(className:"Tops")
@@ -50,19 +50,27 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate {
             updateObject["imageText"] = topsLabel.text
             
             // Create a string of text that is used by search capabilites
-            var searchText = (topsLabel.text).lowercaseString
+            var searchText = (topsLabel.text)
             updateObject["searchText"] = searchText
             
             // Update the record ACL such that the new record is only visible to the current user
             updateObject.ACL = PFACL(user: PFUser.currentUser()!)
             
             // Save the data back to the server in a background task
-            updateObject.save()
+            updateObject.saveInBackgroundWithBlock{
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                    // The object has been saved.
+                } else {
+                    // There was a problem, check error.description
+                }
+            }
+
+            print("saved")
         }
-        
-        // Return to table view
         self.navigationController?.popViewControllerAnimated(true)
-    }
+
+            }
     
     override func viewDidLoad() {
         super.viewDidLoad()

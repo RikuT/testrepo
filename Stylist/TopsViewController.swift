@@ -12,7 +12,8 @@ import Parse
 var tops = [PFObject]()
 
 class TopsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
-	
+	@IBAction func unwindToTops(segue: UIStoryboardSegue) {
+	}
 	
 	var objectToSend : PFObject?
 	
@@ -62,7 +63,7 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		
 		// Check to see if there is a search term
 		if searchBar.text != "" {
-			query.whereKey("uploader", containsString: searchBar.text.lowercaseString)
+			query.whereKey("imageText", containsString: searchBar.text)
 		}
 		
 		// Fetch data from the parse platform
