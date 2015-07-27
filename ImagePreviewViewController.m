@@ -33,7 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIScrollView *scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-   
+    
     scrollview.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height *2);
     
     
@@ -52,7 +52,7 @@
     [scrollview addSubview:self.imageView];
     scrollview.backgroundColor = [UIColor whiteColor];
     
-
+    
     
     // button to quit taking photos
     self.quitButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -76,7 +76,7 @@
     int uploadButtonHeight = 50;
     int uploadButtonWidth = self.view.bounds.size.width;
     [self.uploadButton setFrame:CGRectMake(0, self.view.bounds.size.height-0-uploadButtonHeight, uploadButtonWidth, uploadButtonHeight)];
-                                                                  
+    
     [self.uploadButton setTitle:@"UPLOAD" forState:UIControlStateNormal];
     [self.uploadButton addTarget:self action:@selector(uploadImage:)forControlEvents:UIControlEventTouchDown];
     UIColor *btnColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
@@ -118,8 +118,8 @@
         }];
     }
     
-
-
+    
+    
 }
 
 -(void)backToCollectionView{
@@ -127,7 +127,7 @@
     // NSUserDefaultsの取得
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setBool:YES forKey:@"photoVCtoVCKey"];
-
+    
 }
 
 - (void)showError{
@@ -145,12 +145,12 @@
     [ud removeObjectForKey:@"closeAlertKeyNote"];
     //        SCLAlertView().showError(self, title: kErrorTitle, subTitle: kSubtitle)
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.1f
-                                     target:self
-                                   selector:@selector(performSegueToHome:)
-                                   userInfo:nil
-                                    repeats:YES
-     ];
-
+                                                      target:self
+                                                    selector:@selector(performSegueToHome:)
+                                                    userInfo:nil
+                                                     repeats:YES
+                      ];
+    
 }
 
 -(void)performSegueToHome:(NSTimer*)timer{

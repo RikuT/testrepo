@@ -30,7 +30,7 @@
     // NSUserDefaultsの取得
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setBool:NO forKey:@"photoVCtoVCKey"];
-
+    
     self.view.backgroundColor = [UIColor blackColor];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
@@ -105,7 +105,7 @@
     self.clothesGuide = [[UIImageView alloc]initWithImage:testImg];
     self.clothesGuide.frame = CGRectMake(0, 15, self.view.frame.size.width, self.view.frame.size.height-30);
     [self.view addSubview:self.clothesGuide];
-
+    
     
     // ----- camera buttons -------- //
     
@@ -148,7 +148,7 @@
     self.quitButton.imageEdgeInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
     [self.quitButton addTarget:self action:@selector(quitButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.quitButton];
-
+    
     
 }
 
@@ -165,7 +165,7 @@
     if (segueBool == YES) {
         [self performSegueWithIdentifier:@"photoVCToVC" sender:self];
     }
-
+    
     // start the camera
     [self.camera start];
 }

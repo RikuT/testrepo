@@ -98,7 +98,7 @@ class SwipeableClothesTester: UIViewController {
                 if(self.pictNumber == 0){
                     self.errorNumber = 1
                     self.showError()
-
+                    
                 }
                 
                 
@@ -124,15 +124,15 @@ class SwipeableClothesTester: UIViewController {
                     
                 }
             }
-
-        println("failure")
+            
+            println("failure")
             /*
             if(self.errorNumber != 1){
             self.errorNumber = 2
             self.showError()
             }*/
         }
-}
+    }
     
     func setScrView(){
         
@@ -325,7 +325,7 @@ class SwipeableClothesTester: UIViewController {
     }
     
     func showActivityIndicatory(uiView: UIView) {
-
+        
         var container: UIView = UIView()
         container.frame = uiView.frame
         container.center = uiView.center
@@ -365,7 +365,7 @@ class SwipeableClothesTester: UIViewController {
         else{
             SCLAlertView().showError("Error", subTitle:"An error occured.", closeButtonTitle:"OK")
         }
-
+        
         // 「ud」というインスタンスをつくる。
         let ud = NSUserDefaults.standardUserDefaults()
         println("errorshow")
@@ -374,30 +374,30 @@ class SwipeableClothesTester: UIViewController {
         ud.setInteger(1, forKey: "closeAlertKey")
         ud.removeObjectForKey("closeAlertKeyNote")
         println("scla to 1")
-       //        SCLAlertView().showError(self, title: kErrorTitle, subTitle: kSubtitle)
+        //        SCLAlertView().showError(self, title: kErrorTitle, subTitle: kSubtitle)
         var timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("performSegueToHome"), userInfo: nil, repeats: true)
-
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         println("viewDidAppear!!")
-    viewDidAppearInt = 1
+        viewDidAppearInt = 1
     }
     
     func performSegueToHome(){
         if(viewDidAppearInt == 1){
             
-        let ud = NSUserDefaults.standardUserDefaults()
-        var udId : Int! = ud.integerForKey("closeAlertKeyNote")
-        if(udId == 1){
-            ud.removeObjectForKey("closeAlertKeyNote")
-            ud.removeObjectForKey("closeAlertKey")
-            performSegueWithIdentifier("swipeableToHome",sender: nil)
-
-println("self to 0")
+            let ud = NSUserDefaults.standardUserDefaults()
+            var udId : Int! = ud.integerForKey("closeAlertKeyNote")
+            if(udId == 1){
+                ud.removeObjectForKey("closeAlertKeyNote")
+                ud.removeObjectForKey("closeAlertKey")
+                performSegueWithIdentifier("swipeableToHome",sender: nil)
+                
+                println("self to 0")
             }}
     }
-
+    
     override func viewDidDisappear(animated: Bool) {
         /*
         imageArray = []
