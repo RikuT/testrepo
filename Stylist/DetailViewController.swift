@@ -67,12 +67,9 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate {
                 }
             }
 
-            print("saved")
-            self.navigationController?.popViewControllerAnimated(true)
 
         }
-      //  self.navigationController?.popViewControllerAnimated(true)
-
+        self.dismissViewControllerAnimated(true, completion: nil)
             }
     
     override func viewDidLoad() {
