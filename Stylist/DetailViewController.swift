@@ -71,7 +71,6 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate {
             self.navigationController?.popViewControllerAnimated(true)
 
         }
-      //  self.navigationController?.popViewControllerAnimated(true)
 
             }
     
