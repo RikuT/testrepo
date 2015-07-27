@@ -46,6 +46,8 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	
 	// Load data into the collectionView when the view appears
 	override func viewDidAppear(animated: Bool) {
+		loadCollectionViewData()
+
 	}
 	
 	/*
