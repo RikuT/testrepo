@@ -92,6 +92,10 @@
     NSLog(@"upload");
     NSLog(@"%@,and %@", clothesName, self.image);
     
+
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setBool:YES forKey:@"originFromUploadOfImagePreviewVCKey"];
+    
     if (self.imageView.image == NULL) {
         NSLog(@"error");
     }else{
@@ -150,6 +154,7 @@
                                                     userInfo:nil
                                                      repeats:YES
                       ];
+    
     
 }
 

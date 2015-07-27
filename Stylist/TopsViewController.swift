@@ -12,6 +12,7 @@ import Parse
 var tops = [PFObject]()
 
 class TopsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
+	
 	@IBAction func unwindToTops(segue: UIStoryboardSegue) {
 	}
 	
@@ -33,7 +34,7 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		
 		// Resize size of collection view items in grid so that we achieve 3 boxes across
 		loadCollectionViewData()
-
+		
 		
 		
 	}
@@ -47,7 +48,7 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	// Load data into the collectionView when the view appears
 	override func viewDidAppear(animated: Bool) {
 		loadCollectionViewData()
-
+		
 	}
 	
 	/*
@@ -112,7 +113,7 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		
-
+		
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mySingleCell", forIndexPath: indexPath) as! SingleRowCell
 		
 		
@@ -121,7 +122,7 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		if let value = tops[indexPath.row]["imageText"] as? String {
 			cell.topsLabel.text = value
 			println("it should be there")
-
+			
 		}
 		
 		// Display "initial" flag image
@@ -207,16 +208,28 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		self.loadCollectionViewData()
 	}
 	
+	@IBAction func finishButt() {
+		let ud = NSUserDefaults.standardUserDefaults()
+		var fromUploadImagePreview = ud.boolForKey("originFromUploadOfImagePreviewVCKey")
+		ud.removeObjectForKey("originFromUploadOfImagePreviewVCKey")
+		if fromUploadImagePreview == true{
+			self.performSegueWithIdentifier("topsVCtoVCnotUnwind", sender: self)
+		}else{
+			println("finishTapped")
+			self.performSegueWithIdentifier("topsVCtoVC", sender: self)
+		}
+	}
+	
 	
 	/*
 	==========================================================================================
 	Process memory issues
 	To be completed
-	========================================================================================== 
-	*/ 
+	==========================================================================================
+	*/
 	
-	override func didReceiveMemoryWarning() { 
-		super.didReceiveMemoryWarning() 
-		// Dispose of any resources that can be recreated. 
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
 	} 
 }
