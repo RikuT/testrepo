@@ -68,7 +68,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate {
             }
 
             print("saved")
-            self.navigationController?.popViewControllerAnimated(true)
+            self.dismissViewControllerAnimated(true, completion: nil)
 
         }
 
