@@ -8,6 +8,7 @@
 #import "ImagePreviewViewController.h"
 #import "ViewUtils.h"
 #import "SCLAlertView.h"
+#import "TLTagsControl.h"
 //#import "UIImage+Crop.h"
 
 @interface ImagePreviewViewController ()
@@ -16,6 +17,7 @@
 @property (strong, nonatomic) UIButton *quitButton;
 @property (strong, nonatomic) UIButton *uploadButton;
 @property (strong, nonatomic) UITextField *clothesNameTextField;
+//@property (strong, nonatomic) NSMutableArray *tagArray;
 
 @end
 
@@ -33,7 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIScrollView *scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-   
+    
     scrollview.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height *2);
     
     
@@ -52,7 +54,7 @@
     [scrollview addSubview:self.imageView];
     scrollview.backgroundColor = [UIColor whiteColor];
     
-
+    
     
     // button to quit taking photos
     self.quitButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -64,19 +66,42 @@
     [scrollview addSubview:self.quitButton];
     
     //Change textfield design over here
-    self.clothesNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(75, 15, self.view.bounds.size.width-90, 30)];
+    self.clothesNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(75, self.imageView.height+10, self.view.bounds.size.width-90, 30)];
     self.clothesNameTextField.borderStyle = UITextBorderStyleBezel;
     self.clothesNameTextField.textColor = [UIColor blackColor];
     self.clothesNameTextField.placeholder = @"Clothes name";
     [scrollview addSubview:self.clothesNameTextField];
-    self.clothesNameTextField.delegate = self;
+    [self.clothesNameTextField setDelegate:self];
     
+    //Add brand tags
+    int brandTagPositionHeight = 60;
+    UILabel *hashTagLabel = [[UILabel alloc]initWithFrame: CGRectMake(5, self.imageView.height + brandTagPositionHeight, 60, 40)];
+    hashTagLabel.text = @"Brand";
+    hashTagLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
+    [scrollview addSubview:hashTagLabel];
+    
+    TLTagsControl *brandTag = [[TLTagsControl alloc]initWithFrame:CGRectMake(65, self.imageView.height + brandTagPositionHeight + 5, self.view.bounds.size.width - 70, 30)];
+    [scrollview addSubview:brandTag];
+    
+    //Add Tags
+    //
+    int tagPositionHeight = 100;
+    UILabel *tagLabel = [[UILabel alloc]initWithFrame: CGRectMake(5, self.imageView.height + tagPositionHeight, 30, 30)];
+    tagLabel.text = @"#";
+    tagLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:25];
+    [scrollview addSubview:tagLabel];
+    
+    TLTagsControl *tag = [[TLTagsControl alloc]initWithFrame:CGRectMake(40, self.imageView.height + tagPositionHeight + 2, self.view.bounds.size.width - 25, 30)];
+    [scrollview addSubview:tag];
+    
+    
+    //Season information
     
     self.uploadButton = [UIButton buttonWithType:UIButtonTypeSystem];
     int uploadButtonHeight = 50;
     int uploadButtonWidth = self.view.bounds.size.width;
     [self.uploadButton setFrame:CGRectMake(0, self.view.bounds.size.height-0-uploadButtonHeight, uploadButtonWidth, uploadButtonHeight)];
-                                                                  
+    
     [self.uploadButton setTitle:@"UPLOAD" forState:UIControlStateNormal];
     [self.uploadButton addTarget:self action:@selector(uploadImage:)forControlEvents:UIControlEventTouchDown];
     UIColor *btnColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
@@ -91,6 +116,10 @@
     // ここでimageをparseにアップロードする
     NSLog(@"upload");
     NSLog(@"%@,and %@", clothesName, self.image);
+    
+
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setBool:YES forKey:@"originFromUploadOfImagePreviewVCKey"];
     
     if (self.imageView.image == NULL) {
         NSLog(@"error");
@@ -118,7 +147,12 @@
         }];
     }
     
+    
+    
+}
 
+-(void)quitButtonPressed:(UIButton*)button{
+    [self dismissViewControllerAnimated:YES completion:nil];
 
 }
 
@@ -127,7 +161,7 @@
     // NSUserDefaultsの取得
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setBool:YES forKey:@"photoVCtoVCKey"];
-
+    
 }
 
 - (void)showError{
@@ -145,12 +179,13 @@
     [ud removeObjectForKey:@"closeAlertKeyNote"];
     //        SCLAlertView().showError(self, title: kErrorTitle, subTitle: kSubtitle)
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.1f
-                                     target:self
-                                   selector:@selector(performSegueToHome:)
-                                   userInfo:nil
-                                    repeats:YES
-     ];
-
+                                                      target:self
+                                                    selector:@selector(performSegueToHome:)
+                                                    userInfo:nil
+                                                     repeats:YES
+                      ];
+    
+    
 }
 
 -(void)performSegueToHome:(NSTimer*)timer{
@@ -199,10 +234,6 @@
     return YES;
 }
 
-
-- (void)quitButtonPressed:(UIButton *)button {
-    [self dismissViewControllerAnimated:NO completion:nil];
-}
 
 - (BOOL)prefersStatusBarHidden {
     return YES;

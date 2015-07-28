@@ -12,6 +12,7 @@ import Parse
 var tops = [PFObject]()
 
 class TopsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
+	
 	@IBAction func unwindToTops(segue: UIStoryboardSegue) {
 	}
 	
@@ -32,8 +33,9 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		searchBar.delegate = self
 		
 		// Resize size of collection view items in grid so that we achieve 3 boxes across
-		loadCollectionViewData()
 
+		loadCollectionViewData()
+		
 		
 		
 	}
@@ -47,7 +49,7 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	// Load data into the collectionView when the view appears
 	override func viewDidAppear(animated: Bool) {
 		loadCollectionViewData()
-
+		
 	}
 	
 	/*
@@ -112,21 +114,29 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		
-
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mySingleCell", forIndexPath: indexPath) as! SingleRowCell
 		
+		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mySingleCell", forIndexPath: indexPath) as! SingleRowCell
+		//cell.backgroundColor = UIColor.blueColor()
 		
 		
 		// Display the country name
 		if let value = tops[indexPath.row]["imageText"] as? String {
 			cell.topsLabel.text = value
 			println("it should be there")
-
+			
 		}
 		
 		// Display "initial" flag image
 		var initialThumbnail = UIImage(named: "question")
 		cell.topsImageView.image = initialThumbnail
+		
+		/*
+		var imageWidth = Float (cell.topsImageView.image!.size.width)
+		var imageHeight = Float (cell.topsImageView.image!.size.height)
+		var imageAspect = imageHeight / imageWidth
+		var imageViewHeight = Float (cell.frame.size.width) * imageAspect
+		cell.topsImageView.frame = CGRectMake(0, 0, cell.frame.size.width , CGFloat(imageViewHeight))
+		*/
 		
 		// Fetch final flag image - if it exists
 		if let value = tops[indexPath.row]["imageFile"] as? PFFile {
@@ -207,16 +217,28 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		self.loadCollectionViewData()
 	}
 	
+	@IBAction func finishButt() {
+		let ud = NSUserDefaults.standardUserDefaults()
+		var fromUploadImagePreview = ud.boolForKey("originFromUploadOfImagePreviewVCKey")
+		ud.removeObjectForKey("originFromUploadOfImagePreviewVCKey")
+		if fromUploadImagePreview == true{
+			self.performSegueWithIdentifier("topsVCtoVCnotUnwind", sender: self)
+		}else{
+			println("finishTapped")
+			self.performSegueWithIdentifier("topsVCtoVC", sender: self)
+		}
+	}
+	
 	
 	/*
 	==========================================================================================
 	Process memory issues
 	To be completed
-	========================================================================================== 
-	*/ 
+	==========================================================================================
+	*/
 	
-	override func didReceiveMemoryWarning() { 
-		super.didReceiveMemoryWarning() 
-		// Dispose of any resources that can be recreated. 
-	} 
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
 }
