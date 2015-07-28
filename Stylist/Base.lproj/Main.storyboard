@@ -232,7 +232,6 @@
                         <outlet property="collectionView" destination="EaR-ET-k4R" id="mM4-wQ-PcB"/>
                         <outlet property="searchBar" destination="mlt-5h-nGT" id="1HE-F1-nK7"/>
                         <segue destination="Rz1-LF-e1Z" kind="modal" identifier="showImage" animates="NO" id="6Si-2s-eq2"/>
-                        <segue destination="o3U-2Q-uRg" kind="unwind" identifier="topsVCtoVC" unwindAction="unwindToTrend:" id="Mu4-My-B2u"/>
                         <segue destination="8vQ-e4-Iq2" kind="modal" identifier="topsVCtoVCnotUnwind" id="PbG-0j-NXL"/>
                     </connections>
                 </viewController>
