@@ -31,6 +31,7 @@
 		B600E2331B416541007F8FDA /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2321B416541007F8FDA /* UploadViewController.swift */; };
 		B600E2351B41765D007F8FDA /* SingleRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2341B41765D007F8FDA /* SingleRowCell.swift */; };
 		B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2361B417868007F8FDA /* TopsViewController.swift */; };
+		B6436C671B67698700B8DA64 /* SwiftPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6436C661B67698700B8DA64 /* SwiftPages.swift */; };
 		B65331DD1B411D1B00B19268 /* PasswordRecoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65331DC1B411D1B00B19268 /* PasswordRecoverViewController.swift */; };
 		B6798A641B626E4000197190 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6798A631B626E4000197190 /* ParseUI.framework */; };
 		B683596F1B64EAB5002D492D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B683596E1B64EAB5002D492D /* Social.framework */; };
@@ -113,6 +114,7 @@
 		B600E2321B416541007F8FDA /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		B600E2341B41765D007F8FDA /* SingleRowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleRowCell.swift; sourceTree = "<group>"; };
 		B600E2361B417868007F8FDA /* TopsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopsViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
+		B6436C661B67698700B8DA64 /* SwiftPages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPages.swift; sourceTree = "<group>"; };
 		B65331DC1B411D1B00B19268 /* PasswordRecoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordRecoverViewController.swift; sourceTree = "<group>"; };
 		B6798A631B626E4000197190 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		B683596E1B64EAB5002D492D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -301,6 +303,7 @@
 				B6EC66241B3FE60C00B5BC58 /* MyConnector.h */,
 				B6EC66251B3FE60C00B5BC58 /* MyConnector.m */,
 				B6EC66001B3FD31900B5BC58 /* ViewController.swift */,
+				B6436C661B67698700B8DA64 /* SwiftPages.swift */,
 				B696775E1B6218E600EC2F9A /* Camera */,
 				B696775F1B6229A300EC2F9A /* CollectionView */,
 				B69677621B62361500EC2F9A /* Login/Registeration */,
@@ -528,6 +531,7 @@
 				B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */,
 				32C9C8A21B4DA2D400983181 /* SwipeableClothesTester.swift in Sources */,
 				B6EC66281B3FFA8400B5BC58 /* LoginViewController.swift in Sources */,
+				B6436C671B67698700B8DA64 /* SwiftPages.swift in Sources */,
 				32862E611B63326F0070FA05 /* userSettingViewController.swift in Sources */,
 				B69677611B622B7500EC2F9A /* DetailViewController.swift in Sources */,
 				B6EC66031B3FD4F700B5BC58 /* RegisterPageViewController.swift in Sources */,

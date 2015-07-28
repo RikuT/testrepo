@@ -16,6 +16,7 @@ import Parse
 class ViewController: UIViewController {
     @IBAction func unwindToTrend(segue: UIStoryboardSegue) {
     }
+    @IBOutlet var swiftPagesView: SwiftPages!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,18 @@ class ViewController: UIViewController {
         // キーidに「taro」という値を格納。（idは任意の文字列でok）
         ud.removeObjectForKey("closeAlertKeyNote")
         ud.removeObjectForKey("closeAlertKey")
+        
+        
+        //Initiation
+        var VCIDs : [String] = ["LikeVC", "NewVC", "TagVC","NaviVC"]
+        var buttonTitles : [String] = ["Like", "New", "Tags","Navi"]
+        
+        //Sample customization
+        swiftPagesView.setOriginY(0.0)
+        swiftPagesView.enableAeroEffectInTopBar(true)
+        swiftPagesView.setButtonsTextColor(UIColor.whiteColor())
+        swiftPagesView.setAnimatedBarColor(UIColor.whiteColor())
+        swiftPagesView.initializeWithVCIDsArrayAndButtonTitlesArray(VCIDs, buttonTitlesArray: buttonTitles)
 
     }
 
@@ -42,6 +55,17 @@ class ViewController: UIViewController {
         if(!isUserLoggedIn){
             self.performSegueWithIdentifier("loginView", sender: self)
         }
+        
+        //Initiation
+        var VCIDs : [String] = ["LikeVC", "NewVC", "TagVC","NaviVC"]
+        var buttonTitles : [String] = ["Like", "New", "Tags","Navi"]
+        
+        //Sample customization
+        swiftPagesView.setOriginY(0.0)
+        swiftPagesView.enableAeroEffectInTopBar(true)
+        swiftPagesView.setButtonsTextColor(UIColor.whiteColor())
+        swiftPagesView.setAnimatedBarColor(UIColor.whiteColor())
+        swiftPagesView.initializeWithVCIDsArrayAndButtonTitlesArray(VCIDs, buttonTitlesArray: buttonTitles)
     }
     
     @IBAction func logoutButtonTapped(sender: AnyObject) {
