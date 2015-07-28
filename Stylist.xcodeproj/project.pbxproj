@@ -44,6 +44,8 @@
 		B68359791B64EC13002D492D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B68359781B64EC13002D492D /* ImageIO.framework */; };
 		B683597B1B64EC3C002D492D /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B683597A1B64EC3C002D492D /* Accounts.framework */; };
 		B69677611B622B7500EC2F9A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69677601B622B7500EC2F9A /* DetailViewController.swift */; };
+		B6C353D21B6790E9006CF285 /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C353D11B6790E9006CF285 /* NewViewController.swift */; };
+		B6C353D51B67914F006CF285 /* NewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C353D41B67914F006CF285 /* NewCollectionViewCell.swift */; };
 		B6CD24661B3D8BD50061E451 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CD24651B3D8BD50061E451 /* main.m */; };
 		B6CD24691B3D8BD50061E451 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CD24681B3D8BD50061E451 /* AppDelegate.m */; };
 		B6CD246F1B3D8BD50061E451 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6CD246D1B3D8BD50061E451 /* Main.storyboard */; };
@@ -130,6 +132,8 @@
 		B68359781B64EC13002D492D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		B683597A1B64EC3C002D492D /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		B69677601B622B7500EC2F9A /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		B6C353D11B6790E9006CF285 /* NewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewViewController.swift; path = SCLAlertView/NewViewController.swift; sourceTree = "<group>"; };
+		B6C353D41B67914F006CF285 /* NewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6CD24601B3D8BD50061E451 /* Stylist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stylist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6CD24641B3D8BD50061E451 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6CD24651B3D8BD50061E451 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -299,6 +303,15 @@
 			name = Login/Registeration;
 			sourceTree = "<group>";
 		};
+		B6C353D31B6790F2006CF285 /* Trend */ = {
+			isa = PBXGroup;
+			children = (
+				B6C353D11B6790E9006CF285 /* NewViewController.swift */,
+				B6C353D41B67914F006CF285 /* NewCollectionViewCell.swift */,
+			);
+			name = Trend;
+			sourceTree = "<group>";
+		};
 		B6CD24571B3D8BD50061E451 = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +342,7 @@
 				B6EC66251B3FE60C00B5BC58 /* MyConnector.m */,
 				B6EC66001B3FD31900B5BC58 /* ViewController.swift */,
 				B6436C661B67698700B8DA64 /* SwiftPages.swift */,
+				B6C353D31B6790F2006CF285 /* Trend */,
 				B696775E1B6218E600EC2F9A /* Camera */,
 				B696775F1B6229A300EC2F9A /* CollectionView */,
 				B69677621B62361500EC2F9A /* Login/Registeration */,
@@ -557,6 +571,7 @@
 				32862E5B1B631B530070FA05 /* SCLAlertView.m in Sources */,
 				32862E5D1B631B530070FA05 /* SCLAlertViewStyleKit.m in Sources */,
 				B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */,
+				B6C353D51B67914F006CF285 /* NewCollectionViewCell.swift in Sources */,
 				32C9C8A21B4DA2D400983181 /* SwipeableClothesTester.swift in Sources */,
 				B6EC66281B3FFA8400B5BC58 /* LoginViewController.swift in Sources */,
 				B6436C671B67698700B8DA64 /* SwiftPages.swift in Sources */,
@@ -575,6 +590,7 @@
 				B65331DD1B411D1B00B19268 /* PasswordRecoverViewController.swift in Sources */,
 				B6EC66011B3FD31900B5BC58 /* ViewController.swift in Sources */,
 				B6CD24691B3D8BD50061E451 /* AppDelegate.m in Sources */,
+				B6C353D21B6790E9006CF285 /* NewViewController.swift in Sources */,
 				32862E5C1B631B530070FA05 /* SCLAlertViewResponder.m in Sources */,
 				32F3F1F91B52BA9C0051050B /* SCLAlertView.swift in Sources */,
 				32F48E0A1B670BFA009EF135 /* TLTagsControl.m in Sources */,
