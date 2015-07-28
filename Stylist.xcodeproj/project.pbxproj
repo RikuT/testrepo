@@ -29,6 +29,7 @@
 		32C9C8A01B4DA28200983181 /* dottedLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C89A1B4DA28200983181 /* dottedLine.png */; };
 		32C9C8A21B4DA2D400983181 /* SwipeableClothesTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C9C8A11B4DA2D400983181 /* SwipeableClothesTester.swift */; };
 		32F3F1F91B52BA9C0051050B /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F3F1F81B52BA9C0051050B /* SCLAlertView.swift */; };
+		32F48E0A1B670BFA009EF135 /* TLTagsControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F48E081B670BFA009EF135 /* TLTagsControl.m */; };
 		B600E2331B416541007F8FDA /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2321B416541007F8FDA /* UploadViewController.swift */; };
 		B600E2351B41765D007F8FDA /* SingleRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2341B41765D007F8FDA /* SingleRowCell.swift */; };
 		B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2361B417868007F8FDA /* TopsViewController.swift */; };
@@ -112,6 +113,8 @@
 		32C9C89A1B4DA28200983181 /* dottedLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dottedLine.png; sourceTree = "<group>"; };
 		32C9C8A11B4DA2D400983181 /* SwipeableClothesTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableClothesTester.swift; sourceTree = "<group>"; };
 		32F3F1F81B52BA9C0051050B /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCLAlertView.swift; path = Stylist/SCLAlertView.swift; sourceTree = SOURCE_ROOT; };
+		32F48E071B670BFA009EF135 /* TLTagsControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTagsControl.h; sourceTree = "<group>"; };
+		32F48E081B670BFA009EF135 /* TLTagsControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTagsControl.m; sourceTree = "<group>"; };
 		B600E2321B416541007F8FDA /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		B600E2341B41765D007F8FDA /* SingleRowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleRowCell.swift; sourceTree = "<group>"; };
 		B600E2361B417868007F8FDA /* TopsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopsViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -241,6 +244,16 @@
 			path = SCLAlertView;
 			sourceTree = "<group>";
 		};
+		32F48E091B670BFA009EF135 /* TLTagsContol */ = {
+			isa = PBXGroup;
+			children = (
+				32F48E071B670BFA009EF135 /* TLTagsControl.h */,
+				32F48E081B670BFA009EF135 /* TLTagsControl.m */,
+			);
+			name = TLTagsContol;
+			path = ../TLTagsContol;
+			sourceTree = "<group>";
+		};
 		598CA88A0598F3B22679722C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +332,7 @@
 				B600E2321B416541007F8FDA /* UploadViewController.swift */,
 				321706FA1B65F2B500812648 /* UserProfileSetting */,
 				32C9C8A11B4DA2D400983181 /* SwipeableClothesTester.swift */,
+				32F48E091B670BFA009EF135 /* TLTagsContol */,
 				32862E4F1B631B530070FA05 /* SCLAlertView */,
 				B6CD246D1B3D8BD50061E451 /* Main.storyboard */,
 				B6CD24701B3D8BD50061E451 /* Images.xcassets */,
@@ -559,6 +573,7 @@
 				B6CD24691B3D8BD50061E451 /* AppDelegate.m in Sources */,
 				32862E5C1B631B530070FA05 /* SCLAlertViewResponder.m in Sources */,
 				32F3F1F91B52BA9C0051050B /* SCLAlertView.swift in Sources */,
+				32F48E0A1B670BFA009EF135 /* TLTagsControl.m in Sources */,
 				B6CD24661B3D8BD50061E451 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

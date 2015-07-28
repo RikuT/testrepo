@@ -33,6 +33,7 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		searchBar.delegate = self
 		
 		// Resize size of collection view items in grid so that we achieve 3 boxes across
+
 		loadCollectionViewData()
 		
 		
@@ -115,7 +116,7 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		
 		
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mySingleCell", forIndexPath: indexPath) as! SingleRowCell
-		
+		//cell.backgroundColor = UIColor.blueColor()
 		
 		
 		// Display the country name
@@ -128,6 +129,14 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		// Display "initial" flag image
 		var initialThumbnail = UIImage(named: "question")
 		cell.topsImageView.image = initialThumbnail
+		
+		/*
+		var imageWidth = Float (cell.topsImageView.image!.size.width)
+		var imageHeight = Float (cell.topsImageView.image!.size.height)
+		var imageAspect = imageHeight / imageWidth
+		var imageViewHeight = Float (cell.frame.size.width) * imageAspect
+		cell.topsImageView.frame = CGRectMake(0, 0, cell.frame.size.width , CGFloat(imageViewHeight))
+		*/
 		
 		// Fetch final flag image - if it exists
 		if let value = tops[indexPath.row]["imageFile"] as? PFFile {
@@ -231,5 +240,5 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
-	} 
+	}
 }

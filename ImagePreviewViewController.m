@@ -8,6 +8,7 @@
 #import "ImagePreviewViewController.h"
 #import "ViewUtils.h"
 #import "SCLAlertView.h"
+#import "TLTagsControl.h"
 //#import "UIImage+Crop.h"
 
 @interface ImagePreviewViewController ()
@@ -16,6 +17,7 @@
 @property (strong, nonatomic) UIButton *quitButton;
 @property (strong, nonatomic) UIButton *uploadButton;
 @property (strong, nonatomic) UITextField *clothesNameTextField;
+//@property (strong, nonatomic) NSMutableArray *tagArray;
 
 @end
 
@@ -64,13 +66,24 @@
     [scrollview addSubview:self.quitButton];
     
     //Change textfield design over here
-    self.clothesNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(75, 15, self.view.bounds.size.width-90, 30)];
+    self.clothesNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(75, self.imageView.height+10, self.view.bounds.size.width-90, 30)];
     self.clothesNameTextField.borderStyle = UITextBorderStyleBezel;
     self.clothesNameTextField.textColor = [UIColor blackColor];
     self.clothesNameTextField.placeholder = @"Clothes name";
     [scrollview addSubview:self.clothesNameTextField];
-    self.clothesNameTextField.delegate = self;
+    [self.clothesNameTextField setDelegate:self];
     
+    //Add tags
+    UILabel *hashTagLabel = [[UILabel alloc]initWithFrame: CGRectMake(5, self.imageView.height + 60, 30, 30)];
+    hashTagLabel.text = @"#";
+    hashTagLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:25];
+    [scrollview addSubview:hashTagLabel];
+    
+    TLTagsControl *brandTag = [[TLTagsControl alloc]initWithFrame:CGRectMake(40, self.imageView.height + 60, self.view.bounds.size.width - 25, 30)];
+    NSMutableArray *tags = [NSMutableArray arrayWithArray:@[@"ブランド", @"Tag", @"One", @"More", @"Tag", @"And", @"Yet", @"Another", @"One"]];
+    [scrollview addSubview:brandTag];
+    
+    //Season information
     
     self.uploadButton = [UIButton buttonWithType:UIButtonTypeSystem];
     int uploadButtonHeight = 50;
@@ -204,10 +217,6 @@
     return YES;
 }
 
-
-- (void)quitButtonPressed:(UIButton *)button {
-    [self dismissViewControllerAnimated:NO completion:nil];
-}
 
 - (BOOL)prefersStatusBarHidden {
     return YES;

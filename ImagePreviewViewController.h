@@ -10,6 +10,9 @@
 #import <Parse/Parse.h>
 
 
-@interface ImagePreviewViewController : UIViewController
+@interface ImagePreviewViewController : UIViewController{
+    NSMutableArray *seasonArray;
+}
+
 - (instancetype)initWithImage:(UIImage *)image;
 @end
