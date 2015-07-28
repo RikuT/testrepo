@@ -63,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1J-0Z-pgo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1038" y="525"/>
+            <point key="canvasLocation" x="1096" y="478"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="J00-nZ-Yq8">
@@ -383,7 +383,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vae-nM-WaS" kind="unwind" unwindAction="unwindToTrend:" id="Mqx-ot-N8u"/>
+                                    <segue destination="8vQ-e4-Iq2" kind="modal" id="ZVg-TD-1de"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hGw-mH-YHw">
@@ -962,9 +962,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="D74-Mu-tRM"/>
         <segue reference="MwS-4u-NVF"/>
         <segue reference="KcB-Ir-6tX"/>
-        <segue reference="xnA-Pc-bIb"/>
+        <segue reference="ZVg-TD-1de"/>
+        <segue reference="XKH-ik-kmo"/>
     </inferredMetricsTieBreakers>
 </document>
