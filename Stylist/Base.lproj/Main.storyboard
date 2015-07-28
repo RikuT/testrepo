@@ -106,6 +106,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="o8N-Jk-atb">
                                             <connections>
                                                 <action selector="saveButton:" destination="Rz1-LF-e1Z" id="afe-8I-98k"/>
+                                                <segue destination="l5o-hb-gQB" kind="unwind" identifier="detailVCtoTopsVC" unwindAction="unwindToTops:" id="NVs-yR-ozO"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -147,8 +148,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6KV-Ki-CzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="l5o-hb-gQB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="60" y="-37"/>
+            <point key="canvasLocation" x="46" y="-32"/>
         </scene>
         <!--Tops View Controller-->
         <scene sceneID="9o3-eY-HEm">

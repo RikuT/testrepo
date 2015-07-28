@@ -73,15 +73,27 @@
     [scrollview addSubview:self.clothesNameTextField];
     [self.clothesNameTextField setDelegate:self];
     
-    //Add tags
-    UILabel *hashTagLabel = [[UILabel alloc]initWithFrame: CGRectMake(5, self.imageView.height + 60, 30, 30)];
-    hashTagLabel.text = @"#";
-    hashTagLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:25];
+    //Add brand tags
+    int brandTagPositionHeight = 60;
+    UILabel *hashTagLabel = [[UILabel alloc]initWithFrame: CGRectMake(5, self.imageView.height + brandTagPositionHeight, 60, 40)];
+    hashTagLabel.text = @"Brand";
+    hashTagLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
     [scrollview addSubview:hashTagLabel];
     
-    TLTagsControl *brandTag = [[TLTagsControl alloc]initWithFrame:CGRectMake(40, self.imageView.height + 60, self.view.bounds.size.width - 25, 30)];
-    NSMutableArray *tags = [NSMutableArray arrayWithArray:@[@"ブランド", @"Tag", @"One", @"More", @"Tag", @"And", @"Yet", @"Another", @"One"]];
+    TLTagsControl *brandTag = [[TLTagsControl alloc]initWithFrame:CGRectMake(65, self.imageView.height + brandTagPositionHeight + 5, self.view.bounds.size.width - 70, 30)];
     [scrollview addSubview:brandTag];
+    
+    //Add Tags
+    //
+    int tagPositionHeight = 100;
+    UILabel *tagLabel = [[UILabel alloc]initWithFrame: CGRectMake(5, self.imageView.height + tagPositionHeight, 30, 30)];
+    tagLabel.text = @"#";
+    tagLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:25];
+    [scrollview addSubview:tagLabel];
+    
+    TLTagsControl *tag = [[TLTagsControl alloc]initWithFrame:CGRectMake(40, self.imageView.height + tagPositionHeight + 2, self.view.bounds.size.width - 25, 30)];
+    [scrollview addSubview:tag];
+    
     
     //Season information
     
@@ -137,6 +149,11 @@
     
     
     
+}
+
+-(void)quitButtonPressed:(UIButton*)button{
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 -(void)backToCollectionView{
