@@ -11,6 +11,8 @@ import ParseUI
 import Parse
 
 var parseObject:PFObject?
+var votes = [PFObject]()
+
 
 class NewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var postsImageView: PFImageView!
