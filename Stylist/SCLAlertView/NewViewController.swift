@@ -10,6 +10,7 @@ import Parse
 
 var posts = [PFObject]()
 
+
 class NewViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
 
