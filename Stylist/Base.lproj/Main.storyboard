@@ -633,7 +633,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YgJ-Mv-3hu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1798" y="549"/>
+            <point key="canvasLocation" x="1798" y="554"/>
         </scene>
         <!--Register Page View Controller-->
         <scene sceneID="mbv-tN-eWA">
@@ -901,14 +901,17 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gbe-db-Gke">
-                                                    <rect key="frame" x="91" y="287" width="30" height="30"/>
+                                                    <rect key="frame" x="107" y="287" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Like">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="vote:" destination="GTL-mD-694" eventType="touchUpInside" id="e3I-Js-rEA"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yoL-Hg-RGa">
-                                                    <rect key="frame" x="45" y="292" width="42" height="21"/>
+                                                    <rect key="frame" x="61" y="291" width="42" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -921,6 +924,7 @@
                                         <connections>
                                             <outlet property="postsImageView" destination="rxc-bU-3kx" id="ylM-eT-o0q"/>
                                             <outlet property="postsLabel" destination="bhG-I6-uOe" id="ovg-5y-iBg"/>
+                                            <outlet property="votesLabel" destination="yoL-Hg-RGa" id="OR1-WK-ZC8"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1028,9 +1032,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="KcB-Ir-6tX"/>
+        <segue reference="xnA-Pc-bIb"/>
         <segue reference="PbG-0j-NXL"/>
         <segue reference="TKa-A3-oIM"/>
-        <segue reference="KcB-Ir-6tX"/>
-        <segue reference="XKH-ik-kmo"/>
     </inferredMetricsTieBreakers>
 </document>
