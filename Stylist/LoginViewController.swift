@@ -42,7 +42,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 //ログインできた！！
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isUserLoggedIn")
                 NSUserDefaults.standardUserDefaults().synchronize()
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.performSegueWithIdentifier("loginVCtoVC", sender: self)
+                //self.dismissViewControllerAnimated(true, completion: nil)
 
             }
             else{

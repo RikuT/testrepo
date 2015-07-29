@@ -593,7 +593,7 @@
                                 <rect key="frame" x="16" y="220" width="282" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="PNQ-ru-7to" id="jTa-gC-HWe"/>
                                 </connections>
@@ -629,11 +629,12 @@
                     <connections>
                         <outlet property="userPasswordTextField" destination="pan-81-KQI" id="rP0-71-GWD"/>
                         <outlet property="userUserNameTextField" destination="RWr-qD-YN0" id="OXS-5e-WlE"/>
+                        <segue destination="8vQ-e4-Iq2" kind="modal" identifier="loginVCtoVC" id="j8y-ny-OAp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YgJ-Mv-3hu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1798" y="549"/>
+            <point key="canvasLocation" x="1784" y="453"/>
         </scene>
         <!--Register Page View Controller-->
         <scene sceneID="mbv-tN-eWA">
@@ -724,6 +725,9 @@
                                 <state key="normal" title="Already have account Login">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="PNQ-ru-7to" kind="modal" id="fO7-VD-hGW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="THT-ej-qJq">
                                 <rect key="frame" x="128" y="410" width="57" height="30"/>
@@ -911,7 +915,7 @@
                                                     <rect key="frame" x="45" y="292" width="42" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -933,7 +937,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -1028,9 +1032,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="PbG-0j-NXL"/>
-        <segue reference="TKa-A3-oIM"/>
         <segue reference="KcB-Ir-6tX"/>
-        <segue reference="XKH-ik-kmo"/>
+        <segue reference="xnA-Pc-bIb"/>
+        <segue reference="fO7-VD-hGW"/>
+        <segue reference="j8y-ny-OAp"/>
+        <segue reference="TKa-A3-oIM"/>
     </inferredMetricsTieBreakers>
 </document>
