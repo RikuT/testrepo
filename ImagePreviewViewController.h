@@ -8,10 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "TLTagsControl.h"
 
 
-@interface ImagePreviewViewController : UIViewController{
-    NSMutableArray *seasonArray;
+
+@interface ImagePreviewViewController : UIViewController<UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource>{
+    NSArray *seasonArray;
+    UITextField *seasonTextF;
+    UIPickerView *myPickerView;
+    UITextView *clothesDesciptionTextView;
+    TLTagsControl *brandTag;
+    TLTagsControl *miscTag;
+    NSString *textViewPlaceHolder;
 }
 
 - (instancetype)initWithImage:(UIImage *)image;

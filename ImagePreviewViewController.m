@@ -8,7 +8,6 @@
 #import "ImagePreviewViewController.h"
 #import "ViewUtils.h"
 #import "SCLAlertView.h"
-#import "TLTagsControl.h"
 //#import "UIImage+Crop.h"
 
 @interface ImagePreviewViewController ()
@@ -66,36 +65,72 @@
     [scrollview addSubview:self.quitButton];
     
     //Change textfield design over here
-    self.clothesNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(75, self.imageView.height+10, self.view.bounds.size.width-90, 30)];
+    self.clothesNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(40, self.imageView.height+15, self.view.bounds.size.width-60, 30)];
     self.clothesNameTextField.borderStyle = UITextBorderStyleBezel;
     self.clothesNameTextField.textColor = [UIColor blackColor];
     self.clothesNameTextField.placeholder = @"Clothes name";
+    self.clothesNameTextField.font = [UIFont fontWithName:@"HelveticaNeue" size:18];
     [scrollview addSubview:self.clothesNameTextField];
     [self.clothesNameTextField setDelegate:self];
     
+    //TextView for clothes description
+    int textViewPositionHeight = 60;
+    clothesDesciptionTextView = [[UITextView alloc]initWithFrame:CGRectMake(40, self.imageView.height + textViewPositionHeight, self.view.frame.size.width - 45, 90)];
+    clothesDesciptionTextView.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
+    clothesDesciptionTextView.backgroundColor = [UIColor grayColor];
+    clothesDesciptionTextView.delegate = self;
+    textViewPlaceHolder = @"More details (ex. Occasion you wore this...)";
+    clothesDesciptionTextView.text = textViewPlaceHolder;
+    clothesDesciptionTextView.textColor = [UIColor lightGrayColor];
+    [scrollview addSubview:clothesDesciptionTextView];
+    UIImage *detailIconImg = [UIImage imageNamed:@"detailsIcon"];
+    UIImageView *detailIconView = [[UIImageView alloc] initWithImage: detailIconImg];
+    detailIconView.frame = CGRectMake(1, self.imageView.height + textViewPositionHeight, 31, 31);
+    [scrollview addSubview:detailIconView];
+    
     //Add brand tags
-    int brandTagPositionHeight = 60;
+    int brandTagPositionHeight = 170;
     UILabel *hashTagLabel = [[UILabel alloc]initWithFrame: CGRectMake(5, self.imageView.height + brandTagPositionHeight, 60, 40)];
     hashTagLabel.text = @"Brand";
     hashTagLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
     [scrollview addSubview:hashTagLabel];
     
-    TLTagsControl *brandTag = [[TLTagsControl alloc]initWithFrame:CGRectMake(65, self.imageView.height + brandTagPositionHeight + 5, self.view.bounds.size.width - 70, 30)];
+    brandTag = [[TLTagsControl alloc]initWithFrame:CGRectMake(65, self.imageView.height + brandTagPositionHeight + 5, self.view.bounds.size.width - 70, 30)];
     [scrollview addSubview:brandTag];
     
     //Add Tags
     //
-    int tagPositionHeight = 100;
+    int tagPositionHeight = 210;
     UILabel *tagLabel = [[UILabel alloc]initWithFrame: CGRectMake(5, self.imageView.height + tagPositionHeight, 30, 30)];
     tagLabel.text = @"#";
     tagLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:25];
     [scrollview addSubview:tagLabel];
     
-    TLTagsControl *tag = [[TLTagsControl alloc]initWithFrame:CGRectMake(40, self.imageView.height + tagPositionHeight + 2, self.view.bounds.size.width - 25, 30)];
-    [scrollview addSubview:tag];
+    miscTag = [[TLTagsControl alloc]initWithFrame:CGRectMake(40, self.imageView.height + tagPositionHeight + 2, self.view.bounds.size.width - 25, 30)];
+    [scrollview addSubview:miscTag];
     
     
     //Season information
+    int seasonPositionHeight = 250;
+    seasonTextF = [[UITextField alloc] initWithFrame:CGRectMake(40, self.imageView.height + seasonPositionHeight, self.view.bounds.size.width - 45, 30)];
+    seasonTextF.font = [UIFont fontWithName:@"HelveticaNeue" size:18];
+    seasonTextF.delegate = self;
+    seasonTextF.placeholder = @"Enter season";
+    seasonTextF.backgroundColor = [UIColor grayColor];
+    [scrollview addSubview:seasonTextF];
+    UIImage *calendarIconImg = [UIImage imageNamed:@"calendarIcon"];
+    UIImageView *calendarIconView = [[UIImageView alloc] initWithImage: calendarIconImg];
+    calendarIconView.frame = CGRectMake(3, self.imageView.height + seasonPositionHeight - 1, 28, 30);
+    [scrollview addSubview:calendarIconView];
+
+    /*
+    myPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0 , 320, 200)];
+    seasonArray = @[@"Spring", @"Summer", @"Fall", @"Winter"];
+    myPickerView.dataSource = self;
+    myPickerView.delegate = self;
+    myPickerView.showsSelectionIndicator = YES;
+    [self.view addSubview:myPickerView];
+    */
     
     self.uploadButton = [UIButton buttonWithType:UIButtonTypeSystem];
     int uploadButtonHeight = 50;
@@ -109,6 +144,59 @@
     [scrollview addSubview:self.uploadButton];
     
     [self.view addSubview:scrollview];
+    
+    UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
+    [tapBackground setNumberOfTapsRequired:1];
+    [self.view addGestureRecognizer:tapBackground];
+}
+
+//////////////////////////
+
+
+// The number of columns of data
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+// The number of rows of data
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return seasonArray.count;
+}
+
+// The data to return for the row and component (column) that's being passed in
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return seasonArray[row];
+}
+
+// Catpure the picker view selection
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    // This method is triggered whenever the user makes a change to the picker selection.
+    // The parameter named row and component represents what was selected.
+    NSString *str = [seasonArray objectAtIndex:row];
+    NSLog(@"season is %@", str);
+    seasonTextF.text = str;
+
+}
+
+// tell the picker the width of each row for a given component
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+    int sectionWidth = 300;
+    
+    return sectionWidth;
+
+}
+////////////////
+
+
+-(void) dismissKeyboard:(id)sender
+{
+    [self.view endEditing:YES];
+    [myPickerView removeFromSuperview];
+    
 }
 
 -(void)uploadImage:(UIButton*)button{
@@ -117,7 +205,13 @@
     NSLog(@"upload");
     NSLog(@"%@,and %@", clothesName, self.image);
     
-
+    NSArray *miscTagArray = miscTag.tags;
+    NSArray *brandTagArray = brandTag.tags;
+    
+    if ([clothesDesciptionTextView.text isEqualToString:textViewPlaceHolder]) {
+        clothesDesciptionTextView.text = @"";
+    }
+    
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setBool:YES forKey:@"originFromUploadOfImagePreviewVCKey"];
     
@@ -135,6 +229,11 @@
                     posts[@"imageText"] = clothesName;
                     posts[@"uploader"] = [PFUser currentUser];
                     posts[@"imageFile"] = parseImageFile;
+                    posts[@"clothesExplanation"] = clothesDesciptionTextView.text;
+                    posts[@"season"] = seasonTextF.text;
+                    posts[@"Tags"] = miscTagArray;
+                    posts[@"brandTag"] = brandTagArray;
+                    //posts[@"tags"] =
                     [posts saveInBackground];
                     NSLog(@"success!!");
                     [self backToCollectionView];
@@ -149,6 +248,33 @@
     
     
     
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    if ([textField isEqual:seasonTextF]) {
+        [myPickerView removeFromSuperview];
+        //For displaying pickerView when season text field was selected
+        myPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height , 320, 170)];
+        seasonArray = @[@"Spring", @"Summer", @"Fall", @"Winter"];
+        myPickerView.dataSource = self;
+        myPickerView.delegate = self;
+        myPickerView.showsSelectionIndicator = YES;
+        //[self.view addSubview:myPickerView];
+
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:.50];
+        myPickerView.center = CGPointMake(myPickerView.center.x, myPickerView.center.y - 170);
+        //[UIView setAnimationDelegate:self];
+        [self.view addSubview:myPickerView];
+        
+        [UIView commitAnimations];
+        return NO;
+        
+    }else{
+    }
+    
+    return YES;
 }
 
 -(void)quitButtonPressed:(UIButton*)button{
@@ -224,6 +350,26 @@
     //        // くるくるを止める
     //        [indicator stopAnimating];
     //    }
+}
+
+//For showing placeholder for textView
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:textViewPlaceHolder]) {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor]; //optional
+    }
+    [textView becomeFirstResponder];
+}
+//For showing placeholder for textView
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@""]) {
+        textView.text = textViewPlaceHolder;
+        textView.textColor = [UIColor lightGrayColor]; //optional
+    }
+    [textView resignFirstResponder];
 }
 
 
