@@ -281,8 +281,10 @@
                                             NSLog(@"failure");}
                                     }];
                                 }else{
-                                    
-                                    PFObject* tagPop = [PFObject objectWithoutDataWithClassName:@"TagTrend" objectId: tagObjectId];
+                                    NSUInteger tagIndex = [preexistingTags indexOfObject:tagName];
+                                    NSString *sameTagId = [preexistingTagId objectAtIndex:tagIndex];
+
+                                    PFObject* tagPop = [PFObject objectWithoutDataWithClassName:@"TagTrend" objectId: sameTagId];
                                     NSLog(@"YES %@",tagName);
                                     int tempNumPosts = [numPosts intValue];
                                     tempNumPosts ++;
@@ -296,7 +298,72 @@
                                 }
                                     
                                      
+                                                                         /*
                                      
+                                     if (count == 0) {
+                                     NSLog(@"tagname %@", preexistingTags);
+                                     NSLog(@"tagId %@", objectId);
+                                     NSLog(@"tagNum %@", numPostsNSNUM);
+                                     
+                                     //HAVE TO MAKE SURE THAT IT DOESNT LOOP UNTIL PROCESS DONE
+                                     
+                                     for (int i = 0; i < miscTagArray.count; i++) {
+                                     NSString *tagName = [miscTagArray objectAtIndex:i];
+                                     int indexNum = [preexistingTags indexOfObject:tagName];
+                                     NSString *tagObjectId = [preexistingTagId objectAtIndex:indexNum];
+                                     
+                                     BOOL sameTag = [preexistingTags containsObject:tagName];
+                                     NSLog(@"BOOL %@", sameTag);
+                                     if (sameTag == NO){
+                                     PFObject* tagPop = [PFObject objectWithClassName:@"TagTrend"];
+                                     NSLog(@"NO %@",tagName);
+                                     
+                                     // NSString *numPostsStr = @"1";
+                                     NSNumber *numPosts = @1;
+                                     tagPop[@"NumberOfPosts"] = numPosts;
+                                     
+                                     tagPop[@"TagName"] = tagName;
+                                     
+                                     [tagPop saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+                                     if (!error) {
+                                     NSLog(@"success");
+                                     }else{
+                                     NSLog(@"failure");}
+                                     }];
+                                     }else{
+                                     NSNumber *numPosts = [numPostsArray objectAtIndex:indexNum];
+                                     
+                                     
+                                     PFObject* tagPop = [PFObject objectWithoutDataWithClassName:@"TagTrend" objectId: tagObjectId];
+                                     NSLog(@"YES %@",tagName);
+                                     int tempNumPosts = [numPosts intValue];
+                                     tempNumPosts ++;
+                                     tagPop[@"NumberOfPosts"] = [NSNumber numberWithInt:tempNumPosts];
+                                     
+                                     
+                                     
+                                     [tagPop saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+                                     if (!error) {
+                                     NSLog(@"success");
+                                     }else{
+                                     NSLog(@"failure");}
+                                     }];
+                                     }
+                                     
+                                     
+                                     
+                                     
+                                     
+                                     
+                                     
+                                     // tagPop[@"NumberOfPosts"] = numPosts;
+                                     
+                                     }
+                                     }
+                                     
+                                     
+                                     
+                                     */
                                      
                                      
                                      
