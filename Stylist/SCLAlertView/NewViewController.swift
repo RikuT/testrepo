@@ -152,15 +152,19 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
             
         }
         
-
-        if var votes:Int? = parseObject?.objectForKey("votes") as? Int {
-            if votes == nil{
-                votes = 0}
-            cell.votesLabel?.text = "\(votes!) votes" 
+        if (parseObject != nil)
+        {
+            
+            if let votes = parseObject!.objectForKey("votes") as? Int {
+                cell.votesLabel?.text = "\(votes) votes"
+            }
+            else
+            {
+                cell.votesLabel?.text = "0 votes"
+            }
         }
-
-        return cell
-    }
+        return cell}
+    
     
     /*
     ==========================================================================================

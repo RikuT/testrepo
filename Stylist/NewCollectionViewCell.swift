@@ -26,16 +26,17 @@ class NewCollectionViewCell: UICollectionViewCell {
 
 
     @IBAction func vote(sender: AnyObject) {
-        
-        if (parseObject != nil) {
-            if var votes:Int? = parseObject!.objectForKey("votes") as? Int {
-                votes!++
-                
-                parseObject!.setObject(votes!, forKey: "votes")
-                parseObject!.saveInBackgroundWithTarget(nil, selector: nil)
-                
-                votesLabel?.text = "\(votes!) votes"
-    }
-
-
-        }}}
+            if (parseObject != nil)
+            {
+                if let votes = parseObject!.objectForKey("votes") as? Int {
+                    parseObject!.setObject(votes + 1, forKey: "votes")
+                    parseObject!.saveInBackgroundWithTarget(nil, selector: nil)
+                    votesLabel?.text = "\(votes + 1) votes"
+                }
+                else
+                {
+                    parseObject!.setObject(1, forKey: "votes")
+                    parseObject!.saveInBackgroundWithTarget(nil, selector: nil)
+                    votesLabel?.text = "1 votes"
+                }
+            }}}
