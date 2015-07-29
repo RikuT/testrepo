@@ -108,6 +108,12 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
             else {
                 println("\(error)");
                 // Show the errorString somewhere and let the user try again.
+                //Show alert that error occured
+                var errorMessage:String = error!.userInfo!["error"]as! String
+
+                let errorAlert = SCLAlertView()
+                errorAlert.showError("Error", subTitle:errorMessage, closeButtonTitle:"Close")
+
             }
         
             
