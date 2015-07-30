@@ -12,7 +12,8 @@ var posts = [PFObject]()
 
 
 class NewViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
-    
+
+    var parseObject = PFObject(className: "Posts")
 
     var objectToSend : PFObject?
     
@@ -153,19 +154,19 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
             
         }
         
-        if (parseObject != nil)
-        {
-            
-            if let votes = parseObject!.objectForKey("votes") as? Int {
+ 
+            if let votes = parseObject.objectForKey("votes") as? Int {
                 cell.votesLabel?.text = "\(votes) votes"
             }
             else
             {
                 cell.votesLabel?.text = "0 votes"
             }
+        return cell
+
         }
-        return cell}
-    
+
+
     
     /*
     ==========================================================================================
