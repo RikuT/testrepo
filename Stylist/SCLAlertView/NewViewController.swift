@@ -8,15 +8,12 @@
 
 import Parse
 
-var posts = [PFObject]()
-
-
 class NewViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
-
-    var parseObject = PFObject(className: "Posts")
-
-    var objectToSend : PFObject?
     
+    
+    var objectToSend : PFObject?
+    var likes:[NSIndexPath:Int] = [:]
+    var votes = [PFObject]()
     // Connection to the search bar
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -28,15 +25,26 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        let query = PFQuery(className: "Posts")
+        query.findObjectsInBackgroundWithBlock{(question:[AnyObject]?,error:NSError?) -> Void in
+            
+            if error == nil
+            {
+                if let allQuestion = question as? [PFObject]
+                {
+                    self.votes = allQuestion
+                    self.collectionView.reloadData()
+                }
+            }
+        }
+        
         // Wire up search bar delegate so that we can react to button selections
         searchBar.delegate = self
         
         // Resize size of collection view items in grid so that we achieve 3 boxes across
         
         loadCollectionViewData()
-        
-        
-        
     }
     
     /*
@@ -48,7 +56,6 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     // Load data into the collectionView when the view appears
     override func viewDidAppear(animated: Bool) {
         loadCollectionViewData()
-        
     }
     
     /*
@@ -58,43 +65,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     */
     
     func loadCollectionViewData() {
-        
         // Build a parse query object
-        var query = PFQuery(className:"Posts")
-        
-        
-        // Check to see if there is a search term
-        if searchBar.text != "" {
-            query.whereKey("imageText", containsString: searchBar.text)
-        }
-        
-        // Fetch data from the parse platform
-        query.orderByDescending("createdAt")
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]?, error: NSError?) -> Void in
-            
-            println("objects: \(objects)")
-            println("error\(error)")
-            
-            // The find succeeded now rocess the found objects into the countries array
-            if error == nil {
-                
-                // Clear existing country data
-                posts.removeAll(keepCapacity: false)
-                
-                // Add country objects to our array
-                if let objects = objects as? [PFObject] {
-                    posts = Array(objects.generate())
-                }
-                
-                // reload our data into the collection view
-                self.collectionView.reloadData()
-                
-            } else {
-                // Log details of the failure
-                println("Error: \(error!) \(error!.userInfo!)")
-            }
-        }
     }
     
     /*
@@ -108,65 +79,46 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return posts.count
+        return self.votes.count
     }
+    
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("newview", forIndexPath: indexPath) as! NewCollectionViewCell
-        //cell.backgroundColor = UIColor.blueColor()
-        
-        
+        let item = self.votes[indexPath.row]
         // Display the country name
-        if let value = posts[indexPath.row]["imageText"] as? String {
+        
+        if let value = item["imageText"] as? String {
             cell.postsLabel.text = value
-            println("it should be there")
-            
         }
         
         // Display "initial" flag image
         var initialThumbnail = UIImage(named: "question")
         cell.postsImageView.image = initialThumbnail
         
-        /*
-        var imageWidth = Float (cell.topsImageView.image!.size.width)
-        var imageHeight = Float (cell.topsImageView.image!.size.height)
-        var imageAspect = imageHeight / imageWidth
-        var imageViewHeight = Float (cell.frame.size.width) * imageAspect
-        cell.topsImageView.frame = CGRectMake(0, 0, cell.frame.size.width , CGFloat(imageViewHeight))
-        */
+        cell.complition = {
+            self.likeButton(indexPath)
+        }
+        
+        if let votesValue = item["votes"] as? Int
+        {
+            cell.votesLabel?.text = "\(votesValue)"
+        }
         
         // Fetch final flag image - if it exists
-        if let value = posts[indexPath.row]["imageFile"] as? PFFile {
+        if let value = item["imageFile"] as? PFFile {
             
             cell.postsImageView.file = value
             cell.postsImageView.loadInBackground({ (image: UIImage?, error: NSError?) -> Void in
-                
                 if error != nil {
-                    
-                    
+                    cell.postsImageView.image = image
                 }
-                
             })
-            
-            //	let finalImage = tops[indexPath.row]["tops"] as? PFFile
-            
         }
-        
- 
-            if let votes = parseObject.objectForKey("votes") as? Int {
-                cell.votesLabel?.text = "\(votes) votes"
-            }
-            else
-            {
-                cell.votesLabel?.text = "0 votes"
-            }
         return cell
-
-        }
-
-
+    }
+    
     
     /*
     ==========================================================================================
@@ -174,9 +126,36 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     ==========================================================================================
     */
     
+    func likeButton(indexPath:NSIndexPath)
+    {
+        let cell = self.collectionView.cellForItemAtIndexPath(indexPath) as! NewCollectionViewCell
+        
+        let object = self.votes[indexPath.row]
+        
+        if let likes = object["votes"] as? Int
+        {
+            object["votes"] = likes + 1
+            object.saveInBackgroundWithBlock{ (success:Bool,error:NSError?) -> Void in
+                println("Data saved")
+                
+            }
+            cell.votesLabel?.text = "\(likes + 1)"
+                    }
+        else
+        {
+            object["votes"] = 1
+            object.saveInBackgroundWithBlock{ (success:Bool,error:NSError?) -> Void in
+                println("Data saved")
+            }
+            cell.votesLabel?.text = "1"
+        }
+     
+    }
+    
+    
     // Process collectionView cell selection
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        objectToSend = posts[indexPath.row]
+        objectToSend = votes[indexPath.section]
         performSegueWithIdentifier("showImage", sender: self)
     }
     
@@ -238,7 +217,6 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
             self.performSegueWithIdentifier("topsVCtoVC", sender: self)
         }
     }
-    
     
     /*
     ==========================================================================================
