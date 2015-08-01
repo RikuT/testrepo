@@ -205,6 +205,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         // Reload of table data
         self.loadCollectionViewData()
     }
+    /*
     
     @IBAction func finishButt() {
         let ud = NSUserDefaults.standardUserDefaults()
@@ -217,6 +218,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
             self.performSegueWithIdentifier("topsVCtoVC", sender: self)
         }
     }
+*/
     
     /*
     ==========================================================================================

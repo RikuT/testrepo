@@ -447,6 +447,16 @@ public class SCLAlertView: UIViewController {
             ud.removeObjectForKey("closeAlertKey")
             ud.setInteger(1, forKey: "closeAlertKeyNote")
 
+        }else if(udId == 3){
+            println("hihihih")
+            ud.removeObjectForKey("closeAlertKey")
+            ud.setInteger(1, forKey: "closeAlertKeyNote")
+            
+        }else if(udId == 4){
+            println("hihihih")
+            ud.removeObjectForKey("closeAlertKey")
+            ud.setInteger(1, forKey: "closeAlertKeyNote")
+            
         }
         
         UIView.animateWithDuration(0.2, animations: {

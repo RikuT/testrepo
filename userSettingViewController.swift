@@ -130,9 +130,13 @@ class userSettingViewController: UIViewController {
                 self.hideActivityIndicator(self.view)
             }
             else{
+
+                self.hideActivityIndicator(self.view)
                 let alert = SCLAlertView()
+            
+
                 alert.showError("Error", subTitle:"An error occured while retrieving your information. Please check the Internet connection.", closeButtonTitle:"Ok")
-                self.performSegueWithIdentifier("userSettingVCtoVC", sender: self)
+                self.performSegueWithIdentifier("userSettingVCtoVCunwind", sender: self)
                 
             }
             
@@ -172,16 +176,29 @@ class userSettingViewController: UIViewController {
                 println("success")
                 let alert = SCLAlertView()
                 alert.showSuccess("Success", subTitle:"Your user information was updated successfully!", closeButtonTitle:"Ok")
+                self.performSegueWithIdentifier("userSettingVCtoVCunwind", sender: self)
+                /*
+                // 「ud」というインスタンスをつくる。
+                let ud = NSUserDefaults.standardUserDefaults()
+                println("errorshow")
                 
-                self.performSegueWithIdentifier("userSettingVCtoVC", sender: self)
+                // OKボタンを押した時に、Homeに戻るようにする
+                ud.setInteger(4, forKey: "closeAlertKey")
+                ud.removeObjectForKey("closeAlertKeyNote")
+                println("scla to 1")
+                //        SCLAlertView().showError(self, title: kErrorTitle, subTitle: kSubtitle)
+                var timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("performSegueToHome"), userInfo: nil, repeats: true)
+
+                */
+
                 
             }else {
                 self.hideActivityIndicator(self.view)
                 println("failure")
+                var errorMessage:String = error!.userInfo!["error"]as! String
                 let alert = SCLAlertView()
-                alert.showError("Error", subTitle:"An error occured while updating your information. Please check the Internet connection.", closeButtonTitle:"Ok")
-                
-                
+                alert.showError("Error", subTitle:"An error occured. \(errorMessage)", closeButtonTitle:"Ok")
+
                 
             }
             
@@ -226,6 +243,8 @@ class userSettingViewController: UIViewController {
     @IBAction func tapScreen(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
+    
+
     
     func showActivityIndicator(uiView: UIView) {
         
