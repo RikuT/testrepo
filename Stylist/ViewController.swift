@@ -17,10 +17,10 @@ class ViewController: UIViewController {
     @IBAction func unwindToTrend(segue: UIStoryboardSegue) {
     }
     @IBOutlet var swiftPagesView: SwiftPages!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         // 「ud」というインスタンスをつくる。
@@ -29,33 +29,27 @@ class ViewController: UIViewController {
         ud.removeObjectForKey("closeAlertKeyNote")
         ud.removeObjectForKey("closeAlertKey")
         
-        
-        //Initiation
-        var VCIDs : [String] = ["LikeVC", "NewVC", "TagVC","NaviVC"]
-        var buttonTitles : [String] = ["Like", "New", "Tags","Navi"]
-        
-        //Sample customization
-        swiftPagesView.setOriginY(0.0)
-        swiftPagesView.enableAeroEffectInTopBar(true)
-        swiftPagesView.setButtonsTextColor(UIColor.whiteColor())
-        swiftPagesView.setAnimatedBarColor(UIColor.whiteColor())
-        swiftPagesView.initializeWithVCIDsArrayAndButtonTitlesArray(VCIDs, buttonTitlesArray: buttonTitles)
-
+        self.initializePageView()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     override func viewDidAppear(animated: Bool) {
-       let isUserLoggedIn =
+        let isUserLoggedIn =
         NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
         
         if(!isUserLoggedIn){
             self.performSegueWithIdentifier("loginView", sender: self)
         }
         
+        self.initializePageView()
+    }
+    
+    
+    func initializePageView(){
         //Initiation
         var VCIDs : [String] = ["LikeVC", "NewVC", "TagVC","NaviVC"]
         var buttonTitles : [String] = ["Like", "New", "Tags","Navi"]
@@ -63,10 +57,11 @@ class ViewController: UIViewController {
         //Sample customization
         swiftPagesView.setOriginY(0.0)
         swiftPagesView.enableAeroEffectInTopBar(true)
-        swiftPagesView.setButtonsTextColor(UIColor.whiteColor())
-        swiftPagesView.setAnimatedBarColor(UIColor.whiteColor())
         swiftPagesView.initializeWithVCIDsArrayAndButtonTitlesArray(VCIDs, buttonTitlesArray: buttonTitles)
+        
     }
+    
+    
     
     @IBAction func logoutButtonTapped(sender: AnyObject) {
         NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
@@ -74,8 +69,10 @@ class ViewController: UIViewController {
         
         PFUser.logOut()
         self.performSegueWithIdentifier("loginView", sender: self)
-        }
+    }
     
-
-
+    
+    
+    
+    
 }
