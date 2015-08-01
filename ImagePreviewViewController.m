@@ -224,204 +224,142 @@
     
     
     
-    if (miscTagArray.count != 0) {
+    //CHANGE ACTIVITY INDICATOR LOCATION
+    //////////////////////////////////////
+    
+    
+    
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setBool:YES forKey:@"originFromUploadOfImagePreviewVCKey"];
+    
+    if (self.imageView.image == NULL) {
+        NSLog(@"error");
+    }else{
+        NSData *imageData = UIImageJPEGRepresentation(self.image, 1.0);
+        PFFile *parseImageFile = [PFFile fileWithName:@"uploaded_image.jpg" data:imageData];
         
-        //CHANGE ACTIVITY INDICATOR LOCATION
-        //////////////////////////////////////
-        PFQuery *query = [PFQuery queryWithClassName:@"TagTrend"];
-        NSMutableArray *preexistingTags = [NSMutableArray array];
-        NSMutableArray *preexistingTagId = [NSMutableArray array];
-        NSMutableArray *numPostsArray = [NSMutableArray array];
         
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
-            if (error == nil) {
-                int count = (int)objects.count;
-                for (PFObject *object in objects){
-                    NSString *tagName = [NSString stringWithFormat:@"%@", [object objectForKey:@"TagName"]];
-                    [preexistingTags addObject:tagName];
-                    NSLog(@"tagname %@", tagName);
+        
+        
+        
+        [parseImageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                if (succeeded) {
+                    //Putting the photo in Parse
+                    PFObject* posts = [PFObject objectWithClassName:@"Tops"];
+                    posts[@"imageText"] = clothesName;
+                    posts[@"uploader"] = [PFUser currentUser];
+                    posts[@"imageFile"] = parseImageFile;
+                    posts[@"clothesExplanation"] = clothesDesciptionTextView.text;
+                    posts[@"season"] = seasonTextF.text;
+                    posts[@"Tags"] = miscTagArray;
+                    posts[@"brandTag"] = brandTagArray;
+                    //posts[@"tags"] =
+                    [posts saveInBackground];
                     
-                    NSNumber *numPostsNSNUM = [object objectForKey:@"NumberOfPosts"];
-                    //int numPosts = [numPostsStr intValue];
-                    [numPostsArray addObject:numPostsNSNUM];
-                    NSLog(@"tagNum %@", numPostsNSNUM);
-                    
-                    
-                    //NSLog(@"number of posts %i", numPosts);
-                    NSString *objectId = [NSString stringWithFormat:@"%@", [object objectId]];
-                    [preexistingTagId addObject:objectId];
-                    NSLog(@"tagId %@", objectId);
-                    
-                    
-                    count --;
-                    
-                    if (count == 0) {
+                    //Setting tags (check if there is an overlapping tag and calculate tag popularity)
+                    if (miscTagArray.count != 0) {
                         
-                        //HAVE TO MAKE SURE THAT IT DOESNT LOOP UNTIL PROCESS DONE
+                        PFQuery *query = [PFQuery queryWithClassName:@"TagTrend"];
+                        NSMutableArray *preexistingTags = [NSMutableArray array];
+                        NSMutableArray *preexistingTagId = [NSMutableArray array];
+                        NSMutableArray *numPostsArray = [NSMutableArray array];
                         
-                        for (int i = 0; i < miscTagArray.count; i++) {
-                            NSString *tagName = [miscTagArray objectAtIndex:i];
-                            NSString *tagObjectId = [preexistingTagId objectAtIndex:i];
-                            NSNumber *numPosts = [numPostsArray objectAtIndex:i];
-                            BOOL sameTag = [preexistingTags containsObject:tagName];
-                            
-                            if (sameTag == NO){
-                                PFObject* tagPop = [PFObject objectWithClassName:@"TagTrend"];
-                                NSLog(@"NO %@",tagName);
-                                
-                                // NSString *numPostsStr = @"1";
-                                NSNumber *numPosts = @1;
-                                tagPop[@"NumberOfPosts"] = numPosts;
-                                
-                                tagPop[@"TagName"] = tagName;
-                                
-                                [tagPop saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-                                    if (!error) {
-                                        NSLog(@"success");
-                                    }else{
-                                        NSLog(@"failure");}
-                                }];
-                            }else{
-                                NSUInteger tagIndex = [preexistingTags indexOfObject:tagName];
-                                NSString *sameTagId = [preexistingTagId objectAtIndex:tagIndex];
-                                
-                                PFObject* tagPop = [PFObject objectWithoutDataWithClassName:@"TagTrend" objectId: sameTagId];
-                                NSLog(@"YES %@",tagName);
-                                int tempNumPosts = [numPosts intValue];
-                                tempNumPosts ++;
-                                tagPop[@"NumberOfPosts"] = [NSNumber numberWithInt:tempNumPosts];
-                                [tagPop saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-                                    if (!error) {
-                                        NSLog(@"success");
-                                    }else{
-                                        NSLog(@"failure");}
-                                }];
-                            }
-                            
-                            
-                            /*
-                             
-                             if (count == 0) {
-                             NSLog(@"tagname %@", preexistingTags);
-                             NSLog(@"tagId %@", objectId);
-                             NSLog(@"tagNum %@", numPostsNSNUM);
-                             
-                             //HAVE TO MAKE SURE THAT IT DOESNT LOOP UNTIL PROCESS DONE
-                             
-                             for (int i = 0; i < miscTagArray.count; i++) {
-                             NSString *tagName = [miscTagArray objectAtIndex:i];
-                             int indexNum = [preexistingTags indexOfObject:tagName];
-                             NSString *tagObjectId = [preexistingTagId objectAtIndex:indexNum];
-                             
-                             BOOL sameTag = [preexistingTags containsObject:tagName];
-                             NSLog(@"BOOL %@", sameTag);
-                             if (sameTag == NO){
-                             PFObject* tagPop = [PFObject objectWithClassName:@"TagTrend"];
-                             NSLog(@"NO %@",tagName);
-                             
-                             // NSString *numPostsStr = @"1";
-                             NSNumber *numPosts = @1;
-                             tagPop[@"NumberOfPosts"] = numPosts;
-                             
-                             tagPop[@"TagName"] = tagName;
-                             
-                             [tagPop saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-                             if (!error) {
-                             NSLog(@"success");
-                             }else{
-                             NSLog(@"failure");}
-                             }];
-                             }else{
-                             NSNumber *numPosts = [numPostsArray objectAtIndex:indexNum];
-                             
-                             
-                             PFObject* tagPop = [PFObject objectWithoutDataWithClassName:@"TagTrend" objectId: tagObjectId];
-                             NSLog(@"YES %@",tagName);
-                             int tempNumPosts = [numPosts intValue];
-                             tempNumPosts ++;
-                             tagPop[@"NumberOfPosts"] = [NSNumber numberWithInt:tempNumPosts];
-                             
-                             
-                             
-                             [tagPop saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-                             if (!error) {
-                             NSLog(@"success");
-                             }else{
-                             NSLog(@"failure");}
-                             }];
-                             }
-                             
-                             
-                             
-                             
-                             
-                             
-                             
-                             // tagPop[@"NumberOfPosts"] = numPosts;
-                             
-                             }
-                             }
-                             
-                             
-                             
-                             */
-                            
-                            
-                            
-                            
-                            // tagPop[@"NumberOfPosts"] = numPosts;
-                            
-                        }
-                    }}}}];
-        
-        
-        
-        
-        
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        [ud setBool:YES forKey:@"originFromUploadOfImagePreviewVCKey"];
-        
-        if (self.imageView.image == NULL) {
-            NSLog(@"error");
-        }else{
-            NSData *imageData = UIImageJPEGRepresentation(self.image, 1.0);
-            PFFile *parseImageFile = [PFFile fileWithName:@"uploaded_image.jpg" data:imageData];
-            
-            
-            
-            
-            
-            [parseImageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (!error) {
-                    if (succeeded) {
-                        //Putting the photo in Parse
-                        PFObject* posts = [PFObject objectWithClassName:@"Tops"];
-                        posts[@"imageText"] = clothesName;
-                        posts[@"uploader"] = [PFUser currentUser];
-                        posts[@"imageFile"] = parseImageFile;
-                        posts[@"clothesExplanation"] = clothesDesciptionTextView.text;
-                        posts[@"season"] = seasonTextF.text;
-                        posts[@"Tags"] = miscTagArray;
-                        posts[@"brandTag"] = brandTagArray;
-                        //posts[@"tags"] =
-                        [posts saveInBackground];
-                        
-                        
-                        
-                        NSLog(@"success!!");
-                        [self backToCollectionView];
+                        //Saving tags
+                        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+                            NSLog(@"tag processing");
+                            if (error == nil) {
+                                int count = (int)objects.count;
+                                for (PFObject *object in objects){
+                                    NSString *tagName = [NSString stringWithFormat:@"%@", [object objectForKey:@"TagName"]];
+                                    [preexistingTags addObject:tagName];
+                                    NSLog(@"tagname %@", tagName);
+                                    
+                                    NSNumber *numPostsNSNUM = [object objectForKey:@"NumberOfPosts"];
+                                    //int numPosts = [numPostsStr intValue];
+                                    [numPostsArray addObject:numPostsNSNUM];
+                                    NSLog(@"tagNum %@", numPostsNSNUM);
+                                    
+                                    
+                                    //NSLog(@"number of posts %i", numPosts);
+                                    NSString *objectId = [NSString stringWithFormat:@"%@", [object objectId]];
+                                    [preexistingTagId addObject:objectId];
+                                    NSLog(@"tagId %@", objectId);
+                                    
+                                    
+                                    count --;
+                                    
+                                    if (count == 0) {
+                                        
+                                        //HAVE TO MAKE SURE THAT IT DOESNT LOOP UNTIL PROCESS DONE
+                                        
+                                        for (int i = 0; i < miscTagArray.count; i++) {
+                                            NSString *tagName = [miscTagArray objectAtIndex:i];
+                                            NSString *tagObjectId = [preexistingTagId objectAtIndex:i];
+                                            NSNumber *numPosts = [numPostsArray objectAtIndex:i];
+                                            BOOL sameTag = [preexistingTags containsObject:tagName];
+                                            
+                                            if (sameTag == NO){
+                                                PFObject* tagPop = [PFObject objectWithClassName:@"TagTrend"];
+                                                NSLog(@"NO %@",tagName);
+                                                
+                                                // NSString *numPostsStr = @"1";
+                                                NSNumber *numPosts = @1;
+                                                tagPop[@"NumberOfPosts"] = numPosts;
+                                                
+                                                tagPop[@"TagName"] = tagName;
+                                                
+                                                [tagPop saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+                                                    if (!error) {
+                                                        NSLog(@"success");
+                                                    }else{
+                                                        NSLog(@"failure");}
+                                                }];
+                                            }else{
+                                                NSUInteger tagIndex = [preexistingTags indexOfObject:tagName];
+                                                NSString *sameTagId = [preexistingTagId objectAtIndex:tagIndex];
+                                                
+                                                PFObject* tagPop = [PFObject objectWithoutDataWithClassName:@"TagTrend" objectId: sameTagId];
+                                                NSLog(@"YES %@",tagName);
+                                                int tempNumPosts = [numPosts intValue];
+                                                tempNumPosts ++;
+                                                tagPop[@"NumberOfPosts"] = [NSNumber numberWithInt:tempNumPosts];
+                                                [tagPop saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+                                                    if (!error) {
+                                                        NSLog(@"success");
+                                                        NSLog(@"tag done");
+                                                    }else{
+                                                        NSLog(@"failure");}
+
+                                                }];
+                                            }
+                              
+                                            
+                                        }
+                                        NSLog(@"success!!");
+                                        [self backToCollectionView];
+
+                                    }}}}];
+                    }else{
+                         
+                    NSLog(@"success!!");
+                    [self backToCollectionView];
+
                     }
-                } else {
-                    // Handle error
-                    NSLog(@"ERROR");
-                    [self showError];
-                }
-            }];
-        }
-        
+                    
+                                   }
+            } else {
+                // Handle error
+                NSLog(@"ERROR");
+                [self showError];
+            }
+        }];
     }
     
 }
+
+
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     
