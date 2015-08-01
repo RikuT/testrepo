@@ -516,6 +516,16 @@
                                     <segue destination="c50-fl-r0C" kind="modal" id="Xj8-xO-qrt"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eWw-br-cUf">
+                                <rect key="frame" x="12" y="443" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="NYy-Sj-7QC" kind="modal" id="Qrw-LC-dPS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -836,7 +846,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqO-5T-Hk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="632" y="-816"/>
+            <point key="canvasLocation" x="394" y="-835"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Ewf-R4-c9l">
@@ -1029,6 +1039,46 @@
             </objects>
             <point key="canvasLocation" x="2343" y="1349"/>
         </scene>
+        <!--Brand Search Table Controller-->
+        <scene sceneID="VtF-Tg-Cch">
+            <objects>
+                <tableViewController id="NYy-Sj-7QC" customClass="BrandSearchTableController" customModule="StringScoreDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="QIa-eP-gVH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1qo-VQ-3c7">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1qo-VQ-3c7" id="G6A-nQ-RTx">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="NYy-Sj-7QC" id="5f4-w0-Qjh"/>
+                            <outlet property="delegate" destination="NYy-Sj-7QC" id="BiK-mG-PDi"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ZBz-sH-v6t"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="o3c-0j-0IX" id="sMN-kA-ZQQ"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EGD-qE-IYB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="o3c-0j-0IX">
+                    <connections>
+                        <outlet property="delegate" destination="NYy-Sj-7QC" id="sUs-63-7wh"/>
+                        <outlet property="searchContentsController" destination="NYy-Sj-7QC" id="Oiz-TO-ZOt"/>
+                        <outlet property="searchResultsDataSource" destination="NYy-Sj-7QC" id="dPn-Wt-t4M"/>
+                        <outlet property="searchResultsDelegate" destination="NYy-Sj-7QC" id="Wa7-Lg-idA"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="932" y="-982"/>
+        </scene>
     </scenes>
     <resources>
         <image name="backBlur" width="640" height="1136"/>
@@ -1045,7 +1095,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Ie9-er-xeu"/>
         <segue reference="XKH-ik-kmo"/>
-        <segue reference="ZVg-TD-1de"/>
+        <segue reference="PbG-0j-NXL"/>
         <segue reference="TKa-A3-oIM"/>
         <segue reference="fO7-VD-hGW"/>
     </inferredMetricsTieBreakers>

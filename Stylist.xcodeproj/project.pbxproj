@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		321706F91B65EFA400812648 /* ProfilePicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321706F81B65EFA400812648 /* ProfilePicViewController.swift */; };
+		32170A2B1B6CE00F009F9665 /* StringScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32170A2A1B6CE00F009F9665 /* StringScore.swift */; };
+		32170A2E1B6CE030009F9665 /* BrandScoreStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32170A2C1B6CE030009F9665 /* BrandScoreStyleKit.swift */; };
+		32170A2F1B6CE030009F9665 /* BrandSearchTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32170A2D1B6CE030009F9665 /* BrandSearchTableController.swift */; };
+		32170A311B6CE03E009F9665 /* name_list.txt in Resources */ = {isa = PBXBuildFile; fileRef = 32170A301B6CE03E009F9665 /* name_list.txt */; };
 		326B13B21B61D0FC003A871D /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13A91B61D0FB003A871D /* PhotoViewController.m */; };
 		326B13B31B61D0FC003A871D /* ImagePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13AB1B61D0FC003A871D /* ImagePreviewViewController.m */; };
 		326B13B61B61D0FC003A871D /* ViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13B11B61D0FC003A871D /* ViewUtils.m */; };
@@ -84,6 +88,10 @@
 
 /* Begin PBXFileReference section */
 		321706F81B65EFA400812648 /* ProfilePicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfilePicViewController.swift; path = Stylist/ProfilePicViewController.swift; sourceTree = "<group>"; };
+		32170A2A1B6CE00F009F9665 /* StringScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringScore.swift; sourceTree = "<group>"; };
+		32170A2C1B6CE030009F9665 /* BrandScoreStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandScoreStyleKit.swift; sourceTree = "<group>"; };
+		32170A2D1B6CE030009F9665 /* BrandSearchTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandSearchTableController.swift; sourceTree = "<group>"; };
+		32170A301B6CE03E009F9665 /* name_list.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = name_list.txt; sourceTree = "<group>"; };
 		326B13A81B61D0FB003A871D /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoViewController.h; path = ../PhotoViewController.h; sourceTree = "<group>"; };
 		326B13A91B61D0FB003A871D /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoViewController.m; path = ../PhotoViewController.m; sourceTree = "<group>"; };
 		326B13AA1B61D0FC003A871D /* ImagePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagePreviewViewController.h; path = ../ImagePreviewViewController.h; sourceTree = "<group>"; };
@@ -219,6 +227,18 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		32170A291B6CDFE4009F9665 /* BrandSearch */ = {
+			isa = PBXGroup;
+			children = (
+				32170A2A1B6CE00F009F9665 /* StringScore.swift */,
+				32170A2C1B6CE030009F9665 /* BrandScoreStyleKit.swift */,
+				32170A301B6CE03E009F9665 /* name_list.txt */,
+				32170A2D1B6CE030009F9665 /* BrandSearchTableController.swift */,
+			);
+			name = BrandSearch;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		326B13B71B61D17E003A871D /* LLSimpleCamera */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,6 +366,7 @@
 				B696775E1B6218E600EC2F9A /* Camera */,
 				B696775F1B6229A300EC2F9A /* CollectionView */,
 				B69677621B62361500EC2F9A /* Login/Registeration */,
+				32170A291B6CDFE4009F9665 /* BrandSearch */,
 				B600E2321B416541007F8FDA /* UploadViewController.swift */,
 				321706FA1B65F2B500812648 /* UserProfileSetting */,
 				32C9C8A11B4DA2D400983181 /* SwipeableClothesTester.swift */,
@@ -512,6 +533,7 @@
 				326B13BF1B61DA15003A871D /* whiteCancel.png in Resources */,
 				32C9C89B1B4DA28200983181 /* Img1.jpg in Resources */,
 				32C9C89C1B4DA28200983181 /* Img2.jpg in Resources */,
+				32170A311B6CE03E009F9665 /* name_list.txt in Resources */,
 				B6CD24741B3D8BD50061E451 /* LaunchScreen.xib in Resources */,
 				32C9C89E1B4DA28200983181 /* Img4.jpg in Resources */,
 				B6CD24711B3D8BD50061E451 /* Images.xcassets in Resources */,
@@ -574,6 +596,7 @@
 				B6C353D51B67914F006CF285 /* NewCollectionViewCell.swift in Sources */,
 				32C9C8A21B4DA2D400983181 /* SwipeableClothesTester.swift in Sources */,
 				B6EC66281B3FFA8400B5BC58 /* LoginViewController.swift in Sources */,
+				32170A2F1B6CE030009F9665 /* BrandSearchTableController.swift in Sources */,
 				B6436C671B67698700B8DA64 /* SwiftPages.swift in Sources */,
 				32862E611B63326F0070FA05 /* userSettingViewController.swift in Sources */,
 				B69677611B622B7500EC2F9A /* DetailViewController.swift in Sources */,
@@ -591,6 +614,8 @@
 				B6EC66011B3FD31900B5BC58 /* ViewController.swift in Sources */,
 				B6CD24691B3D8BD50061E451 /* AppDelegate.m in Sources */,
 				B6C353D21B6790E9006CF285 /* NewViewController.swift in Sources */,
+				32170A2B1B6CE00F009F9665 /* StringScore.swift in Sources */,
+				32170A2E1B6CE030009F9665 /* BrandScoreStyleKit.swift in Sources */,
 				32862E5C1B631B530070FA05 /* SCLAlertViewResponder.m in Sources */,
 				32F3F1F91B52BA9C0051050B /* SCLAlertView.swift in Sources */,
 				32F48E0A1B670BFA009EF135 /* TLTagsControl.m in Sources */,
