@@ -21,7 +21,8 @@ class SwipeableClothesTester: UIViewController {
     
     
     //下のscrollviewの大きさが変わったら認知
-    var bottomViewHeight: Float? {
+    
+    var topViewHeight: CGFloat? {
         didSet {
             //処理を軽くしたい場合は追加する。半分の処理になる
             /*
@@ -31,12 +32,13 @@ class SwipeableClothesTester: UIViewController {
             [self.bottomViewSet()]
             }*/
             if(self.pictNumber == self.imageArray.count){
-                [self.bottomViewSet()]
+                [self.topViewMoved1()]
                 
                 println("didSet occured")
                 
             }}
     }
+
     
     //Create arrays of images from parse
     var imageFiles = [PFFile]()
@@ -47,13 +49,23 @@ class SwipeableClothesTester: UIViewController {
     var viewDidAppearInt: Int = 0
     var errorNumber: Int = 0
     
+    //For showing activity indicator
+    var container: UIView = UIView()
+    var loadingView: UIView = UIView()
+    var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+
+    
+   // var topViewHeight: CGFloat = 500
+    
     @IBOutlet weak var goBackButt: UIButton!
     
     //洋服の数 -1に設定して、誤作動を防止
     var pictNumber: Int = -1
     
     @IBOutlet weak var dottedLineView: UIImageView!
+    //@IBOutlet weak var dottedLineView2: UIImageView!
     //UIScrollViewを作成します
+    let scrView = UIScrollView()
     let scrView2 = UIScrollView()
     
     
@@ -137,30 +149,35 @@ class SwipeableClothesTester: UIViewController {
     func setScrView(){
         
         //UIScrollViewを作成します
-        let scrView = UIScrollView()
+        //let scrView = UIScrollView()
         
         //全体のサイズ
         //let CGwidth = self.view.frame.width
         let width = Int(self.view.frame.width)
         let intPictNumber = Int(self.imageArray.count)
         scrView.contentSize = CGSizeMake(CGFloat(width * intPictNumber), self.view.frame.height)
+        scrView2.contentSize = CGSizeMake(CGFloat(width * intPictNumber), self.view.frame.height)
+
         
+        //topViewHeight = self.view.frame.height / 2
         //表示位置 + 1ページ分のサイズ
-        scrView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
+        scrView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height / 2)
+        scrView2.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
         
         
         
         
         //  dispatch_async(dispatch_get_main_queue()) {
-        
+        self.view.addSubview(scrView2)
         self.view.addSubview(scrView)
         
+        /*
         //最初のbottomViewの大きさ指定
         var tempViewHeight1 = Float(self.dottedLineView.frame.origin.y)
         var tempViewHeight2 =  Float(self.dottedLineView.frame.height)/2
         var tempViewHeight = tempViewHeight1 + tempViewHeight2
         self.bottomViewHeight = tempViewHeight
-        
+        */
         
         
         for var i = 0; i < intPictNumber; ++i {
@@ -168,12 +185,31 @@ class SwipeableClothesTester: UIViewController {
             println(image)
             var imageView = UIImageView(image: image)
             imageView.frame = CGRectMake(CGFloat(width * i), 0, self.view.frame.width, self.view.frame.height)
+            //var imageView2 = imageView
             scrView.addSubview(imageView)
+            //scrView2.addSubview(imageView2)
+        }
+        
+        for var i = 0; i < intPictNumber; ++i {
+            var image = imageArray[i]
+            println(image)
+            var imageView = UIImageView(image: image)
+            imageView.frame = CGRectMake(CGFloat(width * i), 0, self.view.frame.width, self.view.frame.height)
+            //var imageView2 = imageView
+            scrView2.addSubview(imageView)
+            //scrView2.addSubview(imageView2)
         }
         
         
         // １ページ単位でスクロールさせる
         scrView.pagingEnabled = true
+        scrView2.pagingEnabled = true
+        
+        
+        //scroll画面の初期位置
+        //scrView2.contentOffset = CGPointMake(0, 0);
+        
+
         
         //scroll画面の初期位置(ここは後で要変更。NSUserDefaultsで初期位置を保存する)
         scrView.contentOffset = CGPointMake(0, 0);
@@ -181,14 +217,15 @@ class SwipeableClothesTester: UIViewController {
         
         
         //下の洋服のviewに追加します(処理軽減のためbottomViewSetではなく、viewDidLoadで実行)
-        self.view.addSubview(self.scrView2)
+        //self.view.addSubview(self.scrView2)
         
         
         //下の洋服の画像処理をここでやります。(処理軽減のため)
-        self.adjustingBottomImagetoFit()
+       // self.adjustingBottomImagetoFit()
         
-        [self.bottomViewSet()]
+        [self.topViewMoved1()]
         
+        self.view.bringSubviewToFront(scrView)
         self.view.bringSubviewToFront(self.dottedLineView)
         self.view.bringSubviewToFront(self.goBackButt)
         
@@ -196,7 +233,7 @@ class SwipeableClothesTester: UIViewController {
         //負荷テスト用
         //var timer = NSTimer.scheduledTimerWithTimeInterval(0.0001, target: self, selector: Selector("bottomViewSet"), userInfo: nil, repeats: true)
         
-        
+        self.hideActivityIndicator(self.view)
     }
     
     
@@ -209,6 +246,7 @@ class SwipeableClothesTester: UIViewController {
         // キーidに「taro」という値を格納。（idは任意の文字列でok）
         ud.removeObjectForKey("closeAlertKeyNote")
         ud.removeObjectForKey("closeAlertKey")
+        topViewHeight = self.view.frame.height / 2
         
         self.showActivityIndicatory(self.view)
         println("ViewDidLoad appearInt = \(viewDidAppearInt)")
@@ -221,14 +259,15 @@ class SwipeableClothesTester: UIViewController {
         if let dotView = recognizer.view {
             dotView.center = CGPoint(x: self.view.bounds.width/2,
                 y:dotView.center.y + translation.y)
-            bottomViewHeight = Float(dotView.center.y + translation.y)
-            println(bottomViewHeight)
+            topViewHeight = dotView.center.y + translation.y
+            println(topViewHeight)
         }
         recognizer.setTranslation(CGPointZero, inView: self.view)
         
     }
     
     
+    /*
     func adjustingBottomImagetoFit(){
         //resizing bottom image to fit the screen
         //ここで下の洋服のすべての画像処理をやらないとだめ。
@@ -252,10 +291,18 @@ class SwipeableClothesTester: UIViewController {
         }
         
     }
+*/
     
     //これは下の洋服のscrollViewの大きさが変わるごとに実行されるので、autoReleasePoolを使って軽くしたい
-    func bottomViewSet(){
+    func topViewMoved1(){
         
+
+        scrView.frame = CGRectMake(0, 0, self.view.frame.width, topViewHeight!)
+        var cgPictNum = CGFloat (pictNumber)
+        
+        scrView.contentSize = CGSizeMake(self.view.frame.width * cgPictNum, topViewHeight!)
+        
+        /*
         //下の服の処理
         //////////////////////////////////////////////////////////
         
@@ -284,8 +331,10 @@ class SwipeableClothesTester: UIViewController {
             
             //ImageViewをscrollViewに追加(メモリ圧迫??)
             scrView2.addSubview(imageView)
-            
-        }
+
+
+
+*/
         
         
         /*
@@ -293,6 +342,7 @@ class SwipeableClothesTester: UIViewController {
         //UIImageViewにUIIimageを追加
         let imgView1 = UIImageView(image:resizedImagetest)
         //let imgView2 = UIImageView(image:imgBot2)
+        
         //let imgView3 = UIImageView(image:imgBot3)
         
         
@@ -312,33 +362,22 @@ class SwipeableClothesTester: UIViewController {
         //  scrView2.addSubview(imgView3)ƒ
         */
         
-        // １ページ単位でスクロールさせる
-        scrView2.pagingEnabled = true
-        
-        
-        //scroll画面の初期位置
-        //scrView2.contentOffset = CGPointMake(0, 0);
-        
-        self.view.bringSubviewToFront(dottedLineView)
-        println("bottomViewSet")
+         println("bottomViewSet")
         
     }
     
     func showActivityIndicatory(uiView: UIView) {
         
-        var container: UIView = UIView()
         container.frame = uiView.frame
         container.center = uiView.center
         container.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
         
-        var loadingView: UIView = UIView()
         loadingView.frame = CGRectMake(0, 0, 100, 100)
         loadingView.center = uiView.center
         //loadingView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
         loadingView.clipsToBounds = true
         loadingView.layer.cornerRadius = 10
         
-        var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
         actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
         actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
         actInd.center = CGPointMake(loadingView.frame.size.width / 2,
@@ -348,6 +387,12 @@ class SwipeableClothesTester: UIViewController {
         uiView.addSubview(container)
         actInd.startAnimating()
     }
+    
+    func hideActivityIndicator(uiView: UIView) {
+        actInd.stopAnimating()
+        container.removeFromSuperview()
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
