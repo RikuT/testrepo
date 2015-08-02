@@ -78,13 +78,9 @@
     tagInputField_.layer.borderColor = [UIColor lightGrayColor].CGColor;
     tagInputField_.backgroundColor = [UIColor whiteColor];
     tagInputField_.delegate = self;
-    
-    //フォント
-    tagInputField_.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
-    tagInputField_.placeholder = @"Add tags";
+    tagInputField_.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+    tagInputField_.placeholder = @"tag";
     tagInputField_.autocorrectionType = UITextAutocorrectionTypeNo;
-    
-
     
     if (_mode == TLTagsControlModeEdit) {
         [self addSubview:tagInputField_];
@@ -156,7 +152,7 @@
     
     self.contentSize = contentSize;
     
-    tagInputField_.placeholder = (_tagPlaceholder == nil) ? @"Add tags" : _tagPlaceholder;
+    tagInputField_.placeholder = (_tagPlaceholder == nil) ? @"tag" : _tagPlaceholder;
 }
 
 - (void)addTag:(NSString *)tag {
@@ -226,27 +222,25 @@
         tagLabel.clipsToBounds = YES;
         tagLabel.layer.cornerRadius = 5;
         
-        if (_mode == TLTagsControlModeEdit) {
-            UIButton *deleteTagButton = [[UIButton alloc] initWithFrame:tagInputField_.frame];
-            CGRect buttonFrame = deleteTagButton.frame;
-            [deleteTagButton.titleLabel setFont:tagInputField_.font];
-            [deleteTagButton addTarget:self action:@selector(deleteTagButton:) forControlEvents:UIControlEventTouchUpInside];
-            buttonFrame.size.width = deleteTagButton.frame.size.height;
-            buttonFrame.size.height = tagInputField_.frame.size.height;
-            [deleteTagButton setTag:tagSubviews_.count];
-            [deleteTagButton setTitle:@"✕" forState:UIControlStateNormal];
-            [deleteTagButton setTitleColor:tagDeleteButtonColor forState:UIControlStateNormal];
-            buttonFrame.origin.y = 0;
-            buttonFrame.origin.x = labelFrame.size.width;
-            
-            deleteTagButton.frame = buttonFrame;
-            tagFrame.size.width = labelFrame.size.width + buttonFrame.size.width;
-            [tagView addSubview:deleteTagButton];
-            labelFrame.origin.x = 0;
-        } else {
-            tagFrame.size.width = labelFrame.size.width + 5;
-            labelFrame.origin.x = (tagFrame.size.width - labelFrame.size.width) * 0.5;
-        }
+        
+        UIButton *deleteTagButton = [[UIButton alloc] initWithFrame:tagInputField_.frame];
+        CGRect buttonFrame = deleteTagButton.frame;
+        [deleteTagButton.titleLabel setFont:tagInputField_.font];
+        [deleteTagButton addTarget:self action:@selector(deleteTagButton:) forControlEvents:UIControlEventTouchUpInside];
+        buttonFrame.size.width = deleteTagButton.frame.size.height;
+        buttonFrame.size.height = tagInputField_.frame.size.height;
+        [deleteTagButton setTag:tagSubviews_.count];
+        [deleteTagButton setTitle:@"✕" forState:UIControlStateNormal];
+        [deleteTagButton setTitleColor:tagDeleteButtonColor forState:UIControlStateNormal];
+        buttonFrame.origin.y = 0;
+        buttonFrame.origin.x = labelFrame.size.width;
+        
+        deleteTagButton.frame = buttonFrame;
+        tagFrame.size.width = labelFrame.size.width + buttonFrame.size.width;
+        [tagView addSubview:deleteTagButton];
+        labelFrame.origin.x = 0;
+        
+        
         
         [tagView addSubview:tagLabel];
         labelFrame.origin.y = 0;
@@ -266,6 +260,7 @@
     if (_mode == TLTagsControlModeEdit) {
         if (tagInputField_.superview == nil) {
             [self addSubview:tagInputField_];
+            
         }
         CGRect frame = tagInputField_.frame;
         if (tagSubviews_.count == 0) {
@@ -311,8 +306,9 @@
         textField.text = @"";
         [self addTag:tag];
     }else{
+        //Textfield will resign if there is nothing in the textfield
         [textField resignFirstResponder];
-
+        
     }
     
     return YES;
@@ -353,7 +349,6 @@
         return YES;
     }
 }
-
 
 #pragma mark - other
 

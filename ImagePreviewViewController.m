@@ -8,6 +8,8 @@
 #import "ImagePreviewViewController.h"
 #import "ViewUtils.h"
 #import "SCLAlertView.h"
+//#import "Stylist-Swift.h"
+//#import "BrandSearchTableController.swift"
 //#import "UIImage+Crop.h"
 
 @interface ImagePreviewViewController ()
@@ -98,8 +100,17 @@
     hashTagLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
     [scrollview addSubview:hashTagLabel];
     
-    brandTag = [[TLTagsControl alloc]initWithFrame:CGRectMake(65, self.imageView.height + brandTagPositionHeight + 5, self.view.bounds.size.width - 70, 30)];
+    brandTag = [[TLTagsControl alloc]initWithFrame:CGRectMake(65, self.imageView.height + brandTagPositionHeight + 5, self.view.bounds.size.width - 150, 30)];
+    brandTag.mode = TLTagsControlModeList;
     [scrollview addSubview:brandTag];
+    UIButton *brandAddButt = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 90, self.imageView.height + brandTagPositionHeight + 5, 90, 30)];
+    brandAddButt.backgroundColor = [UIColor whiteColor];
+    brandAddButt.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+    [brandAddButt setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [brandAddButt setTitle:@"Add brand" forState:UIControlStateNormal];
+    [brandAddButt addTarget:self action:@selector(brandButtTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollview addSubview:brandAddButt];
+
     
     //Add Tags
     //
@@ -154,6 +165,18 @@
 }
 
 //////////////////////////
+
+//ここのボタンをタップしたらBrandSearchTableControllerに行けるようにしたい。
+-(void)brandButtTapped:(UIButton*)button{
+    // ここに何かの処理を記述する
+    
+    NSLog(@"brandbuttTapped");
+    [self performSegueWithIdentifier:@"imagePreviewVCtoBrandSearchVC" sender:self];
+    // show the image
+    // *imageVC = [[BrandSearchTableController alloc] initWithImage:image];
+    //[self presentViewController:imageVC animated:YES completion:nil];
+    
+}
 
 
 // The number of columns of data
@@ -255,7 +278,7 @@
                     posts[@"season"] = seasonTextF.text;
                     posts[@"Tags"] = miscTagArray;
                     posts[@"brandTag"] = brandTagArray;
-                    //posts[@"tags"] =
+                    //posts[@"tags"] =T
                     [posts saveInBackground];
                     
                     //Setting tags (check if there is an overlapping tag and calculate tag popularity)
