@@ -171,10 +171,13 @@
     // ここに何かの処理を記述する
     
     NSLog(@"brandbuttTapped");
-    [self performSegueWithIdentifier:@"imagePreviewVCtoBrandSearchVC" sender:self];
-    // show the image
-    // *imageVC = [[BrandSearchTableController alloc] initWithImage:image];
-    //[self presentViewController:imageVC animated:YES completion:nil];
+    NSString * storyboardName = @"Main";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"imagePreviewVCtoBrandSearchVC"];
+    
+    [self presentViewController:vc animated:YES completion:nil];
+    
+    //animated can be NO
     
 }
 

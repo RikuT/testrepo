@@ -1050,7 +1050,7 @@
         <!--Root View Controller-->
         <scene sceneID="56z-iW-Xni">
             <objects>
-                <tableViewController id="99s-No-30Z" customClass="BrandSearchTableController" customModule="Stylist" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="imagePreviewVCtoBrandSearchVC" id="99s-No-30Z" customClass="BrandSearchTableController" customModule="Stylist" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NaN-cJ-eNm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1060,15 +1060,15 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="Select a Brand" id="ahR-VJ-kf6">
-                                    <barButtonItem key="leftBarButtonItem" style="plain" id="3Pb-5u-HL9">
+                                    <barButtonItem key="leftBarButtonItem" title="Back" style="plain" id="3Pb-5u-HL9">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yTl-0V-ueL">
                                             <rect key="frame" x="-23" y="-15" width="71" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Button">
+                                            <state key="normal" title="Back">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <segue destination="OGb-dt-L6C" kind="modal" identifier="BrandSearchVCtoimagePreviewVC" id="pib-E4-WEA"/>
+                                                <segue destination="OGb-dt-L6C" kind="modal" id="Spu-D7-49D"/>
                                             </connections>
                                         </button>
                                     </barButtonItem>
@@ -1077,7 +1077,7 @@
                         </navigationBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="yEU-5Z-O4e">
-                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yEU-5Z-O4e" id="UbV-bf-YdQ">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1091,10 +1091,46 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="Q4h-Ut-8cr"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C17-tj-xZ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1385" y="-1368"/>
+            <point key="canvasLocation" x="1303" y="-1510"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="CF5-ed-lTn">
+            <objects>
+                <viewController id="jm7-4J-FT4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VGB-Y7-Jlo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dgb-td-Qb4">
+                                <rect key="frame" x="0.0" y="57" width="320" height="511"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Way-nn-Z8E">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Way-nn-Z8E" id="R3a-0h-tO0">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="99s-No-30Z" id="QIi-35-FOw"/>
+                                    <outlet property="delegate" destination="99s-No-30Z" id="ai0-19-RIf"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4yw-qO-NY7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1669" y="-1507"/>
         </scene>
         <!--Image Preview View Controller-->
         <scene sceneID="aeZ-TT-Iq5">
@@ -1105,9 +1141,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <segue destination="OTw-PF-Rpp" kind="modal" identifier="imagePreviewVCtoBrandSearchVC" id="CbI-3P-FO4"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SRy-8g-V7Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1127,7 +1160,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lev-Js-YPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="836" y="-1504"/>
+            <point key="canvasLocation" x="803" y="-1504"/>
         </scene>
     </scenes>
     <resources>
@@ -1144,10 +1177,9 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="TKa-A3-oIM"/>
-        <segue reference="CbI-3P-FO4"/>
-        <segue reference="qXM-AK-tWs"/>
         <segue reference="Ie9-er-xeu"/>
         <segue reference="XKH-ik-kmo"/>
+        <segue reference="qXM-AK-tWs"/>
         <segue reference="BK8-ow-a7u"/>
     </inferredMetricsTieBreakers>
 </document>
