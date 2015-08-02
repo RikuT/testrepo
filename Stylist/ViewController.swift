@@ -18,10 +18,29 @@ class ViewController: UIViewController {
     }
     @IBOutlet var swiftPagesView: SwiftPages!
     
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var overallNav: UIView!
+    @IBOutlet weak var appearentNav: UIView!
+    var overallHeight: CGFloat = 0
+    var appearentNavHeight: CGFloat = 0
+    var upPosition = CGRectMake(0, 0, 0, 0)
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        navigationBar.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1)
+        appearentNav.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
+        appearentNav.layer.borderColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1).CGColor
+        appearentNav.layer.borderWidth = 1.5
+      //  self.navigationBar.frame =
+        
+        //Setting CGRect to detect whether the menu is shown
+        overallHeight = overallNav.frame.height
+        appearentNavHeight = appearentNav.frame.height
+        upPosition = CGRectMake(0, self.view.frame.height - overallHeight, self.view.frame.width, overallHeight)
+
         
         // 「ud」というインスタンスをつくる。
         let ud = NSUserDefaults.standardUserDefaults()
@@ -61,6 +80,41 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func menuBtnTapped() {
+                let navDifference = overallHeight - appearentNavHeight
+        var currentNavPosition = self.overallNav.frame
+        println("currentNavPos \(currentNavPosition)")
+        println("upPosition \(upPosition)")
+        //overallNav.layer.position = CGPointMake(0, -navDifference)
+        if (currentNavPosition == upPosition){
+            println("already up")
+            // アニメーション処理
+            UIView.animateWithDuration(NSTimeInterval(CGFloat(0.3)),
+                animations: {() -> Void in
+                    
+                    // 移動先の座標を指定する.
+                    self.overallNav.frame = CGRectMake(0, self.view.frame.height - self.appearentNavHeight, self.view.frame.width, self.appearentNavHeight)
+                    
+                }, completion: {(Bool) -> Void in
+            })
+
+        }else{
+        
+        
+        // アニメーション処理
+        UIView.animateWithDuration(NSTimeInterval(CGFloat(0.3)),
+            animations: {() -> Void in
+                
+                // 移動先の座標を指定する.
+                self.overallNav.frame = CGRectMake(0, self.view.frame.height - self.overallHeight, self.view.frame.width, self.overallHeight)
+                
+            }, completion: {(Bool) -> Void in
+        })
+        }
+        
+        
+        
+    }
     
     
     @IBAction func logoutButtonTapped(sender: AnyObject) {
