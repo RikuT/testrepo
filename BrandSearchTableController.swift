@@ -11,7 +11,10 @@ import UIKit
 
 typealias NameAndScoreTuple = (name:String, score:Double)
 
-class BrandSearchTableController : UITableViewController, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating {
+class BrandSearchTableController : UIViewController, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var tableView: UITableView!
+    
+    
 	lazy var dataSourceArray:[String] = {
 		if let path = NSBundle.mainBundle().pathForResource("name_list", ofType: "txt") {
 			if let data = NSData(contentsOfFile: path) {
@@ -51,6 +54,10 @@ class BrandSearchTableController : UITableViewController, UISearchBarDelegate, U
 		commonInit()
 	}
 	
+    @IBAction func brandBack(sender: AnyObject) {
+        
+        self.dismissViewControllerAnimated(false, completion: nil)
+    }
     /*
 	override init() {
 		super.init()
@@ -87,15 +94,15 @@ class BrandSearchTableController : UITableViewController, UISearchBarDelegate, U
 	}
 	
 	// MARK: Table View Data Source and Delegate methods
-	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+	 func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 1
 	}
 	
-	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	 func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return dataSourceArray.count
 	}
 	
-	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+	 func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: defaultCellReuseIdentifier)
 		
 		cell.textLabel?.text = dataSourceArray[indexPath.row]
@@ -154,7 +161,7 @@ class BrandSearchTableController : UITableViewController, UISearchBarDelegate, U
 	}
     
     // Cell が選択された場合
-    override func tableView(table: UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath) {
+     func tableView(table: UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath) {
         // [indexPath.row] から画像名を探し、UImage を設定
         //selectedImage = UIImage(named:"\(imgArray[indexPath.row])")
         // SubViewController へ遷移するために Segue を呼び出す
