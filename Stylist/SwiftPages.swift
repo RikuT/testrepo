@@ -32,7 +32,7 @@ class SwiftPages: UIView, UIScrollViewDelegate {
     private var containerViewBackground = UIColor.whiteColor()
     
     //Item size variables
-    private var topBarHeight: CGFloat = 37
+    private var topBarHeight: CGFloat = 32
     private var animatedBarHeight: CGFloat = 3
     
     //Bar item variables

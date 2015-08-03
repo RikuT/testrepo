@@ -34,8 +34,8 @@ class ViewController: UIViewController {
     var blackBlurBtn: UIButton!
 
     
-    var overallHeight: CGFloat = 160
-    var appearentNavHeight: CGFloat = 30
+    var overallHeight: CGFloat = 320
+    var appearentNavHeight: CGFloat = 32
     var upPosition = CGRectMake(0, 0, 0, 0)
     
     
@@ -48,8 +48,9 @@ class ViewController: UIViewController {
         appearentNav = UIView(frame: CGRectMake(0, 0, self.view.frame.width, appearentNavHeight))
         appearentNav.backgroundColor = UIColor(white: 1, alpha: 0.8)
         
-        var appearentNavLine: UIView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 3))
+        var appearentNavLine: UIView = UIView(frame: CGRectMake(0, 0, self.view.frame.width - 30, 3))
         appearentNavLine.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 0.75)
+        appearentNavLine.center.x = appearentNav.center.x
         appearentNav.addSubview(appearentNavLine)
         //appearentNav.layer.borderColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1).CGColor
         //appearentNav.layer.borderWidth = 2.5
@@ -77,7 +78,8 @@ class ViewController: UIViewController {
         menuButton.center = appearentNav.center
         //menuButton.backgroundColor = UIColor.blueColor()
         menuButton.setTitle("Menu", forState: .Normal)
-        menuButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        menuButton.setTitleColor(UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1), forState: .Normal)
+        menuButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 20)
         menuButton.addTarget(self, action: "menuBtnTapped", forControlEvents: .TouchUpInside)
         appearentNav.addSubview(menuButton)
         
