@@ -30,18 +30,6 @@
                                                 </connections>
                                             </button>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="7Gu-io-4pV">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fKh-Ci-u2T">
-                                                <rect key="frame" x="242" y="7" width="43" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Fitting">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="Gk5-7l-8RI" kind="modal" id="d2V-I9-fR9"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -68,11 +56,14 @@
                         <outlet property="navigationBar" destination="KnJ-3v-krq" id="2Gx-6t-BFI"/>
                         <outlet property="swiftPagesView" destination="Y4q-L0-eQu" id="SG8-bJ-Yvs"/>
                         <segue destination="PNQ-ru-7to" kind="modal" identifier="loginView" animates="NO" id="BK8-ow-a7u"/>
+                        <segue destination="4H1-83-9jU" kind="modal" identifier="VCtoClosetVC" id="ElC-ds-RgJ"/>
+                        <segue destination="x8p-fI-vlR" kind="modal" identifier="VCtoAccountVC" id="z6c-Iv-rJh"/>
+                        <segue destination="Gk5-7l-8RI" kind="modal" identifier="VCtoFittingVC" id="90f-Dk-xuS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1J-0Z-pgo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1027" y="453"/>
+            <point key="canvasLocation" x="1074" y="673"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="J00-nZ-Yq8">
@@ -1003,51 +994,6 @@
             </objects>
             <point key="canvasLocation" x="1944" y="1349"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Rag-1A-rgC">
-            <objects>
-                <viewController restorationIdentifier="NaviVC" storyboardIdentifier="NaviVC" id="KTM-ji-yUc" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="M2R-vg-YVB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Navi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="klE-nY-F9L">
-                                <rect key="frame" x="54" y="252" width="212" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OTN-wb-5Js">
-                                <rect key="frame" x="43" y="87" width="95" height="95"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.13249145552145603" blue="0.016758933643053475" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Tops">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="4H1-83-9jU" kind="modal" id="MwS-4u-NVF"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1nt-zs-Hxh">
-                                <rect key="frame" x="192" y="87" width="95" height="95"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.043863159518529038" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Settings">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="x8p-fI-vlR" kind="modal" id="KcB-Ir-6tX"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cdH-Eq-czq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2343" y="1349"/>
-        </scene>
         <!--Brand Search Table Controller-->
         <scene sceneID="CF5-ed-lTn">
             <objects>
@@ -1143,8 +1089,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="j8y-ny-OAp"/>
         <segue reference="BK8-ow-a7u"/>
-        <segue reference="KcB-Ir-6tX"/>
+        <segue reference="z6c-Iv-rJh"/>
+        <segue reference="ElC-ds-RgJ"/>
         <segue reference="XKH-ik-kmo"/>
-        <segue reference="TKa-A3-oIM"/>
     </inferredMetricsTieBreakers>
 </document>

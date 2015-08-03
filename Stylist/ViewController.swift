@@ -165,8 +165,8 @@ class ViewController: UIViewController {
     
     func initializePageView(){
         //Initiation
-        var VCIDs : [String] = ["LikeVC", "NewVC", "TagVC","NaviVC"]
-        var buttonTitles : [String] = ["Like", "New", "Tags","Navi"]
+        var VCIDs : [String] = ["LikeVC", "NewVC", "TagVC"]
+        var buttonTitles : [String] = ["Like", "New", "Tags"]
         
         //Sample customization
         swiftPagesView.setOriginY(0.0)
@@ -238,15 +238,18 @@ class ViewController: UIViewController {
     }
     func closetBtnTapped(){
         println("closet")
+        self.performSegueWithIdentifier("VCtoClosetVC", sender: self)
     }
     func fittingBtnTapped(){
         println("fitting")
+        self.performSegueWithIdentifier("VCtoFittingVC", sender: self)
     }
     func cameraBtnTapped(){
         println("camera")
     }
     func accountBtnTapped(){
         println("account")
+        self.performSegueWithIdentifier("VCtoAccountVC", sender: self)
     }
     func helpBtnTapped(){
         println("help")
