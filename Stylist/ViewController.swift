@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     var blackBlurBtn: UIButton!
 
     
-    var overallHeight: CGFloat = 320
+    var overallHeight: CGFloat = 160
     var appearentNavHeight: CGFloat = 32
     var upPosition = CGRectMake(0, 0, 0, 0)
     
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         navigationBar.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1)
         
         appearentNav = UIView(frame: CGRectMake(0, 0, self.view.frame.width, appearentNavHeight))
-        appearentNav.backgroundColor = UIColor(white: 1, alpha: 0.8)
+        appearentNav.backgroundColor = UIColor(white: 1, alpha: 0.6)
         
         var appearentNavLine: UIView = UIView(frame: CGRectMake(0, 0, self.view.frame.width - 30, 3))
         appearentNavLine.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 0.75)
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         //appearentNav.layer.borderColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1).CGColor
         //appearentNav.layer.borderWidth = 2.5
         
-        let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.ExtraLight)
         overallNav = UIVisualEffectView(effect: blurEffect)
         overallNav.frame = CGRectMake(0, self.view.frame.height - appearentNavHeight, self.view.frame.width, overallHeight)
         
