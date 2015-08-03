@@ -56,7 +56,7 @@ class BrandSearchTableController : UIViewController, UISearchBarDelegate, UISear
 	
     @IBAction func brandBack(sender: AnyObject) {
         
-        self.dismissViewControllerAnimated(false, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     /*
 	override init() {

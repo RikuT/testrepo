@@ -217,18 +217,6 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		self.loadCollectionViewData()
 	}
 	
-	@IBAction func finishButt() {
-		let ud = NSUserDefaults.standardUserDefaults()
-		var fromUploadImagePreview = ud.boolForKey("originFromUploadOfImagePreviewVCKey")
-		ud.removeObjectForKey("originFromUploadOfImagePreviewVCKey")
-		if fromUploadImagePreview == true{
-			self.performSegueWithIdentifier("topsVCtoVCnotUnwind", sender: self)
-		}else{
-			println("finishTapped")
-			self.performSegueWithIdentifier("topsVCtoVC", sender: self)
-		}
-	}
-	
 	
 	/*
 	==========================================================================================
