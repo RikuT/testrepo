@@ -11,6 +11,8 @@ import UIKit
 
 typealias NameAndScoreTuple = (name:String, score:Double)
 
+var currentView = 0
+
 class BrandSearchTableController : UIViewController, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     
@@ -49,6 +51,10 @@ class BrandSearchTableController : UIViewController, UISearchBarDelegate, UISear
 		commonInit()
 	}
 	
+    override func viewWillAppear(animated: Bool) {
+        currentView = 0;
+    }
+    
 	required init(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		commonInit()
@@ -166,8 +172,9 @@ class BrandSearchTableController : UIViewController, UISearchBarDelegate, UISear
         //selectedImage = UIImage(named:"\(imgArray[indexPath.row])")
         // SubViewController へ遷移するために Segue を呼び出す
         //performSegueWithIdentifier("toSubViewController",sender: nil)
+        var tapResult: NSString = "BRAND"
         if(checkUpdate == 0){
-            var tapResult = dataSourceArray[indexPath.row]
+            tapResult = dataSourceArray[indexPath.row]
             println("results \(tapResult)")
 
 
@@ -175,9 +182,20 @@ class BrandSearchTableController : UIViewController, UISearchBarDelegate, UISear
         if(checkUpdate == 1){
         let resultsController = searchController.searchResultsController as! ResultsTableController
         var tapResultTuple = resultsController.searchResultArray[indexPath.row]
-        var tapResult = tapResultTuple.name
+        tapResult = tapResultTuple.name
         println("results \(tapResult)")
         }
+        let ud = NSUserDefaults.standardUserDefaults()
+        ud.removeObjectForKey("brandNameKey")
+        ud.setObject(tapResult, forKey: "brandNameKey")
+        if (currentView == 0){
+        self.dismissViewControllerAnimated(true, completion: nil)
+        }else{
+            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismissViewControllerAnimated(true, completion: nil)
+
+        }
+
     }
 
 }
@@ -193,8 +211,15 @@ class ResultsTableController : UITableViewController, UISearchControllerDelegate
 		super.viewDidLoad()
 		
 		tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: defaultCellReuseIdentifier)
+        let ud = NSUserDefaults.standardUserDefaults()
+        ud.setObject("BRAND", forKey: "brandNameKey")
+        
 	}
 	
+    override func viewWillAppear(animated: Bool) {
+        currentView = 1;
+    }
+    
 	// MARK: Table View Data Source and Delegate methods
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 1

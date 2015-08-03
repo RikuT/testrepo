@@ -20,6 +20,8 @@
     TLTagsControl *brandTag;
     TLTagsControl *miscTag;
     NSString *textViewPlaceHolder;
+    NSMutableArray *brandArray;
+    UIScrollView *scrollview;
 }
 
 - (instancetype)initWithImage:(UIImage *)image;

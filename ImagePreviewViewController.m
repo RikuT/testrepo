@@ -38,11 +38,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIScrollView *scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
     scrollview.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height *2);
     
-    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setObject:@"BRAND" forKey:@"brandNameKey"];
+    brandArray = [NSMutableArray array];
     
     
     self.imageView.backgroundColor = [UIColor blackColor];
@@ -110,7 +112,6 @@
     [brandAddButt setTitle:@"Add brand" forState:UIControlStateNormal];
     [brandAddButt addTarget:self action:@selector(brandButtTapped:) forControlEvents:UIControlEventTouchUpInside];
     [scrollview addSubview:brandAddButt];
-
     
     //Add Tags
     //
@@ -357,24 +358,24 @@
                                                         NSLog(@"tag done");
                                                     }else{
                                                         NSLog(@"failure");}
-
+                                                    
                                                 }];
                                             }
-                              
+                                            
                                             
                                         }
                                         NSLog(@"success!!");
                                         [self backToCollectionView];
-
+                                        
                                     }}}}];
                     }else{
-                         
-                    NSLog(@"success!!");
-                    [self backToCollectionView];
-
+                        
+                        NSLog(@"success!!");
+                        [self backToCollectionView];
+                        
                     }
                     
-                                   }
+                }
             } else {
                 // Handle error
                 NSLog(@"ERROR");
@@ -509,6 +510,8 @@
     //    }
 }
 
+
+
 //For showing placeholder for textView
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
@@ -547,6 +550,25 @@
     
     self.imageView.frame = self.view.contentBounds;
     
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *addedBrand = [ud objectForKey:@"brandNameKey"];
+    NSLog(@"addedbrand %@", addedBrand);
+    
+    if ([addedBrand isEqualToString:@"BRAND"]) {
+        NSLog(@"no added brand");
+    }else{
+        BOOL brandArrayContains = [brandArray containsObject:addedBrand];
+        if (brandArrayContains == NO) {
+            [brandArray addObject:addedBrand];
+            NSLog(@"brandArray %@", brandArray);
+            brandTag.tags = [brandArray mutableCopy];
+            //[self initializeBrandTags];
+            [brandTag reloadTagSubviews];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {

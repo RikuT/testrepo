@@ -516,16 +516,6 @@
                                     <segue destination="c50-fl-r0C" kind="modal" id="Xj8-xO-qrt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eWw-br-cUf">
-                                <rect key="frame" x="12" y="443" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="OTw-PF-Rpp" kind="modal" id="9ta-cj-Brq"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -1008,7 +998,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Way-nn-Z8E">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Way-nn-Z8E" id="R3a-0h-tO0">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1071,7 +1061,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lev-Js-YPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="883" y="-1629"/>
+            <point key="canvasLocation" x="846" y="-1504"/>
         </scene>
     </scenes>
     <resources>
@@ -1087,10 +1077,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="j8y-ny-OAp"/>
-        <segue reference="BK8-ow-a7u"/>
+        <segue reference="qXM-AK-tWs"/>
         <segue reference="z6c-Iv-rJh"/>
-        <segue reference="ElC-ds-RgJ"/>
         <segue reference="XKH-ik-kmo"/>
+        <segue reference="ElC-ds-RgJ"/>
+        <segue reference="BK8-ow-a7u"/>
     </inferredMetricsTieBreakers>
 </document>
