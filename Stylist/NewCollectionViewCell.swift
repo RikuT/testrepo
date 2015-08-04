@@ -15,17 +15,18 @@ import Parse
 class NewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var postsImageView: PFImageView!
     @IBOutlet weak var profileImageView: PFImageView!
-    @IBOutlet weak var postsLabel: UILabel!
+   // @IBOutlet weak var postsLabel: UILabel!
     @IBOutlet weak var votesLabel:UILabel?
     @IBOutlet weak var userName:UILabel?
-
+    @IBOutlet weak var bottomBlurView: UIView!
     
     var complition:((Void) -> (Void))?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        postsLabel.textAlignment = NSTextAlignment.Center
+        //postsLabel.textAlignment = NSTextAlignment.Center
+        bottomBlurView.backgroundColor = UIColor(white: 1, alpha: 0.4)
         votesLabel!.textAlignment = NSTextAlignment.Left
 
         

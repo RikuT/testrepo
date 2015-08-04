@@ -8,7 +8,7 @@
 
 import Parse
 
-class NewViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
+class NewViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     
     var objectToSend : PFObject?
@@ -16,7 +16,6 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     var votes = [PFObject]()
     // Connection to the search bar
     
-    @IBOutlet weak var searchBar: UISearchBar!
     
     // Connection to the collection view
     
@@ -42,7 +41,6 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         
         
         // Wire up search bar delegate so that we can react to button selections
-        searchBar.delegate = self
         
         // Resize size of collection view items in grid so that we achieve 3 boxes across
         
@@ -112,7 +110,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         // Display the country name
         
         if let value = item["imageText"] as? String {
-            cell.postsLabel.text = value
+            //cell.postsLabel.text = value
         }
         
         // Display "initial" flag image
@@ -191,44 +189,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     }
     
     
-    /*
-    ==========================================================================================
-    Process Search Bar interaction
-    ==========================================================================================
-    */
-    
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        
-        // Dismiss the keyboard
-        searchBar.resignFirstResponder()
-        
-        // Reload of table data
-        self.loadCollectionViewData()
-    }
-    
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        
-        // Dismiss the keyboard
-        searchBar.resignFirstResponder()
-        
-        // Reload of table data
-        self.loadCollectionViewData()
-    }
-    
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        
-        // Clear any search criteria
-        searchBar.text = ""
-        
-        // Dismiss the keyboard
-        searchBar.resignFirstResponder()
-        
-        // Reload of table data
-        self.loadCollectionViewData()
-    }
-
-    
-    /*
+       /*
     ==========================================================================================
     Process memory issues
     To be completed

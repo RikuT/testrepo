@@ -12,8 +12,8 @@
 		32170A2E1B6CE030009F9665 /* BrandScoreStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32170A2C1B6CE030009F9665 /* BrandScoreStyleKit.swift */; };
 		32170A2F1B6CE030009F9665 /* BrandSearchTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32170A2D1B6CE030009F9665 /* BrandSearchTableController.swift */; };
 		32170A311B6CE03E009F9665 /* name_list.txt in Resources */ = {isa = PBXBuildFile; fileRef = 32170A301B6CE03E009F9665 /* name_list.txt */; };
-		325FA4481B70896B00229204 /* AutoKeyboardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325FA4471B70896B00229204 /* AutoKeyboardScrollView.swift */; };
 		325FA44B1B708E7400229204 /* VisibleFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FA44A1B708E7400229204 /* VisibleFormViewController.m */; };
+		325FA44D1B70A7AC00229204 /* SwipeableClothesTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325FA44C1B70A7AC00229204 /* SwipeableClothesTester.swift */; };
 		326B13B21B61D0FC003A871D /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13A91B61D0FB003A871D /* PhotoViewController.m */; };
 		326B13B31B61D0FC003A871D /* ImagePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13AB1B61D0FC003A871D /* ImagePreviewViewController.m */; };
 		326B13B61B61D0FC003A871D /* ViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13B11B61D0FC003A871D /* ViewUtils.m */; };
@@ -89,9 +89,9 @@
 		32170A2D1B6CE030009F9665 /* BrandSearchTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandSearchTableController.swift; sourceTree = "<group>"; };
 		32170A301B6CE03E009F9665 /* name_list.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = name_list.txt; sourceTree = "<group>"; };
 		325FA4461B6FB57C00229204 /* Stylist-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Stylist-Bridging-Header.h"; path = "Stylist/Stylist-Bridging-Header.h"; sourceTree = "<group>"; };
-		325FA4471B70896B00229204 /* AutoKeyboardScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoKeyboardScrollView.swift; sourceTree = "<group>"; };
 		325FA4491B708E7400229204 /* VisibleFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VisibleFormViewController.h; path = ../VisibleFormViewController.h; sourceTree = "<group>"; };
 		325FA44A1B708E7400229204 /* VisibleFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VisibleFormViewController.m; path = ../VisibleFormViewController.m; sourceTree = "<group>"; };
+		325FA44C1B70A7AC00229204 /* SwipeableClothesTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableClothesTester.swift; sourceTree = "<group>"; };
 		326B13A81B61D0FB003A871D /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoViewController.h; path = ../PhotoViewController.h; sourceTree = "<group>"; };
 		326B13A91B61D0FB003A871D /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoViewController.m; path = ../PhotoViewController.m; sourceTree = "<group>"; };
 		326B13AA1B61D0FC003A871D /* ImagePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagePreviewViewController.h; path = ../ImagePreviewViewController.h; sourceTree = "<group>"; };
@@ -434,9 +434,9 @@
 				321706FA1B65F2B500812648 /* UserProfileSetting */,
 				325FA4491B708E7400229204 /* VisibleFormViewController.h */,
 				325FA44A1B708E7400229204 /* VisibleFormViewController.m */,
+				325FA44C1B70A7AC00229204 /* SwipeableClothesTester.swift */,
 				32F48E091B670BFA009EF135 /* TLTagsContol */,
 				32862E4F1B631B530070FA05 /* SCLAlertView */,
-				325FA4471B70896B00229204 /* AutoKeyboardScrollView.swift */,
 				B6CD246D1B3D8BD50061E451 /* Main.storyboard */,
 				B6CD24701B3D8BD50061E451 /* Images.xcassets */,
 				326B13BE1B61DA15003A871D /* whiteCancel.png */,
@@ -662,10 +662,10 @@
 				B6EC66261B3FE60C00B5BC58 /* MyConnector.m in Sources */,
 				B600E2351B41765D007F8FDA /* SingleRowCell.swift in Sources */,
 				326B13B31B61D0FC003A871D /* ImagePreviewViewController.m in Sources */,
+				325FA44D1B70A7AC00229204 /* SwipeableClothesTester.swift in Sources */,
 				B600E2331B416541007F8FDA /* UploadViewController.swift in Sources */,
 				32862E5F1B631B530070FA05 /* UIImage+ImageEffects.m in Sources */,
 				326B13BC1B61D17E003A871D /* LLSimpleCamera.m in Sources */,
-				325FA4481B70896B00229204 /* AutoKeyboardScrollView.swift in Sources */,
 				B65331DD1B411D1B00B19268 /* PasswordRecoverViewController.swift in Sources */,
 				B6EC66011B3FD31900B5BC58 /* ViewController.swift in Sources */,
 				B6CD24691B3D8BD50061E451 /* AppDelegate.m in Sources */,
