@@ -279,6 +279,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         self.view.backgroundColor = UIColor.whiteColor()
         
         self.lastVisibleView = scrollview
+        self.visibleMargin = 0.0
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -379,6 +380,8 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         
         //Posted images are in "Posts" class of parse
         var posts = PFObject(className: "Posts")
+        let votesNum: NSNumber = 0
+        posts["votes"] = votesNum
         posts["imageText"] = topsLabel.text
         posts["uploader"] = PFUser.currentUser()
         posts.saveInBackgroundWithBlock({
