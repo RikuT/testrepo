@@ -30,7 +30,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
     var quitButton: UIButton!
     var blurView: UIVisualEffectView!
     var whiteView: UIView!
-    
+    var spaceInScroll: CGFloat!
     
     var updateObject : PFObject?
     
@@ -103,9 +103,11 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         quitButton.addTarget(self, action: "quitButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
 
 
+        //Add this number to make menu larger
+        spaceInScroll = 80
 
-        
-        scrollview = UIScrollView(frame: CGRectMake(0, self.view.frame.size.height / 2, self.view.frame.size.width, self.view.frame.size.height / 2))
+        //Setting initial scrollview location
+        scrollview = UIScrollView(frame: CGRectMake(0, (self.view.frame.size.height / 2) + 50 - spaceInScroll, self.view.frame.size.width, (self.view.frame.size.height / 2) + 20 + spaceInScroll))
         scrollview.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - 55 )
         ud.setObject("BRAND", forKey: "brandNameKey")
         //    brandArray = [NSMutableArray array];
@@ -115,14 +117,20 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         
         
         //Change textfield design over here
-        whiteView = UIView(frame: CGRectMake(0, self.view.frame.height / 2, self.view.frame.width, scrollview.contentSize.height - ((self.view.frame.height - 60) / 2)))
+        whiteView = UIView(frame: CGRectMake(0, (self.view.frame.height / 2) + 60 + spaceInScroll, self.view.frame.width, scrollview.contentSize.height - ((self.view.frame.height - 60) / 2) - spaceInScroll))
         whiteView.backgroundColor = UIColor.whiteColor()
         scrollview.addSubview(whiteView)
         
+        var swipeUpLabel = UILabel(frame: CGRectMake(0, 0, self.view.frame.width, 20))
+        swipeUpLabel.text = "s w i p e  u p"
+        swipeUpLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 17)
+        swipeUpLabel.textAlignment = NSTextAlignment.Center
+        swipeUpLabel.textColor = UIColor.whiteColor()
+        swipeUpLabel.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1)
+        whiteView.addSubview(swipeUpLabel)
         
-        
-        
-        var heightInWhiteView: CGFloat = -5
+        //Add number here to move the contents in whiteView down
+        var heightInWhiteView: CGFloat = 15
 
         topsLabel = UITextField(frame: CGRectMake(40, heightInWhiteView + 15, self.view.bounds.size.width - 60, 30))
         //topsLabel.borderStyle = UITextBorderStyle.Bezel
@@ -192,20 +200,56 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         
         //Season info
         var seasonPositionHeight: CGFloat = 246
+        let seasonArray: NSArray = ["Spring", "Summer", "Fall", "Winter"]
+        var seasonSegment = UISegmentedControl(items: seasonArray as [AnyObject])
+        seasonSegment.tintColor = UIColor.lightGrayColor()
+        seasonSegment.frame = CGRectMake(45, heightInWhiteView + seasonPositionHeight + 3, self.view.bounds.size.width - 50, 27)
+        whiteView.addSubview(seasonSegment)
+        /*
         var seasonTextF = UITextField(frame: CGRectMake(40, heightInWhiteView + seasonPositionHeight, self.view.bounds.size.width - 45, 30))
         seasonTextF.font = UIFont(name: "HelveticaNeue", size: 18)
         seasonTextF.delegate = self
         seasonTextF.placeholder = "Enter season"
         //seasonTextF.backgroundColor = UIColor.grayColor()
         whiteView.addSubview(seasonTextF)
+*/
         var calendarIconImg = UIImage(named: "calendarIcon")
         var calendarIconView = UIImageView(image: calendarIconImg)
         calendarIconView.frame = CGRectMake(3, heightInWhiteView + seasonPositionHeight - 1, 28, 30)
         whiteView.addSubview(calendarIconView)
         
-        var whiteViewHeightY: CGFloat = seasonTextF.frame.origin.y + seasonTextF.frame.height + 10
-        whiteView.frame = CGRectMake(whiteView.frame.origin.x, whiteView.frame.origin.y - grayLine.frame.origin.y - 10, whiteView.frame.size.width, whiteViewHeightY)
+        var grayLine4 = UILabel(frame: CGRectMake(0, seasonSegment.frame.origin.y + seasonSegment.frame.height + 7, self.view.frame.width, 0.3))
+        grayLine4.backgroundColor = UIColor.lightGrayColor()
+        whiteView.addSubview(grayLine4)
+
         
+        //Add post to public button
+        var postToPublicBtn = UIButton(frame: CGRectMake(10, seasonSegment.frame.origin.y + seasonSegment.frame.size.height + 15, self.view.frame.width - 20, 30))
+        postToPublicBtn.setTitle("p  o  s  t", forState: .Normal)
+        postToPublicBtn.titleLabel!.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 20)
+        postToPublicBtn.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+        postToPublicBtn.layer.borderColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1).CGColor
+        postToPublicBtn.layer.borderWidth = 1.0
+        postToPublicBtn.layer.cornerRadius = 3.0
+        postToPublicBtn.addTarget(self, action: "postToPublic", forControlEvents: UIControlEvents.TouchUpInside)
+        whiteView.addSubview(postToPublicBtn)
+        
+
+        //Add delete photo button
+        var deleteBtn = UIButton(frame: CGRectMake(10, postToPublicBtn.frame.origin.y + postToPublicBtn.frame.size.height + 10, self.view.frame.width - 20, 30))
+        deleteBtn.setTitle("d  e  l  e  t  e", forState: .Normal)
+        deleteBtn.titleLabel!.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 20)
+        deleteBtn.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+        deleteBtn.layer.borderColor = UIColor.redColor().CGColor
+        deleteBtn.layer.borderWidth = 1.0
+        deleteBtn.layer.cornerRadius = 3.0
+        deleteBtn.addTarget(self, action: "deletePhoto", forControlEvents: UIControlEvents.TouchUpInside)
+        whiteView.addSubview(deleteBtn)
+
+        
+        var whiteViewHeightY: CGFloat = deleteBtn.frame.origin.y + deleteBtn.frame.height + 10
+        whiteView.frame = CGRectMake(whiteView.frame.origin.x, whiteView.frame.origin.y - grayLine.frame.origin.y - 10, whiteView.frame.size.width, whiteViewHeightY)
+        scrollview.contentSize = CGSize (width: scrollview.frame.size.width, height: whiteView.frame.origin.y + whiteView.frame.size.height)
         /*
         var grayLine4 = UILabel(frame: CGRectMake(0, seasonTextF.frame.origin.y + seasonTextF.frame.height + 5, self.view.frame.width, 0.3))
         grayLine4.backgroundColor = UIColor.lightGrayColor()
@@ -248,14 +292,27 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
 
 
         // アニメーション処理
-        UIView.animateWithDuration(NSTimeInterval(CGFloat(0.4)),
+        UIView.animateWithDuration(NSTimeInterval(CGFloat(0.35)),
             animations: {() -> Void in
                 
                 // 移動先の座標を指定する.
                 self.blurView.alpha = 0.8
-                self.imageView.frame = CGRectMake(30, 0, self.view.frame.width - 60, self.view.frame.height - 30)
+                self.imageView.frame = CGRectMake(30, 15, self.view.frame.width - 60, self.view.frame.height - 30)
+                
+
+                
             }, completion: {(Bool) -> Void in
                 self.addingScrollView()
+                
+                UIView.animateWithDuration(NSTimeInterval(CGFloat(0.2)),
+                    animations: {() -> Void in
+
+                        self.scrollview.frame =  CGRectMake(0, (self.view.frame.size.height / 2) - 20 - self.spaceInScroll, self.view.frame.size.width, (self.view.frame.size.height / 2) + 20 + self.spaceInScroll)
+                        
+                        
+                    }, completion: {(Bool) -> Void in
+                        self.addingScrollView()
+                })
         })
         
 
@@ -310,7 +367,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
     
     */
     
-    @IBAction func postToPublic() {
+    func postToPublic() {
         let alert = SCLAlertView()
         alert.addButton("Post!", target:self, selector:Selector("postingProcess"))
         alert.showNotice("Confirmation", subTitle:"Do you want to post this photo?", closeButtonTitle:"Cancel")
@@ -373,7 +430,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         
     }
     
-    @IBAction func deletePhoto() {
+    func deletePhoto() {
         let alert = SCLAlertView()
         alert.addButton("Delete", target:self, selector:Selector("deletePhotoProcess"))
         alert.showWarning("Confirmation", subTitle:"Are you sure you want to delete the photo?", closeButtonTitle:"Cancel")
@@ -393,7 +450,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
             if error == nil {
                 //Hide activity indicator and go back to collection view when done deleting
                 self.hideActivityIndicator(self.view)
-                self.performSegueWithIdentifier("detailVCtoTopsVC", sender: self)
+                self.quitButtonPressed()
                 
             }else {
                 

@@ -49,6 +49,7 @@
                         <segue destination="4H1-83-9jU" kind="modal" identifier="VCtoClosetVC" id="ElC-ds-RgJ"/>
                         <segue destination="x8p-fI-vlR" kind="modal" identifier="VCtoAccountVC" id="z6c-Iv-rJh"/>
                         <segue destination="Gk5-7l-8RI" kind="modal" identifier="VCtoFittingVCSegue" id="lO1-c6-9JB"/>
+                        <segue destination="mvh-Qb-4CR" kind="modal" identifier="VCtoPhotoVC" id="yYV-VU-c0Y"/>
                     </connections>
                 </viewController>
             </objects>
@@ -61,28 +62,6 @@
                     <view key="view" contentMode="scaleToFill" id="jGE-MB-efR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jA6-6W-9I8">
-                                <rect key="frame" x="191" y="528" width="96" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Post to Public">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="postToPublic" destination="Rz1-LF-e1Z" eventType="touchUpInside" id="9Fl-6F-Ida"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rlv-LD-nor">
-                                <rect key="frame" x="17" y="528" width="44" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Delete">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="deletePhoto" destination="Rz1-LF-e1Z" eventType="touchUpInside" id="E3v-Ng-da4"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
@@ -117,11 +96,6 @@
                                                     <segue destination="8vQ-e4-Iq2" kind="modal" id="D74-Mu-tRM"/>
                                                 </connections>
                                             </button>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="j87-MH-Jrf">
-                                            <connections>
-                                                <segue destination="mvh-Qb-4CR" kind="modal" id="EgK-5f-dMQ"/>
-                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -803,12 +777,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="4H1-83-9jU" kind="modal" identifier="photoVCToVC" id="TKa-A3-oIM"/>
+                        <segue destination="X8T-yD-KUp" kind="unwind" identifier="photoVCToVC" unwindAction="unwindToTrend:" id="ok8-49-ixB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqO-5T-Hk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="X8T-yD-KUp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-262" y="-803"/>
+            <point key="canvasLocation" x="12" y="584"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Ewf-R4-c9l">
@@ -1066,9 +1041,9 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="ElC-ds-RgJ"/>
-        <segue reference="qXM-AK-tWs"/>
+        <segue reference="PbG-0j-NXL"/>
         <segue reference="z6c-Iv-rJh"/>
-        <segue reference="XKH-ik-kmo"/>
         <segue reference="BK8-ow-a7u"/>
+        <segue reference="XKH-ik-kmo"/>
     </inferredMetricsTieBreakers>
 </document>

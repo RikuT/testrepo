@@ -294,6 +294,7 @@ class ViewController: UIViewController {
 
     func cameraBtnTapped(){
         println("camera")
+        self.performSegueWithIdentifier("VCtoPhotoVC", sender: self)
     }
     func accountBtnTapped(){
         println("account")
