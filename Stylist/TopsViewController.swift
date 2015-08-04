@@ -25,6 +25,7 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	// Connection to the collection view
 	
 	@IBOutlet weak var collectionView: UICollectionView!
+	var lastContentOffset: CGFloat!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -167,6 +168,37 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	// Process collectionView cell selection
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		objectToSend = tops[indexPath.row]
+		var attributes: UICollectionViewLayoutAttributes = self.collectionView.layoutAttributesForItemAtIndexPath(indexPath)!
+		var cellRect: CGRect = attributes.frame
+		//cellRect.origin.y = cellRect.origin.y - lastContentOffset
+		
+		if lastContentOffset != nil{
+		var originY = cellRect.origin.y - lastContentOffset
+		cellRect.origin.y = originY
+		}
+		
+		//Adding for navigation bar and status bar
+		cellRect.origin.y = cellRect.origin.y + 44 + 20
+		println("cellrect \(cellRect)")
+		
+		
+		let layer = UIApplication.sharedApplication().keyWindow?.layer
+		let scale = UIScreen.mainScreen().scale
+		UIGraphicsBeginImageContextWithOptions(layer!.frame.size, false, scale);
+		
+		layer!.renderInContext(UIGraphicsGetCurrentContext())
+		let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+		UIGraphicsEndImageContext()
+		
+		let ud = NSUserDefaults.standardUserDefaults()
+		ud.setObject(UIImageJPEGRepresentation(screenshot, 0.6), forKey: "bgBetweenTopsVCandDetailVC")
+		ud.setValue(NSStringFromCGRect(cellRect), forKey: "cellPositionTopstoDetailKey")
+		
+		
+		/*
+		UICollectionViewLayoutAttributes *attributes = [self.collectionView layoutAttributesForItemAtIndexPath:indexPath];
+		CGRect cellRect = attributes.frame;
+*/
 		performSegueWithIdentifier("showImage", sender: self)
 	}
 	
@@ -179,6 +211,12 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 			detailsVc.currentObject = objectToSend
 		}
 	}
+	
+	func scrollViewDidScroll(scrollView: UIScrollView) {
+		self.lastContentOffset = scrollView.contentOffset.y
+		println("posi \(lastContentOffset)")
+	}
+	
 	
 	
 	/*

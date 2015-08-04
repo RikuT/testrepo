@@ -73,31 +73,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="GDa-TH-CYi" customClass="PFImageView">
-                                <rect key="frame" x="13" y="44" width="295" height="524"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <navigationBar contentMode="scaleToFill" id="qM0-2y-taM">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Image" id="JSB-qi-OC1">
-                                        <barButtonItem key="leftBarButtonItem" title="Save" id="o8N-Jk-atb">
-                                            <connections>
-                                                <action selector="saveButton:" destination="Rz1-LF-e1Z" id="afe-8I-98k"/>
-                                                <segue destination="l5o-hb-gQB" kind="unwind" identifier="detailVCtoTopsVC" unwindAction="unwindToTops:" id="NVs-yR-ozO"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" id="puh-Rt-Vei">
-                                <rect key="frame" x="32" y="50" width="257" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jA6-6W-9I8">
                                 <rect key="frame" x="191" y="528" width="96" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -122,14 +97,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="topsImageView" destination="GDa-TH-CYi" id="FUw-Uv-Dg1"/>
-                        <outlet property="topsLabel" destination="puh-Rt-Vei" id="DFS-u6-ws9"/>
+                        <segue destination="4H1-83-9jU" kind="modal" identifier="detailVCtoTopsVC" animates="NO" id="ZON-hF-NJm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6KV-Ki-CzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="l5o-hb-gQB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="66" y="-32"/>
+            <point key="canvasLocation" x="48" y="-111"/>
         </scene>
         <!--Tops View Controller-->
         <scene sceneID="9o3-eY-HEm">
@@ -1077,10 +1050,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="qXM-AK-tWs"/>
+        <segue reference="BK8-ow-a7u"/>
+        <segue reference="PbG-0j-NXL"/>
+        <segue reference="ZON-hF-NJm"/>
         <segue reference="z6c-Iv-rJh"/>
         <segue reference="XKH-ik-kmo"/>
-        <segue reference="ElC-ds-RgJ"/>
-        <segue reference="BK8-ow-a7u"/>
     </inferredMetricsTieBreakers>
 </document>

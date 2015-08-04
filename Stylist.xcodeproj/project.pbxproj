@@ -12,6 +12,8 @@
 		32170A2E1B6CE030009F9665 /* BrandScoreStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32170A2C1B6CE030009F9665 /* BrandScoreStyleKit.swift */; };
 		32170A2F1B6CE030009F9665 /* BrandSearchTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32170A2D1B6CE030009F9665 /* BrandSearchTableController.swift */; };
 		32170A311B6CE03E009F9665 /* name_list.txt in Resources */ = {isa = PBXBuildFile; fileRef = 32170A301B6CE03E009F9665 /* name_list.txt */; };
+		325FA4481B70896B00229204 /* AutoKeyboardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325FA4471B70896B00229204 /* AutoKeyboardScrollView.swift */; };
+		325FA44B1B708E7400229204 /* VisibleFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FA44A1B708E7400229204 /* VisibleFormViewController.m */; };
 		326B13B21B61D0FC003A871D /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13A91B61D0FB003A871D /* PhotoViewController.m */; };
 		326B13B31B61D0FC003A871D /* ImagePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13AB1B61D0FC003A871D /* ImagePreviewViewController.m */; };
 		326B13B61B61D0FC003A871D /* ViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13B11B61D0FC003A871D /* ViewUtils.m */; };
@@ -31,7 +33,6 @@
 		32C9C89E1B4DA28200983181 /* Img4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C8981B4DA28200983181 /* Img4.jpg */; };
 		32C9C89F1B4DA28200983181 /* Img5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C8991B4DA28200983181 /* Img5.jpg */; };
 		32C9C8A01B4DA28200983181 /* dottedLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C89A1B4DA28200983181 /* dottedLine.png */; };
-		32C9C8A21B4DA2D400983181 /* SwipeableClothesTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C9C8A11B4DA2D400983181 /* SwipeableClothesTester.swift */; };
 		32F3F1F91B52BA9C0051050B /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F3F1F81B52BA9C0051050B /* SCLAlertView.swift */; };
 		32F48E0A1B670BFA009EF135 /* TLTagsControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F48E081B670BFA009EF135 /* TLTagsControl.m */; };
 		B600E2331B416541007F8FDA /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2321B416541007F8FDA /* UploadViewController.swift */; };
@@ -92,6 +93,10 @@
 		32170A2C1B6CE030009F9665 /* BrandScoreStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandScoreStyleKit.swift; sourceTree = "<group>"; };
 		32170A2D1B6CE030009F9665 /* BrandSearchTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandSearchTableController.swift; sourceTree = "<group>"; };
 		32170A301B6CE03E009F9665 /* name_list.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = name_list.txt; sourceTree = "<group>"; };
+		325FA4461B6FB57C00229204 /* Stylist-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Stylist-Bridging-Header.h"; path = "Stylist/Stylist-Bridging-Header.h"; sourceTree = "<group>"; };
+		325FA4471B70896B00229204 /* AutoKeyboardScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoKeyboardScrollView.swift; sourceTree = "<group>"; };
+		325FA4491B708E7400229204 /* VisibleFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VisibleFormViewController.h; path = ../VisibleFormViewController.h; sourceTree = "<group>"; };
+		325FA44A1B708E7400229204 /* VisibleFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VisibleFormViewController.m; path = ../VisibleFormViewController.m; sourceTree = "<group>"; };
 		326B13A81B61D0FB003A871D /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoViewController.h; path = ../PhotoViewController.h; sourceTree = "<group>"; };
 		326B13A91B61D0FB003A871D /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoViewController.m; path = ../PhotoViewController.m; sourceTree = "<group>"; };
 		326B13AA1B61D0FC003A871D /* ImagePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagePreviewViewController.h; path = ../ImagePreviewViewController.h; sourceTree = "<group>"; };
@@ -122,7 +127,6 @@
 		32C9C8981B4DA28200983181 /* Img4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Img4.jpg; sourceTree = "<group>"; };
 		32C9C8991B4DA28200983181 /* Img5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Img5.jpg; sourceTree = "<group>"; };
 		32C9C89A1B4DA28200983181 /* dottedLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dottedLine.png; sourceTree = "<group>"; };
-		32C9C8A11B4DA2D400983181 /* SwipeableClothesTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableClothesTester.swift; sourceTree = "<group>"; };
 		32F3F1F81B52BA9C0051050B /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCLAlertView.swift; path = Stylist/SCLAlertView.swift; sourceTree = SOURCE_ROOT; };
 		32F48E071B670BFA009EF135 /* TLTagsControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTagsControl.h; sourceTree = "<group>"; };
 		32F48E081B670BFA009EF135 /* TLTagsControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTagsControl.m; sourceTree = "<group>"; };
@@ -168,7 +172,6 @@
 		B6EC66191B3FDDA100B5BC58 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B6EC661B1B3FDDAD00B5BC58 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B6EC661D1B3FDDC200B5BC58 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		B6EC66231B3FE19200B5BC58 /* Stylist-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stylist-Bridging-Header.h"; sourceTree = "<group>"; };
 		B6EC66241B3FE60C00B5BC58 /* MyConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyConnector.h; sourceTree = "<group>"; };
 		B6EC66251B3FE60C00B5BC58 /* MyConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyConnector.m; sourceTree = "<group>"; };
 		B6EC66271B3FFA8400B5BC58 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -335,7 +338,7 @@
 		B6CD24571B3D8BD50061E451 = {
 			isa = PBXGroup;
 			children = (
-				B6EC66231B3FE19200B5BC58 /* Stylist-Bridging-Header.h */,
+				325FA4461B6FB57C00229204 /* Stylist-Bridging-Header.h */,
 				B6EC66041B3FDD1300B5BC58 /* Frameworks */,
 				B6CD24621B3D8BD50061E451 /* Stylist */,
 				B6CD247C1B3D8BD50061E451 /* StylistTests */,
@@ -369,9 +372,11 @@
 				32170A291B6CDFE4009F9665 /* BrandSearch */,
 				B600E2321B416541007F8FDA /* UploadViewController.swift */,
 				321706FA1B65F2B500812648 /* UserProfileSetting */,
-				32C9C8A11B4DA2D400983181 /* SwipeableClothesTester.swift */,
+				325FA4491B708E7400229204 /* VisibleFormViewController.h */,
+				325FA44A1B708E7400229204 /* VisibleFormViewController.m */,
 				32F48E091B670BFA009EF135 /* TLTagsContol */,
 				32862E4F1B631B530070FA05 /* SCLAlertView */,
+				325FA4471B70896B00229204 /* AutoKeyboardScrollView.swift */,
 				B6CD246D1B3D8BD50061E451 /* Main.storyboard */,
 				B6CD24701B3D8BD50061E451 /* Images.xcassets */,
 				32C9C8951B4DA28200983181 /* Img1.jpg */,
@@ -594,7 +599,7 @@
 				32862E5D1B631B530070FA05 /* SCLAlertViewStyleKit.m in Sources */,
 				B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */,
 				B6C353D51B67914F006CF285 /* NewCollectionViewCell.swift in Sources */,
-				32C9C8A21B4DA2D400983181 /* SwipeableClothesTester.swift in Sources */,
+				325FA44B1B708E7400229204 /* VisibleFormViewController.m in Sources */,
 				B6EC66281B3FFA8400B5BC58 /* LoginViewController.swift in Sources */,
 				32170A2F1B6CE030009F9665 /* BrandSearchTableController.swift in Sources */,
 				B6436C671B67698700B8DA64 /* SwiftPages.swift in Sources */,
@@ -610,6 +615,7 @@
 				B600E2331B416541007F8FDA /* UploadViewController.swift in Sources */,
 				32862E5F1B631B530070FA05 /* UIImage+ImageEffects.m in Sources */,
 				326B13BC1B61D17E003A871D /* LLSimpleCamera.m in Sources */,
+				325FA4481B70896B00229204 /* AutoKeyboardScrollView.swift in Sources */,
 				B65331DD1B411D1B00B19268 /* PasswordRecoverViewController.swift in Sources */,
 				B6EC66011B3FD31900B5BC58 /* ViewController.swift in Sources */,
 				B6CD24691B3D8BD50061E451 /* AppDelegate.m in Sources */,
@@ -757,6 +763,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Stylist/Stylist-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -777,6 +784,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Stylist/Stylist-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         navigationBar.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1)
         
         appearentNav = UIView(frame: CGRectMake(0, 0, self.view.frame.width, appearentNavHeight))
-        appearentNav.backgroundColor = UIColor(white: 1, alpha: 0.6)
+        appearentNav.backgroundColor = UIColor(white: 1, alpha: 0.7)
         
         var appearentNavLine: UIView = UIView(frame: CGRectMake(0, 0, self.view.frame.width - 30, 3))
         appearentNavLine.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 0.75)
@@ -74,12 +74,36 @@ class ViewController: UIViewController {
         overallNav.addSubview(appearentNav)
         overallNav.addSubview(buttonLayoutView)
         
-        menuButton = UIButton(frame: CGRectMake(self.view.frame.width / 2, 0, 150, appearentNavHeight))
+        
+                /*
+        let menuImg = UIImage(named: "Menu-50") as UIImage?
+        menuButton   = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        menuButton.frame = CGRectMake(100, 100, appearentNavHeight, appearentNavHeight)
         menuButton.center = appearentNav.center
+        menuButton.setImage(menuImg, forState: .Normal)
+                */
+        
+        /*
+        //Bar style menu btn
+        menuButton = UIButton(frame: CGRectMake(self.view.frame.width / 2, 0, 35, 4))
+        menuButton.center = appearentNav.center
+        menuButton.layer.cornerRadius = 2
+        //menuButton.backgroundColor = UIColor.blueColor()
+        menuButton.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1)
+*/
+        
+        
+        menuButton = UIButton(frame: CGRectMake(self.view.frame.width / 2, 0, 130, appearentNavHeight - 7))
+        menuButton.center = appearentNav.center
+        menuButton.center.y = menuButton.center.y + 1.5
         //menuButton.backgroundColor = UIColor.blueColor()
         menuButton.setTitle("Menu", forState: .Normal)
         menuButton.setTitleColor(UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1), forState: .Normal)
         menuButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 20)
+        var temp = appearentNavHeight - 7
+        menuButton.layer.cornerRadius = temp / 2
+        menuButton.layer.borderColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1).CGColor
+        menuButton.layer.borderWidth = 1.5
         menuButton.addTarget(self, action: "menuBtnTapped", forControlEvents: .TouchUpInside)
         appearentNav.addSubview(menuButton)
         
