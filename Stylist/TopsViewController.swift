@@ -95,7 +95,9 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 			} else {
 				// Log details of the failure
 				println("Error: \(error!) \(error!.userInfo!)")
+			
 			}
+			
 		}
 	}
 	

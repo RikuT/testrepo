@@ -24,7 +24,8 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+
         
         let query = PFQuery(className: "Posts")
         query.findObjectsInBackgroundWithBlock{(question:[AnyObject]?,error:NSError?) -> Void in
@@ -38,6 +39,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
                 }
             }
         }
+        
         
         // Wire up search bar delegate so that we can react to button selections
         searchBar.delegate = self
@@ -87,6 +89,26 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("newview", forIndexPath: indexPath) as! NewCollectionViewCell
         let item = self.votes[indexPath.row]
+        
+        var UserQuery:PFQuery = PFUser.query()!
+        UserQuery.findObjectsInBackgroundWithBlock{
+            (objects:[AnyObject]?, error:NSError?)->Void in
+            if error == nil{
+                
+                let user:PFUser = (objects as NSArray!).lastObject as! PFUser
+                cell.userName!.text = user.username
+                
+                let PhotoFile:PFFile = user["profilePicture"] as! PFFile
+                PhotoFile.getDataInBackgroundWithBlock(){
+                    (ImageData:NSData?, error:NSError?)->Void in
+                    if error == nil{
+                        let Image:UIImage = UIImage(data: ImageData!)!
+                        cell.profileImageView.image = Image
+                    }}}}
+
+        
+        
+        
         // Display the country name
         
         if let value = item["imageText"] as? String {
@@ -96,16 +118,14 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         // Display "initial" flag image
         var initialThumbnail = UIImage(named: "question")
         cell.postsImageView.image = initialThumbnail
+
         
-        cell.complition = {
-            self.likeButton(indexPath)
-        }
         
         if let votesValue = item["votes"] as? Int
         {
             cell.votesLabel?.text = "\(votesValue)"
         }
-        
+
         // Fetch final flag image - if it exists
         if let value = item["imageFile"] as? PFFile {
             
@@ -116,6 +136,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
                 }
             })
         }
+                
         return cell
     }
     
@@ -205,20 +226,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         // Reload of table data
         self.loadCollectionViewData()
     }
-    /*
-    
-    @IBAction func finishButt() {
-        let ud = NSUserDefaults.standardUserDefaults()
-        var fromUploadImagePreview = ud.boolForKey("originFromUploadOfImagePreviewVCKey")
-        ud.removeObjectForKey("originFromUploadOfImagePreviewVCKey")
-        if fromUploadImagePreview == true{
-            self.performSegueWithIdentifier("topsVCtoVCnotUnwind", sender: self)
-        }else{
-            println("finishTapped")
-            self.performSegueWithIdentifier("topsVCtoVC", sender: self)
-        }
-    }
-*/
+
     
     /*
     ==========================================================================================

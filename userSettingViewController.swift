@@ -273,6 +273,15 @@ class userSettingViewController: UIViewController {
         container.removeFromSuperview()
     }
     
+    @IBAction func logoutButtonTapped(sender: AnyObject) {
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
+        NSUserDefaults.standardUserDefaults().synchronize()
+        
+        PFUser.logOut()
+        self.performSegueWithIdentifier("loginView", sender: self)
+    }
+    
+    
     /*
     // MARK: - Navigation
     

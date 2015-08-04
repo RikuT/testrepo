@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBAction func unwindToTrend(segue: UIStoryboardSegue) {
     }
     @IBOutlet var swiftPagesView: SwiftPages!
+
     
     @IBOutlet  var navigationBar: UINavigationBar!
     var overallNav: UIVisualEffectView!
@@ -34,8 +35,8 @@ class ViewController: UIViewController {
     var blackBlurBtn: UIButton!
 
     
-    var overallHeight: CGFloat = 160
-    var appearentNavHeight: CGFloat = 32
+    var overallHeight: CGFloat = 200
+    var appearentNavHeight: CGFloat = 40
     var upPosition = CGRectMake(0, 0, 0, 0)
     
     
@@ -43,8 +44,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        navigationBar.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1)
-        
         appearentNav = UIView(frame: CGRectMake(0, 0, self.view.frame.width, appearentNavHeight))
         appearentNav.backgroundColor = UIColor(white: 1, alpha: 0.7)
         
@@ -111,6 +110,7 @@ class ViewController: UIViewController {
         searchButton.setTitle("虫", forState: .Normal)
         searchButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         //searchButton.backgroundColor = UIColor.blueColor()
+        searchButton.addTarget(self, action: "searchButtonTapped", forControlEvents: .TouchUpInside)
         appearentNav.addSubview(searchButton)
         
         
@@ -286,18 +286,8 @@ class ViewController: UIViewController {
         println("blackblur")
         self.closeMenu()
     }
-    
-    
-    @IBAction func logoutButtonTapped(sender: AnyObject) {
-        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
-        NSUserDefaults.standardUserDefaults().synchronize()
-        
-        PFUser.logOut()
-        self.performSegueWithIdentifier("loginView", sender: self)
-    }
-    
-    
-    
+ 
+
     
     
 }
