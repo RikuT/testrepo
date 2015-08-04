@@ -3,6 +3,11 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ヒラギノ丸ゴ Pro W4.otf">
+            <string>HiraMaruPro-W4</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="DST-HZ-LTP">
@@ -15,22 +20,9 @@
                             <navigationBar contentMode="scaleToFill" id="KnJ-3v-krq">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="barTintColor" red="0.23921568627450981" green="0.64313725490196083" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <navigationItem id="7DY-dx-ZSd">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="tN4-9y-Sbx">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Un5-nG-eMc">
-                                                <rect key="frame" x="136" y="311" width="49" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Logout">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="logoutButtonTapped:" destination="8vQ-e4-Iq2" eventType="touchUpInside" id="ode-in-p3N"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem id="7DY-dx-ZSd"/>
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" id="Y4q-L0-eQu" customClass="SwiftPages" customModule="Stylist" customModuleProvider="target">
@@ -38,19 +30,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STYLIST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="39m-ls-qMQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stylist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="39m-ls-qMQ">
                                 <rect key="frame" x="102" y="20" width="117" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="27"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="27"/>
+                                <color key="textColor" red="0.082352941176470587" green="0.64313725490196083" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="6Ts-nV-xhz"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="navigationBar" destination="KnJ-3v-krq" id="2Gx-6t-BFI"/>
@@ -302,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Dz-3c-02t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1612" y="-816"/>
+            <point key="canvasLocation" x="1644" y="-318"/>
         </scene>
         <!--Password Recover View Controller-->
         <scene sceneID="GAR-ma-ixj">
@@ -356,7 +350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfM-f2-VMm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2129" y="-269"/>
+            <point key="canvasLocation" x="2041" y="-318"/>
         </scene>
         <!--User Setting View Controller-->
         <scene sceneID="rKX-fw-q6C">
@@ -514,6 +508,16 @@
                                 <connections>
                                     <action selector="changeProfilePic" destination="x8p-fI-vlR" eventType="touchUpInside" id="DDa-UL-FMB"/>
                                     <segue destination="c50-fl-r0C" kind="modal" id="Xj8-xO-qrt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NL8-6X-ka8">
+                                <rect key="frame" x="136" y="410" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutButtonTapped:" destination="x8p-fI-vlR" eventType="touchUpInside" id="0RP-df-6Mi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -836,7 +840,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqO-5T-Hk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="394" y="-835"/>
+            <point key="canvasLocation" x="-262" y="-803"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Ewf-R4-c9l">
@@ -869,72 +873,101 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" id="ryG-lk-uzh">
-                                <rect key="frame" x="0.0" y="53" width="320" height="44"/>
+                            <searchBar contentMode="redraw" id="Sgz-X8-QXY">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="7xo-c4-9Lr">
-                                <rect key="frame" x="0.0" y="97" width="320" height="471"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TLr-Se-SEf">
-                                    <size key="itemSize" width="145" height="325"/>
+                                    <size key="itemSize" width="145" height="336"/>
                                     <size key="headerReferenceSize" width="6" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="newview" id="GTL-mD-694" customClass="NewCollectionViewCell" customModule="Stylist" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="145" height="325"/>
+                                        <rect key="frame" x="10" y="10" width="145" height="336"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="145" height="325"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="145" height="336"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" id="bhG-I6-uOe">
-                                                    <rect key="frame" x="8" y="251" width="129" height="35"/>
+                                                <view contentMode="scaleToFill" id="jkE-ZP-C3l">
+                                                    <rect key="frame" x="0.0" y="0.0" width="145" height="336"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellBack" id="Mrf-Fh-veg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="145" height="336"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" id="bhG-I6-uOe">
+                                                    <rect key="frame" x="8" y="279" width="129" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="rxc-bU-3kx" customClass="PFImageView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="145" height="251"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gbe-db-Gke">
-                                                    <rect key="frame" x="107" y="287" width="30" height="30"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ZcN-lK-XVP" customClass="PFImageView">
+                                                    <rect key="frame" x="4" y="53" width="137" height="225"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Like">
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="3zC-nL-mym" customClass="PFImageView">
+                                                    <rect key="frame" x="8" y="8" width="35" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="bxJ-Me-gIY">
+                                                    <rect key="frame" x="51" y="8" width="77" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="4AP-bq-DEm">
+                                                    <rect key="frame" x="51" y="24" width="41" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Gbe-db-Gke">
+                                                    <rect key="frame" x="111" y="305" width="26" height="23"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="heartBtn">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="vote:" destination="GTL-mD-694" eventType="touchUpInside" id="e3I-Js-rEA"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="yoL-Hg-RGa">
-                                                    <rect key="frame" x="29" y="291" width="59" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="yoL-Hg-RGa">
+                                                    <rect key="frame" x="91" y="309" width="19" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8GF-ge-Mxd">
-                                                    <rect key="frame" x="0.0" y="292" width="26" height="25"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8GF-ge-Mxd">
+                                                    <rect key="frame" x="8" y="307" width="20" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button">
+                                                    <state key="normal" image="flagBtn">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <size key="customSize" width="145" height="325"/>
+                                        <size key="customSize" width="145" height="336"/>
                                         <connections>
-                                            <outlet property="postsImageView" destination="rxc-bU-3kx" id="ylM-eT-o0q"/>
+                                            <outlet property="postsImageView" destination="ZcN-lK-XVP" id="LKg-8L-OGU"/>
                                             <outlet property="postsLabel" destination="bhG-I6-uOe" id="ovg-5y-iBg"/>
+                                            <outlet property="profileImageView" destination="3zC-nL-mym" id="Bo8-2X-sLE"/>
+                                            <outlet property="userName" destination="bxJ-Me-gIY" id="kYf-uS-TI4"/>
                                             <outlet property="votesLabel" destination="yoL-Hg-RGa" id="OR1-WK-ZC8"/>
                                         </connections>
                                     </collectionViewCell>
@@ -954,7 +987,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="collectionView" destination="7xo-c4-9Lr" id="k63-MI-b0V"/>
-                        <outlet property="searchBar" destination="ryG-lk-uzh" id="DMN-3L-d1x"/>
+                        <outlet property="searchBar" destination="Sgz-X8-QXY" id="MlX-Zm-Ve3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Mf-vj-cbt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1031,7 +1064,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yw-qO-NY7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1281" y="-1509"/>
+            <point key="canvasLocation" x="1249" y="-1504"/>
         </scene>
         <!--Image Preview View Controller-->
         <scene sceneID="aeZ-TT-Iq5">
@@ -1066,7 +1099,10 @@
     </scenes>
     <resources>
         <image name="backBlur" width="640" height="1136"/>
+        <image name="cellBack" width="308" height="592"/>
         <image name="dottedLine.png" width="1623" height="322"/>
+        <image name="flagBtn" width="100" height="100"/>
+        <image name="heartBtn" width="256" height="256"/>
         <image name="loginBtn" width="489" height="129"/>
         <image name="logoStylist" width="498" height="205"/>
         <image name="profilePlaceHolder" width="332" height="332"/>
@@ -1077,10 +1113,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="BK8-ow-a7u"/>
         <segue reference="qXM-AK-tWs"/>
         <segue reference="z6c-Iv-rJh"/>
         <segue reference="XKH-ik-kmo"/>
         <segue reference="ElC-ds-RgJ"/>
-        <segue reference="BK8-ow-a7u"/>
     </inferredMetricsTieBreakers>
 </document>

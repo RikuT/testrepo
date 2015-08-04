@@ -14,9 +14,11 @@ import Parse
 
 class NewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var postsImageView: PFImageView!
+    @IBOutlet weak var profileImageView: PFImageView!
     @IBOutlet weak var postsLabel: UILabel!
     @IBOutlet weak var votesLabel:UILabel?
-    @IBOutlet var likeButton: UIButton!
+    @IBOutlet weak var userName:UILabel?
+
     
     var complition:((Void) -> (Void))?
     
@@ -24,6 +26,8 @@ class NewCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         postsLabel.textAlignment = NSTextAlignment.Center
+        votesLabel!.textAlignment = NSTextAlignment.Left
+
         
     }
     
