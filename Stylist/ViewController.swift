@@ -143,7 +143,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         
         
         self.lastVisibleView = overallNav
-        self.visibleMargin = -actualMenuHeight*4/5
+        self.visibleMargin = (-actualMenuHeight*4/5) + 40
         /*
         //Setting up trend button
         trendButton = UIButton(frame: CGRectMake(0, 0, self.view.frame.width / 2, actualMenuHeight / 3))
