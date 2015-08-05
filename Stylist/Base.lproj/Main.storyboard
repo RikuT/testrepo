@@ -7,7 +7,6 @@
         <!--View Controller-->
         <scene sceneID="DST-HZ-LTP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="P1J-0Z-pgo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="8vQ-e4-Iq2" customClass="ViewController" customModule="Stylist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rZU-GR-cXV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -52,6 +51,7 @@
                         <segue destination="mvh-Qb-4CR" kind="modal" identifier="VCtoPhotoVC" id="yYV-VU-c0Y"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P1J-0Z-pgo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1074" y="673"/>
         </scene>
@@ -993,7 +993,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Way-nn-Z8E">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Way-nn-Z8E" id="R3a-0h-tO0">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
