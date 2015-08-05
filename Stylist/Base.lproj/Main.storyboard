@@ -737,32 +737,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dottedLine.png" id="2pP-ef-qiv">
-                                <rect key="frame" x="0.0" y="247" width="320" height="73"/>
+                            <view contentMode="scaleToFill" id="LYH-de-3pf">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="scS-AB-22V" appends="YES" id="gYN-gM-0K1"/>
-                                </connections>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gKY-sM-jKN">
-                                <rect key="frame" x="10" y="5" width="59" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Go back">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Egg-uH-MRp" kind="unwind" unwindAction="unwindToTrend:" id="bPS-RQ-z9R"/>
-                                </connections>
-                            </button>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="mfM-ZY-Q8f">
+                                        <rect key="frame" x="0.0" y="541" width="320" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ogb-cP-Xb6" userLabel="add line">
+                                                <rect key="frame" x="228" y="1" width="81" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                <state key="normal" title="    add line">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gKY-sM-jKN">
+                                                <rect key="frame" x="12" y="1" width="25" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="GoBackArrow">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="Egg-uH-MRp" kind="unwind" unwindAction="unwindToTrend:" id="bPS-RQ-z9R"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </view>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dottedLine" id="2pP-ef-qiv">
+                                        <rect key="frame" x="0.0" y="247" width="320" height="73"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="scS-AB-22V" appends="YES" id="gYN-gM-0K1"/>
+                                        </connections>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.08235294118" green="0.64313725489999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="addLineButt" destination="ogb-cP-Xb6" id="B1I-b8-Rit"/>
                         <outlet property="dottedLineView" destination="2pP-ef-qiv" id="ybk-IH-cFg"/>
                         <outlet property="goBackButt" destination="gKY-sM-jKN" id="Hma-9U-7Kp"/>
+                        <outlet property="menuBar" destination="mfM-ZY-Q8f" id="cIk-1K-zDi"/>
+                        <outlet property="swipeableView" destination="LYH-de-3pf" id="pJr-3B-1th"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xkg-aV-9EF" sceneMemberID="firstResponder"/>
@@ -1034,8 +1060,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="GoBackArrow" width="50" height="50"/>
         <image name="backBlur" width="640" height="1136"/>
-        <image name="dottedLine.png" width="1623" height="322"/>
+        <image name="dottedLine" width="1623" height="322"/>
         <image name="flagBtn" width="100" height="100"/>
         <image name="heartBtn" width="256" height="256"/>
         <image name="loginBtn" width="489" height="129"/>

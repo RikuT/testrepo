@@ -34,6 +34,8 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
     
     var blackBlurBtn: UIButton!
     var fittingBtn: UIButton!
+    
+    var searchTextF: UITextField!
 
     
     var overallHeight: CGFloat = 250
@@ -128,7 +130,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         searchButton.addTarget(self, action: "searchButtonTapped", forControlEvents: .TouchUpInside)
        // appearentNav.addSubview(searchButton)
         
-        var searchTextF = UITextField(frame: CGRectMake(15, 6, self.view.frame.width - 30, (actualMenuHeight / 5) - 12))
+        searchTextF = UITextField(frame: CGRectMake(15, 6, self.view.frame.width - 30, (actualMenuHeight / 5) - 12))
         searchTextF.placeholder = "Search clothes"
         searchTextF.backgroundColor = UIColor(white: 0.7, alpha: 0.4)
         searchTextF.layer.cornerRadius = 5.0
@@ -225,7 +227,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         ud.removeObjectForKey("closeAlertKeyNote")
         ud.removeObjectForKey("closeAlertKey")
         
-        self.initializePageView()
+        //self.initializePageView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -233,7 +235,9 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(animated: Bool) {
+
+    
+    override func viewWillAppear(animated: Bool) {
         let isUserLoggedIn =
         NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
         
@@ -242,6 +246,20 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         }
         
         self.initializePageView()
+        
+        //Setting notification which will reload pages when application enters foreground
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadPagesFore", name: UIApplicationWillEnterForegroundNotification, object: nil)
+        
+    }
+    
+    //Reloading all pages
+    func loadPagesFore(){
+        println("loadPages")
+        
+        //These methods are only conducted when the pages are not loaded
+        swiftPagesView.loadPage(0)
+        swiftPagesView.loadPage(1)
+        swiftPagesView.loadPage(2)
     }
     
     
@@ -270,6 +288,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         
         if (currentNavPosition == upPosition){
             self.closeMenu()
+            
         }else{
             self.openMenu()
         }
@@ -280,6 +299,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
     
     func closeMenu(){
         println("already up")
+        searchTextF.resignFirstResponder()
         // アニメーション処理
         UIView.animateWithDuration(NSTimeInterval(CGFloat(0.3)),
             animations: {() -> Void in

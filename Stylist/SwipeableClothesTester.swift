@@ -57,12 +57,15 @@ class SwipeableClothesTester: UIViewController {
     
    // var topViewHeight: CGFloat = 500
     
+    @IBOutlet weak var swipeableView: UIView!
     @IBOutlet weak var goBackButt: UIButton!
+    @IBOutlet weak var addLineButt: UIButton!
     
     //洋服の数 -1に設定して、誤作動を防止
     var pictNumber: Int = -1
     
     @IBOutlet weak var dottedLineView: UIImageView!
+    @IBOutlet weak var menuBar: UIView!
     //@IBOutlet weak var dottedLineView2: UIImageView!
     //UIScrollViewを作成します
     let scrView = UIScrollView()
@@ -155,21 +158,21 @@ class SwipeableClothesTester: UIViewController {
         //let CGwidth = self.view.frame.width
         let width = Int(self.view.frame.width)
         let intPictNumber = Int(self.imageArray.count)
-        scrView.contentSize = CGSizeMake(CGFloat(width * intPictNumber), self.view.frame.height)
-        scrView2.contentSize = CGSizeMake(CGFloat(width * intPictNumber), self.view.frame.height)
+        scrView.contentSize = CGSizeMake(CGFloat(width * intPictNumber), self.swipeableView.frame.height)
+        scrView2.contentSize = CGSizeMake(CGFloat(width * intPictNumber), self.swipeableView.frame.height)
 
         
-        //topViewHeight = self.view.frame.height / 2
+        //topViewHeight = self.swipeableView.frame.height / 2
         //表示位置 + 1ページ分のサイズ
-        scrView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height / 2)
-        scrView2.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
+        scrView.frame = CGRectMake(0, 0, self.swipeableView.frame.width, self.swipeableView.frame.height / 2)
+        scrView2.frame = CGRectMake(0, 0, self.swipeableView.frame.width, self.swipeableView.frame.height)
         
         
         
         
         //  dispatch_async(dispatch_get_main_queue()) {
-        self.view.addSubview(scrView2)
-        self.view.addSubview(scrView)
+        self.swipeableView.addSubview(scrView2)
+        self.swipeableView.addSubview(scrView)
         
         /*
         //最初のbottomViewの大きさ指定
@@ -184,7 +187,7 @@ class SwipeableClothesTester: UIViewController {
             var image = imageArray[i]
             println(image)
             var imageView = UIImageView(image: image)
-            imageView.frame = CGRectMake(CGFloat(width * i), 0, self.view.frame.width, self.view.frame.height)
+            imageView.frame = CGRectMake(CGFloat(width * i), 0, self.swipeableView.frame.width, self.swipeableView.frame.height)
             //var imageView2 = imageView
             scrView.addSubview(imageView)
             //scrView2.addSubview(imageView2)
@@ -194,7 +197,7 @@ class SwipeableClothesTester: UIViewController {
             var image = imageArray[i]
             println(image)
             var imageView = UIImageView(image: image)
-            imageView.frame = CGRectMake(CGFloat(width * i), 0, self.view.frame.width, self.view.frame.height)
+            imageView.frame = CGRectMake(CGFloat(width * i), 0, self.swipeableView.frame.width, self.swipeableView.frame.height)
             //var imageView2 = imageView
             scrView2.addSubview(imageView)
             //scrView2.addSubview(imageView2)
@@ -217,7 +220,7 @@ class SwipeableClothesTester: UIViewController {
         
         
         //下の洋服のviewに追加します(処理軽減のためbottomViewSetではなく、viewDidLoadで実行)
-        //self.view.addSubview(self.scrView2)
+        //self.swipeableView.addSubview(self.scrView2)
         
         
         //下の洋服の画像処理をここでやります。(処理軽減のため)
@@ -225,9 +228,11 @@ class SwipeableClothesTester: UIViewController {
         
         [self.topViewMoved1()]
         
-        self.view.bringSubviewToFront(scrView)
-        self.view.bringSubviewToFront(self.dottedLineView)
-        self.view.bringSubviewToFront(self.goBackButt)
+        self.swipeableView.bringSubviewToFront(scrView)
+        self.swipeableView.bringSubviewToFront(self.dottedLineView)
+        self.swipeableView.bringSubviewToFront(self.goBackButt)
+        self.swipeableView.bringSubviewToFront(menuBar)
+
         
         println("done")
         //負荷テスト用
@@ -246,23 +251,42 @@ class SwipeableClothesTester: UIViewController {
         // キーidに「taro」という値を格納。（idは任意の文字列でok）
         ud.removeObjectForKey("closeAlertKeyNote")
         ud.removeObjectForKey("closeAlertKey")
-        topViewHeight = self.view.frame.height / 2
+        topViewHeight = self.swipeableView.frame.height / 2
+        
+        let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        var blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = menuBar.frame
+        blurView.frame.origin = CGPointZero
+        self.menuBar.addSubview(blurView)
+        
+        var blackView = UIView(frame: menuBar.frame)
+        blackView.frame.origin = CGPointZero
+        blackView.backgroundColor = UIColor(white: 0.4, alpha: 0.3)
+        blurView.addSubview(blackView)
+        blackView.addSubview(goBackButt)
+        blackView.addSubview(addLineButt)
+        
+        self.view.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1)
         
         self.showActivityIndicatory(self.view)
         println("ViewDidLoad appearInt = \(viewDidAppearInt)")
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     
     
     @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
-        let translation = recognizer.translationInView(self.view)
+        let translation = recognizer.translationInView(self.swipeableView)
         if let dotView = recognizer.view {
-            dotView.center = CGPoint(x: self.view.bounds.width/2,
+            dotView.center = CGPoint(x: self.swipeableView.bounds.width/2,
                 y:dotView.center.y + translation.y)
             topViewHeight = dotView.center.y + translation.y
             println(topViewHeight)
         }
-        recognizer.setTranslation(CGPointZero, inView: self.view)
+        recognizer.setTranslation(CGPointZero, inView: self.swipeableView)
         
     }
     
@@ -297,10 +321,10 @@ class SwipeableClothesTester: UIViewController {
     func topViewMoved1(){
         
 
-        scrView.frame = CGRectMake(0, 0, self.view.frame.width, topViewHeight!)
+        scrView.frame = CGRectMake(0, 0, self.swipeableView.frame.width, topViewHeight!)
         var cgPictNum = CGFloat (pictNumber)
         
-        scrView.contentSize = CGSizeMake(self.view.frame.width * cgPictNum, topViewHeight!)
+        scrView.contentSize = CGSizeMake(self.swipeableView.frame.width * cgPictNum, topViewHeight!)
         
         /*
         //下の服の処理
@@ -399,7 +423,8 @@ class SwipeableClothesTester: UIViewController {
     }
     
     func showError() {
-        self.view.bringSubviewToFront(self.goBackButt)
+        self.swipeableView.bringSubviewToFront(self.goBackButt)
+        self.swipeableView.bringSubviewToFront(menuBar)
         println("Error number is \(self.errorNumber)")
         if (self.errorNumber == 1){
             SCLAlertView().showError("Error", subTitle:"You have not put in any photos in your library.", closeButtonTitle:"OK")

@@ -27,7 +27,6 @@
 		32862E5E1B631B530070FA05 /* SCLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 32862E571B631B530070FA05 /* SCLButton.m */; };
 		32862E5F1B631B530070FA05 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 32862E5A1B631B530070FA05 /* UIImage+ImageEffects.m */; };
 		32862E611B63326F0070FA05 /* userSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32862E601B63326F0070FA05 /* userSettingViewController.swift */; };
-		32C9C8A01B4DA28200983181 /* dottedLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 32C9C89A1B4DA28200983181 /* dottedLine.png */; };
 		32F3F1F91B52BA9C0051050B /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F3F1F81B52BA9C0051050B /* SCLAlertView.swift */; };
 		32F48E0A1B670BFA009EF135 /* TLTagsControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F48E081B670BFA009EF135 /* TLTagsControl.m */; };
 		B600E2331B416541007F8FDA /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2321B416541007F8FDA /* UploadViewController.swift */; };
@@ -116,7 +115,6 @@
 		32862E591B631B530070FA05 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		32862E5A1B631B530070FA05 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		32862E601B63326F0070FA05 /* userSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userSettingViewController.swift; sourceTree = "<group>"; };
-		32C9C89A1B4DA28200983181 /* dottedLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dottedLine.png; sourceTree = "<group>"; };
 		32F3F1F81B52BA9C0051050B /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCLAlertView.swift; path = Stylist/SCLAlertView.swift; sourceTree = SOURCE_ROOT; };
 		32F48E071B670BFA009EF135 /* TLTagsControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTagsControl.h; sourceTree = "<group>"; };
 		32F48E081B670BFA009EF135 /* TLTagsControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTagsControl.m; sourceTree = "<group>"; };
@@ -440,7 +438,6 @@
 				B6CD246D1B3D8BD50061E451 /* Main.storyboard */,
 				B6CD24701B3D8BD50061E451 /* Images.xcassets */,
 				326B13BE1B61DA15003A871D /* whiteCancel.png */,
-				32C9C89A1B4DA28200983181 /* dottedLine.png */,
 				326B13C01B61E9A4003A871D /* pictogram.png */,
 				B6CD24721B3D8BD50061E451 /* LaunchScreen.xib */,
 				B6CD24631B3D8BD50061E451 /* Supporting Files */,
@@ -588,7 +585,6 @@
 			files = (
 				B6CD246F1B3D8BD50061E451 /* Main.storyboard in Resources */,
 				326B13C11B61E9A4003A871D /* pictogram.png in Resources */,
-				32C9C8A01B4DA28200983181 /* dottedLine.png in Resources */,
 				326B13BF1B61DA15003A871D /* whiteCancel.png in Resources */,
 				32170A311B6CE03E009F9665 /* name_list.txt in Resources */,
 				B6CD24741B3D8BD50061E451 /* LaunchScreen.xib in Resources */,
