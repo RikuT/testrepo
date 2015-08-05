@@ -27,7 +27,7 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    self.visibleMargin = 0.;
+
 }
 
 #pragma keyboard height

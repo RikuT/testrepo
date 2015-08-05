@@ -13,7 +13,7 @@ import Parse
 
 
 
-class ViewController: UIViewController {
+class ViewController: VisibleFormViewController, UITextFieldDelegate {
     @IBAction func unwindToTrend(segue: UIStoryboardSegue) {
     }
     @IBOutlet var swiftPagesView: SwiftPages!
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     var fittingBtn: UIButton!
 
     
-    var overallHeight: CGFloat = 200
+    var overallHeight: CGFloat = 250
     var appearentNavHeight: CGFloat = 30
     var upPosition = CGRectMake(0, 0, 0, 0)
     
@@ -126,9 +126,24 @@ class ViewController: UIViewController {
         searchButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         //searchButton.backgroundColor = UIColor.blueColor()
         searchButton.addTarget(self, action: "searchButtonTapped", forControlEvents: .TouchUpInside)
-        appearentNav.addSubview(searchButton)
+       // appearentNav.addSubview(searchButton)
+        
+        var searchTextF = UITextField(frame: CGRectMake(15, 6, self.view.frame.width - 30, (actualMenuHeight / 5) - 12))
+        searchTextF.placeholder = "Search clothes"
+        searchTextF.backgroundColor = UIColor(white: 0.7, alpha: 0.4)
+        searchTextF.layer.cornerRadius = 5.0
+        searchTextF.textAlignment = NSTextAlignment.Center
+        searchTextF.textColor = UIColor.darkGrayColor()
+        searchTextF.delegate = self
+        buttonLayoutView.addSubview(searchTextF)
+        
+        var grayLine4 = UILabel(frame: CGRectMake(0, searchTextF.frame.origin.y + searchTextF.frame.size.height + 6, self.view.frame.width, 0.3))
+        grayLine4.backgroundColor = UIColor.lightGrayColor()
+        buttonLayoutView.addSubview(grayLine4)
         
         
+        self.lastVisibleView = overallNav
+        self.visibleMargin = -actualMenuHeight*4/5
         /*
         //Setting up trend button
         trendButton = UIButton(frame: CGRectMake(0, 0, self.view.frame.width / 2, actualMenuHeight / 3))
@@ -139,11 +154,16 @@ class ViewController: UIViewController {
 */
         
         //Setting up closet button
-        closetButton = UIButton(frame: CGRectMake(0, 0, self.view.frame.width / 2, actualMenuHeight / 2))
+        closetButton = UIButton(frame: CGRectMake(0, actualMenuHeight / 5, self.view.frame.width, actualMenuHeight / 5))
         closetButton.setTitle("closet", forState: .Normal)
-        closetButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        closetButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
         closetButton.addTarget(self, action: "closetBtnTapped", forControlEvents: .TouchUpInside)
+        closetButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Light", size: 23)
         buttonLayoutView.addSubview(closetButton)
+        
+        var grayLine = UILabel(frame: CGRectMake(0, closetButton.frame.origin.y + closetButton.frame.size.height, self.view.frame.width, 0.3))
+        grayLine.backgroundColor = UIColor.lightGrayColor()
+        buttonLayoutView.addSubview(grayLine)
         
         /*
         //Setting up fitting button
@@ -155,25 +175,42 @@ class ViewController: UIViewController {
 */
         
         //Setting up camera button
-        cameraButton = UIButton(frame: CGRectMake(self.view.frame.width / 2, 0, self.view.frame.width / 2, actualMenuHeight / 2))
+        cameraButton = UIButton(frame: CGRectMake(0, actualMenuHeight * 2 / 5, self.view.frame.width, actualMenuHeight / 5))
         cameraButton.setTitle("camera", forState: .Normal)
-        cameraButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        cameraButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
         cameraButton.addTarget(self, action: "cameraBtnTapped", forControlEvents: .TouchUpInside)
+        cameraButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Light", size: 23)
         buttonLayoutView.addSubview(cameraButton)
         
+        var grayLine2 = UILabel(frame: CGRectMake(0, cameraButton.frame.origin.y + cameraButton.frame.size.height, self.view.frame.width, 0.3))
+        grayLine2.backgroundColor = UIColor.lightGrayColor()
+        buttonLayoutView.addSubview(grayLine2)
+        
+        
         //Setting up account button
-        accountButton = UIButton(frame: CGRectMake(0, actualMenuHeight / 2, self.view.frame.width / 2, actualMenuHeight / 2))
+        accountButton = UIButton(frame: CGRectMake(0, actualMenuHeight * 3 / 5, self.view.frame.width, actualMenuHeight / 5))
         accountButton.setTitle("account", forState: .Normal)
-        accountButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        accountButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
         accountButton.addTarget(self, action: "accountBtnTapped", forControlEvents: .TouchUpInside)
+        accountButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Light", size: 23)
         buttonLayoutView.addSubview(accountButton)
         
+        var grayLine1 = UILabel(frame: CGRectMake(0, accountButton.frame.origin.y + accountButton.frame.size.height, self.view.frame.width, 0.3))
+        grayLine1.backgroundColor = UIColor.lightGrayColor()
+        buttonLayoutView.addSubview(grayLine1)
+
+        
         //Setting up help button
-        helpButton = UIButton(frame: CGRectMake(self.view.frame.width / 2, actualMenuHeight / 2, self.view.frame.width / 2, actualMenuHeight / 2))
+        helpButton = UIButton(frame: CGRectMake(0, actualMenuHeight * 4 / 5, self.view.frame.width, actualMenuHeight / 5))
         helpButton.setTitle("help", forState: .Normal)
-        helpButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        helpButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
         helpButton.addTarget(self, action: "helpBtnTapped", forControlEvents: .TouchUpInside)
+        helpButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Light", size: 23)
         buttonLayoutView.addSubview(helpButton)
+        
+        var grayLine3 = UILabel(frame: CGRectMake(0, helpButton.frame.origin.y + helpButton.frame.size.height, self.view.frame.width, 0.3))
+        grayLine3.backgroundColor = UIColor.lightGrayColor()
+        buttonLayoutView.addSubview(grayLine3)
         
         
         
@@ -211,7 +248,7 @@ class ViewController: UIViewController {
     func initializePageView(){
         //Initiation
         var VCIDs : [String] = ["LikeVC", "NewVC", "TagVC"]
-        var buttonTitles : [String] = ["Like", "Latest", "Tag"]
+        var buttonTitles : [String] = ["like", "latest", "tag"]
         
         //Sample customization
         swiftPagesView.setOriginY(0.0)
@@ -294,6 +331,7 @@ class ViewController: UIViewController {
 
     func cameraBtnTapped(){
         println("camera")
+        self.performSegueWithIdentifier("VCtoPhotoVC", sender: self)
     }
     func accountBtnTapped(){
         println("account")

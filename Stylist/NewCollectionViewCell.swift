@@ -26,9 +26,10 @@ class NewCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         //postsLabel.textAlignment = NSTextAlignment.Center
-        bottomBlurView.backgroundColor = UIColor(white: 1, alpha: 0.4)
-        votesLabel!.textAlignment = NSTextAlignment.Left
+        bottomBlurView.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 0.75)
+        votesLabel!.textAlignment = NSTextAlignment.Right
 
+        //profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
         
     }
     
