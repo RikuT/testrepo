@@ -27,6 +27,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
 
         
         let query = PFQuery(className: "Posts")
+        query.includeKey("uploader")
         query.findObjectsInBackgroundWithBlock{(question:[AnyObject]?,error:NSError?) -> Void in
             
             if error == nil
@@ -83,50 +84,46 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     }
     
     
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("newview", forIndexPath: indexPath) as! NewCollectionViewCell
         let item = self.votes[indexPath.row]
-        
-        var UserQuery:PFQuery = PFUser.query()!
-        UserQuery.findObjectsInBackgroundWithBlock{
-            (objects:[AnyObject]?, error:NSError?)->Void in
-            if error == nil{
-                
-                let user:PFUser = (objects as NSArray!).lastObject as! PFUser
-                cell.userName!.text = user.username
-                
-                let PhotoFile:PFFile = user["profilePicture"] as! PFFile
-                PhotoFile.getDataInBackgroundWithBlock(){
-                    (ImageData:NSData?, error:NSError?)->Void in
-                    if error == nil{
-                        let Image:UIImage = UIImage(data: ImageData!)!
-                        cell.profileImageView.image = Image
-                    }}}}
 
         
         
         
-        // Display the country name
-        
-        if let value = item["imageText"] as? String {
-            //cell.postsLabel.text = value
-        }
         
         // Display "initial" flag image
         var initialThumbnail = UIImage(named: "question")
         cell.postsImageView.image = initialThumbnail
 
-        
+        if let pointer = item["uploader"] as? PFObject {
+            
+            cell.userName!.text = item["username"] as? String
+            item.fetchIfNeeded()
+            print("username")
+            
+        }
+     
+        if let profile = item["uploader"] as? PFObject,
+            profileImageFile = profile["profilePicture"] as? PFFile {
+                cell.profileImageView.file = profileImageFile
+                cell.profileImageView.loadInBackground { image, error in
+                    if error == nil {
+                        cell.profileImageView.image = image
+                    }
+                }
+        }
         
         if let votesValue = item["votes"] as? Int
         {
             cell.votesLabel?.text = "\(votesValue)"
         }
-
+        
         // Fetch final flag image - if it exists
         if let value = item["imageFile"] as? PFFile {
-            
+            println("Value \(value)") 
             cell.postsImageView.file = value
             cell.postsImageView.loadInBackground({ (image: UIImage?, error: NSError?) -> Void in
                 if error != nil {
@@ -134,10 +131,9 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
                 }
             })
         }
-                
+        
         return cell
     }
-    
     
     /*
     ==========================================================================================
@@ -175,18 +171,10 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     // Process collectionView cell selection
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         objectToSend = votes[indexPath.section]
-        performSegueWithIdentifier("showImage", sender: self)
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == "showImage" {
-            
-            let detailsVc = segue.destinationViewController as! DetailViewController
-            detailsVc.currentObject = objectToSend
-        }
-    }
+ 
     
     
        /*
