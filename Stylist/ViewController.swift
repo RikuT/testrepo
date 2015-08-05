@@ -256,10 +256,12 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
     func loadPagesFore(){
         println("loadPages")
         
+        
         //These methods are only conducted when the pages are not loaded
         swiftPagesView.loadPage(0)
         swiftPagesView.loadPage(1)
         swiftPagesView.loadPage(2)
+
     }
     
     
