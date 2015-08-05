@@ -496,7 +496,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1230" y="-318"/>
+            <point key="canvasLocation" x="1165" y="-318"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="14v-YN-nJg">
@@ -922,12 +922,17 @@
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <state key="normal" image="flagBtn"/>
                                                 </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heartBtn" id="je1-Rv-ZIT">
+                                                    <rect key="frame" x="5" y="32" width="136" height="226"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <size key="customSize" width="145" height="278"/>
                                         <connections>
                                             <outlet property="bottomBlurView" destination="kD3-v1-Y4e" id="eaF-M3-jAz"/>
+                                            <outlet property="heartIcon" destination="je1-Rv-ZIT" id="kF0-8Z-AaI"/>
                                             <outlet property="heightSexLabel" destination="4AP-bq-DEm" id="V32-LY-52b"/>
                                             <outlet property="postsImageView" destination="ZcN-lK-XVP" id="LKg-8L-OGU"/>
                                             <outlet property="profileImageView" destination="3zC-nL-mym" id="Bo8-2X-sLE"/>
@@ -1076,10 +1081,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ElC-ds-RgJ"/>
-        <segue reference="92p-7F-r2P"/>
-        <segue reference="z6c-Iv-rJh"/>
         <segue reference="BK8-ow-a7u"/>
+        <segue reference="qXM-AK-tWs"/>
+        <segue reference="z6c-Iv-rJh"/>
         <segue reference="XKH-ik-kmo"/>
+        <segue reference="ElC-ds-RgJ"/>
     </inferredMetricsTieBreakers>
 </document>
