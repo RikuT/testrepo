@@ -11,16 +11,40 @@ import Parse
 
 var tops = [PFObject]()
 
-class TopsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
+class TopsViewController: VisibleFormViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate {
+	
+	//For showing activity indicator
+	var container: UIView = UIView()
+	var loadingView: UIView = UIView()
+	var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+
+	
+	var overallNav: UIVisualEffectView!
+	var appearentNav: UIView!
+	var buttonLayoutView: UIView!
+	var searchButton: UIButton!
+	
+	var blackBlurBtn: UIButton!
+	
+	var searchTextF: UITextField!
+	
+	var gobackButton: UIButton!
+	
+	var overallHeight: CGFloat = 110
+	var appearentNavHeight: CGFloat = 30
+	var upPosition = CGRectMake(0, 0, 0, 0)
+	
+	var searchText: NSString!
+	
+	var checkAlert: Int!
+	
+	
 	
 	@IBAction func unwindToTops(segue: UIStoryboardSegue) {
 	}
 	
 	var objectToSend : PFObject?
 	
-	// Connection to the search bar
-	
-	@IBOutlet weak var searchBar: UISearchBar!
 	
 	// Connection to the collection view
 	
@@ -30,16 +54,164 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		// Wire up search bar delegate so that we can react to button selections
-		searchBar.delegate = self
+		self.setupMenuBar()
 		
 		// Resize size of collection view items in grid so that we achieve 3 boxes across
-
+		
 		loadCollectionViewData()
+checkAlert = 0
+		
+	}
+	
+	
+	func setupMenuBar(){
+		appearentNav = UIView(frame: CGRectMake(0, 0, self.view.frame.width, appearentNavHeight))
+		appearentNav.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 0.92)
+		
+		/*
+		var appearentNavLine: UIView = UIView(frame: CGRectMake(0, 0, self.view.frame.width - 30, 3))
+		appearentNavLine.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 0.75)
+		appearentNavLine.center.x = appearentNav.center.x
+		appearentNav.addSubview(appearentNavLine)
+		//appearentNav.layer.borderColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1).CGColor
+		//appearentNav.layer.borderWidth = 2.5
+		*/
+		
+		let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.ExtraLight)
+		overallNav = UIVisualEffectView(effect: blurEffect)
+		overallNav.frame = CGRectMake(0, self.view.frame.height - appearentNavHeight, self.view.frame.width, overallHeight)
+		
+		
+		blackBlurBtn = UIButton(frame: self.view.frame)
+		blackBlurBtn.backgroundColor = UIColor(white: 0, alpha: 0)
+		self.view.addSubview(self.blackBlurBtn)
+		blackBlurBtn.hidden = true
+		blackBlurBtn.addTarget(self, action: "blackBlurTapped", forControlEvents: UIControlEvents.TouchDown)
+		
+		
+		var actualMenuHeight = overallHeight - appearentNavHeight
+		buttonLayoutView = UIView(frame: CGRectMake(0, appearentNavHeight, self.view.frame.width, actualMenuHeight))
+		buttonLayoutView.backgroundColor = UIColor.clearColor()
+		self.view.addSubview(overallNav)
+		overallNav.addSubview(appearentNav)
+		overallNav.addSubview(buttonLayoutView)
+		
+		
+		
+		let menuImg = UIImage(named: "GoBackArrow") as UIImage?
+		gobackButton   = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+		gobackButton.frame = CGRectMake(5, appearentNav.frame.origin.y + 2, appearentNavHeight - 4, appearentNavHeight - 5)
+		//gobackButton.center = appearentNav.center
+		gobackButton.setImage(menuImg, forState: .Normal)
+		gobackButton.tintColor = UIColor.whiteColor()
+		
+		
+		gobackButton.addTarget(self, action: "gobackBtnTapped", forControlEvents: .TouchUpInside)
+		appearentNav.addSubview(gobackButton)
+		
+		
+		searchButton = UIButton(frame: CGRectMake(self.view.frame.width - appearentNavHeight, 0, appearentNavHeight, appearentNavHeight))
+		searchButton.setTitle("虫", forState: .Normal)
+		searchButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+		//searchButton.backgroundColor = UIColor.blueColor()
+		searchButton.addTarget(self, action: "searchButtonTapped", forControlEvents: .TouchUpInside)
+		appearentNav.addSubview(searchButton)
+		
+		searchTextF = UITextField(frame: CGRectMake(15, 10, self.view.frame.width - 30, actualMenuHeight - 50))
+		searchTextF.placeholder = "Search clothes"
+		searchTextF.backgroundColor = UIColor(white: 0.7, alpha: 0.4)
+		searchTextF.layer.cornerRadius = 5.0
+		searchTextF.textAlignment = NSTextAlignment.Center
+		searchTextF.textColor = UIColor.darkGrayColor()
+		searchTextF.delegate = self
+		buttonLayoutView.addSubview(searchTextF)
+		
+		
+		
+		//Setting CGRect to detect whether the menu is shown
+		overallHeight = overallNav.frame.height
+		appearentNavHeight = appearentNav.frame.height
+		upPosition = CGRectMake(0, self.view.frame.height - overallHeight, self.view.frame.width, overallHeight)
+		
+		
+		self.lastVisibleView = overallNav
+		self.visibleMargin = 0
+		
+	}
+	
+	func searchButtonTapped(){
+		let navDifference = overallHeight - appearentNavHeight
+		var currentNavPosition = overallNav.frame
+		
+		println("currentNavPos \(currentNavPosition)")
+		println("upPosition \(upPosition)")
+		//overallNav.layer.position = CGPointMake(0, -navDifference)
+		
+		
+		if (currentNavPosition == upPosition){
+			self.closeMenu()
+			
+		}else{
+			self.openMenu()
+		}
+		
+		
+	}
+	
+	func gobackBtnTapped() {
+			self.performSegueWithIdentifier("topsVCtoVCsegue", sender: self)
+
+	}
+	
+	func closeMenu(){
+		println("already up")
+		searchTextF.resignFirstResponder()
+		// アニメーション処理
+		UIView.animateWithDuration(NSTimeInterval(CGFloat(0.3)),
+			animations: {() -> Void in
+				
+				// 移動先の座標を指定する.
+				self.overallNav.frame = CGRectMake(0, self.view.frame.height - self.appearentNavHeight, self.view.frame.width, self.overallHeight)
+				self.blackBlurBtn.hidden = true
+			}, completion: {(Bool) -> Void in
+		})
+		
+		
+		
 		
 		
 		
 	}
+	
+	func openMenu(){
+		
+		// アニメーション処理
+		UIView.animateWithDuration(NSTimeInterval(CGFloat(0.3)),
+			animations: {() -> Void in
+				
+				// 移動先の座標を指定する.
+				self.overallNav.frame = CGRectMake(0, self.view.frame.height - self.overallHeight, self.view.frame.width, self.overallHeight)
+				self.blackBlurBtn.hidden = false
+				
+			}, completion: {(Bool) -> Void in
+		})
+		
+		self.view.bringSubviewToFront(overallNav)
+		
+		
+	}
+	
+	override func textFieldShouldReturn(textField: UITextField) -> Bool {
+		
+		searchText = searchTextF.text
+		self.loadCollectionViewData()
+		
+		self.closeMenu()
+		self.view.endEditing(true)
+		
+		return true
+	}
+	
 	
 	/*
 	==========================================================================================
@@ -60,21 +232,19 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	*/
 	
 	func loadCollectionViewData() {
-		
 		// Build a parse query object
 		var query = PFQuery(className:"Tops")
 		query.whereKey("uploader", equalTo: PFUser.currentUser()!)
 		
-		
 		// Check to see if there is a search term
-		if searchBar.text != "" {
-			query.whereKey("imageText", containsString: searchBar.text)
+		if searchTextF != "" {
+			query.whereKey("imageText", containsString: searchTextF.text)
+			//query.whereKey("Tags", containsString: searchTextF.text)
 		}
-		
+
 		// Fetch data from the parse platform
 		query.findObjectsInBackgroundWithBlock {
 			(objects: [AnyObject]?, error: NSError?) -> Void in
-			
 			println("objects: \(objects)")
 			println("error\(error)")
 			
@@ -91,11 +261,21 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 				
 				// reload our data into the collection view
 				self.collectionView.reloadData()
+				self.hideActivityIndicator(self.view)
 				
 			} else {
 				// Log details of the failure
 				println("Error: \(error!) \(error!.userInfo!)")
-			
+				if self.checkAlert == 0{
+					
+				let alert = SCLAlertView()
+				alert.showError("Error", subTitle:"An error occured while retrieving your clothes. Please check the Internet connection.", closeButtonTitle:"Ok")
+				self.hideActivityIndicator(self.view)
+
+					self.checkAlert = 1
+					
+				}
+
 			}
 			
 		}
@@ -175,8 +355,8 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		//cellRect.origin.y = cellRect.origin.y - lastContentOffset
 		
 		if lastContentOffset != nil{
-		var originY = cellRect.origin.y - lastContentOffset
-		cellRect.origin.y = originY
+			var originY = cellRect.origin.y - lastContentOffset
+			cellRect.origin.y = originY
 		}
 		
 		//Adding for navigation bar and status bar
@@ -200,7 +380,7 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 		/*
 		UICollectionViewLayoutAttributes *attributes = [self.collectionView layoutAttributesForItemAtIndexPath:indexPath];
 		CGRect cellRect = attributes.frame;
-*/
+		*/
 		performSegueWithIdentifier("showImage", sender: self)
 	}
 	
@@ -220,42 +400,40 @@ class TopsViewController: UIViewController, UICollectionViewDataSource, UICollec
 	}
 	
 	
+	func blackBlurTapped(){
+		println("blackblur")
+		self.closeMenu()
+	}
+ 
 	
-	/*
-	==========================================================================================
-	Process Search Bar interaction
-	==========================================================================================
-	*/
 	
-	func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+	func showActivityIndicator(uiView: UIView) {
 		
-		// Dismiss the keyboard
-		searchBar.resignFirstResponder()
+		container.frame = uiView.frame
+		container.center = uiView.center
+		container.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
 		
-		// Reload of table data
-		self.loadCollectionViewData()
+		loadingView.frame = CGRectMake(0, 0, 100, 100)
+		loadingView.center = uiView.center
+		//loadingView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
+		loadingView.clipsToBounds = true
+		loadingView.layer.cornerRadius = 10
+		
+		actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+		actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
+		actInd.center = CGPointMake(loadingView.frame.size.width / 2,
+			loadingView.frame.size.height / 2);
+		loadingView.addSubview(actInd)
+		container.addSubview(loadingView)
+		uiView.addSubview(container)
+		actInd.startAnimating()
 	}
 	
-	func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-		
-		// Dismiss the keyboard
-		searchBar.resignFirstResponder()
-		
-		// Reload of table data
-		self.loadCollectionViewData()
+	func hideActivityIndicator(uiView: UIView) {
+		actInd.stopAnimating()
+		container.removeFromSuperview()
 	}
 	
-	func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-		
-		// Clear any search criteria
-		searchBar.text = ""
-		
-		// Dismiss the keyboard
-		searchBar.resignFirstResponder()
-		
-		// Reload of table data
-		self.loadCollectionViewData()
-	}
 	
 	
 	/*

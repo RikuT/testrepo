@@ -23,7 +23,6 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
     var overallNav: UIVisualEffectView!
     var appearentNav: UIView!
     var buttonLayoutView: UIView!
-    var menuButton: UIButton!
     var searchButton: UIButton!
     //var trendButton: UIButton!
     var closetButton: UIButton!
@@ -37,7 +36,8 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
     
     var searchTextF: UITextField!
 
-    
+    var menuButton: UIButton!
+
     var overallHeight: CGFloat = 250
     var appearentNavHeight: CGFloat = 30
     var upPosition = CGRectMake(0, 0, 0, 0)
@@ -48,6 +48,25 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         
         navigationBar.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1)
         // Do any additional setup after loading the view.
+        self.setupMenuBar()
+        
+
+
+        
+        // 「ud」というインスタンスをつくる。
+        let ud = NSUserDefaults.standardUserDefaults()
+        // キーidに「taro」という値を格納。（idは任意の文字列でok）
+        ud.removeObjectForKey("closeAlertKeyNote")
+        ud.removeObjectForKey("closeAlertKey")
+        ud.removeObjectForKey("forceLoadPagesKey")
+        ud.setBool(false, forKey: "forceLoadPagesKey")
+        
+        //self.initializePageView()
+        self.initializePageView()
+
+    }
+    
+    func setupMenuBar(){
         appearentNav = UIView(frame: CGRectMake(0, 0, self.view.frame.width, appearentNavHeight))
         appearentNav.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 0.92)
         
@@ -58,7 +77,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         appearentNav.addSubview(appearentNavLine)
         //appearentNav.layer.borderColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1).CGColor
         //appearentNav.layer.borderWidth = 2.5
-*/
+        */
         
         let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.ExtraLight)
         overallNav = UIVisualEffectView(effect: blurEffect)
@@ -70,7 +89,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         self.view.addSubview(self.blackBlurBtn)
         blackBlurBtn.hidden = true
         blackBlurBtn.addTarget(self, action: "blackBlurTapped", forControlEvents: UIControlEvents.TouchDown)
-
+        
         
         var actualMenuHeight = overallHeight - appearentNavHeight
         buttonLayoutView = UIView(frame: CGRectMake(0, appearentNavHeight, self.view.frame.width, actualMenuHeight))
@@ -96,7 +115,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         menuButton.layer.cornerRadius = 2
         //menuButton.backgroundColor = UIColor.blueColor()
         menuButton.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1)
-*/
+        */
         
         /*
         menuButton = UIButton(frame: CGRectMake(self.view.frame.width / 2, 0, 130, appearentNavHeight - 7))
@@ -110,7 +129,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         menuButton.layer.cornerRadius = temp / 2
         menuButton.layer.borderColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1).CGColor
         menuButton.layer.borderWidth = 1.5
-*/
+        */
         menuButton.addTarget(self, action: "menuBtnTapped", forControlEvents: .TouchUpInside)
         appearentNav.addSubview(menuButton)
         
@@ -128,7 +147,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         searchButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         //searchButton.backgroundColor = UIColor.blueColor()
         searchButton.addTarget(self, action: "searchButtonTapped", forControlEvents: .TouchUpInside)
-       // appearentNav.addSubview(searchButton)
+        // appearentNav.addSubview(searchButton)
         
         searchTextF = UITextField(frame: CGRectMake(15, 6, self.view.frame.width - 30, (actualMenuHeight / 5) - 12))
         searchTextF.placeholder = "Search clothes"
@@ -143,9 +162,8 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         grayLine4.backgroundColor = UIColor.lightGrayColor()
         buttonLayoutView.addSubview(grayLine4)
         
+
         
-        self.lastVisibleView = overallNav
-        self.visibleMargin = (-actualMenuHeight*4/5) + 40
         /*
         //Setting up trend button
         trendButton = UIButton(frame: CGRectMake(0, 0, self.view.frame.width / 2, actualMenuHeight / 3))
@@ -153,7 +171,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         trendButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         trendButton.addTarget(self, action: "trendBtnTapped", forControlEvents: .TouchUpInside)
         buttonLayoutView.addSubview(trendButton)
-*/
+        */
         
         //Setting up closet button
         closetButton = UIButton(frame: CGRectMake(0, actualMenuHeight / 5, self.view.frame.width, actualMenuHeight / 5))
@@ -174,7 +192,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         fittingButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         fittingButton.addTarget(self, action: "fittingBtnTapped", forControlEvents: .TouchUpInside)
         buttonLayoutView.addSubview(fittingButton)
-*/
+        */
         
         //Setting up camera button
         cameraButton = UIButton(frame: CGRectMake(0, actualMenuHeight * 2 / 5, self.view.frame.width, actualMenuHeight / 5))
@@ -200,7 +218,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         var grayLine1 = UILabel(frame: CGRectMake(0, accountButton.frame.origin.y + accountButton.frame.size.height, self.view.frame.width, 0.3))
         grayLine1.backgroundColor = UIColor.lightGrayColor()
         buttonLayoutView.addSubview(grayLine1)
-
+        
         
         //Setting up help button
         helpButton = UIButton(frame: CGRectMake(0, actualMenuHeight * 4 / 5, self.view.frame.width, actualMenuHeight / 5))
@@ -221,17 +239,8 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         appearentNavHeight = appearentNav.frame.height
         upPosition = CGRectMake(0, self.view.frame.height - overallHeight, self.view.frame.width, overallHeight)
         
-        // 「ud」というインスタンスをつくる。
-        let ud = NSUserDefaults.standardUserDefaults()
-        // キーidに「taro」という値を格納。（idは任意の文字列でok）
-        ud.removeObjectForKey("closeAlertKeyNote")
-        ud.removeObjectForKey("closeAlertKey")
-        ud.removeObjectForKey("forceLoadPagesKey")
-        ud.setBool(false, forKey: "forceLoadPagesKey")
-        
-        //self.initializePageView()
-        self.initializePageView()
-
+        self.lastVisibleView = overallNav
+        self.visibleMargin = (-actualMenuHeight*4/5) + 40
     }
     
     override func didReceiveMemoryWarning() {

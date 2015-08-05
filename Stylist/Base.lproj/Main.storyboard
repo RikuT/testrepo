@@ -85,24 +85,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="barTintColor" red="0.08235294118" green="0.64313725489999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
-                                    <navigationItem id="nPU-qA-adk">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="iyM-GF-dzo">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dOM-Uk-vLb">
-                                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Finish">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="8vQ-e4-Iq2" kind="modal" id="D74-Mu-tRM"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem id="nPU-qA-adk"/>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="c l o s e t" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qh3-3E-VP9">
+                                <rect key="frame" x="102" y="15" width="117" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="EaR-ET-k4R">
-                                <rect key="frame" x="0.0" y="88" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="494"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5Gm-LE-dnX">
@@ -149,22 +143,6 @@
                                     <outlet property="delegate" destination="4H1-83-9jU" id="Khg-1K-X5g"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" showsCancelButton="YES" id="mlt-5h-nGT">
-                                <rect key="frame" x="0.0" y="44" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
-                            </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="c l o s e t" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qh3-3E-VP9">
-                                <rect key="frame" x="102" y="15" width="117" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="26"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -174,14 +152,14 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="collectionView" destination="EaR-ET-k4R" id="mM4-wQ-PcB"/>
-                        <outlet property="searchBar" destination="mlt-5h-nGT" id="1HE-F1-nK7"/>
                         <segue destination="Rz1-LF-e1Z" kind="modal" identifier="showImage" animates="NO" id="6Si-2s-eq2"/>
                         <segue destination="8vQ-e4-Iq2" kind="modal" identifier="topsVCtoVCnotUnwind" id="PbG-0j-NXL"/>
+                        <segue destination="8vQ-e4-Iq2" kind="modal" identifier="topsVCtoVCsegue" id="BUq-l4-ALa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6d5-AW-rn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="582" y="-173"/>
+            <point key="canvasLocation" x="713" y="74"/>
         </scene>
         <!--Profile Pic View Controller-->
         <scene sceneID="m1t-JV-MjG">
@@ -928,7 +906,7 @@
                                         <size key="customSize" width="145" height="278"/>
                                         <connections>
                                             <outlet property="bottomBlurView" destination="kD3-v1-Y4e" id="eaF-M3-jAz"/>
-                                            <outlet property="heightSexLabel" destination="4AP-bq-DEm" id="V32-LY-52b"/>
+                                            <outlet property="heightSexLabel" destination="4AP-bq-DEm" id="QUo-a3-V5J"/>
                                             <outlet property="postsImageView" destination="ZcN-lK-XVP" id="LKg-8L-OGU"/>
                                             <outlet property="profileImageView" destination="3zC-nL-mym" id="Bo8-2X-sLE"/>
                                             <outlet property="userName" destination="bxJ-Me-gIY" id="kYf-uS-TI4"/>
@@ -1077,7 +1055,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="ElC-ds-RgJ"/>
-        <segue reference="92p-7F-r2P"/>
+        <segue reference="BUq-l4-ALa"/>
         <segue reference="z6c-Iv-rJh"/>
         <segue reference="BK8-ow-a7u"/>
         <segue reference="XKH-ik-kmo"/>

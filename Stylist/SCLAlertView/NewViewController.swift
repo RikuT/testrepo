@@ -105,6 +105,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
             println(user.username)
             cell.userName!.text = user.username
             
+            
             var profileImgFile = user["profilePicture"] as! PFFile
             cell.profileImageView.file = profileImgFile
             cell.profileImageView.loadInBackground { image, error in
