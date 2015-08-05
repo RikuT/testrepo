@@ -91,7 +91,9 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         let item = self.votes[indexPath.row]
 
         
-        
+        let gesture = UITapGestureRecognizer(target: self, action: Selector("onDoubleTap:"))
+        gesture.numberOfTapsRequired = 2
+        cell.addGestureRecognizer(gesture)
         
         
         // Display "initial" flag image
@@ -129,17 +131,6 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
             
         }
 
-/*
-        if let profile = item["uploader"] as? PFObject,
-            profileImageFile = profile["profilePicture"] as? PFFile {
-                cell.profileImageView.file = profileImageFile
-                cell.profileImageView.loadInBackground { image, error in
-                    if error == nil {
-                        cell.profileImageView.image = image
-                    }
-                }
-        }
-        */
         if let votesValue = item["votes"] as? Int
         {
             cell.votesLabel?.text = "\(votesValue)"
@@ -165,12 +156,11 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     ==========================================================================================
     */
     
-    func likeButton(indexPath:NSIndexPath)
+    func onDoubleTap (recognizer: UIGestureRecognizer)
     {
-        let cell = self.collectionView.cellForItemAtIndexPath(indexPath) as! NewCollectionViewCell
-        
-        let object = self.votes[indexPath.row]
-        
+        let cell = recognizer.view as! NewCollectionViewCell
+        cell.onDoubleTap()
+        let object = self.votes[self.collectionView.indexPathForCell(cell)!.row]
         if let likes = object["votes"] as? Int
         {
             object["votes"] = likes + 1
@@ -179,18 +169,17 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
                 
             }
             cell.votesLabel?.text = "\(likes + 1)"
-                    }
+        }
         else
         {
-            object["votes"] = 1
-            object.saveInBackgroundWithBlock{ (success:Bool,error:NSError?) -> Void in
-                println("Data saved")
-            }
-            cell.votesLabel?.text = "1"
-        }
-     
+            object["votes"] = 1 
+            object.saveInBackgroundWithBlock{ (success:Bool,error:NSError?) -> Void in 
+                println("Data saved") 
+            } 
+            cell.votesLabel?.text = "1" 
+        } 
+        
     }
-    
     
     // Process collectionView cell selection
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

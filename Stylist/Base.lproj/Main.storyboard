@@ -474,7 +474,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1230" y="-318"/>
+            <point key="canvasLocation" x="1165" y="-318"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="14v-YN-nJg">
@@ -900,6 +900,10 @@
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <state key="normal" image="flagBtn"/>
                                                 </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heartBtn" id="je1-Rv-ZIT">
+                                                    <rect key="frame" x="5" y="32" width="136" height="226"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -1058,6 +1062,9 @@
         <segue reference="BUq-l4-ALa"/>
         <segue reference="z6c-Iv-rJh"/>
         <segue reference="BK8-ow-a7u"/>
+        <segue reference="qXM-AK-tWs"/>
+        <segue reference="z6c-Iv-rJh"/>
         <segue reference="XKH-ik-kmo"/>
+        <segue reference="ElC-ds-RgJ"/>
     </inferredMetricsTieBreakers>
 </document>

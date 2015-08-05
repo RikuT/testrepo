@@ -20,6 +20,7 @@ class NewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var userName:UILabel?
     @IBOutlet weak var bottomBlurView: UIView!
     @IBOutlet weak var heightSexLabel: UILabel!
+    @IBOutlet weak var heartIcon: UIImageView!
     
     var complition:((Void) -> (Void))?
     
@@ -30,16 +31,26 @@ class NewCollectionViewCell: UICollectionViewCell {
         bottomBlurView.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 0.75)
         votesLabel!.textAlignment = NSTextAlignment.Right
 
+        
+        heartIcon?.hidden = true
         //profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
         
     }
     
-    
-    @IBAction func vote(sender: AnyObject) {
-        
+    func onDoubleTap()  {
         if self.complition != nil
         {
             self.complition!()
         }
+        heartIcon?.hidden = false
+        heartIcon?.alpha = 1.0
+        
+        UIView.animateWithDuration(1.0, delay:1.0, options:nil, animations: {
+            self.heartIcon?.alpha = 0
+            }, completion: {
+                (value:Bool) in
+                self.heartIcon?.hidden = true
+        })
     }
+    
 }
