@@ -226,8 +226,11 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         // キーidに「taro」という値を格納。（idは任意の文字列でok）
         ud.removeObjectForKey("closeAlertKeyNote")
         ud.removeObjectForKey("closeAlertKey")
+        ud.removeObjectForKey("forceLoadPagesKey")
         
         //self.initializePageView()
+        self.initializePageView()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -238,6 +241,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
 
     
     override func viewWillAppear(animated: Bool) {
+
         let isUserLoggedIn =
         NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
         
@@ -255,9 +259,10 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
     //Reloading all pages
     func loadPagesFore(){
         println("loadPages")
-        
-        
         //These methods are only conducted when the pages are not loaded
+        let ud = NSUserDefaults.standardUserDefaults()
+        ud.setBool(true, forKey: "forceLoadPagesKey")
+
         swiftPagesView.loadPage(0)
         swiftPagesView.loadPage(1)
         swiftPagesView.loadPage(2)
@@ -266,6 +271,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
     
     
     func initializePageView(){
+        
         //Initiation
         var VCIDs : [String] = ["LikeVC", "NewVC", "TagVC"]
         var buttonTitles : [String] = ["like", "latest", "tag"]

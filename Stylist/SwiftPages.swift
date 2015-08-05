@@ -197,8 +197,33 @@ class SwiftPages: UIView, UIScrollViewDelegate {
             return
         }
         
+        let ud = NSUserDefaults.standardUserDefaults()
+        var forceLoading: Bool = ud.boolForKey("forceLoadPagesKey")
+        
         //Use optional binding to check if the view has already been loaded
-        if let pageView = pageViews[page]
+        if forceLoading == true{
+            if page == 2 {
+                ud.removeObjectForKey("forceLoadPagesKey")
+            }
+            println("Loading Page \(page)")
+            //The pageView instance is nil, create the page
+            var frame = scrollView.bounds
+            frame.origin.x = frame.size.width * CGFloat(page)
+            frame.origin.y = 0.0
+            
+            //Create the variable that will hold the VC being load
+            var newPageView: UIViewController
+            
+            //Look for the VC by its identifier in the storyboard and add it to the scrollview
+            newPageView = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(viewControllerIDs[page]) as! UIViewController
+            newPageView.view.frame = frame
+            scrollView.addSubview(newPageView.view)
+            
+            //Replace the nil in the pageViews array with the VC just created
+            pageViews[page] = newPageView
+
+        }
+        else if let pageView = pageViews[page]
         {
             // Do nothing. The view is already loaded.
         } else

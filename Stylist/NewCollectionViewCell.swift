@@ -19,6 +19,7 @@ class NewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var votesLabel:UILabel?
     @IBOutlet weak var userName:UILabel?
     @IBOutlet weak var bottomBlurView: UIView!
+    @IBOutlet weak var heightSexLabel: UILabel!
     
     var complition:((Void) -> (Void))?
     

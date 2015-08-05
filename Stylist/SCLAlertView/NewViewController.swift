@@ -97,15 +97,38 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         // Display "initial" flag image
         var initialThumbnail = UIImage(named: "question")
         cell.postsImageView.image = initialThumbnail
-
-        if let pointer = item["uploader"] as? PFObject {
-            
-            cell.userName!.text = item["username"] as? String
+        
+        // Display the country name
+        if let user = item["uploader"] as? PFUser{
+            println(user)
             item.fetchIfNeeded()
-            print("username")
+            println(user.username)
+            cell.userName!.text = user.username
+            
+            var profileImgFile = user["profilePicture"] as! PFFile
+            cell.profileImageView.file = profileImgFile
+            cell.profileImageView.loadInBackground { image, error in
+                if error == nil {
+                    cell.profileImageView.image = image
+                }
+            }
+            
+            var sexInt = user["sex"] as! Int
+            var sex: NSString!
+            if sexInt == 0 {
+                sex = "M"
+            }else if sexInt == 1{
+                sex = "F"
+            }
+            
+            var height = user["height"] as! Int
+            cell.heightSexLabel.text = "\(sex) \(height)cm"
+        
+            
             
         }
-     
+
+/*
         if let profile = item["uploader"] as? PFObject,
             profileImageFile = profile["profilePicture"] as? PFFile {
                 cell.profileImageView.file = profileImageFile
@@ -115,7 +138,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
                     }
                 }
         }
-        
+        */
         if let votesValue = item["votes"] as? Int
         {
             cell.votesLabel?.text = "\(votesValue)"

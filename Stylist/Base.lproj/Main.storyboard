@@ -928,6 +928,7 @@
                                         <size key="customSize" width="145" height="278"/>
                                         <connections>
                                             <outlet property="bottomBlurView" destination="kD3-v1-Y4e" id="eaF-M3-jAz"/>
+                                            <outlet property="heightSexLabel" destination="4AP-bq-DEm" id="V32-LY-52b"/>
                                             <outlet property="postsImageView" destination="ZcN-lK-XVP" id="LKg-8L-OGU"/>
                                             <outlet property="profileImageView" destination="3zC-nL-mym" id="Bo8-2X-sLE"/>
                                             <outlet property="userName" destination="bxJ-Me-gIY" id="kYf-uS-TI4"/>
@@ -993,7 +994,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Way-nn-Z8E">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Way-nn-Z8E" id="R3a-0h-tO0">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
