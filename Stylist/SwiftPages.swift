@@ -203,7 +203,7 @@ class SwiftPages: UIView, UIScrollViewDelegate {
         //Use optional binding to check if the view has already been loaded
         if forceLoading == true{
             if page == 2 {
-                ud.removeObjectForKey("forceLoadPagesKey")
+                ud.setBool(false, forKey: "forceLoadPagesKey")
             }
             println("Loading Page \(page)")
             //The pageView instance is nil, create the page

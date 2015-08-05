@@ -227,6 +227,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         ud.removeObjectForKey("closeAlertKeyNote")
         ud.removeObjectForKey("closeAlertKey")
         ud.removeObjectForKey("forceLoadPagesKey")
+        ud.setBool(false, forKey: "forceLoadPagesKey")
         
         //self.initializePageView()
         self.initializePageView()
