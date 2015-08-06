@@ -271,7 +271,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         println("loadPages")
         //These methods are only conducted when the pages are not loaded
         let ud = NSUserDefaults.standardUserDefaults()
-        ud.setBool(true, forKey: "forceLoadPagesKey")
+        ud.setBool(true, forKey: "forceLoadPagesKey") //currently disabled
 
         swiftPagesView.loadPage(0)
         swiftPagesView.loadPage(1)
@@ -299,8 +299,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         let navDifference = overallHeight - appearentNavHeight
         var currentNavPosition = overallNav.frame
         
-        println("currentNavPos \(currentNavPosition)")
-        println("upPosition \(upPosition)")
+
         //overallNav.layer.position = CGPointMake(0, -navDifference)
        
         

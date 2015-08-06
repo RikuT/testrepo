@@ -167,7 +167,7 @@
 
 //////////////////////////
 
-//ここのボタンをタップしたらBrandSearchTableControllerに行けるようにしたい。
+//ここのボタンをタップしたらBrandSearchTableControllerに行く。
 -(void)brandButtTapped:(UIButton*)button{
     // ここに何かの処理を記述する
     
@@ -177,7 +177,6 @@
     UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"imagePreviewVCtoBrandSearchVC"];
     
     [self presentViewController:vc animated:YES completion:nil];
-    
     //animated can be NO
     
 }

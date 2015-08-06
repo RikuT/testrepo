@@ -309,6 +309,15 @@ checkAlert = 0
 			
 		}
 		
+		if let datelabeltext = tops[indexPath.row].createdAt{
+			println("get date")
+			let dateFormatter = NSDateFormatter()
+			dateFormatter.locale = NSLocale(localeIdentifier: "en_US") // ロケールの設定
+			dateFormatter.dateFormat = "yyyy/MM/dd" // 日付フォーマットの設定
+			
+			cell.dateLabel.text = dateFormatter.stringFromDate(datelabeltext)
+		}
+		
 		// Display "initial" flag image
 		var initialThumbnail = UIImage(named: "question")
 		cell.topsImageView.image = initialThumbnail
@@ -396,7 +405,6 @@ checkAlert = 0
 	
 	func scrollViewDidScroll(scrollView: UIScrollView) {
 		self.lastContentOffset = scrollView.contentOffset.y
-		println("posi \(lastContentOffset)")
 	}
 	
 	

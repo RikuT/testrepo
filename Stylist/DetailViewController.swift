@@ -28,11 +28,21 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
     var clothesDesciptionTextView: UITextView!
     var initialImageFrame: CGRect!
     var quitButton: UIButton!
+    var checkButton: UIButton!
+    
     var blurView: UIVisualEffectView!
     var whiteView: UIView!
     var spaceInScroll: CGFloat!
     
     var updateObject : PFObject?
+    
+    var brandTag: TLTagsControl!
+    var miscTag: TLTagsControl!
+    var seasonSegment: UISegmentedControl!
+    
+    var currentObjectId: NSString!
+    
+    var viewDidAppearCheck: Int!
     
     
     // The save button
@@ -78,6 +88,8 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         self.view.backgroundColor = UIColor.whiteColor()
         
         let ud = NSUserDefaults.standardUserDefaults()
+        ud.setObject("BRAND", forKey: "brandNameKey")
+        viewDidAppearCheck = 1
         var bgPictObj: AnyObject? = ud.objectForKey("bgBetweenTopsVCandDetailVC")
         var bgImgData = bgPictObj as! NSData
         var bgImage = UIImage(data: bgImgData)
@@ -101,11 +113,19 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         quitButton.setImage(UIImage(named: "whiteCancel.png"), forState: .Normal)
         quitButton.imageEdgeInsets = UIEdgeInsetsMake(12, 12, 12, 12)
         quitButton.addTarget(self, action: "quitButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-
-
+        
+        //Creating check button
+        checkButton = UIButton(frame: CGRectMake(self.view.frame.width - 45, 12, 40, 40))
+        checkButton.tintColor = UIColor.whiteColor()
+        checkButton.setImage(UIImage(named: "check70"), forState: .Normal)
+        checkButton.imageEdgeInsets = UIEdgeInsetsMake(7.5, 7.5, 7.5, 7.5)
+        checkButton.addTarget(self, action: "checkButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        
+        
         //Add this number to make menu larger
         spaceInScroll = 80
-
+        
         //Setting initial scrollview location
         scrollview = UIScrollView(frame: CGRectMake(0, (self.view.frame.size.height / 2) + 50 - spaceInScroll, self.view.frame.size.width, (self.view.frame.size.height / 2) + 20 + spaceInScroll))
         scrollview.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - 55 )
@@ -113,7 +133,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         //    brandArray = [NSMutableArray array];
         let screenRect = UIScreen.mainScreen().bounds
         
-
+        
         
         
         //Change textfield design over here
@@ -131,10 +151,10 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         
         //Add number here to move the contents in whiteView down
         var heightInWhiteView: CGFloat = 15
-
+        
         topsLabel = UITextField(frame: CGRectMake(40, heightInWhiteView + 15, self.view.bounds.size.width - 60, 30))
         //topsLabel.borderStyle = UITextBorderStyle.Bezel
-    
+        
         topsLabel.placeholder = "Add clothes name"
         topsLabel.font = UIFont(name: "HelveticaNeue", size: 16)
         topsLabel.delegate = self
@@ -143,7 +163,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         var grayLine = UILabel(frame: CGRectMake(0, heightInWhiteView + 15 + 30 + 5, self.view.frame.width, 0.3))
         grayLine.backgroundColor = UIColor.lightGrayColor()
         whiteView.addSubview(grayLine)
-
+        
         
         //Textview for clothes description
         var textViewPositionHeight: CGFloat = 60
@@ -169,7 +189,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         hashTagLabel.font = UIFont(name: "HelveticaNeue", size: 16)
         whiteView.addSubview(hashTagLabel)
         
-        var brandTag = TLTagsControl(frame: CGRectMake(65, heightInWhiteView + brandTagPositionHeight + 5, self.view.bounds.size.width - 150, 30))
+        brandTag = TLTagsControl(frame: CGRectMake(65, heightInWhiteView + brandTagPositionHeight + 5, self.view.bounds.size.width - 150, 30))
         brandTag.mode = TLTagsControlMode.List
         whiteView.addSubview(brandTag)
         var brandAddButt = UIButton(frame: CGRectMake(self.view.bounds.size.width - 90, heightInWhiteView + brandTagPositionHeight + 5, 90, 30))
@@ -183,7 +203,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         var grayLine2 = UILabel(frame: CGRectMake(0, brandTag.frame.origin.y + brandTag.frame.height + 5, self.view.frame.width, 0.3))
         grayLine2.backgroundColor = UIColor.lightGrayColor()
         whiteView.addSubview(grayLine2)
-
+        
         
         //Add tags
         var tagPositionHeight: CGFloat = 203
@@ -191,7 +211,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         tagLabel.text = "#"
         tagLabel.font = UIFont(name: "HelveticaNeue", size: 25)
         whiteView.addSubview(tagLabel)
-        var miscTag = TLTagsControl(frame: CGRectMake(40, heightInWhiteView + tagPositionHeight + 2, self.view.bounds.size.width - 25, 30))
+        miscTag = TLTagsControl(frame: CGRectMake(40, heightInWhiteView + tagPositionHeight + 2, self.view.bounds.size.width - 25, 30))
         whiteView.addSubview(miscTag)
         
         var grayLine3 = UILabel(frame: CGRectMake(0, miscTag.frame.origin.y + miscTag.frame.height + 5, self.view.frame.width, 0.3))
@@ -201,7 +221,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         //Season info
         var seasonPositionHeight: CGFloat = 246
         let seasonArray: NSArray = ["Spring", "Summer", "Fall", "Winter"]
-        var seasonSegment = UISegmentedControl(items: seasonArray as [AnyObject])
+        seasonSegment = UISegmentedControl(items: seasonArray as [AnyObject])
         seasonSegment.tintColor = UIColor.lightGrayColor()
         seasonSegment.frame = CGRectMake(45, heightInWhiteView + seasonPositionHeight + 3, self.view.bounds.size.width - 50, 27)
         whiteView.addSubview(seasonSegment)
@@ -212,7 +232,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         seasonTextF.placeholder = "Enter season"
         //seasonTextF.backgroundColor = UIColor.grayColor()
         whiteView.addSubview(seasonTextF)
-*/
+        */
         var calendarIconImg = UIImage(named: "calendarIcon")
         var calendarIconView = UIImageView(image: calendarIconImg)
         calendarIconView.frame = CGRectMake(3, heightInWhiteView + seasonPositionHeight - 1, 28, 30)
@@ -221,7 +241,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         var grayLine4 = UILabel(frame: CGRectMake(0, seasonSegment.frame.origin.y + seasonSegment.frame.height + 7, self.view.frame.width, 0.3))
         grayLine4.backgroundColor = UIColor.lightGrayColor()
         whiteView.addSubview(grayLine4)
-
+        
         
         //Add post to public button
         var postToPublicBtn = UIButton(frame: CGRectMake(10, seasonSegment.frame.origin.y + seasonSegment.frame.size.height + 15, self.view.frame.width - 20, 30))
@@ -234,7 +254,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         postToPublicBtn.addTarget(self, action: "postToPublic", forControlEvents: UIControlEvents.TouchUpInside)
         whiteView.addSubview(postToPublicBtn)
         
-
+        
         //Add delete photo button
         var deleteBtn = UIButton(frame: CGRectMake(10, postToPublicBtn.frame.origin.y + postToPublicBtn.frame.size.height + 10, self.view.frame.width - 20, 30))
         deleteBtn.setTitle("d  e  l  e  t  e", forState: .Normal)
@@ -245,7 +265,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         deleteBtn.layer.cornerRadius = 3.0
         deleteBtn.addTarget(self, action: "deletePhoto", forControlEvents: UIControlEvents.TouchUpInside)
         whiteView.addSubview(deleteBtn)
-
+        
         
         var whiteViewHeightY: CGFloat = deleteBtn.frame.origin.y + deleteBtn.frame.height + 10
         whiteView.frame = CGRectMake(whiteView.frame.origin.x, whiteView.frame.origin.y - grayLine.frame.origin.y - 10, whiteView.frame.size.width, whiteViewHeightY)
@@ -254,14 +274,13 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         var grayLine4 = UILabel(frame: CGRectMake(0, seasonTextF.frame.origin.y + seasonTextF.frame.height + 5, self.view.frame.width, 0.3))
         grayLine4.backgroundColor = UIColor.lightGrayColor()
         whiteView.addSubview(grayLine4)
-*/
+        */
         
         
         // Unwrap the current object object
         if let object = currentObject {
             if let value = object["imageText"] as? String {
                 topsLabel.text = value
-                
                 
                 // Display standard question image
                 var initialThumbnail = UIImage(named: "question")
@@ -275,6 +294,37 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
                     }
                 }
             }
+            if let currentClothesDescription = object["clothesExplanation"] as? String{
+                clothesDesciptionTextView.text = currentClothesDescription
+            }
+            if let currentBrandTag = object["brandTag"] as? NSArray{
+                brandTag.tags = currentBrandTag as? NSMutableArray
+                brandTag.reloadTagSubviews()
+            }
+            if let currentMiscTag = object["Tags"] as? NSArray{
+                miscTag.tags = currentMiscTag as? NSMutableArray
+                miscTag.reloadTagSubviews()
+                
+            }
+            if let currentSeason = object["season"] as? NSString{
+                if currentSeason == "Spring"{
+                    seasonSegment.selectedSegmentIndex = 0
+                }else if currentSeason == "Summer"{
+                    seasonSegment.selectedSegmentIndex = 1
+                    
+                }else if currentSeason == "Fall"{
+                    seasonSegment.selectedSegmentIndex = 2
+                    
+                }else if currentSeason == "Winter"{
+                    seasonSegment.selectedSegmentIndex = 3
+                    
+                }else{
+                    
+                }
+            }
+            if let currentObjectId = object.objectId{
+                self.currentObjectId = "\(currentObjectId)"
+            }
         }
         self.view.backgroundColor = UIColor.whiteColor()
         
@@ -283,6 +333,8 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
     }
     
     override func viewDidAppear(animated: Bool) {
+        
+        if viewDidAppearCheck == 1{
         let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
         blurView = UIVisualEffectView(effect: blurEffect)
         blurView.alpha = 0
@@ -290,8 +342,9 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         self.view.addSubview(blurView)
         self.view.addSubview(imageView)
         self.view.addSubview(quitButton)
-
-
+        self.view.addSubview(checkButton)
+        
+        
         // アニメーション処理
         UIView.animateWithDuration(NSTimeInterval(CGFloat(0.35)),
             animations: {() -> Void in
@@ -300,14 +353,14 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
                 self.blurView.alpha = 0.8
                 self.imageView.frame = CGRectMake(30, 15, self.view.frame.width - 60, self.view.frame.height - 30)
                 
-
+                
                 
             }, completion: {(Bool) -> Void in
                 self.addingScrollView()
                 
                 UIView.animateWithDuration(NSTimeInterval(CGFloat(0.2)),
                     animations: {() -> Void in
-
+                        
                         self.scrollview.frame =  CGRectMake(0, (self.view.frame.size.height / 2) - 20 - self.spaceInScroll, self.view.frame.size.width, (self.view.frame.size.height / 2) + 20 + self.spaceInScroll)
                         
                         
@@ -316,7 +369,23 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
                 })
         })
         
-
+            viewDidAppearCheck = 2
+        }
+        
+        let ud = NSUserDefaults.standardUserDefaults()
+        var addedBrand: NSString = ud.objectForKey("brandNameKey") as! NSString
+        if addedBrand == "BRAND"{
+            println("no added brand")
+        }else{
+            var brandArrayContains: Bool = brandTag.tags.containsObject(addedBrand)
+            if brandArrayContains == false{
+                var currentBrandArray = brandTag.tags
+                currentBrandArray.addObject(addedBrand)
+                brandTag.tags = currentBrandArray
+                brandTag.reloadTagSubviews()
+            }
+        }
+ 
     }
     
     func addingScrollView(){
@@ -324,6 +393,60 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         
         self.view.addSubview(scrollview)
         self.view.bringSubviewToFront(quitButton)
+        self.view.bringSubviewToFront(checkButton)
+    }
+    
+    func checkButtonPressed(){
+        self.view.resignFirstResponder()
+        self.showActivityIndicatory(self.view)
+        var newClothesName = topsLabel.text
+        var newClothesDescrption = clothesDesciptionTextView.text
+        var newBrandTags = brandTag.tags
+        var newMiscTags = miscTag.tags
+        var newSeason: NSString!
+        var newSeasonInt = seasonSegment.selectedSegmentIndex
+        if newSeasonInt == 0{
+            newSeason = "Spring"
+        }else if newSeasonInt == 1{
+            newSeason = "Summer"
+        }else if newSeasonInt == 2{
+            newSeason = "Fall"
+        }else if newSeasonInt == 3{
+            newSeason = "Winter"
+        }else{
+            newSeason = ""
+        }
+        
+        let user = PFUser.currentUser()
+        
+        //user["displayName"]
+        
+        var userFileObj = PFObject (withoutDataWithClassName: "Tops", objectId: "\(currentObjectId)")
+        userFileObj["imageText"] = newClothesName
+        userFileObj["clothesExplanation"] = newClothesDescrption
+        userFileObj["brandTag"] = newBrandTags
+        userFileObj["Tags"] = newMiscTags
+        userFileObj["season"] = newSeason
+        
+        userFileObj.saveInBackgroundWithBlock({(success: Bool, error: NSError?) -> Void in
+            if error == nil{
+                println("success")
+                self.hideActivityIndicator(self.view)
+                self.quitButtonPressed()
+                
+            }else{
+                println("failure")
+                var errorMessage:String = error!.userInfo!["error"]as! String
+                let alert = SCLAlertView()
+                alert.showError("Error", subTitle:"An error occured. \(errorMessage)", closeButtonTitle:"Ok")
+                self.hideActivityIndicator(self.view)
+                
+                
+            }
+        })
+        
+        
+        
     }
     
     func quitButtonPressed(){
@@ -346,27 +469,6 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         
     }
     
-    
-    /*
-    self.uploadButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    int uploadButtonHeight = 50;
-    int uploadButtonWidth = self.view.bounds.size.width;
-    [self.uploadButton setFrame:CGRectMake(0, self.view.bounds.size.height-0-uploadButtonHeight, uploadButtonWidth, uploadButtonHeight)];
-    
-    [self.uploadButton setTitle:@"UPLOAD" forState:UIControlStateNormal];
-    [self.uploadButton addTarget:self action:@selector(uploadImage:)forControlEvents:UIControlEventTouchDown];
-    UIColor *btnColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
-    self.uploadButton.backgroundColor = btnColor;
-    [scrollview addSubview:self.uploadButton];
-    
-    [self.view addSubview:scrollview];
-    
-    UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
-    [tapBackground setNumberOfTapsRequired:1];
-    [self.view addGestureRecognizer:tapBackground];
-    
-    
-    */
     
     func postToPublic() {
         let alert = SCLAlertView()
@@ -474,6 +576,11 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
     
     func brandButtTapped(){
         println("brandBtnTapped")
+        let ud = NSUserDefaults.standardUserDefaults()
+        self.performSegueWithIdentifier("detailVCtoBrandSearchSegue", sender: self)
+        
+        
+        
     }
     
     override func textFieldShouldReturn(textField: UITextField) -> Bool {

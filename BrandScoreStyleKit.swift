@@ -65,5 +65,7 @@ public class BrandScoreStyleKit : NSObject {
 		
 		return image
 	}
+    
+
 	
 }

@@ -97,5 +97,5 @@ extension String {
 		}
 		
 		return finalScore
-	}
+    }
 }

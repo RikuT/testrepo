@@ -102,9 +102,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         
         // Display the country name
         if let user = item["uploader"] as? PFUser{
-            println(user)
             item.fetchIfNeeded()
-            println(user.username)
             cell.userName!.text = user.username
             
             

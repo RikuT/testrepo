@@ -14,6 +14,7 @@ import ParseUI
 class SingleRowCell: UICollectionViewCell {
     @IBOutlet weak var topsImageView: PFImageView!
     @IBOutlet weak var topsLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
