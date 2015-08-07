@@ -17,7 +17,7 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 	var container: UIView = UIView()
 	var loadingView: UIView = UIView()
 	var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
-
+	
 	
 	var overallNav: UIVisualEffectView!
 	var appearentNav: UIView!
@@ -59,7 +59,7 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 		// Resize size of collection view items in grid so that we achieve 3 boxes across
 		
 		loadCollectionViewData()
-checkAlert = 0
+		checkAlert = 0
 		
 	}
 	
@@ -159,8 +159,8 @@ checkAlert = 0
 	}
 	
 	func gobackBtnTapped() {
-			self.performSegueWithIdentifier("topsVCtoVCsegue", sender: self)
-
+		self.performSegueWithIdentifier("topsVCtoVCsegue", sender: self)
+		
 	}
 	
 	func closeMenu(){
@@ -241,7 +241,7 @@ checkAlert = 0
 			query.whereKey("imageText", containsString: searchTextF.text)
 			//query.whereKey("Tags", containsString: searchTextF.text)
 		}
-
+		
 		// Fetch data from the parse platform
 		query.findObjectsInBackgroundWithBlock {
 			(objects: [AnyObject]?, error: NSError?) -> Void in
@@ -268,14 +268,14 @@ checkAlert = 0
 				println("Error: \(error!) \(error!.userInfo!)")
 				if self.checkAlert == 0{
 					
-				let alert = SCLAlertView()
-				alert.showError("Error", subTitle:"An error occured while retrieving your clothes. Please check the Internet connection.", closeButtonTitle:"Ok")
-				self.hideActivityIndicator(self.view)
-
+					let alert = SCLAlertView()
+					alert.showError("Error", subTitle:"An error occured while retrieving your clothes. Please check the Internet connection.", closeButtonTitle:"Ok")
+					self.hideActivityIndicator(self.view)
+					
 					self.checkAlert = 1
 					
 				}
-
+				
 			}
 			
 		}

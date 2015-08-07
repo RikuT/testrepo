@@ -46,6 +46,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
     
     
     // The save button
+    /*
     @IBAction func saveButton(sender: AnyObject) {
         
         // Use the sent country object or create a new country PFObject
@@ -82,6 +83,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -450,6 +452,14 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
     }
     
     func quitButtonPressed(){
+        //Adding for navigation bar and status bar
+        /*
+        var lastScrollPosition: Float = Float(initialImageFrame.origin.y - 44 - 20)
+        let ud = NSUserDefaults.standardUserDefaults()
+        ud.setFloat(lastScrollPosition, forKey: "lastScrollPositionKey")
+        ud.setBool(true, forKey: "fromDetailVCtoTopsVCKey")
+*/
+        
         // アニメーション処理
         UIView.animateWithDuration(NSTimeInterval(CGFloat(0.3)),
             animations: {() -> Void in
@@ -458,6 +468,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
                 self.imageView.alpha = 0.0
                 self.quitButton.alpha = 0.0
                 self.scrollview.alpha = 0.0
+                self.checkButton.alpha = 0.0
                 
             }, completion: {(Bool) -> Void in
                 self.performSegueWithIdentifier("detailVCtoTopsVC", sender: self)

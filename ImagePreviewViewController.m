@@ -38,6 +38,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
     scrollview.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height *2);
@@ -55,7 +56,7 @@
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     self.imageView.backgroundColor = [UIColor clearColor];
     
-    //この画像を直接Parseに入れられるはず
+    //この画像を直接Parseに入れる
     self.imageView.image = self.image;
     [scrollview addSubview:self.imageView];
     scrollview.backgroundColor = [UIColor whiteColor];

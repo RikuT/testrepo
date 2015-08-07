@@ -25,4 +25,5 @@
 }
 
 - (instancetype)initWithImage:(UIImage *)image;
+
 @end
