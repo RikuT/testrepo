@@ -32,13 +32,24 @@ class SwipeableClothesTester: UIViewController {
             [self.bottomViewSet()]
             }*/
             if(self.pictNumber == self.imageArray.count){
-                [self.topViewMoved1()]
+                self.topViewMoved1()
                 
                 println("didSet occured")
                 
             }}
     }
-
+    
+    var topViewHeight2: CGFloat? {
+        didSet{
+            if(self.pictNumber == self.imageArray.count){
+                //[self.topViewMoved1()]
+                self.topViewMoved2()
+                println("didSet occured")
+                
+            }
+        }
+    }
+    
     
     //Create arrays of images from parse
     var imageFiles = [PFFile]()
@@ -53,9 +64,9 @@ class SwipeableClothesTester: UIViewController {
     var container: UIView = UIView()
     var loadingView: UIView = UIView()
     var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
-
     
-   // var topViewHeight: CGFloat = 500
+    
+    // var topViewHeight: CGFloat = 500
     
     @IBOutlet weak var swipeableView: UIView!
     @IBOutlet weak var goBackButt: UIButton!
@@ -65,11 +76,13 @@ class SwipeableClothesTester: UIViewController {
     var pictNumber: Int = -1
     
     @IBOutlet weak var dottedLineView: UIImageView!
+    @IBOutlet weak var dottedLineView2: UIImageView!
     @IBOutlet weak var menuBar: UIView!
     //@IBOutlet weak var dottedLineView2: UIImageView!
     //UIScrollViewを作成します
     let scrView = UIScrollView()
     let scrView2 = UIScrollView()
+    let scrView3 = UIScrollView()
     
     
     var checkInt: Int? {
@@ -160,10 +173,12 @@ class SwipeableClothesTester: UIViewController {
         let intPictNumber = Int(self.imageArray.count)
         scrView.contentSize = CGSizeMake(CGFloat(width * intPictNumber), self.swipeableView.frame.height)
         scrView2.contentSize = CGSizeMake(CGFloat(width * intPictNumber), self.swipeableView.frame.height)
-
+        scrView3.contentSize = CGSizeMake(CGFloat(width * intPictNumber), self.swipeableView.frame.height)
+        
         
         //topViewHeight = self.swipeableView.frame.height / 2
         //表示位置 + 1ページ分のサイズ
+        //Setting scrView3 frame later when add line btn is tapped
         scrView.frame = CGRectMake(0, 0, self.swipeableView.frame.width, self.swipeableView.frame.height / 2)
         scrView2.frame = CGRectMake(0, 0, self.swipeableView.frame.width, self.swipeableView.frame.height)
         
@@ -173,6 +188,8 @@ class SwipeableClothesTester: UIViewController {
         //  dispatch_async(dispatch_get_main_queue()) {
         self.swipeableView.addSubview(scrView2)
         self.swipeableView.addSubview(scrView)
+        self.swipeableView.addSubview(scrView3)
+        
         
         /*
         //最初のbottomViewの大きさ指定
@@ -202,17 +219,27 @@ class SwipeableClothesTester: UIViewController {
             scrView2.addSubview(imageView)
             //scrView2.addSubview(imageView2)
         }
+        for var i = 0; i < intPictNumber; ++i {
+            var image = imageArray[i]
+            println(image)
+            var imageView = UIImageView(image: image)
+            imageView.frame = CGRectMake(CGFloat(width * i), 0, self.swipeableView.frame.width, self.swipeableView.frame.height)
+            //var imageView2 = imageView
+            scrView3.addSubview(imageView)
+            //scrView2.addSubview(imageView2)
+        }
         
         
         // １ページ単位でスクロールさせる
         scrView.pagingEnabled = true
         scrView2.pagingEnabled = true
+        scrView3.pagingEnabled = true
         
-        
+        scrView3.hidden = true
         //scroll画面の初期位置
         //scrView2.contentOffset = CGPointMake(0, 0);
         
-
+        
         
         //scroll画面の初期位置(ここは後で要変更。NSUserDefaultsで初期位置を保存する)
         scrView.contentOffset = CGPointMake(0, 0);
@@ -224,15 +251,16 @@ class SwipeableClothesTester: UIViewController {
         
         
         //下の洋服の画像処理をここでやります。(処理軽減のため)
-       // self.adjustingBottomImagetoFit()
+        // self.adjustingBottomImagetoFit()
         
         [self.topViewMoved1()]
         
         self.swipeableView.bringSubviewToFront(scrView)
         self.swipeableView.bringSubviewToFront(self.dottedLineView)
+        self.swipeableView.bringSubviewToFront(self.dottedLineView2)
         self.swipeableView.bringSubviewToFront(self.goBackButt)
         self.swipeableView.bringSubviewToFront(menuBar)
-
+        
         
         println("done")
         //負荷テスト用
@@ -265,6 +293,8 @@ class SwipeableClothesTester: UIViewController {
         blurView.addSubview(blackView)
         blackView.addSubview(goBackButt)
         blackView.addSubview(addLineButt)
+        addLineButt.addTarget(self, action: "addLineBtnTapped", forControlEvents: UIControlEvents.TouchUpInside)
+        dottedLineView2.hidden = true
         
         self.view.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1)
         
@@ -283,8 +313,16 @@ class SwipeableClothesTester: UIViewController {
         if let dotView = recognizer.view {
             dotView.center = CGPoint(x: self.swipeableView.bounds.width/2,
                 y:dotView.center.y + translation.y)
-            topViewHeight = dotView.center.y + translation.y
-            println(topViewHeight)
+            if recognizer.view == dottedLineView{
+                topViewHeight = dotView.center.y + translation.y
+                println("one \(topViewHeight)")
+                
+            }
+            if recognizer.view == dottedLineView2{
+                topViewHeight2 = dotView.center.y + translation.y
+                println("two \(topViewHeight2)")
+                
+            }
         }
         recognizer.setTranslation(CGPointZero, inView: self.swipeableView)
         
@@ -293,101 +331,71 @@ class SwipeableClothesTester: UIViewController {
     
     /*
     func adjustingBottomImagetoFit(){
-        //resizing bottom image to fit the screen
-        //ここで下の洋服のすべての画像処理をやらないとだめ。
-        
-        let intPictNumber = Int(self.imageArray.count)
-        let width = Int(self.view.frame.width)
-        
-        for var i = 0; i < intPictNumber; ++i {
-            //新しい画像のサイズを定義する
-            let resizedSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height);
-            UIGraphicsBeginImageContext(resizedSize);
-            //もともとの画像のarrayから一枚づつ画像を取り出す
-            var originalImage = imageArray[i]
-            println(originalImage)
-            originalImage.drawInRect(CGRectMake(0, 0, resizedSize.width, resizedSize.height))
-            var resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
-            println(resizedImage)
-            //画面の大きさに合わせた画像を新しいArrayに追加する
-            self.resizedImageArray.append(resizedImage)
-        }
-        
+    //resizing bottom image to fit the screen
+    //ここで下の洋服のすべての画像処理をやらないとだめ。
+    
+    let intPictNumber = Int(self.imageArray.count)
+    let width = Int(self.view.frame.width)
+    
+    for var i = 0; i < intPictNumber; ++i {
+    //新しい画像のサイズを定義する
+    let resizedSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height);
+    UIGraphicsBeginImageContext(resizedSize);
+    //もともとの画像のarrayから一枚づつ画像を取り出す
+    var originalImage = imageArray[i]
+    println(originalImage)
+    originalImage.drawInRect(CGRectMake(0, 0, resizedSize.width, resizedSize.height))
+    var resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    println(resizedImage)
+    //画面の大きさに合わせた画像を新しいArrayに追加する
+    self.resizedImageArray.append(resizedImage)
     }
-*/
+    
+    }
+    */
     
     //これは下の洋服のscrollViewの大きさが変わるごとに実行されるので、autoReleasePoolを使って軽くしたい
     func topViewMoved1(){
-        
-
         scrView.frame = CGRectMake(0, 0, self.swipeableView.frame.width, topViewHeight!)
         var cgPictNum = CGFloat (pictNumber)
-        
         scrView.contentSize = CGSizeMake(self.swipeableView.frame.width * cgPictNum, topViewHeight!)
+        println("bottomViewSet")
         
-        /*
-        //下の服の処理
-        //////////////////////////////////////////////////////////
+    }
+    
+    func topViewMoved2(){
+        scrView3.frame = CGRectMake(0, 0, self.swipeableView.frame.width, topViewHeight2!)
+        var cgPictNum = CGFloat (pictNumber)
+        scrView3.contentSize = CGSizeMake(self.swipeableView.frame.width * cgPictNum, topViewHeight2!)
+        println("bottomViewSet")
+    }
+    
+    func addLineBtnTapped(){
+        println("add line btn tapped")
         
-        let viewHeight = Float(self.view.bounds.height)
-        let bottomViewDifference = 0 - bottomViewHeight!
-        
-        ///////////////////////////
-        let intPictNumber = Int(self.resizedImageArray.count)
-        let width = Int(self.view.frame.width)
-        
-        let bottomViewLocationH = viewHeight - bottomViewHeight!
-        
-        //scrollviewの表示位置
-        scrView2.frame = CGRectMake(0, CGFloat( bottomViewHeight!), self.view.frame.width, CGFloat(bottomViewLocationH))
-        
-        //scrollview のcontent の全体のサイズ
-        scrView2.contentSize = CGSizeMake(CGFloat(width * intPictNumber), CGFloat(bottomViewLocationH))
-        
-        //画像をscrollviewに位置を合わせて入れる。これにより、viewに対しての画像の位置が変わらない。
-        for var i = 0; i < intPictNumber; ++i {
-            var image = resizedImageArray[i]
-            println(image)
-            var imageView = UIImageView(image: image)
-            //左右に並べる
-            imageView.frame = CGRectMake(CGFloat(width * i), CGFloat(bottomViewDifference), self.view.frame.width, self.view.frame.height)
+        //Adding another line
+        if dottedLineView2.hidden == true{
+            addLineButt.setTitle("remove line", forState: .Normal)
+            dottedLineView2.hidden = false
+            scrView3.frame = CGRectMake(0, 0, self.swipeableView.frame.width, self.dottedLineView.center.y / 2)
+            dottedLineView2.center = CGPointMake(self.swipeableView.frame.width / 2, self.dottedLineView.center.y / 2)
+            //self.topViewMoved2()
+            var initialPosi = scrView.contentOffset
+            println("initialPosi \(initialPosi)")
+            scrView3.contentOffset = initialPosi
+            var cgPictNum = CGFloat (pictNumber)
+            scrView3.contentSize = CGSizeMake(self.swipeableView.frame.width * cgPictNum, self.dottedLineView.center.y / 2)
+            scrView3.hidden = false
+            self.swipeableView.bringSubviewToFront(scrView3)
+            self.swipeableView.bringSubviewToFront(dottedLineView2)
             
-            //ImageViewをscrollViewに追加(メモリ圧迫??)
-            scrView2.addSubview(imageView)
-
-
-
-*/
-        
-        
-        /*
-        
-        //UIImageViewにUIIimageを追加
-        let imgView1 = UIImageView(image:resizedImagetest)
-        //let imgView2 = UIImageView(image:imgBot2)
-        
-        //let imgView3 = UIImageView(image:imgBot3)
-        
-        
-        
-        
-        
-        //UIImageViewのサイズと位置を決めます
-        //左右に並べる
-        imgView1.frame = CGRectMake(0, CGFloat(bottomViewDifference), self.view.frame.width, self.view.frame.height)
-        //   imgView2.frame = CGRectMake(width, 0, self.view.frame.width, self.view.frame.height)
-        //  imgView3.frame = CGRectMake(width*2, 0, self.view.frame.width, self.view.frame.height)
-        
-        
-        //ImageViewをscrollViewに追加(メモリ圧迫??)
-        scrView2.addSubview(imgView1)
-        //  scrView2.addSubview(imgView2)
-        //  scrView2.addSubview(imgView3)ƒ
-        */
-        
-         println("bottomViewSet")
-        
+        }else{
+            addLineButt.setTitle("add line", forState: .Normal)
+            dottedLineView2.hidden = true
+            scrView3.hidden = true
+            
+        }
     }
     
     func showActivityIndicatory(uiView: UIView) {

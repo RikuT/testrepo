@@ -731,8 +731,8 @@
                                         <rect key="frame" x="0.0" y="541" width="320" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ogb-cP-Xb6" userLabel="add line">
-                                                <rect key="frame" x="228" y="1" width="81" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ogb-cP-Xb6" userLabel="add line">
+                                                <rect key="frame" x="208" y="-1" width="96" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                                 <state key="normal" title="    add line">
@@ -760,6 +760,13 @@
                                             <outletCollection property="gestureRecognizers" destination="scS-AB-22V" appends="YES" id="gYN-gM-0K1"/>
                                         </connections>
                                     </imageView>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dottedLine" id="CW2-5s-bjt" userLabel="dottedLine2">
+                                        <rect key="frame" x="0.0" y="119" width="320" height="73"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="eJD-Lx-1Rr" appends="YES" id="Hkm-ZZ-v4g"/>
+                                        </connections>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -772,6 +779,7 @@
                     <connections>
                         <outlet property="addLineButt" destination="ogb-cP-Xb6" id="B1I-b8-Rit"/>
                         <outlet property="dottedLineView" destination="2pP-ef-qiv" id="ybk-IH-cFg"/>
+                        <outlet property="dottedLineView2" destination="CW2-5s-bjt" id="8iT-Ea-svj"/>
                         <outlet property="goBackButt" destination="gKY-sM-jKN" id="Hma-9U-7Kp"/>
                         <outlet property="menuBar" destination="mfM-ZY-Q8f" id="cIk-1K-zDi"/>
                         <outlet property="swipeableView" destination="LYH-de-3pf" id="pJr-3B-1th"/>
@@ -782,6 +790,11 @@
                 <panGestureRecognizer minimumNumberOfTouches="1" id="scS-AB-22V">
                     <connections>
                         <action selector="handlePan:" destination="Gk5-7l-8RI" id="kgc-Nt-RA5"/>
+                    </connections>
+                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="eJD-Lx-1Rr">
+                    <connections>
+                        <action selector="handlePan:" destination="Gk5-7l-8RI" id="3ch-bp-d4k"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>
