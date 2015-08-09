@@ -158,6 +158,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         //topsLabel.borderStyle = UITextBorderStyle.Bezel
         
         topsLabel.placeholder = "Add clothes name"
+        topsLabel.textColor = UIColor.darkGrayColor()
         topsLabel.font = UIFont(name: "HelveticaNeue", size: 16)
         topsLabel.delegate = self
         whiteView.addSubview(topsLabel)
@@ -173,7 +174,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         clothesDesciptionTextView.font = UIFont(name: "HelveticaNeue", size: 16)
         clothesDesciptionTextView.backgroundColor = UIColor.clearColor()
         //clothesDesciptionTextView.text = textViewPlaceHolder
-        clothesDesciptionTextView.textColor = UIColor.lightGrayColor()
+        clothesDesciptionTextView.textColor = UIColor.darkGrayColor()
         whiteView.addSubview(clothesDesciptionTextView)
         let detailIconImg = UIImage(named: "detailsIcon")
         var detailIconView = UIImageView(frame: CGRectMake(1, heightInWhiteView + textViewPositionHeight, 31, 31))

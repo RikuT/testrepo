@@ -18,6 +18,8 @@
 @property (strong, nonatomic) UIButton *quitButton;
 @property (strong, nonatomic) UIButton *uploadButton;
 @property (strong, nonatomic) UITextField *clothesNameTextField;
+@property (strong, nonatomic) UILabel *detailLabel;
+
 //@property (strong, nonatomic) NSMutableArray *tagArray;
 
 @end
@@ -64,18 +66,19 @@
     
     self.imageView = [[UIImageView alloc] initWithImage:self.image];
     float pictAspect = (float)self.image.size.height / self.image.size.width;
-    self.imageView.frame = CGRectMake(20, 30, screenRect.size.width - 40, (screenRect.size.width - 40) * pictAspect);
+    self.imageView.frame = CGRectMake(0, 0, screenRect.size.width, (screenRect.size.width) * pictAspect);
     self.imageView.backgroundColor = [UIColor blackColor];
     
     float scrollViewVisibleY = (self.view.frame.size.height / 2) - 15;
-    scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, scrollViewVisibleY, self.view.frame.size.width, self.view.frame.size.height - scrollViewVisibleY)];
+    scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
-    scrollview.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
+    scrollview.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height * 1.53);
 
-    [self.view addSubview:self.imageView];
+    [scrollview addSubview:self.imageView];
     scrollview.backgroundColor = [UIColor clearColor];
+
     
-    
+
     
     
 
@@ -86,7 +89,7 @@
     [self.quitButton setImage:[UIImage imageNamed:@"whiteCancel.png"] forState:UIControlStateNormal];
     self.quitButton.imageEdgeInsets = UIEdgeInsetsMake(13.0f, 13.0f, 13.0f, 13.0f);
     [self.quitButton addTarget:self action:@selector(quitButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.quitButton];
+    [scrollview addSubview:self.quitButton];
 
     
     //Setting upload button
@@ -96,28 +99,37 @@
     [self.uploadButton setImage:[UIImage imageNamed:@"Checkmark-50"] forState:UIControlStateNormal];
     self.uploadButton.imageEdgeInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
     [self.uploadButton addTarget:self action:@selector(uploadImage:)forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.uploadButton];
+    [scrollview addSubview:self.uploadButton];
     
     float containerViewY = (self.view.frame.size.height / 2) - 15;
-    UIView *whiteContainerView = [[UIView alloc]initWithFrame:CGRectMake(0, containerViewY, self.view.width, self.view.height - containerViewY)];
+    UIView *whiteContainerView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.height, self.view.width, self.view.height / 1.93)];
     whiteContainerView.backgroundColor = [UIColor whiteColor];
     [scrollview addSubview:whiteContainerView];
     
+    
+    self.detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 20)];
+    self.detailLabel.text = @"e d i t  d e t a i l s";
+    self.detailLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:17];
+    self.detailLabel.textAlignment = NSTextAlignmentCenter;
+    self.detailLabel.textColor = [UIColor whiteColor];
+    self.detailLabel.backgroundColor = [UIColor colorWithRed:0 green:0.698 blue:0.792 alpha:1];
+    [whiteContainerView addSubview:self.detailLabel];
+    
     float buttonLocationH = 0;
     //Change textfield design over here
-    self.clothesNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(40, buttonLocationH+15, self.view.bounds.size.width-60, 30)];
-    self.clothesNameTextField.textColor = [UIColor blackColor];
+    self.clothesNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(40, buttonLocationH+30, self.view.bounds.size.width-60, 30)];
+    self.clothesNameTextField.textColor = [UIColor darkGrayColor];
     self.clothesNameTextField.placeholder = @"Clothes name";
     self.clothesNameTextField.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
     [whiteContainerView addSubview:self.clothesNameTextField];
     [self.clothesNameTextField setDelegate:self];
     
-    UILabel *grayLine = [[UILabel alloc]initWithFrame:CGRectMake(0, buttonLocationH + 15 + 30 + 5, self.view.frame.size.width, 0.3)];
+    UILabel *grayLine = [[UILabel alloc]initWithFrame:CGRectMake(0, buttonLocationH + 30 + 30 + 5, self.view.frame.size.width, 0.3)];
     grayLine.backgroundColor = [UIColor lightGrayColor];
     [whiteContainerView addSubview:grayLine];
     
     //TextView for clothes description
-    int textViewPositionHeight = 60;
+    int textViewPositionHeight = 75;
     clothesDesciptionTextView = [[UITextView alloc]initWithFrame:CGRectMake(40, buttonLocationH + textViewPositionHeight, self.view.frame.size.width - 45, 90)];
     clothesDesciptionTextView.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
     clothesDesciptionTextView.backgroundColor = [UIColor clearColor];
@@ -210,7 +222,6 @@
 
     
     [self.view addSubview:scrollview];
-    
     [self.view bringSubviewToFront:self.uploadButton];
     
     UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
@@ -536,7 +547,7 @@
 {
     if ([textView.text isEqualToString:textViewPlaceHolder]) {
         textView.text = @"";
-        textView.textColor = [UIColor blackColor]; //optional
+        textView.textColor = [UIColor darkGrayColor]; //optional
     }
     [textView becomeFirstResponder];
 }
