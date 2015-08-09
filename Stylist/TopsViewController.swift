@@ -232,15 +232,38 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 	*/
 	
 	func loadCollectionViewData() {
-		// Build a parse query object
-		var query = PFQuery(className:"Tops")
-		query.whereKey("uploader", equalTo: PFUser.currentUser()!)
-		
+
+		println("searchText = \(searchTextF.text)")
 		// Check to see if there is a search term
-		if searchTextF != "" {
-			query.whereKey("imageText", containsString: searchTextF.text)
+		var tagQuery: PFQuery!
+		var imgTextQuery: PFQuery!
+		var clothesExplanationQuery: PFQuery!
+		var seasonQuery: PFQuery!
+		
+		var query: PFQuery!
+		
+		query = PFQuery(className: "Tops")
+		
+		if searchTextF.text != "" {
+			println("ofajpd")
+			tagQuery = PFQuery(className: "Tops")
+			tagQuery.whereKey("searchTag", containsString: searchTextF.text)
+			
+			imgTextQuery = PFQuery(className: "Tops")
+			imgTextQuery.whereKey("imageText", containsString: searchTextF.text)
 			//query.whereKey("Tags", containsString: searchTextF.text)
+			
+			clothesExplanationQuery = PFQuery(className: "Tops")
+			clothesExplanationQuery.whereKey("clothesExplanation", containsString: searchTextF.text)
+			
+			seasonQuery = PFQuery(className: "Tops")
+			seasonQuery.whereKey("season", containsString: searchTextF.text)
+			
+			query = PFQuery.orQueryWithSubqueries([tagQuery, imgTextQuery, clothesExplanationQuery, seasonQuery])
 		}
+		
+		// Build a parse query object
+		query.whereKey("uploader", equalTo: PFUser.currentUser()!)
 		
 		// Fetch data from the parse platform
 		query.findObjectsInBackgroundWithBlock {

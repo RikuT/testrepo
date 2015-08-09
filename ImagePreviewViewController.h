@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "TLTagsControl.h"
+#import "VisibleFormViewController.h"
 
 
 
-@interface ImagePreviewViewController : UIViewController<UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource>{
+@interface ImagePreviewViewController : VisibleFormViewController<UITextViewDelegate>{
     NSArray *seasonArray;
-    UITextField *seasonTextF;
+    UISegmentedControl *seasonSegment;
     UIPickerView *myPickerView;
     UITextView *clothesDesciptionTextView;
     TLTagsControl *brandTag;

@@ -39,105 +39,162 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    
-    scrollview.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height *2);
-    
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setObject:@"BRAND" forKey:@"brandNameKey"];
     brandArray = [NSMutableArray array];
     
-    
-    self.imageView.backgroundColor = [UIColor blackColor];
-    
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     
-    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, screenRect.size.height)];
-    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    self.imageView.backgroundColor = [UIColor clearColor];
+    UIImageView *backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, screenRect.size.height)];
+    backgroundView.contentMode = UIViewContentModeScaleAspectFit;
+    backgroundView.image = self.image;
     
-    //この画像を直接Parseに入れる
-    self.imageView.image = self.image;
-    [scrollview addSubview:self.imageView];
-    scrollview.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:backgroundView];
     
     
+    //ブラースタイルの決定
+    UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    //VisualEffectViewにVisualEffectを設定
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    //VisualEffectViewを_blurViewと同じサイズに設定
+    effectView.frame = self.view.bounds;
+    //_blurViewにVisualEffectViewを追加
+    [backgroundView addSubview:effectView];
+
     
+    self.imageView = [[UIImageView alloc] initWithImage:self.image];
+    float pictAspect = (float)self.image.size.height / self.image.size.width;
+    self.imageView.frame = CGRectMake(20, 30, screenRect.size.width - 40, (screenRect.size.width - 40) * pictAspect);
+    self.imageView.backgroundColor = [UIColor blackColor];
+    
+    float scrollViewVisibleY = (self.view.frame.size.height / 2) - 15;
+    scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, scrollViewVisibleY, self.view.frame.size.width, self.view.frame.size.height - scrollViewVisibleY)];
+    
+    scrollview.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
+
+    [self.view addSubview:self.imageView];
+    scrollview.backgroundColor = [UIColor clearColor];
+    
+    
+    
+    
+
     // button to quit taking photos
     self.quitButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.quitButton.frame = CGRectMake(10, 10, 21.0f + 20.0f, 21.0f + 20.0f);
+    self.quitButton.frame = CGRectMake(5, 5, 21.0f + 20.0f, 21.0f + 20.0f);
     self.quitButton.tintColor = [UIColor whiteColor];
     [self.quitButton setImage:[UIImage imageNamed:@"whiteCancel.png"] forState:UIControlStateNormal];
-    self.quitButton.imageEdgeInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
+    self.quitButton.imageEdgeInsets = UIEdgeInsetsMake(13.0f, 13.0f, 13.0f, 13.0f);
     [self.quitButton addTarget:self action:@selector(quitButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollview addSubview:self.quitButton];
+    [self.view addSubview:self.quitButton];
+
     
+    //Setting upload button
+    self.uploadButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.uploadButton.frame = CGRectMake(self.view.frame.size.width - 46, 5, 21.0f + 20.0f, 21.0f + 20.0f);
+    self.uploadButton.tintColor = [UIColor whiteColor];
+    [self.uploadButton setImage:[UIImage imageNamed:@"Checkmark-50"] forState:UIControlStateNormal];
+    self.uploadButton.imageEdgeInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
+    [self.uploadButton addTarget:self action:@selector(uploadImage:)forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.uploadButton];
+    
+    float containerViewY = (self.view.frame.size.height / 2) - 15;
+    UIView *whiteContainerView = [[UIView alloc]initWithFrame:CGRectMake(0, containerViewY, self.view.width, self.view.height - containerViewY)];
+    whiteContainerView.backgroundColor = [UIColor whiteColor];
+    [scrollview addSubview:whiteContainerView];
+    
+    float buttonLocationH = 0;
     //Change textfield design over here
-    self.clothesNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(40, self.imageView.height+15, self.view.bounds.size.width-60, 30)];
-    self.clothesNameTextField.borderStyle = UITextBorderStyleBezel;
+    self.clothesNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(40, buttonLocationH+15, self.view.bounds.size.width-60, 30)];
     self.clothesNameTextField.textColor = [UIColor blackColor];
     self.clothesNameTextField.placeholder = @"Clothes name";
-    self.clothesNameTextField.font = [UIFont fontWithName:@"HelveticaNeue" size:18];
-    [scrollview addSubview:self.clothesNameTextField];
+    self.clothesNameTextField.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
+    [whiteContainerView addSubview:self.clothesNameTextField];
     [self.clothesNameTextField setDelegate:self];
+    
+    UILabel *grayLine = [[UILabel alloc]initWithFrame:CGRectMake(0, buttonLocationH + 15 + 30 + 5, self.view.frame.size.width, 0.3)];
+    grayLine.backgroundColor = [UIColor lightGrayColor];
+    [whiteContainerView addSubview:grayLine];
     
     //TextView for clothes description
     int textViewPositionHeight = 60;
-    clothesDesciptionTextView = [[UITextView alloc]initWithFrame:CGRectMake(40, self.imageView.height + textViewPositionHeight, self.view.frame.size.width - 45, 90)];
+    clothesDesciptionTextView = [[UITextView alloc]initWithFrame:CGRectMake(40, buttonLocationH + textViewPositionHeight, self.view.frame.size.width - 45, 90)];
     clothesDesciptionTextView.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
-    clothesDesciptionTextView.backgroundColor = [UIColor grayColor];
+    clothesDesciptionTextView.backgroundColor = [UIColor clearColor];
     clothesDesciptionTextView.delegate = self;
     textViewPlaceHolder = @"More details (ex. Occasion you wore this...)";
     clothesDesciptionTextView.text = textViewPlaceHolder;
     clothesDesciptionTextView.textColor = [UIColor lightGrayColor];
-    [scrollview addSubview:clothesDesciptionTextView];
+    [whiteContainerView addSubview:clothesDesciptionTextView];
     UIImage *detailIconImg = [UIImage imageNamed:@"detailsIcon"];
     UIImageView *detailIconView = [[UIImageView alloc] initWithImage: detailIconImg];
-    detailIconView.frame = CGRectMake(1, self.imageView.height + textViewPositionHeight, 31, 31);
-    [scrollview addSubview:detailIconView];
+    detailIconView.frame = CGRectMake(1, buttonLocationH + textViewPositionHeight + 6, 29, 29);
+    [whiteContainerView addSubview:detailIconView];
     
+    UILabel *grayLine1 = [[UILabel alloc]initWithFrame:CGRectMake(0, clothesDesciptionTextView.frame.origin.y + clothesDesciptionTextView.frame.size.height + 5, self.view.frame.size.width, 0.3)];
+    grayLine1.backgroundColor = [UIColor lightGrayColor];
+    [whiteContainerView addSubview:grayLine1];
+    
+
     //Add brand tags
     int brandTagPositionHeight = 170;
-    UILabel *hashTagLabel = [[UILabel alloc]initWithFrame: CGRectMake(5, self.imageView.height + brandTagPositionHeight, 60, 40)];
+    UILabel *hashTagLabel = [[UILabel alloc]initWithFrame: CGRectMake(5, buttonLocationH + brandTagPositionHeight, 60, 40)];
     hashTagLabel.text = @"Brand";
     hashTagLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
-    [scrollview addSubview:hashTagLabel];
+    [whiteContainerView addSubview:hashTagLabel];
     
-    brandTag = [[TLTagsControl alloc]initWithFrame:CGRectMake(65, self.imageView.height + brandTagPositionHeight + 5, self.view.bounds.size.width - 150, 30)];
+    brandTag = [[TLTagsControl alloc]initWithFrame:CGRectMake(62, buttonLocationH + brandTagPositionHeight + 5, self.view.bounds.size.width - 100, 30)];
     brandTag.mode = TLTagsControlModeList;
-    [scrollview addSubview:brandTag];
-    UIButton *brandAddButt = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 90, self.imageView.height + brandTagPositionHeight + 5, 90, 30)];
+    [whiteContainerView addSubview:brandTag];
+    UIButton *brandAddButt = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 45, buttonLocationH + brandTagPositionHeight + 5, 40, 30)];
     brandAddButt.backgroundColor = [UIColor whiteColor];
     brandAddButt.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
     [brandAddButt setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    [brandAddButt setTitle:@"Add brand" forState:UIControlStateNormal];
+    [brandAddButt setTitle:@"Add" forState:UIControlStateNormal];
     [brandAddButt addTarget:self action:@selector(brandButtTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollview addSubview:brandAddButt];
+    [whiteContainerView addSubview:brandAddButt];
+    
+    UILabel *grayLine2 = [[UILabel alloc]initWithFrame:CGRectMake(0, brandTag.frame.origin.y + brandTag.frame.size.height + 5, self.view.frame.size.width, 0.3)];
+    grayLine2.backgroundColor = [UIColor lightGrayColor];
+    [whiteContainerView addSubview:grayLine2];
+    
+    
     
     //Add Tags
     //
-    int tagPositionHeight = 210;
-    UILabel *tagLabel = [[UILabel alloc]initWithFrame: CGRectMake(5, self.imageView.height + tagPositionHeight, 30, 30)];
+    int tagPositionHeight = 213;
+    UILabel *tagLabel = [[UILabel alloc]initWithFrame: CGRectMake(5, buttonLocationH + tagPositionHeight, 30, 30)];
     tagLabel.text = @"#";
     tagLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:25];
-    [scrollview addSubview:tagLabel];
+    [whiteContainerView addSubview:tagLabel];
     
-    miscTag = [[TLTagsControl alloc]initWithFrame:CGRectMake(40, self.imageView.height + tagPositionHeight + 2, self.view.bounds.size.width - 25, 30)];
-    [scrollview addSubview:miscTag];
+    miscTag = [[TLTagsControl alloc]initWithFrame:CGRectMake(40, buttonLocationH + tagPositionHeight + 2, self.view.bounds.size.width - 25, 30)];
+    [whiteContainerView addSubview:miscTag];
+    
+    
+    UILabel *grayLine3 = [[UILabel alloc]initWithFrame:CGRectMake(0,  miscTag.frame.origin.y + miscTag.frame.size.height + 5, self.view.frame.size.width, 0.3)];
+    grayLine3.backgroundColor = [UIColor lightGrayColor];
+    [whiteContainerView addSubview:grayLine3];
     
     
     //Season information
-    int seasonPositionHeight = 250;
-    seasonTextF = [[UITextField alloc] initWithFrame:CGRectMake(40, self.imageView.height + seasonPositionHeight, self.view.bounds.size.width - 45, 30)];
-    seasonTextF.font = [UIFont fontWithName:@"HelveticaNeue" size:18];
-    seasonTextF.delegate = self;
-    seasonTextF.placeholder = @"Enter season";
-    seasonTextF.backgroundColor = [UIColor grayColor];
-    [scrollview addSubview:seasonTextF];
+    int seasonPositionHeight = 258;
+/*
+    let seasonArray: NSArray = ["Spring", "Summer", "Fall", "Winter"]
+    seasonSegment = UISegmentedControl(items: seasonArray as [AnyObject])
+    seasonSegment.tintColor = UIColor.lightGrayColor()
+    seasonSegment.frame = CGRectMake(45, heightInWhiteView + seasonPositionHeight + 3, self.view.bounds.size.width - 50, 27)
+*/
+    NSArray *seasonArray = [NSArray arrayWithObjects: @"Spring", @"Summer", @"Fall", @"Winter" , nil];
+    seasonSegment = [[UISegmentedControl alloc]initWithItems:seasonArray];
+    seasonSegment.frame = CGRectMake(45, buttonLocationH + seasonPositionHeight + 2, self.view.frame.size.width - 50, 27);
+    seasonSegment.tintColor = [UIColor lightGrayColor];
+    [whiteContainerView addSubview:seasonSegment];
     UIImage *calendarIconImg = [UIImage imageNamed:@"calendarIcon"];
     UIImageView *calendarIconView = [[UIImageView alloc] initWithImage: calendarIconImg];
-    calendarIconView.frame = CGRectMake(3, self.imageView.height + seasonPositionHeight - 1, 28, 30);
-    [scrollview addSubview:calendarIconView];
+    calendarIconView.frame = CGRectMake(3, buttonLocationH + seasonPositionHeight - 1, 28, 30);
+    [whiteContainerView addSubview:calendarIconView];
+    
     
     /*
      myPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0 , 320, 200)];
@@ -148,22 +205,20 @@
      [self.view addSubview:myPickerView];
      */
     
-    self.uploadButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    int uploadButtonHeight = 50;
-    int uploadButtonWidth = self.view.bounds.size.width;
-    [self.uploadButton setFrame:CGRectMake(0, self.view.bounds.size.height-0-uploadButtonHeight, uploadButtonWidth, uploadButtonHeight)];
     
-    [self.uploadButton setTitle:@"UPLOAD" forState:UIControlStateNormal];
-    [self.uploadButton addTarget:self action:@selector(uploadImage:)forControlEvents:UIControlEventTouchDown];
-    UIColor *btnColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
-    self.uploadButton.backgroundColor = btnColor;
-    [scrollview addSubview:self.uploadButton];
+    
+
     
     [self.view addSubview:scrollview];
+    
+    [self.view bringSubviewToFront:self.uploadButton];
     
     UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [tapBackground setNumberOfTapsRequired:1];
     [self.view addGestureRecognizer:tapBackground];
+    
+    self.lastVisibleView = scrollview;
+    
 }
 
 //////////////////////////
@@ -181,45 +236,6 @@
     //animated can be NO
     
 }
-
-
-// The number of columns of data
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 1;
-}
-
-// The number of rows of data
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    return seasonArray.count;
-}
-
-// The data to return for the row and component (column) that's being passed in
-- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    return seasonArray[row];
-}
-
-// Catpure the picker view selection
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    // This method is triggered whenever the user makes a change to the picker selection.
-    // The parameter named row and component represents what was selected.
-    NSString *str = [seasonArray objectAtIndex:row];
-    NSLog(@"season is %@", str);
-    seasonTextF.text = str;
-    
-}
-
-// tell the picker the width of each row for a given component
-- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
-    int sectionWidth = 300;
-    
-    return sectionWidth;
-    
-}
-////////////////
 
 
 -(void) dismissKeyboard:(id)sender
@@ -279,9 +295,38 @@
                     posts[@"uploader"] = [PFUser currentUser];
                     posts[@"imageFile"] = parseImageFile;
                     posts[@"clothesExplanation"] = clothesDesciptionTextView.text;
-                    posts[@"season"] = seasonTextF.text;
+                    int seasonSelection = seasonSegment.selectedSegmentIndex;
+                    NSString *selectedSeason;
+                    if (seasonSelection == 0) {
+                        selectedSeason = @"Spring";
+                    }else if(seasonSelection == 1){
+                        selectedSeason = @"Summer";
+                    }else if (seasonSelection == 2){
+                        selectedSeason = @"Fall";
+                    }else if(seasonSelection == 3){
+                        selectedSeason = @"Winter";
+                    }else{
+                        //Automatically putting in a season when season was not selected manually
+                        NSLog(@"season not selected");
+                        NSDate *date = [NSDate date];
+                        NSCalendar *gregorian = [NSCalendar currentCalendar];
+                        NSDateComponents *dateComponents = [gregorian components:(NSCalendarUnitDay|NSCalendarUnitMonth|NSCalendarUnitYear) fromDate:date];
+                        NSInteger month = [dateComponents month];
+                        if (3 <= month && month <= 5) {
+                            selectedSeason = @"Spring";
+                        }else if (6 <= month && month <= 8) {
+                            selectedSeason = @"Summer";
+                        }else if (9 <= month && month <= 11) {
+                            selectedSeason = @"Fall";
+                        }else{
+                            selectedSeason = @"Winter";
+                        }
+                    }
+                    posts[@"season"] = selectedSeason;
                     posts[@"Tags"] = miscTagArray;
                     posts[@"brandTag"] = brandTagArray;
+                    NSArray *aggregateTags = [miscTagArray arrayByAddingObjectsFromArray:brandTagArray];
+                    posts[@"searchTag"] = [aggregateTags componentsJoinedByString:@" "];
                     //posts[@"tags"] =T
                     [posts saveInBackground];
                     
@@ -388,32 +433,6 @@
 
 
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    
-    if ([textField isEqual:seasonTextF]) {
-        [myPickerView removeFromSuperview];
-        //For displaying pickerView when season text field was selected
-        myPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height , 320, 170)];
-        seasonArray = @[@"Spring", @"Summer", @"Fall", @"Winter"];
-        myPickerView.dataSource = self;
-        myPickerView.delegate = self;
-        myPickerView.showsSelectionIndicator = YES;
-        //[self.view addSubview:myPickerView];
-        
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:.50];
-        myPickerView.center = CGPointMake(myPickerView.center.x, myPickerView.center.y - 170);
-        //[UIView setAnimationDelegate:self];
-        [self.view addSubview:myPickerView];
-        
-        [UIView commitAnimations];
-        return NO;
-        
-    }else{
-    }
-    
-    return YES;
-}
 
 -(void)quitButtonPressed:(UIButton*)button{
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -548,7 +567,7 @@
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     
-    self.imageView.frame = self.view.contentBounds;
+   // self.imageView.frame = self.view.contentBounds;
     
 }
 

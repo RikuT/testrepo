@@ -221,9 +221,10 @@
                 // this very important, otherwise you may experience memory crashes
                 [camera stop];
                 
+                               
                 // show the image
                 ImagePreviewViewController *imageVC = [[ImagePreviewViewController alloc] initWithImage:image];
-                [self presentViewController:imageVC animated:YES completion:nil];
+                [self presentViewController:imageVC animated:NO completion:nil];
             }
             else {
                 NSLog(@"An error has occured: %@", error);

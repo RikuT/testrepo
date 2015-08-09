@@ -169,8 +169,8 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         
         //Textview for clothes description
         var textViewPositionHeight: CGFloat = 60
-        clothesDesciptionTextView = UITextView(frame: CGRectMake(40, heightInWhiteView + textViewPositionHeight, self.view.frame.size.width - 45, 90))
-        clothesDesciptionTextView.font = UIFont(name: "HelveticaNeue", size: 18)
+        clothesDesciptionTextView = UITextView(frame: CGRectMake(40, heightInWhiteView + textViewPositionHeight - 7, self.view.frame.size.width - 45, 97))
+        clothesDesciptionTextView.font = UIFont(name: "HelveticaNeue", size: 16)
         clothesDesciptionTextView.backgroundColor = UIColor.clearColor()
         //clothesDesciptionTextView.text = textViewPlaceHolder
         clothesDesciptionTextView.textColor = UIColor.lightGrayColor()
@@ -191,14 +191,14 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         hashTagLabel.font = UIFont(name: "HelveticaNeue", size: 16)
         whiteView.addSubview(hashTagLabel)
         
-        brandTag = TLTagsControl(frame: CGRectMake(65, heightInWhiteView + brandTagPositionHeight + 5, self.view.bounds.size.width - 150, 30))
+        brandTag = TLTagsControl(frame: CGRectMake(62, heightInWhiteView + brandTagPositionHeight + 5, self.view.bounds.size.width - 100, 30))
         brandTag.mode = TLTagsControlMode.List
         whiteView.addSubview(brandTag)
-        var brandAddButt = UIButton(frame: CGRectMake(self.view.bounds.size.width - 90, heightInWhiteView + brandTagPositionHeight + 5, 90, 30))
+        var brandAddButt = UIButton(frame: CGRectMake(self.view.bounds.size.width - 45, heightInWhiteView + brandTagPositionHeight + 5, 40, 30))
         brandAddButt.backgroundColor = UIColor.clearColor()
         brandAddButt.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 14)
         brandAddButt.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
-        brandAddButt.setTitle("Add brand", forState: .Normal)
+        brandAddButt.setTitle("Add", forState: .Normal)
         brandAddButt.addTarget(self, action: "brandButtTapped", forControlEvents: UIControlEvents.TouchUpInside)
         whiteView.addSubview(brandAddButt)
         
@@ -401,10 +401,15 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
     func checkButtonPressed(){
         self.view.resignFirstResponder()
         self.showActivityIndicatory(self.view)
+        
         var newClothesName = topsLabel.text
         var newClothesDescrption = clothesDesciptionTextView.text
         var newBrandTags = brandTag.tags
         var newMiscTags = miscTag.tags
+        
+        var aggregateTagArray = (newBrandTags.copy() as! [String]) + (newMiscTags.copy() as! [String])
+        
+        
         var newSeason: NSString!
         var newSeasonInt = seasonSegment.selectedSegmentIndex
         if newSeasonInt == 0{
@@ -429,6 +434,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         userFileObj["brandTag"] = newBrandTags
         userFileObj["Tags"] = newMiscTags
         userFileObj["season"] = newSeason
+        userFileObj["searchTag"] = " ".join(aggregateTagArray)
         
         userFileObj.saveInBackgroundWithBlock({(success: Bool, error: NSError?) -> Void in
             if error == nil{
