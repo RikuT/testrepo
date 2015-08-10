@@ -504,6 +504,8 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         posts["votes"] = votesNum
         posts["imageText"] = topsLabel.text
         posts["uploader"] = PFUser.currentUser()
+        posts["Tags"] = miscTag.tags
+        posts["BrandTags"] = brandTag.tags
         posts.saveInBackgroundWithBlock({
             (success: Bool, error: NSError?) -> Void in
             

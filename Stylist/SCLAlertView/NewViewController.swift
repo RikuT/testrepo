@@ -39,7 +39,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
                 }
             }
         }
-        
+
         
         // Wire up search bar delegate so that we can react to button selections
         
@@ -80,6 +80,8 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        println("votesNum\(votes.count)")
+
         return self.votes.count
     }
     

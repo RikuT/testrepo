@@ -11,5 +11,19 @@ import ParseUI
 import Parse
 
 class TagCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var tagImageView: PFImageView!
+    @IBOutlet weak var tagImageView2: PFImageView!
+    @IBOutlet weak var tagNameLabel:UILabel?
 
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        //postsLabel.textAlignment = NSTextAlignment.Center
+        //profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
+        
+    }
+
+    
 }
