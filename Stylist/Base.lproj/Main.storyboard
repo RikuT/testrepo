@@ -454,6 +454,7 @@
                                 </state>
                                 <connections>
                                     <action selector="logoutButtonTapped:" destination="x8p-fI-vlR" eventType="touchUpInside" id="0RP-df-6Mi"/>
+                                    <segue destination="PNQ-ru-7to" kind="modal" identifier="logIn" id="vY9-8b-aib"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -506,7 +507,7 @@
                                     <action selector="loginButtonTapped:" destination="PNQ-ru-7to" eventType="touchUpInside" id="oW0-2x-AQ6"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" id="pan-81-KQI">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" id="pan-81-KQI" customClass="MKTextField" customModule="Stylist" customModuleProvider="target">
                                 <rect key="frame" x="16" y="287" width="282" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -529,7 +530,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" id="RWr-qD-YN0">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" id="RWr-qD-YN0" customClass="MKTextField" customModule="Stylist" customModuleProvider="target">
                                 <rect key="frame" x="16" y="220" width="282" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -567,8 +568,8 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="userPasswordTextField" destination="pan-81-KQI" id="rP0-71-GWD"/>
-                        <outlet property="userUserNameTextField" destination="RWr-qD-YN0" id="OXS-5e-WlE"/>
+                        <outlet property="passwordField" destination="pan-81-KQI" id="JYt-UO-2XE"/>
+                        <outlet property="usernameField" destination="RWr-qD-YN0" id="hTd-9c-PYa"/>
                         <segue destination="8vQ-e4-Iq2" kind="modal" identifier="loginVCtoVC" id="j8y-ny-OAp"/>
                     </connections>
                 </viewController>

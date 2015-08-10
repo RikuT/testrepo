@@ -278,7 +278,7 @@ class userSettingViewController: UIViewController {
         NSUserDefaults.standardUserDefaults().synchronize()
         
         PFUser.logOut()
-        self.performSegueWithIdentifier("loginView", sender: self)
+        self.performSegueWithIdentifier("logIn", sender: self)
     }
     
     

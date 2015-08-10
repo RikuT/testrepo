@@ -35,6 +35,13 @@
 		B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2361B417868007F8FDA /* TopsViewController.swift */; };
 		B6436C671B67698700B8DA64 /* SwiftPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6436C661B67698700B8DA64 /* SwiftPages.swift */; };
 		B65331DD1B411D1B00B19268 /* PasswordRecoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65331DC1B411D1B00B19268 /* PasswordRecoverViewController.swift */; };
+		B66F25971B77A323003DAB6C /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F25901B77A323003DAB6C /* MKButton.swift */; };
+		B66F25981B77A323003DAB6C /* MKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F25911B77A323003DAB6C /* MKColor.swift */; };
+		B66F25991B77A323003DAB6C /* MKImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F25921B77A323003DAB6C /* MKImageView.swift */; };
+		B66F259A1B77A323003DAB6C /* MKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F25931B77A323003DAB6C /* MKLabel.swift */; };
+		B66F259B1B77A323003DAB6C /* MKLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F25941B77A323003DAB6C /* MKLayer.swift */; };
+		B66F259C1B77A323003DAB6C /* MKTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F25951B77A323003DAB6C /* MKTableViewCell.swift */; };
+		B66F259D1B77A323003DAB6C /* MKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F25961B77A323003DAB6C /* MKTextField.swift */; };
 		B6798A641B626E4000197190 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6798A631B626E4000197190 /* ParseUI.framework */; };
 		B683596F1B64EAB5002D492D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B683596E1B64EAB5002D492D /* Social.framework */; };
 		B68359711B64EBDD002D492D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B68359701B64EBDD002D492D /* AVFoundation.framework */; };
@@ -156,6 +163,13 @@
 		B655B3991B6FA1A300A8A16C /* ヒラギノ丸ゴ ProN W4.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ヒラギノ丸ゴ ProN W4.otf"; sourceTree = "<group>"; };
 		B655B39A1B6FA1A300A8A16C /* ヒラギノ明朝 Pro W3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ヒラギノ明朝 Pro W3.otf"; sourceTree = "<group>"; };
 		B655B39B1B6FA1A300A8A16C /* ヒラギノ明朝 Pro W6.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ヒラギノ明朝 Pro W6.otf"; sourceTree = "<group>"; };
+		B66F25901B77A323003DAB6C /* MKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
+		B66F25911B77A323003DAB6C /* MKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKColor.swift; sourceTree = "<group>"; };
+		B66F25921B77A323003DAB6C /* MKImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKImageView.swift; sourceTree = "<group>"; };
+		B66F25931B77A323003DAB6C /* MKLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKLabel.swift; sourceTree = "<group>"; };
+		B66F25941B77A323003DAB6C /* MKLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKLayer.swift; sourceTree = "<group>"; };
+		B66F25951B77A323003DAB6C /* MKTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTableViewCell.swift; sourceTree = "<group>"; };
+		B66F25961B77A323003DAB6C /* MKTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTextField.swift; sourceTree = "<group>"; };
 		B6798A631B626E4000197190 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		B683596E1B64EAB5002D492D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		B68359701B64EBDD002D492D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -360,6 +374,20 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		B66F258F1B77A30C003DAB6C /* MaterialKit */ = {
+			isa = PBXGroup;
+			children = (
+				B66F25901B77A323003DAB6C /* MKButton.swift */,
+				B66F25911B77A323003DAB6C /* MKColor.swift */,
+				B66F25921B77A323003DAB6C /* MKImageView.swift */,
+				B66F25931B77A323003DAB6C /* MKLabel.swift */,
+				B66F25941B77A323003DAB6C /* MKLayer.swift */,
+				B66F25951B77A323003DAB6C /* MKTableViewCell.swift */,
+				B66F25961B77A323003DAB6C /* MKTextField.swift */,
+			);
+			name = MaterialKit;
+			sourceTree = "<group>";
+		};
 		B696775E1B6218E600EC2F9A /* Camera */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +415,7 @@
 		B69677621B62361500EC2F9A /* Login/Registeration */ = {
 			isa = PBXGroup;
 			children = (
+				B66F258F1B77A30C003DAB6C /* MaterialKit */,
 				B6EC66021B3FD4F700B5BC58 /* RegisterPageViewController.swift */,
 				B6EC66271B3FFA8400B5BC58 /* LoginViewController.swift */,
 				B65331DC1B411D1B00B19268 /* PasswordRecoverViewController.swift */,
@@ -652,12 +681,14 @@
 			files = (
 				321706F91B65EFA400812648 /* ProfilePicViewController.swift in Sources */,
 				326B13BD1B61D17E003A871D /* UIImage+FixOrientation.m in Sources */,
+				B66F259C1B77A323003DAB6C /* MKTableViewCell.swift in Sources */,
 				32862E5B1B631B530070FA05 /* SCLAlertView.m in Sources */,
 				325FA4551B77A4D900229204 /* TagViewController.swift in Sources */,
 				32862E5D1B631B530070FA05 /* SCLAlertViewStyleKit.m in Sources */,
 				B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */,
 				B6C353D51B67914F006CF285 /* NewCollectionViewCell.swift in Sources */,
 				325FA44B1B708E7400229204 /* VisibleFormViewController.m in Sources */,
+				B66F25971B77A323003DAB6C /* MKButton.swift in Sources */,
 				B6EC66281B3FFA8400B5BC58 /* LoginViewController.swift in Sources */,
 				32170A2F1B6CE030009F9665 /* BrandSearchTableController.swift in Sources */,
 				B6436C671B67698700B8DA64 /* SwiftPages.swift in Sources */,
@@ -671,11 +702,14 @@
 				B6EC66261B3FE60C00B5BC58 /* MyConnector.m in Sources */,
 				B600E2351B41765D007F8FDA /* SingleRowCell.swift in Sources */,
 				326B13B31B61D0FC003A871D /* ImagePreviewViewController.m in Sources */,
+				B66F259D1B77A323003DAB6C /* MKTextField.swift in Sources */,
 				325FA44D1B70A7AC00229204 /* SwipeableClothesTester.swift in Sources */,
 				32862E5F1B631B530070FA05 /* UIImage+ImageEffects.m in Sources */,
 				326B13BC1B61D17E003A871D /* LLSimpleCamera.m in Sources */,
 				B65331DD1B411D1B00B19268 /* PasswordRecoverViewController.swift in Sources */,
 				B6EC66011B3FD31900B5BC58 /* ViewController.swift in Sources */,
+				B66F259A1B77A323003DAB6C /* MKLabel.swift in Sources */,
+				B66F25991B77A323003DAB6C /* MKImageView.swift in Sources */,
 				B6CD24691B3D8BD50061E451 /* AppDelegate.m in Sources */,
 				B6C353D21B6790E9006CF285 /* NewViewController.swift in Sources */,
 				32170A2B1B6CE00F009F9665 /* StringScore.swift in Sources */,
@@ -683,6 +717,8 @@
 				32862E5C1B631B530070FA05 /* SCLAlertViewResponder.m in Sources */,
 				32F3F1F91B52BA9C0051050B /* SCLAlertView.swift in Sources */,
 				32F48E0A1B670BFA009EF135 /* TLTagsControl.m in Sources */,
+				B66F259B1B77A323003DAB6C /* MKLayer.swift in Sources */,
+				B66F25981B77A323003DAB6C /* MKColor.swift in Sources */,
 				B6CD24661B3D8BD50061E451 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
