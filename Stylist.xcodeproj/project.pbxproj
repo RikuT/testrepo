@@ -42,6 +42,7 @@
 		B66F259B1B77A323003DAB6C /* MKLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F25941B77A323003DAB6C /* MKLayer.swift */; };
 		B66F259C1B77A323003DAB6C /* MKTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F25951B77A323003DAB6C /* MKTableViewCell.swift */; };
 		B66F259D1B77A323003DAB6C /* MKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F25961B77A323003DAB6C /* MKTextField.swift */; };
+		B66F259F1B78DCAF003DAB6C /* TrendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F259E1B78DCAF003DAB6C /* TrendDetailViewController.swift */; };
 		B6798A641B626E4000197190 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6798A631B626E4000197190 /* ParseUI.framework */; };
 		B683596F1B64EAB5002D492D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B683596E1B64EAB5002D492D /* Social.framework */; };
 		B68359711B64EBDD002D492D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B68359701B64EBDD002D492D /* AVFoundation.framework */; };
@@ -170,6 +171,7 @@
 		B66F25941B77A323003DAB6C /* MKLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKLayer.swift; sourceTree = "<group>"; };
 		B66F25951B77A323003DAB6C /* MKTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTableViewCell.swift; sourceTree = "<group>"; };
 		B66F25961B77A323003DAB6C /* MKTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTextField.swift; sourceTree = "<group>"; };
+		B66F259E1B78DCAF003DAB6C /* TrendDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendDetailViewController.swift; sourceTree = "<group>"; };
 		B6798A631B626E4000197190 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		B683596E1B64EAB5002D492D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		B68359701B64EBDD002D492D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -430,6 +432,7 @@
 				B6C353D41B67914F006CF285 /* NewCollectionViewCell.swift */,
 				325FA4541B77A4D800229204 /* TagViewController.swift */,
 				325FA4581B77A53B00229204 /* TagCollectionViewCell.swift */,
+				B66F259E1B78DCAF003DAB6C /* TrendDetailViewController.swift */,
 			);
 			name = Trend;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				B6EC66011B3FD31900B5BC58 /* ViewController.swift in Sources */,
 				B66F259A1B77A323003DAB6C /* MKLabel.swift in Sources */,
 				B66F25991B77A323003DAB6C /* MKImageView.swift in Sources */,
+				B66F259F1B78DCAF003DAB6C /* TrendDetailViewController.swift in Sources */,
 				B6CD24691B3D8BD50061E451 /* AppDelegate.m in Sources */,
 				B6C353D21B6790E9006CF285 /* NewViewController.swift in Sources */,
 				32170A2B1B6CE00F009F9665 /* StringScore.swift in Sources */,

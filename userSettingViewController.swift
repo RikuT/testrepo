@@ -59,7 +59,7 @@ class userSettingViewController: UIViewController {
         
         emailTextF.layer.borderColor = UIColor.clearColor().CGColor
         emailTextF.floatingPlaceholderEnabled = true
-        emailTextF.placeholder = "UserName"
+        emailTextF.placeholder = "Email"
         emailTextF.tintColor = UIColor.MKColor.Blue
         emailTextF.rippleLocation = .Right
         emailTextF.cornerRadius = 0

@@ -53,15 +53,15 @@
                         <outlet property="navigationBar" destination="KnJ-3v-krq" id="2Gx-6t-BFI"/>
                         <outlet property="swiftPagesView" destination="Y4q-L0-eQu" id="SG8-bJ-Yvs"/>
                         <segue destination="PNQ-ru-7to" kind="modal" identifier="loginView" animates="NO" id="BK8-ow-a7u"/>
-                        <segue destination="4H1-83-9jU" kind="modal" identifier="VCtoClosetVC" id="ElC-ds-RgJ"/>
-                        <segue destination="x8p-fI-vlR" kind="modal" identifier="VCtoAccountVC" id="z6c-Iv-rJh"/>
-                        <segue destination="Gk5-7l-8RI" kind="modal" identifier="VCtoFittingVCSegue" id="lO1-c6-9JB"/>
-                        <segue destination="mvh-Qb-4CR" kind="modal" identifier="VCtoPhotoVC" id="yYV-VU-c0Y"/>
+                        <segue destination="4H1-83-9jU" kind="modal" identifier="VCtoClosetVC" animates="NO" id="ElC-ds-RgJ"/>
+                        <segue destination="x8p-fI-vlR" kind="modal" identifier="VCtoAccountVC" animates="NO" id="z6c-Iv-rJh"/>
+                        <segue destination="Gk5-7l-8RI" kind="modal" identifier="VCtoFittingVCSegue" animates="NO" id="lO1-c6-9JB"/>
+                        <segue destination="mvh-Qb-4CR" kind="modal" identifier="VCtoPhotoVC" animates="NO" id="yYV-VU-c0Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1J-0Z-pgo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1208" y="549"/>
+            <point key="canvasLocation" x="1157" y="574"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="J00-nZ-Yq8">
@@ -74,12 +74,12 @@
                     </view>
                     <connections>
                         <segue destination="4H1-83-9jU" kind="modal" identifier="detailVCtoTopsVC" animates="NO" id="ZON-hF-NJm"/>
-                        <segue destination="jm7-4J-FT4" kind="modal" identifier="detailVCtoBrandSearchSegue" id="pXA-zW-ij0"/>
+                        <segue destination="jm7-4J-FT4" kind="modal" identifier="detailVCtoBrandSearchSegue" animates="NO" id="pXA-zW-ij0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6KV-Ki-CzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="171" y="-198"/>
+            <point key="canvasLocation" x="74" y="-117"/>
         </scene>
         <!--Tops View Controller-->
         <scene sceneID="9o3-eY-HEm">
@@ -169,8 +169,8 @@
                     <connections>
                         <outlet property="collectionView" destination="EaR-ET-k4R" id="mM4-wQ-PcB"/>
                         <segue destination="Rz1-LF-e1Z" kind="modal" identifier="showImage" animates="NO" id="6Si-2s-eq2"/>
-                        <segue destination="8vQ-e4-Iq2" kind="modal" identifier="topsVCtoVCnotUnwind" id="PbG-0j-NXL"/>
-                        <segue destination="8vQ-e4-Iq2" kind="modal" identifier="topsVCtoVCsegue" id="BUq-l4-ALa"/>
+                        <segue destination="8vQ-e4-Iq2" kind="modal" identifier="topsVCtoVCnotUnwind" animates="NO" id="PbG-0j-NXL"/>
+                        <segue destination="8vQ-e4-Iq2" kind="modal" identifier="topsVCtoVCsegue" animates="NO" id="BUq-l4-ALa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6d5-AW-rn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -235,7 +235,7 @@
                     </view>
                     <connections>
                         <outlet property="imagePicked" destination="i14-iM-JYA" id="R3a-jC-4Sd"/>
-                        <segue destination="x8p-fI-vlR" kind="modal" identifier="updateProfilePicVCtoUserSettingVC" id="HkD-ag-DXk"/>
+                        <segue destination="x8p-fI-vlR" kind="modal" identifier="updateProfilePicVCtoUserSettingVC" animates="NO" id="HkD-ag-DXk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Dz-3c-02t" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -289,7 +289,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="userEmailTextField" destination="dgL-yM-2PO" id="gY2-eq-anL"/>
-                        <segue destination="x8p-fI-vlR" kind="modal" identifier="changePassToUserSetting" id="Ie9-er-xeu"/>
+                        <segue destination="x8p-fI-vlR" kind="modal" identifier="changePassToUserSetting" animates="NO" id="Ie9-er-xeu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfM-f2-VMm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -323,7 +323,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="8vQ-e4-Iq2" kind="modal" identifier="userSettingVCtoVC" id="ZVg-TD-1de"/>
+                                    <segue destination="8vQ-e4-Iq2" kind="modal" identifier="userSettingVCtoVC" animates="NO" id="ZVg-TD-1de"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hGw-mH-YHw">
@@ -333,11 +333,11 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="8vQ-e4-Iq2" kind="modal" id="qXM-AK-tWs"/>
+                                    <segue destination="8vQ-e4-Iq2" kind="modal" animates="NO" id="qXM-AK-tWs"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="ixm-t2-Cr8" customClass="MKTextField" customModule="Stylist" customModuleProvider="target">
-                                <rect key="frame" x="32" y="220" width="256" height="50"/>
+                                <rect key="frame" x="26" y="220" width="285" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
@@ -355,7 +355,7 @@
                                 </state>
                                 <connections>
                                     <action selector="changePassword" destination="x8p-fI-vlR" eventType="touchUpInside" id="r2F-ES-paX"/>
-                                    <segue destination="ki5-V5-qSf" kind="modal" id="XKH-ik-kmo"/>
+                                    <segue destination="ki5-V5-qSf" kind="modal" animates="NO" id="XKH-ik-kmo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Eif-2z-WyS">
@@ -366,7 +366,7 @@
                                 </state>
                                 <connections>
                                     <action selector="changeProfilePic" destination="x8p-fI-vlR" eventType="touchUpInside" id="DDa-UL-FMB"/>
-                                    <segue destination="c50-fl-r0C" kind="modal" id="Xj8-xO-qrt"/>
+                                    <segue destination="c50-fl-r0C" kind="modal" animates="NO" id="Xj8-xO-qrt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NL8-6X-ka8" customClass="MKButton" customModule="Stylist" customModuleProvider="target">
@@ -379,7 +379,7 @@
                                 </state>
                                 <connections>
                                     <action selector="logoutButtonTapped:" destination="x8p-fI-vlR" eventType="touchUpInside" id="0RP-df-6Mi"/>
-                                    <segue destination="PNQ-ru-7to" kind="modal" identifier="logIn" id="vY9-8b-aib"/>
+                                    <segue destination="PNQ-ru-7to" kind="modal" identifier="logIn" animates="NO" id="vY9-8b-aib"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" id="aw8-9O-Jac">
@@ -522,7 +522,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ki5-V5-qSf" kind="modal" id="xnA-Pc-bIb"/>
+                                    <segue destination="ki5-V5-qSf" kind="modal" animates="NO" id="xnA-Pc-bIb"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" id="pan-81-KQI" customClass="MKTextField" customModule="Stylist" customModuleProvider="target">
@@ -565,12 +565,12 @@
                         <outlet property="passwordField" destination="pan-81-KQI" id="JYt-UO-2XE"/>
                         <outlet property="signupBtn" destination="Nxz-tZ-eFr" id="MO7-RI-4AT"/>
                         <outlet property="usernameField" destination="RWr-qD-YN0" id="hTd-9c-PYa"/>
-                        <segue destination="8vQ-e4-Iq2" kind="modal" identifier="loginVCtoVC" id="j8y-ny-OAp"/>
+                        <segue destination="8vQ-e4-Iq2" kind="modal" identifier="loginVCtoVC" animates="NO" id="j8y-ny-OAp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YgJ-Mv-3hu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1747" y="566"/>
+            <point key="canvasLocation" x="1743" y="574"/>
         </scene>
         <!--Register Page View Controller-->
         <scene sceneID="mbv-tN-eWA">
@@ -648,7 +648,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="PNQ-ru-7to" kind="modal" id="fO7-VD-hGW"/>
+                                    <segue destination="PNQ-ru-7to" kind="modal" animates="NO" id="fO7-VD-hGW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -664,7 +664,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bu0-Ri-43P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2315" y="549"/>
+            <point key="canvasLocation" x="2315" y="574"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LF5-6K-NVd">
@@ -685,7 +685,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fc4-fJ-QkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="436" y="1349"/>
+            <point key="canvasLocation" x="436" y="1414"/>
         </scene>
         <!--Swipeable Clothes Tester-->
         <scene sceneID="P6U-l5-kP1">
@@ -788,7 +788,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqO-5T-Hk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="X8T-yD-KUp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="12" y="584"/>
+            <point key="canvasLocation" x="12" y="574"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Ewf-R4-c9l">
@@ -811,7 +811,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ppV-jN-Wvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1112" y="1349"/>
+            <point key="canvasLocation" x="1163" y="1414"/>
         </scene>
         <!--New View Controller-->
         <scene sceneID="qdE-0e-U9U">
@@ -922,11 +922,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="collectionView" destination="7xo-c4-9Lr" id="k63-MI-b0V"/>
+                        <segue destination="6sh-dG-FSl" kind="modal" identifier="showTrendImage" animates="NO" id="0Ap-MX-GR1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Mf-vj-cbt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1518" y="1372"/>
+            <point key="canvasLocation" x="1565" y="1414"/>
         </scene>
         <!--Tag View Controller-->
         <scene sceneID="5Zd-rN-gOI">
@@ -976,7 +977,6 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <size key="customSize" width="300" height="303"/>
                                                 <connections>
                                                     <outlet property="tagImageView" destination="sNJ-nS-LMO" id="kOu-pN-xgV"/>
@@ -1007,7 +1007,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BP7-RQ-rM5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1916" y="1331"/>
+            <point key="canvasLocation" x="1917" y="1414"/>
         </scene>
         <!--Brand Search Table Controller-->
         <scene sceneID="CF5-ed-lTn">
@@ -1097,6 +1097,23 @@
             </objects>
             <point key="canvasLocation" x="140" y="-938"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="DSc-13-TWr">
+            <objects>
+                <viewController id="6sh-dG-FSl" customClass="DetailViewController" customModule="Stylist" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bMU-iO-zoF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="SHN-go-rSu" kind="modal" animates="NO" id="DbN-Us-oSn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jgz-A0-3Ud" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1565" y="2123"/>
+        </scene>
     </scenes>
     <resources>
         <image name="GoBackArrow" width="50" height="50"/>
@@ -1114,10 +1131,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="ZON-hF-NJm"/>
+        <segue reference="PbG-0j-NXL"/>
         <segue reference="z6c-Iv-rJh"/>
-        <segue reference="qXM-AK-tWs"/>
-        <segue reference="ElC-ds-RgJ"/>
-        <segue reference="vY9-8b-aib"/>
         <segue reference="XKH-ik-kmo"/>
+        <segue reference="vY9-8b-aib"/>
     </inferredMetricsTieBreakers>
 </document>
