@@ -484,7 +484,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login Design 2" id="X7E-a6-0Gu">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="-5" y="0.0" width="332" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="v5c-qC-oe0" customClass="MKButton" customModule="Stylist" customModuleProvider="target">
@@ -493,7 +493,7 @@
                                 <color key="backgroundColor" red="0.082352941176470587" green="0.64313725490195994" blue="0.84648064612358098" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="0.08235294118" green="0.64313725489999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.12941176470588237" green="0.69411764705882351" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="maskEnabled" value="NO"/>
@@ -581,7 +581,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login Design 2" id="3aw-IA-gqb">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="-5" y="0.0" width="331" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" id="Amc-Tn-dHm" customClass="MKTextField" customModule="Stylist" customModuleProvider="target">
@@ -1112,7 +1112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jgz-A0-3Ud" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1565" y="2123"/>
+            <point key="canvasLocation" x="1299" y="2248"/>
         </scene>
     </scenes>
     <resources>
@@ -1132,9 +1132,9 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="ZON-hF-NJm"/>
-        <segue reference="PbG-0j-NXL"/>
         <segue reference="z6c-Iv-rJh"/>
-        <segue reference="XKH-ik-kmo"/>
-        <segue reference="vY9-8b-aib"/>
+        <segue reference="j8y-ny-OAp"/>
+        <segue reference="fO7-VD-hGW"/>
+        <segue reference="xnA-Pc-bIb"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -20,7 +20,8 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     // Connection to the collection view
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    var lastContentOffset: CGFloat!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -181,14 +182,60 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         
     }
     
+    /*
+    ==========================================================================================
+    Segue methods
+    ==========================================================================================
+    */
+    
     // Process collectionView cell selection
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        objectToSend = votes[indexPath.section]
+        objectToSend = votes[indexPath.row]
+        var attributes: UICollectionViewLayoutAttributes = self.collectionView.layoutAttributesForItemAtIndexPath(indexPath)!
+        var cellRect: CGRect = attributes.frame
+        //cellRect.origin.y = cellRect.origin.y - lastContentOffset
+        
+        if lastContentOffset != nil{
+            var originY = cellRect.origin.y - lastContentOffset
+            cellRect.origin.y = originY
+        }
+        
+        //Adding for navigation bar and status bar
+        cellRect.origin.y = cellRect.origin.y + 44 + 20
+        println("cellrect \(cellRect)")
+        
+        
+        let layer = UIApplication.sharedApplication().keyWindow?.layer
+        let scale = UIScreen.mainScreen().scale
+        UIGraphicsBeginImageContextWithOptions(layer!.frame.size, false, scale);
+        
+        layer!.renderInContext(UIGraphicsGetCurrentContext())
+        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        let ud = NSUserDefaults.standardUserDefaults()
+        ud.setObject(UIImageJPEGRepresentation(screenshot, 0.6), forKey: "bgBetweenTopsVCandDetailVC")
+        ud.setValue(NSStringFromCGRect(cellRect), forKey: "cellPositionTopstoDetailKey")
+        
+        
+        /*
+        UICollectionViewLayoutAttributes *attributes = [self.collectionView layoutAttributesForItemAtIndexPath:indexPath];
+        CGRect cellRect = attributes.frame;
+        */
+        performSegueWithIdentifier("showTrendImage", sender: self)
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
- 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "showTrendImage" {
+            
+            let detailsVc = segue.destinationViewController as! DetailViewController
+            detailsVc.currentObject = objectToSend
+        }
+    }
     
+
     
        /*
     ==========================================================================================
