@@ -24,13 +24,17 @@ class userSettingViewController: UIViewController {
     var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
     
     
-    
-    @IBOutlet weak var displaynameTextF: UITextField!
-    @IBOutlet weak var emailTextF: UITextField!
     @IBOutlet weak var profileImgBut: UIButton!
     @IBOutlet weak var sexSelect: UISegmentedControl!
-    @IBOutlet weak var heightTextF: UITextField!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet var displaynameTextF: MKTextField!
+    @IBOutlet var emailTextF: MKTextField!
+    @IBOutlet var heightTextF: MKTextField!
+    @IBOutlet var passwordChange: MKButton!
+    @IBOutlet var logout: MKButton!
+    @IBOutlet var update: MKButton!
+
+
     @IBOutlet var tapGesture: UITapGestureRecognizer!
     var profileImgFile = [PFFile]()
     
@@ -44,6 +48,47 @@ class userSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        displaynameTextF.layer.borderColor = UIColor.clearColor().CGColor
+        displaynameTextF.floatingPlaceholderEnabled = true
+        displaynameTextF.placeholder = "UserName"
+        displaynameTextF.tintColor = UIColor.MKColor.Blue
+        displaynameTextF.rippleLocation = .Right
+        displaynameTextF.cornerRadius = 0
+        displaynameTextF.bottomBorderEnabled = true
+        
+        
+        emailTextF.layer.borderColor = UIColor.clearColor().CGColor
+        emailTextF.floatingPlaceholderEnabled = true
+        emailTextF.placeholder = "UserName"
+        emailTextF.tintColor = UIColor.MKColor.Blue
+        emailTextF.rippleLocation = .Right
+        emailTextF.cornerRadius = 0
+        emailTextF.bottomBorderEnabled = true
+        
+        heightTextF.layer.borderColor = UIColor.clearColor().CGColor
+        heightTextF.floatingPlaceholderEnabled = true
+        heightTextF.placeholder = "UserName"
+        heightTextF.tintColor = UIColor.MKColor.Blue
+        heightTextF.rippleLocation = .Right
+        heightTextF.cornerRadius = 0
+        heightTextF.bottomBorderEnabled = true
+        
+        passwordChange.layer.shadowOpacity = 0.55
+        passwordChange.layer.shadowRadius = 5.0
+        passwordChange.layer.shadowColor = UIColor.grayColor().CGColor
+        passwordChange.layer.shadowOffset = CGSize(width: 0, height: 2.5)
+        
+        logout.layer.shadowOpacity = 0.55
+        logout.layer.shadowRadius = 5.0
+        logout.layer.shadowColor = UIColor.grayColor().CGColor
+        logout.layer.shadowOffset = CGSize(width: 0, height: 2.5)
+        
+        update.layer.shadowOpacity = 0.55
+        update.layer.shadowRadius = 5.0
+        update.layer.shadowColor = UIColor.grayColor().CGColor
+        update.layer.shadowOffset = CGSize(width: 0, height: 2.5)
+        
+        
         
         self.showActivityIndicator(self.view)
         

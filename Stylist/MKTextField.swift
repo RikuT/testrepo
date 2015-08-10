@@ -50,7 +50,7 @@ public class MKTextField : UITextField {
             floatingLabel.font = floatingLabelFont
         }
     }
-    @IBInspectable public var floatingLabelTextColor: UIColor = UIColor.lightGrayColor() {
+    @IBInspectable public var floatingLabelTextColor: UIColor = UIColor.blackColor() {
         didSet {
             floatingLabel.textColor = floatingLabelTextColor
         }

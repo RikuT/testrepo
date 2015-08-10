@@ -13,10 +13,11 @@ import Parse
 
 class RegisterPageViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var userUserNameTextField: UITextField!
-    @IBOutlet weak var userEmailTextField: UITextField!
-    @IBOutlet weak var userPasswordTextField: UITextField!
-    @IBOutlet weak var repeatPasswordTextField: UITextField!
+
+    @IBOutlet weak var userUserNameTextField: MKTextField!
+    @IBOutlet weak var userEmailTextField: MKTextField!
+    @IBOutlet weak var userPasswordTextField: MKTextField!
+    @IBOutlet weak var repeatPasswordTextField: MKTextField!
     
     //For showing activity indicator
     var container: UIView = UIView()
@@ -26,6 +27,38 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        userUserNameTextField.layer.borderColor = UIColor.clearColor().CGColor
+        userUserNameTextField.floatingPlaceholderEnabled = true
+        userUserNameTextField.placeholder = "UserName"
+        userUserNameTextField.tintColor = UIColor.MKColor.Blue
+        userUserNameTextField.rippleLocation = .Right
+        userUserNameTextField.cornerRadius = 0
+        userUserNameTextField.bottomBorderEnabled = true
+        
+        userEmailTextField.layer.borderColor = UIColor.clearColor().CGColor
+        userEmailTextField.floatingPlaceholderEnabled = true
+        userEmailTextField.placeholder = "Email Adress"
+        userEmailTextField.tintColor = UIColor.MKColor.Blue
+        userEmailTextField.rippleLocation = .Right
+        userEmailTextField.cornerRadius = 0
+        userEmailTextField.bottomBorderEnabled = true
+        
+        userPasswordTextField.layer.borderColor = UIColor.clearColor().CGColor
+        userPasswordTextField.floatingPlaceholderEnabled = true
+        userPasswordTextField.placeholder = "Password"
+        userPasswordTextField.tintColor = UIColor.MKColor.Red
+        userPasswordTextField.rippleLocation = .Right
+        userPasswordTextField.cornerRadius = 0
+        userPasswordTextField.bottomBorderEnabled = true
+        
+        repeatPasswordTextField.layer.borderColor = UIColor.clearColor().CGColor
+        repeatPasswordTextField.floatingPlaceholderEnabled = true
+        repeatPasswordTextField.placeholder = "Repeat Password"
+        repeatPasswordTextField.tintColor = UIColor.MKColor.Red
+        repeatPasswordTextField.rippleLocation = .Right
+        repeatPasswordTextField.cornerRadius = 0
+        repeatPasswordTextField.bottomBorderEnabled = true
+        
         
         // Do any additional setup after loading the view.
     }

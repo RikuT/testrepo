@@ -13,7 +13,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var usernameField: MKTextField!
     @IBOutlet var passwordField: MKTextField!
-    
+    @IBOutlet var flatButton2: MKButton!
+    @IBOutlet var loginBtn: MKButton!
+    @IBOutlet var signupBtn: MKButton!
+
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +38,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordField.cornerRadius = 0
         passwordField.bottomBorderEnabled = true
         
+        flatButton2.maskEnabled = false
+        flatButton2.ripplePercent = 0.5
+        flatButton2.backgroundAniEnabled = false
+        flatButton2.rippleLocation = .Center
+        
+        loginBtn.layer.shadowOpacity = 0.55
+        loginBtn.layer.shadowRadius = 5.0
+        loginBtn.layer.shadowColor = UIColor.grayColor().CGColor
+        loginBtn.layer.shadowOffset = CGSize(width: 0, height: 2.5)
+        
+        signupBtn.layer.shadowOpacity = 0.55
+        signupBtn.layer.shadowRadius = 5.0
+        signupBtn.layer.shadowColor = UIColor.grayColor().CGColor
+        signupBtn.layer.shadowOffset = CGSize(width: 0, height: 2.5)
         // Do any additional setup after loading the view.
     }
     
