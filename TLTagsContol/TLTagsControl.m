@@ -222,7 +222,7 @@
         tagLabel.clipsToBounds = YES;
         tagLabel.layer.cornerRadius = 5;
         
-        
+        if(_mode == TLTagsControlModeEdit || _mode == TLTagsControlModeList){
         UIButton *deleteTagButton = [[UIButton alloc] initWithFrame:tagInputField_.frame];
         CGRect buttonFrame = deleteTagButton.frame;
         [deleteTagButton.titleLabel setFont:tagInputField_.font];
@@ -239,7 +239,12 @@
         tagFrame.size.width = labelFrame.size.width + buttonFrame.size.width;
         [tagView addSubview:deleteTagButton];
         labelFrame.origin.x = 0;
-        
+        }else{
+            
+            tagFrame.size.width = labelFrame.size.width + 5;
+            labelFrame.origin.x = (tagFrame.size.width - labelFrame.size.width) * 0.5;
+
+        }
         
         
         [tagView addSubview:tagLabel];

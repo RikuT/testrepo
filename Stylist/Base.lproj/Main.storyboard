@@ -153,7 +153,7 @@
                                     <outlet property="delegate" destination="4H1-83-9jU" id="Khg-1K-X5g"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qsv-tj-cKT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="closet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qsv-tj-cKT">
                                 <rect key="frame" x="95" y="15" width="130" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="26"/>
@@ -316,16 +316,6 @@
                                     <action selector="updateSetting" destination="x8p-fI-vlR" eventType="touchUpInside" id="wjt-aA-HUT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5eY-KN-ZXP">
-                                <rect key="frame" x="16" y="50" width="59" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Go back">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="8vQ-e4-Iq2" kind="modal" identifier="userSettingVCtoVC" animates="NO" id="ZVg-TD-1de"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hGw-mH-YHw">
                                 <rect key="frame" x="134" y="563" width="61" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -390,7 +380,7 @@
                                     <navigationItem id="COn-4C-k3x"/>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e1A-f1-cpU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e1A-f1-cpU">
                                 <rect key="frame" x="104" y="15" width="130" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="26"/>
@@ -444,6 +434,25 @@
                                     <segment title="Female"/>
                                 </segments>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MKx-tC-o9y">
+                                <rect key="frame" x="0.0" y="538" width="320" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.23921568630000001" green="0.64313725489999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="D6p-mf-TWG">
+                                <rect key="frame" x="5" y="541" width="26" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="GoBackArrow">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="brandBack:" destination="jm7-4J-FT4" eventType="touchUpInside" id="yMg-fo-T0i"/>
+                                    <segue destination="8vQ-e4-Iq2" kind="modal" id="lNG-dS-BcX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -548,11 +557,11 @@
                                     <outlet property="delegate" destination="PNQ-ru-7to" id="jTa-gC-HWe"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stylist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IOi-HC-NQD">
-                                <rect key="frame" x="26" y="62" width="268" height="100"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STYLIST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IOi-HC-NQD">
+                                <rect key="frame" x="-22" y="62" width="364" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HiraKakuPro-W6" family="Hiragino Kaku Gothic Pro" pointSize="80"/>
-                                <color key="textColor" red="0.1169860452" green="0.7453768395" blue="0.83835668269999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HiraKakuPro-W6" family="Hiragino Kaku Gothic Pro" pointSize="68"/>
+                                <color key="textColor" red="0.23921568630000001" green="0.64313725489999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -562,6 +571,7 @@
                     <connections>
                         <outlet property="flatButton2" destination="uWh-gr-pqn" id="aWf-tk-cis"/>
                         <outlet property="loginBtn" destination="v5c-qC-oe0" id="1B1-I5-RxC"/>
+                        <outlet property="logoLabel" destination="IOi-HC-NQD" id="fFA-dc-Ozy"/>
                         <outlet property="passwordField" destination="pan-81-KQI" id="JYt-UO-2XE"/>
                         <outlet property="signupBtn" destination="Nxz-tZ-eFr" id="MO7-RI-4AT"/>
                         <outlet property="usernameField" destination="RWr-qD-YN0" id="hTd-9c-PYa"/>
@@ -570,7 +580,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YgJ-Mv-3hu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1743" y="574"/>
+            <point key="canvasLocation" x="1677" y="555"/>
         </scene>
         <!--Register Page View Controller-->
         <scene sceneID="mbv-tN-eWA">
@@ -632,7 +642,7 @@
                                     <action selector="registerButtonTapped:" destination="4SH-an-xaz" eventType="touchUpInside" id="R6Y-V7-BiK"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eNX-2u-dSu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eNX-2u-dSu">
                                 <rect key="frame" x="81" y="20" width="158" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HiraKakuPro-W3" family="Hiragino Kaku Gothic Pro" pointSize="40"/>
@@ -1062,7 +1072,7 @@
                                     <action selector="brandBack:" destination="jm7-4J-FT4" eventType="touchUpInside" id="Bn7-Nb-awC"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZUA-I9-LQ8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="brand" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZUA-I9-LQ8">
                                 <rect key="frame" x="95" y="15" width="130" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="26"/>
@@ -1097,22 +1107,24 @@
             </objects>
             <point key="canvasLocation" x="140" y="-938"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Trend Detail View Controller-->
         <scene sceneID="DSc-13-TWr">
             <objects>
-                <viewController id="6sh-dG-FSl" customClass="DetailViewController" customModule="Stylist" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6sh-dG-FSl" customClass="TrendDetailViewController" customModule="Stylist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bMU-iO-zoF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="SHN-go-rSu" kind="modal" animates="NO" id="DbN-Us-oSn"/>
+                        <segue destination="8vQ-e4-Iq2" kind="modal" identifier="trendDetailVCtoVC" animates="NO" id="35s-LQ-Ebd"/>
+                        <segue destination="eCJ-iY-WXf" kind="unwind" identifier="trendDetailVCtoVCunwind" unwindAction="unwindToTrend:" id="SU4-Yv-nCL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jgz-A0-3Ud" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="eCJ-iY-WXf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1299" y="2248"/>
+            <point key="canvasLocation" x="716" y="2139"/>
         </scene>
     </scenes>
     <resources>
@@ -1131,10 +1143,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="vY9-8b-aib"/>
+        <segue reference="HkD-ag-DXk"/>
+        <segue reference="qXM-AK-tWs"/>
+        <segue reference="XKH-ik-kmo"/>
         <segue reference="ZON-hF-NJm"/>
-        <segue reference="z6c-Iv-rJh"/>
-        <segue reference="j8y-ny-OAp"/>
-        <segue reference="fO7-VD-hGW"/>
-        <segue reference="xnA-Pc-bIb"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -231,9 +231,9 @@ class SwipeableClothesTester: UIViewController {
         
         
         // １ページ単位でスクロールさせる
-        scrView.pagingEnabled = true
-        scrView2.pagingEnabled = true
-        scrView3.pagingEnabled = true
+        scrView.pagingEnabled = false
+        scrView2.pagingEnabled = false
+        scrView3.pagingEnabled = false
         
         scrView3.hidden = true
         //scroll画面の初期位置

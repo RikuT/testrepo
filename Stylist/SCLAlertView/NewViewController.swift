@@ -15,7 +15,8 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     var likes:[NSIndexPath:Int] = [:]
     var votes = [PFObject]()
     // Connection to the search bar
-    
+    var collectionViewHeight: CGFloat!
+    var tapCheck: Int = 0
     
     // Connection to the collection view
     
@@ -24,8 +25,8 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        collectionView.frame = CGRectMake(0, 29, 320, 519)
+        println("collectF \(self.view.frame)")
         
         let query = PFQuery(className: "Posts")
         query.includeKey("uploader")
@@ -40,6 +41,8 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
                 }
             }
         }
+        
+        collectionViewHeight = self.view.frame.size.height - 44
 
         
         // Wire up search bar delegate so that we can react to button selections
@@ -58,7 +61,21 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     // Load data into the collectionView when the view appears
     override func viewDidAppear(animated: Bool) {
         loadCollectionViewData()
+        println("viewdidappear")
+        println("collectF2 \(self.view.frame)")
+        
+        self.view.frame.origin.y = 0
+        self.view.frame.size.height = collectionViewHeight
+
     }
+    
+    override func viewWillAppear(animated: Bool) {
+                
+        self.view.frame.origin.y = 0
+        self.view.frame.size.height = collectionViewHeight
+
+    }
+
     
     /*
     ==========================================================================================
@@ -68,6 +85,9 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     
     func loadCollectionViewData() {
         // Build a parse query object
+        collectionView.frame = CGRectMake(0, 29, 320, 519)
+        println("collectF3 \(self.view.frame)")
+
     }
     
     /*
@@ -96,7 +116,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         
         let gesture = UITapGestureRecognizer(target: self, action: Selector("onDoubleTap:"))
         gesture.numberOfTapsRequired = 2
-        cell.addGestureRecognizer(gesture)
+                cell.addGestureRecognizer(gesture)
         
         
         // Display "initial" flag image
@@ -159,6 +179,8 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     
     func onDoubleTap (recognizer: UIGestureRecognizer)
     {
+        println("doubl")
+        tapCheck = 2
         let cell = recognizer.view as! NewCollectionViewCell
         cell.onDoubleTap()
         let object = self.votes[self.collectionView.indexPathForCell(cell)!.row]
@@ -181,7 +203,6 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         } 
         
     }
-    
     /*
     ==========================================================================================
     Segue methods
@@ -214,8 +235,8 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         UIGraphicsEndImageContext()
         
         let ud = NSUserDefaults.standardUserDefaults()
-        ud.setObject(UIImageJPEGRepresentation(screenshot, 0.6), forKey: "bgBetweenTopsVCandDetailVC")
-        ud.setValue(NSStringFromCGRect(cellRect), forKey: "cellPositionTopstoDetailKey")
+        ud.setObject(UIImageJPEGRepresentation(screenshot, 0.6), forKey: "bgBetweenNewVCandTrendDetailVC")
+        ud.setValue(NSStringFromCGRect(cellRect), forKey: "cellPositionTopstoTrendDetailKey")
         
         
         /*
@@ -223,16 +244,20 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         CGRect cellRect = attributes.frame;
         */
         performSegueWithIdentifier("showTrendImage", sender: self)
-    }
+        }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "showTrendImage" {
             
-            let detailsVc = segue.destinationViewController as! DetailViewController
+            let detailsVc = segue.destinationViewController as! TrendDetailViewController
             detailsVc.currentObject = objectToSend
         }
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        self.lastContentOffset = scrollView.contentOffset.y
     }
     
 

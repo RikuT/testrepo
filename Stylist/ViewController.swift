@@ -108,28 +108,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         menuButton.tintColor = UIColor.whiteColor()
         
         
-        /*
-        //Bar style menu btn
-        menuButton = UIButton(frame: CGRectMake(self.view.frame.width / 2, 0, 35, 4))
-        menuButton.center = appearentNav.center
-        menuButton.layer.cornerRadius = 2
-        //menuButton.backgroundColor = UIColor.blueColor()
-        menuButton.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1)
-        */
-        
-        /*
-        menuButton = UIButton(frame: CGRectMake(self.view.frame.width / 2, 0, 130, appearentNavHeight - 7))
-        menuButton.center = appearentNav.center
-        menuButton.center.y = menuButton.center.y + 1.5
-        //menuButton.backgroundColor = UIColor.blueColor()
-        menuButton.setTitle("Menu", forState: .Normal)
-        menuButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        menuButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 20)
-        var temp = appearentNavHeight - 7
-        menuButton.layer.cornerRadius = temp / 2
-        menuButton.layer.borderColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1).CGColor
-        menuButton.layer.borderWidth = 1.5
-        */
+
         menuButton.addTarget(self, action: "menuBtnTapped", forControlEvents: .TouchUpInside)
         appearentNav.addSubview(menuButton)
         

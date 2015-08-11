@@ -478,7 +478,8 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
                 self.checkButton.alpha = 0.0
                 
             }, completion: {(Bool) -> Void in
-                self.performSegueWithIdentifier("detailVCtoTopsVC", sender: self)
+                //self.performSegueWithIdentifier("detailVCtoTopsVC", sender: self)
+                self.dismissViewControllerAnimated(false, completion: nil)
         })
         
         
@@ -501,11 +502,28 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         //Posted images are in "Posts" class of parse
         var posts = PFObject(className: "Posts")
         let votesNum: NSNumber = 0
+        
+        var newSeason: NSString!
+        var newSeasonInt = seasonSegment.selectedSegmentIndex
+        if newSeasonInt == 0{
+            newSeason = "Spring"
+        }else if newSeasonInt == 1{
+            newSeason = "Summer"
+        }else if newSeasonInt == 2{
+            newSeason = "Fall"
+        }else if newSeasonInt == 3{
+            newSeason = "Winter"
+        }else{
+            newSeason = ""
+        }
+
         posts["votes"] = votesNum
         posts["imageText"] = topsLabel.text
         posts["uploader"] = PFUser.currentUser()
         posts["Tags"] = miscTag.tags
         posts["BrandTags"] = brandTag.tags
+        posts["clothesExplanation"] = clothesDesciptionTextView.text
+        posts["season"] = newSeason
         posts.saveInBackgroundWithBlock({
             (success: Bool, error: NSError?) -> Void in
             

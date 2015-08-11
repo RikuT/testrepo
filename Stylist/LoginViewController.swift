@@ -16,12 +16,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var flatButton2: MKButton!
     @IBOutlet var loginBtn: MKButton!
     @IBOutlet var signupBtn: MKButton!
+    @IBOutlet weak var logoLabel: UILabel!
 
 
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        logoLabel.textColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1)
+        
         usernameField.layer.borderColor = UIColor.clearColor().CGColor
         usernameField.floatingPlaceholderEnabled = true
         usernameField.placeholder = "UserName"

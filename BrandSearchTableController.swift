@@ -1,9 +1,9 @@
 //
 //  BrandSearchTableController.swift
-//  StringScoreBrand
+//  Stylist
 //
-//  Created by Yichi on 6/03/2015.
-//  Copyright (c) 2015 YICHI ZHANG. All rights reserved.
+//  Created by 田畑リク on 2015/08/10.
+//  Copyright (c) 2015年 xxx. All rights reserved.
 //
 
 import Foundation
