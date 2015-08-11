@@ -111,8 +111,9 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 		
 		
 		searchButton = UIButton(frame: CGRectMake(self.view.frame.width - appearentNavHeight, 0, appearentNavHeight, appearentNavHeight))
-		searchButton.setTitle("虫", forState: .Normal)
-		searchButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+		let searchIconImg = UIImage(named: "search-50")
+		searchButton.setImage(searchIconImg, forState: UIControlState.Normal)
+		searchButton.imageEdgeInsets = UIEdgeInsetsMake(3.5, 3.5, 3.5, 3.5)
 		//searchButton.backgroundColor = UIColor.blueColor()
 		searchButton.addTarget(self, action: "searchButtonTapped", forControlEvents: .TouchUpInside)
 		appearentNav.addSubview(searchButton)

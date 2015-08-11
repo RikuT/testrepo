@@ -8,7 +8,6 @@
 
 
 //*******************TODO LIST***************************
-//Stop activity indicator when no photo in user's file(show alert to add photos)
 //Hide dottedLineView when not touching screen
 //Show alert when not connected to the internet or when error
 
@@ -31,7 +30,7 @@ class SwipeableClothesTester: UIViewController {
             if(remainder == 0){
             [self.bottomViewSet()]
             }*/
-            if(self.pictNumber == self.imageArray.count){
+            if(self.pictNumber == self.imageArray.count || self.pictNumber + 1 == self.imageArray.count){
                 self.topViewMoved1()
                 
                 println("didSet occured")
@@ -41,7 +40,7 @@ class SwipeableClothesTester: UIViewController {
     
     var topViewHeight2: CGFloat? {
         didSet{
-            if(self.pictNumber == self.imageArray.count){
+            if(self.pictNumber == self.imageArray.count || self.pictNumber + 1 == self.imageArray.count){
                 //[self.topViewMoved1()]
                 self.topViewMoved2()
                 println("didSet occured")
@@ -116,7 +115,6 @@ class SwipeableClothesTester: UIViewController {
                     self.imageFiles.append(post["imageFile"]as! PFFile)
                     self.imageText.append(post["imageText"]as! String)
                     
-                    
                 }
                 
                 
@@ -166,6 +164,18 @@ class SwipeableClothesTester: UIViewController {
         
         //UIScrollViewを作成します
         //let scrView = UIScrollView()
+        
+        let ud = NSUserDefaults.standardUserDefaults()
+        if ud.objectForKey("imageShownAtTrendDetailKey") != nil{
+            println("objectPresent")
+            var detailImgObj: AnyObject? = ud.objectForKey("imageShownAtTrendDetailKey")
+            ud.removeObjectForKey("imageShownAtTrendDetailKey")
+            var detailImgData = detailImgObj as! NSData
+            var detailImg = UIImage(data: detailImgData)
+            self.imageArray.insert(detailImg!, atIndex: 0)
+
+        }
+        
         
         //全体のサイズ
         //let CGwidth = self.view.frame.width
@@ -229,6 +239,8 @@ class SwipeableClothesTester: UIViewController {
             //scrView2.addSubview(imageView2)
         }
         
+
+        
         
         // １ページ単位でスクロールさせる
         scrView.pagingEnabled = false
@@ -290,6 +302,7 @@ class SwipeableClothesTester: UIViewController {
         var blackView = UIView(frame: menuBar.frame)
         blackView.frame.origin = CGPointZero
         blackView.backgroundColor = UIColor(white: 0.4, alpha: 0.3)
+        self.goBackButt.addTarget(self, action: "goBackPressed", forControlEvents: UIControlEvents.TouchUpInside)
         blurView.addSubview(blackView)
         blackView.addSubview(goBackButt)
         blackView.addSubview(addLineButt)
@@ -358,7 +371,7 @@ class SwipeableClothesTester: UIViewController {
     //これは下の洋服のscrollViewの大きさが変わるごとに実行されるので、autoReleasePoolを使って軽くしたい
     func topViewMoved1(){
         scrView.frame = CGRectMake(0, 0, self.swipeableView.frame.width, topViewHeight!)
-        var cgPictNum = CGFloat (pictNumber)
+        var cgPictNum = CGFloat (self.imageArray.count)
         scrView.contentSize = CGSizeMake(self.swipeableView.frame.width * cgPictNum, topViewHeight!)
         println("bottomViewSet")
         
@@ -366,7 +379,7 @@ class SwipeableClothesTester: UIViewController {
     
     func topViewMoved2(){
         scrView3.frame = CGRectMake(0, 0, self.swipeableView.frame.width, topViewHeight2!)
-        var cgPictNum = CGFloat (pictNumber)
+        var cgPictNum = CGFloat (self.imageArray.count)
         scrView3.contentSize = CGSizeMake(self.swipeableView.frame.width * cgPictNum, topViewHeight2!)
         println("bottomViewSet")
     }
@@ -384,7 +397,7 @@ class SwipeableClothesTester: UIViewController {
             var initialPosi = scrView.contentOffset
             println("initialPosi \(initialPosi)")
             scrView3.contentOffset = initialPosi
-            var cgPictNum = CGFloat (pictNumber)
+            var cgPictNum = CGFloat (self.imageArray.count)
             scrView3.contentSize = CGSizeMake(self.swipeableView.frame.width * cgPictNum, self.dottedLineView.center.y / 2)
             scrView3.hidden = false
             self.swipeableView.bringSubviewToFront(scrView3)
@@ -470,10 +483,14 @@ class SwipeableClothesTester: UIViewController {
             if(udId == 1){
                 ud.removeObjectForKey("closeAlertKeyNote")
                 ud.removeObjectForKey("closeAlertKey")
-                performSegueWithIdentifier("swipeableToHome",sender: nil)
+                self.dismissViewControllerAnimated(true, completion: nil)
                 
                 println("self to 0")
             }}
+    }
+    
+    func goBackPressed(){
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func viewDidDisappear(animated: Bool) {

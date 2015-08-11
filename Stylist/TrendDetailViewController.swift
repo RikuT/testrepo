@@ -15,17 +15,23 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
     // Container to store the view table selected object
     var currentObject : PFObject?
     
+    //For showing activity indicator
+    var container: UIView = UIView()
+    var loadingView: UIView = UIView()
+    var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+    
     // Some text fields
     var topsLabel: UILabel!
     
-    //For showing activity indicator
-    var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
     var scrollview: UIScrollView = UIScrollView()
     var imageView: PFImageView!
     var clothesDesLabel: UILabel!
     var initialImageFrame: CGRect!
     var quitButton: UIButton!
     var viewDidAppearCheck = 1
+    
+    var swipeableViewScr: UIView!
+    var swipeableView: UIView!
     
     
     var blurView: UIVisualEffectView!
@@ -40,6 +46,9 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
     var brandArray: NSArray = [""]
     var tagArray: NSArray = [""]
     var seasonInfo = ""
+    var voteNum = 0
+    var uploadDate = ""
+    var searchKeyWord = ""
     
     
     
@@ -83,6 +92,30 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         scrollview = UIScrollView(frame: CGRectMake(0, (self.view.frame.size.height / 2) + 50 - spaceInScroll, self.view.frame.size.width, (self.view.frame.size.height / 2) + 20 + spaceInScroll))
         scrollview.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - 55 )
         
+        //Setting up view that recognizes swipe right action
+        swipeableViewScr = UIView(frame: CGRectMake(0, 0, self.scrollview.contentSize.width, self.scrollview.contentSize.height))
+        swipeableViewScr.backgroundColor = UIColor.clearColor()
+        swipeableView = UIView(frame: self.view.frame)
+        self.view.addSubview(swipeableView)
+        scrollview.addSubview(swipeableViewScr)
+        
+        //Setting buttons to close detailVC when tap on black blur
+        var blurButton1 = UIButton(frame: CGRectMake(0, 0, 30, self.scrollview.contentSize.height))
+        var blurButton2 = UIButton(frame: CGRectMake(self.view.frame.width - 30, 0, 30, self.scrollview.contentSize.height))
+        blurButton1.addTarget(self, action: "quitButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+        blurButton2.addTarget(self, action: "quitButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+        scrollview.addSubview(blurButton1)
+        scrollview.addSubview(blurButton2)
+        var blurButton3 = UIButton(frame: CGRectMake(0, 0, 30, swipeableView.frame.height))
+        var blurButton4 = UIButton(frame: CGRectMake(self.view.frame.width - 30, 0, 30, swipeableView.frame.height))
+        blurButton3.addTarget(self, action: "quitButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+        blurButton4.addTarget(self, action: "quitButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+        swipeableView.addSubview(blurButton3)
+        swipeableView.addSubview(blurButton4)
+        
+
+
+        
         //    brandArray = [NSMutableArray array];
         let screenRect = UIScreen.mainScreen().bounds
         
@@ -120,7 +153,19 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
                 seasonInfo = currentSeason
                 
             }
-            
+            if let numberOfVotes = object["votes"] as? Int{
+                voteNum = numberOfVotes
+            }
+            if let uploadNSDate = object.createdAt{
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.locale = NSLocale(localeIdentifier: "en_US") // ロケールの設定
+                dateFormatter.dateFormat = "yyyy/MM/dd" // 日付フォーマットの設定
+                println("dfasf\(uploadNSDate)")
+                uploadDate = dateFormatter.stringFromDate(uploadNSDate)
+            }
+            if let searchKey = object["searchTag"] as? String{
+                searchKeyWord = searchKey
+            }
         }
         
         ///Add username ・　uploaded at　・　trybut　・　savebut
@@ -144,25 +189,33 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         var heightInWhiteView: CGFloat = 15
         
         
-        var likeNumLabel = UILabel(frame: CGRectMake(15, heightInWhiteView + 10, 70, 30))
-        likeNumLabel.text = "643 like this"
+        //Adding label showing how many people liked the post
+        var likeNumLabel = UILabel(frame: CGRectMake(self.view.frame.width - 320, heightInWhiteView + 12, 300, 18))
+        likeNumLabel.text = "\(voteNum) like this"
+        likeNumLabel.font = UIFont(name: "HelveticaNeue", size: 14)
+        likeNumLabel.textAlignment = NSTextAlignment.Right
+        likeNumLabel.textColor = UIColor.darkGrayColor()
         whiteView.addSubview(likeNumLabel)
+        
+        var dateLabel = UILabel(frame: CGRectMake(20, heightInWhiteView + 12, 300, 18))
+        dateLabel.text = "\(uploadDate)"
+        dateLabel.font = UIFont(name: "HelveticaNeue", size: 14)
+        dateLabel.textAlignment = NSTextAlignment.Left
+        dateLabel.textColor = UIColor.darkGrayColor()
+        whiteView.addSubview(dateLabel)
+
+        
+      
+        
         
         var grayLine5 = UILabel(frame: CGRectMake(0, likeNumLabel.frame.origin.y + likeNumLabel.frame.size.height + 5, self.view.frame.width, 0.3))
         grayLine5.backgroundColor = UIColor.lightGrayColor()
         whiteView.addSubview(grayLine5)
         
-        var tryBtn = UIButton(frame: CGRectMake(50, grayLine5.frame.origin.y + 5, 100, 30))
-        tryBtn.backgroundColor = UIColor.blackColor()
-        whiteView.addSubview(tryBtn)
-        
-        var grayLine6 = UILabel(frame: CGRectMake(0, tryBtn.frame.origin.y + tryBtn.frame.size.height + 5, self.view.frame.width, 0.3))
-        grayLine6.backgroundColor = UIColor.lightGrayColor()
-        whiteView.addSubview(grayLine6)
-        
-        topsLabel = UILabel(frame: CGRectMake(40, grayLine6.frame.origin.y + 5, self.view.bounds.size.width - 60, 30))
-        //topsLabel.borderStyle = UITextBorderStyle.Bezel
         var grayLine = UILabel()
+        if clothesName != ""{
+        topsLabel = UILabel(frame: CGRectMake(40, grayLine5.frame.origin.y + 5, self.view.bounds.size.width - 60, 30))
+        //topsLabel.borderStyle = UITextBorderStyle.Bezel
         topsLabel.textColor = UIColor.darkGrayColor()
         topsLabel.font = UIFont(name: "HelveticaNeue", size: 16)
         topsLabel.textAlignment = NSTextAlignment.Center
@@ -171,8 +224,12 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         grayLine.frame = CGRectMake(0, topsLabel.frame.origin.y + topsLabel.frame.size.height + 5, self.view.frame.width, 0.3)
         grayLine.backgroundColor = UIColor.lightGrayColor()
         whiteView.addSubview(grayLine)
+            whiteView.addSubview(topsLabel)
+            
+        }else{
+            grayLine.frame = grayLine5.frame
+        }
         
-        whiteView.addSubview(topsLabel)
         
         
         
@@ -263,15 +320,66 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         calendarIconView.frame = CGRectMake(3, seasonPositionHeight - 1, 28, 30)
         whiteView.addSubview(calendarIconView)
         
+        var grayLine4 = UILabel(frame: CGRectMake(0, calendarIconView.frame.origin.y + calendarIconView.frame.height + 4, self.view.frame.width, 0.3))
+        grayLine4.backgroundColor = UIColor.lightGrayColor()
+        whiteView.addSubview(grayLine4)
+
         
-        var whiteViewHeightY: CGFloat = calendarIconView.frame.origin.y + calendarIconView.frame.height + 10
-        whiteView.frame = CGRectMake(whiteView.frame.origin.x, whiteView.frame.origin.y - grayLine.frame.origin.y - 10 + 80, whiteView.frame.size.width, whiteViewHeightY)
+        //Add post to public button
+        var saveToClosetBtn = UIButton(frame: CGRectMake(10, grayLine4.frame.origin.y + 7, self.view.frame.width - 20, 30))
+        saveToClosetBtn.setTitle("add to closet", forState: .Normal)
+        saveToClosetBtn.titleLabel!.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 20)
+        saveToClosetBtn.setTitleColor(UIColor.grayColor(), forState: .Normal)
+        saveToClosetBtn.layer.borderColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1).CGColor
+        saveToClosetBtn.layer.borderWidth = 1.0
+        saveToClosetBtn.layer.cornerRadius = 3.0
+        saveToClosetBtn.addTarget(self, action: "saveToClosetBtnPressed", forControlEvents: UIControlEvents.TouchUpInside)
+        whiteView.addSubview(saveToClosetBtn)
+        
+        
+        //Add delete photo button
+        var tryBtn = UIButton(frame: CGRectMake(10, saveToClosetBtn.frame.origin.y + saveToClosetBtn.frame.size.height + 10, self.view.frame.width - 20, 30))
+        tryBtn.setTitle("T R Y !", forState: .Normal)
+        tryBtn.titleLabel!.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 20)
+        tryBtn.setTitleColor(UIColor.grayColor(), forState: .Normal)
+        tryBtn.layer.borderColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1).CGColor
+        tryBtn.layer.borderWidth = 1.0
+        tryBtn.layer.cornerRadius = 3.0
+        tryBtn.addTarget(self, action: "tryClothes", forControlEvents: UIControlEvents.TouchUpInside)
+        whiteView.addSubview(tryBtn)
+
+        
+        
+        var whiteViewHeightY: CGFloat = tryBtn.frame.origin.y + tryBtn.frame.height + 10
+        whiteView.frame = CGRectMake(whiteView.frame.origin.x, whiteView.frame.origin.y - grayLine5.frame.origin.y - 20, whiteView.frame.size.width, whiteViewHeightY)
         scrollview.contentSize = CGSize (width: scrollview.frame.size.width, height: whiteView.frame.origin.y + whiteView.frame.size.height)
+        swipeableViewScr.frame.size = scrollview.contentSize
         /*
         var grayLine4 = UILabel(frame: CGRectMake(0, seasonTextF.frame.origin.y + seasonTextF.frame.height + 5, self.view.frame.width, 0.3))
         grayLine4.backgroundColor = UIColor.lightGrayColor()
         whiteView.addSubview(grayLine4)
         */
+        
+        //Adding gesture so that user can try clothes when swipe
+        var swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        swipeableViewScr.addGestureRecognizer(swipeRight)
+        var swipeRight2 = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+        swipeRight2.direction = UISwipeGestureRecognizerDirection.Right
+        swipeableView.addGestureRecognizer(swipeRight2)
+        
+        //Adding swipe gesture that closes detailVC
+        /*
+        var swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToCloseGesture:")
+        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
+        swipeableView.addGestureRecognizer(swipeDown)
+        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "respondToCloseGesture:")
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+        swipeableView.addGestureRecognizer(swipeLeft)
+        var swipeLeft2 = UISwipeGestureRecognizer(target: self, action: "respondToCloseGesture:")
+        swipeLeft2.direction = UISwipeGestureRecognizerDirection.Left
+        swipeableViewScr.addGestureRecognizer(swipeLeft2)
+*/
         
         
         self.view.backgroundColor = UIColor.whiteColor()
@@ -290,8 +398,9 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
             
             self.view.addSubview(blurView)
             self.view.addSubview(imageView)
+            self.view.bringSubviewToFront(swipeableView)
             self.view.addSubview(quitButton)
-            
+
             
             // アニメーション処理
             UIView.animateWithDuration(NSTimeInterval(CGFloat(0.35)),
@@ -304,6 +413,7 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
                     
                     
                 }, completion: {(Bool) -> Void in
+
                     self.addingScrollView()
                     
                     UIView.animateWithDuration(NSTimeInterval(CGFloat(0.2)),
@@ -324,6 +434,25 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         
     }
     
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+            println("swipedRight")
+        
+        self.tryClothes()
+        
+    }
+    
+    func tryClothes(){
+        self.performSegueWithIdentifier("trendDetailToSwipeableVC", sender: self)
+        let ud = NSUserDefaults.standardUserDefaults()
+        ud.setObject(UIImageJPEGRepresentation(imageView.image, 1), forKey: "imageShownAtTrendDetailKey")
+    }
+    
+    /*
+    func respondToCloseGesture(gesture: UIGestureRecognizer){
+        self.quitButtonPressed()
+    }
+*/
+    
     func addingScrollView(){
         
         
@@ -331,6 +460,77 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         self.view.bringSubviewToFront(quitButton)
     }
     
+    func saveToClosetBtnPressed(){
+        
+        
+        self.showActivityIndicatory(self.view)
+        
+        //Posted images are in "Posts" class of parse
+        var posts = PFObject(className: "Tops")
+        
+        
+        posts["Tags"] = tagArray
+        posts["brandTag"] = brandArray
+        posts["clothesExplanation"] = clothesDescription
+        posts["searchTag"] = searchKeyWord
+        posts["season"] = seasonInfo
+        posts["uploader"] = PFUser.currentUser()
+        posts["imageText"] = clothesName
+
+  
+        
+        posts.saveInBackgroundWithBlock({
+            (success: Bool, error: NSError?) -> Void in
+            
+            if error == nil {
+                
+                var imageData = UIImageJPEGRepresentation(self.imageView.image, 1.0)
+                var parseImageFile = PFFile(name: "uploaded_image.jpg", data: imageData)
+                posts["imageFile"] = parseImageFile
+                posts.saveInBackgroundWithBlock({
+                    (success: Bool, error: NSError?) -> Void in
+                    
+                    if error == nil {
+                        
+                        println("finished")
+                        let successAlert = SCLAlertView()
+                        successAlert.showSuccess("Saved", subTitle:"The photo was added to your closet successfully!", closeButtonTitle:"Close")
+                        self.hideActivityIndicator(self.view)
+                        
+                        
+                    }else {
+                        
+                        println(error)
+                        let errorAlert = SCLAlertView()
+                        errorAlert.showError("Error", subTitle:"An error occured.", closeButtonTitle:"Close")
+                        self.hideActivityIndicator(self.view)
+                        
+                        
+                    }
+                    
+                    
+                })
+                
+                
+            }else {
+                println(error)
+                let errorAlert = SCLAlertView()
+                errorAlert.showError("Error", subTitle:"An error occured.", closeButtonTitle:"Close")
+                self.hideActivityIndicator(self.view)
+                
+            }
+            
+        })
+        
+        
+        
+        
+
+        
+        
+        
+        
+    }
     
     func quitButtonPressed(){
         //Adding for navigation bar and status bar
@@ -361,6 +561,33 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         
     }
     
+    func showActivityIndicatory(uiView: UIView) {
+        
+        container.frame = uiView.frame
+        container.center = uiView.center
+        container.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        
+        loadingView.frame = CGRectMake(0, 0, 100, 100)
+        loadingView.center = uiView.center
+        //loadingView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+        
+        actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+        actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
+        actInd.center = CGPointMake(loadingView.frame.size.width / 2,
+            loadingView.frame.size.height / 2);
+        loadingView.addSubview(actInd)
+        container.addSubview(loadingView)
+        uiView.addSubview(container)
+        actInd.startAnimating()
+    }
+    
+    func hideActivityIndicator(uiView: UIView) {
+        actInd.stopAnimating()
+        container.removeFromSuperview()
+    }
+
     
     /*
     // MARK: - Navigation

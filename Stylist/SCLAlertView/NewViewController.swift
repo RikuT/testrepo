@@ -265,7 +265,6 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "showTrendImage" {
-            
             let detailsVc = segue.destinationViewController as! TrendDetailViewController
             detailsVc.currentObject = objectToSend
         }

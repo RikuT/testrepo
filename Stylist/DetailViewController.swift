@@ -22,6 +22,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
     var container: UIView = UIView()
     var loadingView: UIView = UIView()
     var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+    
     var scrollview: UIScrollView = UIScrollView()
     var brandArray: NSMutableArray = NSMutableArray()
     var imageView: PFImageView!
@@ -45,45 +46,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
     var viewDidAppearCheck: Int!
     
     
-    // The save button
-    /*
-    @IBAction func saveButton(sender: AnyObject) {
-        
-        // Use the sent country object or create a new country PFObject
-        if let saveInBackWithBlock = currentObject as PFObject? {
-            updateObject = currentObject! as PFObject
-        } else {
-            updateObject = PFObject(className:"Tops")
-        }
-        
-        // Update the object
-        if let updateObject = updateObject {
-            
-            updateObject["imageText"] = topsLabel.text
-            
-            // Create a string of text that is used by search capabilites
-            var searchText = (topsLabel.text)
-            updateObject["searchText"] = searchText
-            
-            // Update the record ACL such that the new record is only visible to the current user
-            updateObject.ACL = PFACL(user: PFUser.currentUser()!)
-            
-            // Save the data back to the server in a background task
-            updateObject.saveInBackgroundWithBlock{
-                (success: Bool, error: NSError?) -> Void in
-                if (success) {
-                    // The object has been saved.
-                    
-                } else {
-                    // There was a problem, check error.description
-                }
-            }
-            
-            
-        }
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-*/
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,6 +99,14 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         let screenRect = UIScreen.mainScreen().bounds
         
         
+        //Setting buttons to close detailVC when tap on black blur
+        var blurButton1 = UIButton(frame: CGRectMake(0, 0, 30, self.scrollview.contentSize.height))
+        var blurButton2 = UIButton(frame: CGRectMake(self.view.frame.width - 30, 0, 30, self.scrollview.contentSize.height))
+        blurButton1.addTarget(self, action: "quitButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+        blurButton2.addTarget(self, action: "quitButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+        scrollview.addSubview(blurButton1)
+        scrollview.addSubview(blurButton2)
+
         
         
         //Change textfield design over here
@@ -350,6 +321,15 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         self.view.addSubview(imageView)
         self.view.addSubview(quitButton)
         self.view.addSubview(checkButton)
+            
+            //Setting buttons to close detailVC when tap on black blur
+            var blurButton3 = UIButton(frame: CGRectMake(0, 0, 30, self.scrollview.frame.origin.y))
+            var blurButton4 = UIButton(frame: CGRectMake(self.view.frame.width - 30, 0, 30, self.scrollview.frame.origin.y))
+            blurButton3.addTarget(self, action: "quitButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+            blurButton4.addTarget(self, action: "quitButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+            self.view.addSubview(blurButton3)
+            self.view.addSubview(blurButton4)
+
         
         
         // アニメーション処理
@@ -507,6 +487,10 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         var posts = PFObject(className: "Posts")
         let votesNum: NSNumber = 0
         
+        var newBrandTags = brandTag.tags
+        var newMiscTags = miscTag.tags
+        var aggregateTagArray = (newBrandTags.copy() as! [String]) + (newMiscTags.copy() as! [String])
+        
         var newSeason: NSString!
         var newSeasonInt = seasonSegment.selectedSegmentIndex
         if newSeasonInt == 0{
@@ -528,6 +512,8 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         posts["BrandTags"] = brandTag.tags
         posts["clothesExplanation"] = clothesDesciptionTextView.text
         posts["season"] = newSeason
+        posts["searchTag"] = " ".join(aggregateTagArray)
+
         posts.saveInBackgroundWithBlock({
             (success: Bool, error: NSError?) -> Void in
             
