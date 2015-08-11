@@ -63,7 +63,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         loadCollectionViewData()
         println("viewdidappear")
         println("collectF2 \(self.view.frame)")
-        
+        tapCheck = 1
         self.view.frame.origin.y = 0
         self.view.frame.size.height = collectionViewHeight
 
@@ -200,7 +200,13 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
                 println("Data saved") 
             } 
             cell.votesLabel?.text = "1" 
-        } 
+        }
+        
+        let delay = 0.21 * Double(NSEC_PER_SEC)
+        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+           self.tapCheck = 1
+        })
         
     }
     /*
@@ -211,13 +217,20 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     
     // Process collectionView cell selection
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        objectToSend = votes[indexPath.row]
+        
+        let delay = 0.2 * Double(NSEC_PER_SEC)
+        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            println("dispatch after!")
+            if self.tapCheck == 1{
+        
+        self.objectToSend = self.votes[indexPath.row]
         var attributes: UICollectionViewLayoutAttributes = self.collectionView.layoutAttributesForItemAtIndexPath(indexPath)!
         var cellRect: CGRect = attributes.frame
         //cellRect.origin.y = cellRect.origin.y - lastContentOffset
         
-        if lastContentOffset != nil{
-            var originY = cellRect.origin.y - lastContentOffset
+        if self.lastContentOffset != nil{
+            var originY = cellRect.origin.y - self.lastContentOffset
             cellRect.origin.y = originY
         }
         
@@ -243,7 +256,9 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         UICollectionViewLayoutAttributes *attributes = [self.collectionView layoutAttributesForItemAtIndexPath:indexPath];
         CGRect cellRect = attributes.frame;
         */
-        performSegueWithIdentifier("showTrendImage", sender: self)
+        self.performSegueWithIdentifier("showTrendImage", sender: self)
+            
+            }  })
         }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
