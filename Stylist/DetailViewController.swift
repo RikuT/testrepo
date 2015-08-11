@@ -338,10 +338,14 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
     override func viewDidAppear(animated: Bool) {
         
         if viewDidAppearCheck == 1{
-        let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
-        blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.alpha = 0
-        blurView.frame = self.view.frame
+            let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+            blurView = UIVisualEffectView(effect: blurEffect)
+            blurView.frame = self.view.frame
+            let darkView = UIView(frame: blurView.frame)
+            darkView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+            blurView.addSubview(darkView)
+            blurView.alpha = 0
+            
         self.view.addSubview(blurView)
         self.view.addSubview(imageView)
         self.view.addSubview(quitButton)
@@ -353,7 +357,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
             animations: {() -> Void in
                 
                 // 移動先の座標を指定する.
-                self.blurView.alpha = 0.8
+                self.blurView.alpha = 0.9
                 self.imageView.frame = CGRectMake(30, 15, self.view.frame.width - 60, self.view.frame.height - 30)
                 
                 

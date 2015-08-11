@@ -142,21 +142,36 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         
         //Add number here to move the contents in whiteView down
         var heightInWhiteView: CGFloat = 15
-        var grayLine = UILabel()
         
-    
-            topsLabel = UILabel(frame: CGRectMake(40, heightInWhiteView + 15, self.view.bounds.size.width - 60, 30))
-            //topsLabel.borderStyle = UITextBorderStyle.Bezel
-            
-            topsLabel.textColor = UIColor.darkGrayColor()
-            topsLabel.font = UIFont(name: "HelveticaNeue", size: 16)
-            topsLabel.textAlignment = NSTextAlignment.Center
-            topsLabel.text = clothesName
-            
-            grayLine.frame = CGRectMake(0, heightInWhiteView + 15 + 30 + 5, self.view.frame.width, 0.3)
-            grayLine.backgroundColor = UIColor.lightGrayColor()
-            whiteView.addSubview(grayLine)
-
+        
+        var likeNumLabel = UILabel(frame: CGRectMake(15, heightInWhiteView + 10, 70, 30))
+        likeNumLabel.text = "643 like this"
+        whiteView.addSubview(likeNumLabel)
+        
+        var grayLine5 = UILabel(frame: CGRectMake(0, likeNumLabel.frame.origin.y + likeNumLabel.frame.size.height + 5, self.view.frame.width, 0.3))
+        grayLine5.backgroundColor = UIColor.lightGrayColor()
+        whiteView.addSubview(grayLine5)
+        
+        var tryBtn = UIButton(frame: CGRectMake(50, grayLine5.frame.origin.y + 5, 100, 30))
+        tryBtn.backgroundColor = UIColor.blackColor()
+        whiteView.addSubview(tryBtn)
+        
+        var grayLine6 = UILabel(frame: CGRectMake(0, tryBtn.frame.origin.y + tryBtn.frame.size.height + 5, self.view.frame.width, 0.3))
+        grayLine6.backgroundColor = UIColor.lightGrayColor()
+        whiteView.addSubview(grayLine6)
+        
+        topsLabel = UILabel(frame: CGRectMake(40, grayLine6.frame.origin.y + 5, self.view.bounds.size.width - 60, 30))
+        //topsLabel.borderStyle = UITextBorderStyle.Bezel
+        var grayLine = UILabel()
+        topsLabel.textColor = UIColor.darkGrayColor()
+        topsLabel.font = UIFont(name: "HelveticaNeue", size: 16)
+        topsLabel.textAlignment = NSTextAlignment.Center
+        topsLabel.text = clothesName
+        
+        grayLine.frame = CGRectMake(0, topsLabel.frame.origin.y + topsLabel.frame.size.height + 5, self.view.frame.width, 0.3)
+        grayLine.backgroundColor = UIColor.lightGrayColor()
+        whiteView.addSubview(grayLine)
+        
         whiteView.addSubview(topsLabel)
         
         
@@ -250,7 +265,7 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         
         
         var whiteViewHeightY: CGFloat = calendarIconView.frame.origin.y + calendarIconView.frame.height + 10
-        whiteView.frame = CGRectMake(whiteView.frame.origin.x, whiteView.frame.origin.y - grayLine.frame.origin.y - 10, whiteView.frame.size.width, whiteViewHeightY)
+        whiteView.frame = CGRectMake(whiteView.frame.origin.x, whiteView.frame.origin.y - grayLine.frame.origin.y - 10 + 80, whiteView.frame.size.width, whiteViewHeightY)
         scrollview.contentSize = CGSize (width: scrollview.frame.size.width, height: whiteView.frame.origin.y + whiteView.frame.size.height)
         /*
         var grayLine4 = UILabel(frame: CGRectMake(0, seasonTextF.frame.origin.y + seasonTextF.frame.height + 5, self.view.frame.width, 0.3))
@@ -265,10 +280,14 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
     override func viewDidAppear(animated: Bool) {
         
         if viewDidAppearCheck == 1{
-            let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+            let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
             blurView = UIVisualEffectView(effect: blurEffect)
-            blurView.alpha = 0
             blurView.frame = self.view.frame
+            let darkView = UIView(frame: blurView.frame)
+            darkView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+            blurView.addSubview(darkView)
+            blurView.alpha = 0
+            
             self.view.addSubview(blurView)
             self.view.addSubview(imageView)
             self.view.addSubview(quitButton)
@@ -279,7 +298,7 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
                 animations: {() -> Void in
                     
                     // 移動先の座標を指定する.
-                    self.blurView.alpha = 0.8
+                    self.blurView.alpha = 0.9
                     self.imageView.frame = CGRectMake(30, 15, self.view.frame.width - 60, self.view.frame.height - 30)
                     
                     
