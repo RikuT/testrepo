@@ -89,7 +89,7 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         spaceInScroll = 80
         
         //Setting initial scrollview location
-        scrollview = UIScrollView(frame: CGRectMake(0, (self.view.frame.size.height / 2) + 50 - spaceInScroll, self.view.frame.size.width, (self.view.frame.size.height / 2) + 20 + spaceInScroll))
+        scrollview = UIScrollView(frame: CGRectMake(0, (self.view.frame.size.height / 2) - spaceInScroll, self.view.frame.size.width, (self.view.frame.size.height / 2) + 20 + spaceInScroll))
         scrollview.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - 55 )
         
         //Setting up view that recognizes swipe right action
@@ -214,7 +214,7 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         
         var grayLine = UILabel()
         if clothesName != ""{
-            topsLabel = UILabel(frame: CGRectMake(40, grayLine5.frame.origin.y + 5, self.view.bounds.size.width - 60, 30))
+            topsLabel = UILabel(frame: CGRectMake(30, grayLine5.frame.origin.y + 5, self.view.bounds.size.width - 60, 30))
             //topsLabel.borderStyle = UITextBorderStyle.Bezel
             topsLabel.textColor = UIColor.darkGrayColor()
             topsLabel.font = UIFont(name: "HelveticaNeue", size: 16)
@@ -440,7 +440,15 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
             viewDidAppearCheck = 2
         }
         
-        
+        if self.imageView.frame != CGRectMake(30, 15, self.view.frame.width - 60, self.view.frame.height - 30){
+            UIView.animateWithDuration(NSTimeInterval(CGFloat(0.25)),
+                animations: {() -> Void in
+                    self.imageView.frame = CGRectMake(30, 15, self.view.frame.width - 60, self.view.frame.height - 30)
+                }, completion: {(Bool) -> Void in
+            })
+
+        }
+
         
     }
     
@@ -452,7 +460,16 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
     }
     
     func tryClothes(){
-        self.performSegueWithIdentifier("trendDetailToSwipeableVC", sender: self)
+        
+        // アニメーション処理
+        UIView.animateWithDuration(NSTimeInterval(CGFloat(0.25)),
+            animations: {() -> Void in
+                self.imageView.frame.origin.x = self.view.frame.width
+            }, completion: {(Bool) -> Void in
+                self.performSegueWithIdentifier("trendDetailToSwipeableVC", sender: self)
+        })
+
+        
         let ud = NSUserDefaults.standardUserDefaults()
         ud.setObject(UIImageJPEGRepresentation(imageView.image, 1), forKey: "imageShownAtTrendDetailKey")
     }
