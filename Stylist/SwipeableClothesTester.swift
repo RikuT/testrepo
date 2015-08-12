@@ -483,14 +483,24 @@ class SwipeableClothesTester: UIViewController {
             if(udId == 1){
                 ud.removeObjectForKey("closeAlertKeyNote")
                 ud.removeObjectForKey("closeAlertKey")
-                self.dismissViewControllerAnimated(true, completion: nil)
+                
+                
+                let backTransitionAni = CATransition()
+                backTransitionAni.duration = 0.3
+                backTransitionAni.type = kCATransitionFromLeft
+                self.dismissViewControllerAnimated(false, completion: nil)
                 
                 println("self to 0")
             }}
     }
     
     func goBackPressed(){
-        self.dismissViewControllerAnimated(true, completion: nil)
+        let backTransitionAni = CATransition()
+        backTransitionAni.duration = 0.3
+        backTransitionAni.type = kCATransitionFromLeft
+       // [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+        self.view.layer.addAnimation(backTransitionAni, forKey: kCATransition)
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
     
     override func viewDidDisappear(animated: Bool) {

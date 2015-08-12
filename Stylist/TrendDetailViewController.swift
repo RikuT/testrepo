@@ -452,6 +452,8 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         
     }
     
+
+    
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         println("swipedRight")
         

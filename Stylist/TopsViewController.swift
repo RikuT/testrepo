@@ -203,7 +203,6 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 	}
 	
 	override func textFieldShouldReturn(textField: UITextField) -> Bool {
-		
 		searchText = searchTextF.text
 		self.loadCollectionViewData()
 		

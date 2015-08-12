@@ -29,6 +29,8 @@
 		32862E5E1B631B530070FA05 /* SCLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 32862E571B631B530070FA05 /* SCLButton.m */; };
 		32862E5F1B631B530070FA05 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 32862E5A1B631B530070FA05 /* UIImage+ImageEffects.m */; };
 		32862E611B63326F0070FA05 /* userSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32862E601B63326F0070FA05 /* userSettingViewController.swift */; };
+		32A3BFD51B7B551F0022D76D /* goSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A3BFD41B7B551F0022D76D /* goSegue.swift */; };
+		32A3BFD71B7B57660022D76D /* goBackSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A3BFD61B7B57660022D76D /* goBackSegue.swift */; };
 		32F3F1F91B52BA9C0051050B /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F3F1F81B52BA9C0051050B /* SCLAlertView.swift */; };
 		32F48E0A1B670BFA009EF135 /* TLTagsControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F48E081B670BFA009EF135 /* TLTagsControl.m */; };
 		B600E2351B41765D007F8FDA /* SingleRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2341B41765D007F8FDA /* SingleRowCell.swift */; };
@@ -126,6 +128,8 @@
 		32862E591B631B530070FA05 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		32862E5A1B631B530070FA05 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		32862E601B63326F0070FA05 /* userSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userSettingViewController.swift; sourceTree = "<group>"; };
+		32A3BFD41B7B551F0022D76D /* goSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = goSegue.swift; sourceTree = "<group>"; };
+		32A3BFD61B7B57660022D76D /* goBackSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = goBackSegue.swift; sourceTree = "<group>"; };
 		32F3F1F81B52BA9C0051050B /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCLAlertView.swift; path = Stylist/SCLAlertView.swift; sourceTree = SOURCE_ROOT; };
 		32F48E071B670BFA009EF135 /* TLTagsControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTagsControl.h; sourceTree = "<group>"; };
 		32F48E081B670BFA009EF135 /* TLTagsControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTagsControl.m; sourceTree = "<group>"; };
@@ -478,6 +482,8 @@
 				325FA44C1B70A7AC00229204 /* SwipeableClothesTester.swift */,
 				32F48E091B670BFA009EF135 /* TLTagsContol */,
 				32862E4F1B631B530070FA05 /* SCLAlertView */,
+				32A3BFD41B7B551F0022D76D /* goSegue.swift */,
+				32A3BFD61B7B57660022D76D /* goBackSegue.swift */,
 				B6CD246D1B3D8BD50061E451 /* Main.storyboard */,
 				B6CD24701B3D8BD50061E451 /* Images.xcassets */,
 				326B13BE1B61DA15003A871D /* whiteCancel.png */,
@@ -684,6 +690,7 @@
 			files = (
 				321706F91B65EFA400812648 /* ProfilePicViewController.swift in Sources */,
 				326B13BD1B61D17E003A871D /* UIImage+FixOrientation.m in Sources */,
+				32A3BFD51B7B551F0022D76D /* goSegue.swift in Sources */,
 				B66F259C1B77A323003DAB6C /* MKTableViewCell.swift in Sources */,
 				32862E5B1B631B530070FA05 /* SCLAlertView.m in Sources */,
 				325FA4551B77A4D900229204 /* TagViewController.swift in Sources */,
@@ -693,6 +700,7 @@
 				325FA44B1B708E7400229204 /* VisibleFormViewController.m in Sources */,
 				B66F25971B77A323003DAB6C /* MKButton.swift in Sources */,
 				B6EC66281B3FFA8400B5BC58 /* LoginViewController.swift in Sources */,
+				32A3BFD71B7B57660022D76D /* goBackSegue.swift in Sources */,
 				32170A2F1B6CE030009F9665 /* BrandSearchTableController.swift in Sources */,
 				B6436C671B67698700B8DA64 /* SwiftPages.swift in Sources */,
 				32862E611B63326F0070FA05 /* userSettingViewController.swift in Sources */,

@@ -7,13 +7,13 @@
 //
 
 import Parse
+    var votes = [PFObject]()
 
 class NewViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     
     var objectToSend : PFObject?
     var likes:[NSIndexPath:Int] = [:]
-    var votes = [PFObject]()
     // Connection to the search bar
     var collectionViewHeight: CGFloat!
     var tapCheck: Int = 0
@@ -36,18 +36,16 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
             {
                 if let allQuestion = question as? [PFObject]
                 {
-                    self.votes = allQuestion
+                    votes = allQuestion
                     self.collectionView.reloadData()
                 }
             }
         }
         
         collectionViewHeight = self.view.frame.size.height - 44
-        
+
         
         // Wire up search bar delegate so that we can react to button selections
-        
-        // Resize size of collection view items in grid so that we achieve 3 boxes across
         
         loadCollectionViewData()
     }
@@ -107,7 +105,6 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
             
             
             
-            
             if searchKey != "" {
                 //If a user is searching something...
                 tagQuery = PFQuery(className: "Posts")
@@ -136,16 +133,18 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
                     if error == nil {
                         
                         // Clear existing country data
-                        self.votes.removeAll(keepCapacity: false)
+                        votes.removeAll(keepCapacity: false)
                         
                         // Add country objects to our array
                         if let object = objects as? [PFObject] {
-                            self.votes = object
-                            println("votesn \(self.votes)")
+                            //votes = object
+                            votes = Array(object.generate())
+
+                            println("votesn \(votes)")
                             // reload our data into the collection view
-                            self.collectionView.reloadData()
+                           //
                         }
-                        
+                        self.collectionView?.reloadData()
                         //self.hideActivityIndicator(self.view)
                         
                     } else {
@@ -170,8 +169,6 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     
     
     
-    
-    
     /*
     ==========================================================================================
     UICollectionView protocol required methods
@@ -185,7 +182,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         println("votesNum\(votes.count)")
         
-        return self.votes.count
+        return votes.count
     }
     
     
@@ -193,7 +190,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("newview", forIndexPath: indexPath) as! NewCollectionViewCell
-        let item = self.votes[indexPath.row]
+        let item = votes[indexPath.row]
         
         
         let gesture = UITapGestureRecognizer(target: self, action: Selector("onDoubleTap:"))
@@ -265,7 +262,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         tapCheck = 2
         let cell = recognizer.view as! NewCollectionViewCell
         cell.onDoubleTap()
-        let object = self.votes[self.collectionView.indexPathForCell(cell)!.row]
+        let object = votes[self.collectionView.indexPathForCell(cell)!.row]
         if let likes = object["votes"] as? Int
         {
             object["votes"] = likes + 1
@@ -306,7 +303,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
             println("dispatch after!")
             if self.tapCheck == 1{
                 
-                self.objectToSend = self.votes[indexPath.row]
+                self.objectToSend = votes[indexPath.row]
                 var attributes: UICollectionViewLayoutAttributes = self.collectionView.layoutAttributesForItemAtIndexPath(indexPath)!
                 var cellRect: CGRect = attributes.frame
                 //cellRect.origin.y = cellRect.origin.y - lastContentOffset

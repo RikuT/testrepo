@@ -53,9 +53,9 @@
                         <outlet property="navigationBar" destination="KnJ-3v-krq" id="2Gx-6t-BFI"/>
                         <outlet property="swiftPagesView" destination="Y4q-L0-eQu" id="SG8-bJ-Yvs"/>
                         <segue destination="PNQ-ru-7to" kind="modal" identifier="loginView" animates="NO" id="BK8-ow-a7u"/>
-                        <segue destination="4H1-83-9jU" kind="modal" identifier="VCtoClosetVC" animates="NO" id="ElC-ds-RgJ"/>
+                        <segue destination="4H1-83-9jU" kind="custom" identifier="VCtoClosetVC" customClass="goSegue" customModule="Stylist" customModuleProvider="target" id="ElC-ds-RgJ"/>
                         <segue destination="x8p-fI-vlR" kind="modal" identifier="VCtoAccountVC" animates="NO" id="z6c-Iv-rJh"/>
-                        <segue destination="Gk5-7l-8RI" kind="modal" identifier="VCtoFittingVCSegue" animates="NO" id="lO1-c6-9JB"/>
+                        <segue destination="Gk5-7l-8RI" kind="custom" identifier="VCtoFittingVCSegue" customClass="goSegue" customModule="Stylist" customModuleProvider="target" id="lO1-c6-9JB"/>
                         <segue destination="mvh-Qb-4CR" kind="modal" identifier="VCtoPhotoVC" animates="NO" id="yYV-VU-c0Y"/>
                     </connections>
                 </viewController>
@@ -79,7 +79,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6KV-Ki-CzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74" y="-117"/>
+            <point key="canvasLocation" x="79" y="-186"/>
         </scene>
         <!--Tops View Controller-->
         <scene sceneID="9o3-eY-HEm">
@@ -169,13 +169,13 @@
                     <connections>
                         <outlet property="collectionView" destination="EaR-ET-k4R" id="mM4-wQ-PcB"/>
                         <segue destination="Rz1-LF-e1Z" kind="modal" identifier="showImage" animates="NO" id="6Si-2s-eq2"/>
-                        <segue destination="8vQ-e4-Iq2" kind="modal" identifier="topsVCtoVCnotUnwind" animates="NO" id="PbG-0j-NXL"/>
-                        <segue destination="8vQ-e4-Iq2" kind="modal" identifier="topsVCtoVCsegue" animates="NO" id="BUq-l4-ALa"/>
+                        <segue destination="8vQ-e4-Iq2" kind="custom" identifier="topsVCtoVCnotUnwind" customClass="goBackSegue" customModule="Stylist" customModuleProvider="target" id="PbG-0j-NXL"/>
+                        <segue destination="8vQ-e4-Iq2" kind="custom" identifier="topsVCtoVCsegue" customClass="goBackSegue" customModule="Stylist" customModuleProvider="target" id="BUq-l4-ALa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6d5-AW-rn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="704" y="-129"/>
+            <point key="canvasLocation" x="567" y="-1048"/>
         </scene>
         <!--Profile Pic View Controller-->
         <scene sceneID="m1t-JV-MjG">
@@ -482,7 +482,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1150" y="-129"/>
+            <point key="canvasLocation" x="1239" y="-117"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="14v-YN-nJg">
@@ -776,7 +776,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="673" y="625"/>
+            <point key="canvasLocation" x="461" y="611"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="xGl-vL-tbG">
@@ -1116,13 +1116,13 @@
                     <connections>
                         <segue destination="8vQ-e4-Iq2" kind="modal" identifier="trendDetailVCtoVC" animates="NO" id="35s-LQ-Ebd"/>
                         <segue destination="eCJ-iY-WXf" kind="unwind" identifier="trendDetailVCtoVCunwind" unwindAction="unwindToTrend:" id="SU4-Yv-nCL"/>
-                        <segue destination="Gk5-7l-8RI" kind="modal" identifier="trendDetailToSwipeableVC" id="t5G-Sf-RKd"/>
+                        <segue destination="Gk5-7l-8RI" kind="custom" identifier="trendDetailToSwipeableVC" customClass="goSegue" customModule="Stylist" customModuleProvider="target" id="t5G-Sf-RKd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jgz-A0-3Ud" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="eCJ-iY-WXf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1132" y="2253"/>
+            <point key="canvasLocation" x="1110" y="2314"/>
         </scene>
     </scenes>
     <resources>
@@ -1141,11 +1141,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="35s-LQ-Ebd"/>
-        <segue reference="t5G-Sf-RKd"/>
-        <segue reference="z6c-Iv-rJh"/>
-        <segue reference="BK8-ow-a7u"/>
+        <segue reference="PbG-0j-NXL"/>
         <segue reference="ElC-ds-RgJ"/>
-        <segue reference="xnA-Pc-bIb"/>
+        <segue reference="z6c-Iv-rJh"/>
+        <segue reference="vY9-8b-aib"/>
+        <segue reference="XKH-ik-kmo"/>
+        <segue reference="t5G-Sf-RKd"/>
     </inferredMetricsTieBreakers>
 </document>
