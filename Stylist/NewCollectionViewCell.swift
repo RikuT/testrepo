@@ -29,7 +29,7 @@ class NewCollectionViewCell: UICollectionViewCell {
         // Initialization code
         //postsLabel.textAlignment = NSTextAlignment.Center
         bottomBlurView.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 0.75)
-        votesLabel!.textAlignment = NSTextAlignment.Right
+        votesLabel!.textAlignment = NSTextAlignment.Center
 
         
         heartIcon?.hidden = true

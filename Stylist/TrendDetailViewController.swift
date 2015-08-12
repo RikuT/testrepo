@@ -191,7 +191,7 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         
         //Adding label showing how many people liked the post
         var likeNumLabel = UILabel(frame: CGRectMake(self.view.frame.width - 320, heightInWhiteView + 12, 300, 18))
-        likeNumLabel.text = "\(voteNum) like this"
+        likeNumLabel.text = "\(voteNum) loved this"
         likeNumLabel.font = UIFont(name: "HelveticaNeue", size: 14)
         likeNumLabel.textAlignment = NSTextAlignment.Right
         likeNumLabel.textColor = UIColor.darkGrayColor()

@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import <Rover/Rover.h>
+#import "ParseCrashReporting/ParseCrashReporting.h"
+
 
 
 @interface AppDelegate ()
@@ -22,11 +24,23 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [Parse enableLocalDatastore];
+    // Enable Crash Reporting
+    [ParseCrashReporting enable];
+
     
     // Initialize Parse.
     [Parse setApplicationId:@"ZEczNFa87TVNAqxZWtIacRXzcxpRHscd5M2CbKrz"
                   clientKey:@"giGCYLa2fAxnZMn9CgvgaUUZ4xsFmxjmei6DEH6n"];
-    return YES;
+    
+
+    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                    UIUserNotificationTypeBadge |
+                                                    UIUserNotificationTypeSound);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                             categories:nil];
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
+        return YES;
     
     RVConfig *config = [RVConfig defaultConfig];
     config.applicationToken = @"<ba1b7681897651674c46b5adf5e0f9ed>";
@@ -34,7 +48,25 @@
     
     Rover *rover = [Rover setup:config];
     [rover startMonitoring];
+    
 }
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
+}
+
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    currentInstallation.channels = @[ @"global" ];
+    [currentInstallation saveInBackground];
+}
+
+
+
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     if ([[Rover shared] handleDidReceiveLocalNotification:notification]) {
