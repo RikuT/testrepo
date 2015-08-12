@@ -307,11 +307,11 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         
         //Season info
         var seasonPositionHeight: CGFloat = tagPositionHeight + 43
-        var seasonLabel = UILabel(frame: CGRectMake(60, seasonPositionHeight + 3, self.view.bounds.size.width - 80, 27))
+        var seasonLabel = UILabel(frame: CGRectMake(30, seasonPositionHeight + 3, self.view.bounds.size.width - 60, 27))
         seasonLabel.text = seasonInfo
         seasonLabel.textColor = UIColor.darkGrayColor()
         seasonLabel.font = UIFont(name: "HelveticaNeue", size: 16)
-        seasonLabel.textAlignment = NSTextAlignment.Left
+        seasonLabel.textAlignment = NSTextAlignment.Center
         whiteView.addSubview(seasonLabel)
         
         
@@ -468,7 +468,21 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
             animations: {() -> Void in
                 self.imageView.frame.origin.x = self.view.frame.width
             }, completion: {(Bool) -> Void in
+                self.blurView.alpha = 0
+                let layer = UIApplication.sharedApplication().keyWindow?.layer
+                let scale = UIScreen.mainScreen().scale
+                UIGraphicsBeginImageContextWithOptions(layer!.frame.size, false, scale);
+                
+                layer!.renderInContext(UIGraphicsGetCurrentContext())
+                let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                self.blurView.alpha = 0.9
+
+                let ud = NSUserDefaults.standardUserDefaults()
+                ud.setObject(UIImageJPEGRepresentation(screenshot, 0.6), forKey: "bgBetweenDetailVCandFittingKey")
                 self.performSegueWithIdentifier("trendDetailToSwipeableVC", sender: self)
+                ud.setInteger(2, forKey: "OriginToTryThemOnVC")
+
         })
 
         

@@ -265,7 +265,7 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
     {
         println("doubl")
         tapCheck = 2
-        let cell = recognizer.view as! NewCollectionViewCell
+        let cell = recognizer.view as! LoveCollectionViewCell
         cell.onDoubleTap()
         let object = self.votes[self.collectionView.indexPathForCell(cell)!.row]
         if let likes = object["votes"] as? Int

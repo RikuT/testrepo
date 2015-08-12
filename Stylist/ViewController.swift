@@ -356,6 +356,19 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
     
     func fittingBtnTapped(){
         println("fitting")
+        let ud = NSUserDefaults.standardUserDefaults()
+        
+        let layer = UIApplication.sharedApplication().keyWindow?.layer
+        let scale = UIScreen.mainScreen().scale
+        UIGraphicsBeginImageContextWithOptions(layer!.frame.size, false, scale);
+        
+        layer!.renderInContext(UIGraphicsGetCurrentContext())
+        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        ud.setObject(UIImageJPEGRepresentation(screenshot, 0.6), forKey: "bgBetweenDetailVCandFittingKey")
+        
+        ud.setInteger(3, forKey: "OriginToTryThemOnVC")
         self.performSegueWithIdentifier("VCtoFittingVCSegue", sender: self)
         //self.performSegueWithIdentifier("VCtoFittingVC", sender: self)
     }

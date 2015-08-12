@@ -17,7 +17,7 @@ import Parse
 
 class SwipeableClothesTester: UIViewController {
     //var movingCount: Int = 1
-    
+    var detailBgImg: UIImage!
     
     //下のscrollviewの大きさが変わったら認知
     
@@ -33,7 +33,6 @@ class SwipeableClothesTester: UIViewController {
             if(self.pictNumber == self.imageArray.count || self.pictNumber + 1 == self.imageArray.count){
                 self.topViewMoved1()
                 
-                println("didSet occured")
                 
             }}
     }
@@ -43,7 +42,6 @@ class SwipeableClothesTester: UIViewController {
             if(self.pictNumber == self.imageArray.count || self.pictNumber + 1 == self.imageArray.count){
                 //[self.topViewMoved1()]
                 self.topViewMoved2()
-                println("didSet occured")
                 
             }
         }
@@ -82,6 +80,8 @@ class SwipeableClothesTester: UIViewController {
     let scrView = UIScrollView()
     let scrView2 = UIScrollView()
     let scrView3 = UIScrollView()
+    
+    var originCheckInt = 0
     
     
     var checkInt: Int? {
@@ -159,7 +159,7 @@ class SwipeableClothesTester: UIViewController {
             }*/
         }
     }
-
+    
     
     func setScrView(){
         
@@ -174,7 +174,7 @@ class SwipeableClothesTester: UIViewController {
             var detailImgData = detailImgObj as! NSData
             var detailImg = UIImage(data: detailImgData)
             self.imageArray.insert(detailImg!, atIndex: 0)
-
+            
         }
         
         
@@ -240,7 +240,7 @@ class SwipeableClothesTester: UIViewController {
             //scrView2.addSubview(imageView2)
         }
         
-
+        
         
         
         // １ページ単位でスクロールさせる
@@ -310,11 +310,35 @@ class SwipeableClothesTester: UIViewController {
         addLineButt.addTarget(self, action: "addLineBtnTapped", forControlEvents: UIControlEvents.TouchUpInside)
         dottedLineView2.hidden = true
         
+        
+        
+        if ud.objectForKey("bgBetweenDetailVCandFittingKey") != nil{
+            var bgPictObj: AnyObject? = ud.objectForKey("bgBetweenDetailVCandFittingKey")
+            ud.removeObjectForKey("bgBetweenDetailVCandFittingKey")
+            var bgImgData = bgPictObj as! NSData
+            detailBgImg = UIImage(data: bgImgData)
+        }
+        ud.removeObjectForKey("bgBetweenDetailVCandFittingKey")
+        /*
+        //For hiding dottedline when not touching
+        var dottedLineBtn = UIButton(frame: CGRectMake(0, 0, dottedLineView.frame.width, dottedLineView.frame.height))
+        var dottedLineBtn2 = UIButton(frame: CGRectMake(0, 0, dottedLineView.frame.width, dottedLineView.frame.height))
+        dottedLineView.addSubview(dottedLineBtn)
+        dottedLineView2.addSubview(dottedLineBtn2)
+        dottedLineBtn.addTarget(self, action: "dottedLineViewAppear1", forControlEvents: UIControlEvents.TouchDown)
+        dottedLineBtn2.addTarget(self, action: "dottedLineViewAppear2", forControlEvents: UIControlEvents.TouchDown)
+        dottedLineBtn.addTarget(self, action: "dottedLineViewDisappear1", forControlEvents: UIControlEvents.TouchUpInside)
+        dottedLineBtn.addTarget(self, action: "dottedLineViewDisappear2", forControlEvents: UIControlEvents.TouchUpInside)
+        */
+        
         self.view.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1)
         
         self.showActivityIndicatory(self.view)
         println("ViewDidLoad appearInt = \(viewDidAppearInt)")
     }
+    
+    
+    
     
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -374,7 +398,6 @@ class SwipeableClothesTester: UIViewController {
         scrView.frame = CGRectMake(0, 0, self.swipeableView.frame.width, topViewHeight!)
         var cgPictNum = CGFloat (self.imageArray.count)
         scrView.contentSize = CGSizeMake(self.swipeableView.frame.width * cgPictNum, topViewHeight!)
-        println("bottomViewSet")
         
     }
     
@@ -382,7 +405,6 @@ class SwipeableClothesTester: UIViewController {
         scrView3.frame = CGRectMake(0, 0, self.swipeableView.frame.width, topViewHeight2!)
         var cgPictNum = CGFloat (self.imageArray.count)
         scrView3.contentSize = CGSizeMake(self.swipeableView.frame.width * cgPictNum, topViewHeight2!)
-        println("bottomViewSet")
     }
     
     func addLineBtnTapped(){
@@ -477,6 +499,7 @@ class SwipeableClothesTester: UIViewController {
     }
     
     func performSegueToHome(){
+        //Go home when error occurs
         if(viewDidAppearInt == 1){
             
             let ud = NSUserDefaults.standardUserDefaults()
@@ -485,10 +508,6 @@ class SwipeableClothesTester: UIViewController {
                 ud.removeObjectForKey("closeAlertKeyNote")
                 ud.removeObjectForKey("closeAlertKey")
                 
-                
-                let backTransitionAni = CATransition()
-                backTransitionAni.duration = 0.3
-                backTransitionAni.type = kCATransitionFromLeft
                 self.dismissViewControllerAnimated(false, completion: nil)
                 
                 println("self to 0")
@@ -496,13 +515,65 @@ class SwipeableClothesTester: UIViewController {
     }
     
     func goBackPressed(){
-        let backTransitionAni = CATransition()
-        backTransitionAni.duration = 0.3
-        backTransitionAni.type = kCATransitionFromLeft
-       // [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-        self.view.layer.addAnimation(backTransitionAni, forKey: kCATransition)
-        self.dismissViewControllerAnimated(false, completion: nil)
+        
+        
+        let layer = UIApplication.sharedApplication().keyWindow?.layer
+        let scale = UIScreen.mainScreen().scale
+        UIGraphicsBeginImageContextWithOptions(layer!.frame.size, false, scale);
+        
+        layer!.renderInContext(UIGraphicsGetCurrentContext())
+        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        let screenImgView = UIImageView(image: screenshot)
+        screenImgView.frame = self.view.frame
+        self.view.addSubview(screenImgView)
+        
+        
+        
+        
+        
+        goBackButt.enabled = false
+        var detailBgView = UIImageView()
+        
+        detailBgView = UIImageView(image: detailBgImg)
+        detailBgView.frame = CGRectMake(-self.view.frame.width, 0, self.view.frame.width, self.view.frame.height)
+        self.view.addSubview(detailBgView)
+        
+        let ud = NSUserDefaults.standardUserDefaults()
+        
+        var originFromTrendDetail = ud.integerForKey("OriginToTryThemOnVC")
+        ud.removeObjectForKey("OriginToTryThemOnVC")
+            if originFromTrendDetail == 2{
+                let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+                var blurView = UIVisualEffectView(effect: blurEffect)
+                blurView.frame = self.view.frame
+                let darkView = UIView(frame: blurView.frame)
+                darkView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+                blurView.alpha = 0.9
+                blurView.addSubview(darkView)
+                detailBgView.addSubview(blurView)
+            }
+        
+        
+        // アニメーション処理
+        UIView.animateWithDuration(NSTimeInterval(CGFloat(0.3)),
+            animations: {() -> Void in
+                detailBgView.frame.origin.x = 0
+                screenImgView.frame.origin.x = self.view.frame.size.width
+                
+            }, completion: {(Bool) -> Void in
+                
+                self.dismissViewControllerAnimated(false, completion: nil)
+                
+                
+        })
+        
+        
     }
+    
+    
+    
     
     override func viewDidDisappear(animated: Bool) {
         /*
