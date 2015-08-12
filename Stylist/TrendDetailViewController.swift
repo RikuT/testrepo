@@ -339,7 +339,7 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         
         //Add delete photo button
         var tryBtn = UIButton(frame: CGRectMake(10, saveToClosetBtn.frame.origin.y + saveToClosetBtn.frame.size.height + 10, self.view.frame.width - 20, 30))
-        tryBtn.setTitle("T R Y !", forState: .Normal)
+        tryBtn.setTitle("F I T !", forState: .Normal)
         tryBtn.titleLabel!.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 20)
         tryBtn.setTitleColor(UIColor.grayColor(), forState: .Normal)
         tryBtn.layer.borderColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1).CGColor

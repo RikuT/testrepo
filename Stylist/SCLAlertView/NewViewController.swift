@@ -22,10 +22,10 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     
     @IBOutlet weak var collectionView: UICollectionView!
     var lastContentOffset: CGFloat!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.frame = CGRectMake(0, 29, 320, 519)
+        // collectionView.frame = CGRectMake(0, 29, 320, 519)
         println("collectF \(self.view.frame)")
         
         let query = PFQuery(className: "Posts")
@@ -43,7 +43,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         }
         
         collectionViewHeight = self.view.frame.size.height - 44
-
+        
         
         // Wire up search bar delegate so that we can react to button selections
         
@@ -66,16 +66,16 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         tapCheck = 1
         self.view.frame.origin.y = 0
         self.view.frame.size.height = collectionViewHeight
-
+        
     }
     
     override func viewWillAppear(animated: Bool) {
-                
+        println("will")
         self.view.frame.origin.y = 0
         self.view.frame.size.height = collectionViewHeight
-
+        
     }
-
+    
     
     /*
     ==========================================================================================
@@ -85,10 +85,92 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     
     func loadCollectionViewData() {
         // Build a parse query object
-        collectionView.frame = CGRectMake(0, 29, 320, 519)
-        println("collectF3 \(self.view.frame)")
+        //collectionView.frame = CGRectMake(0, 29, 320, 519)
+        
+        println("loadscdo")
+        let ud = NSUserDefaults.standardUserDefaults()
+        var searchKey = ud.objectForKey("searchKeyFromVCKey") as? String
+        
+        println("searchKey \(searchKey)")
+        
+        
+        
+        if ud.objectForKey("searchKeyFromVCKey") != nil{
 
+            // Check to see if there is a search term
+            var tagQuery: PFQuery!
+            var imgTextQuery: PFQuery!
+            var clothesExplanationQuery: PFQuery!
+            var seasonQuery: PFQuery!
+            
+            var query: PFQuery!
+            
+            
+            
+            
+            if searchKey != "" {
+                //If a user is searching something...
+                tagQuery = PFQuery(className: "Posts")
+                tagQuery.whereKey("searchTag", containsString: searchKey)
+                
+                imgTextQuery = PFQuery(className: "Posts")
+                imgTextQuery.whereKey("imageText", containsString: searchKey)
+                //query.whereKey("Tags", containsString: searchTextF.text)
+                
+                clothesExplanationQuery = PFQuery(className: "Posts")
+                clothesExplanationQuery.whereKey("clothesExplanation", containsString: searchKey)
+                
+                seasonQuery = PFQuery(className: "Posts")
+                seasonQuery.whereKey("season", containsString: searchKey)
+                
+                query = PFQuery.orQueryWithSubqueries([tagQuery, imgTextQuery, clothesExplanationQuery, seasonQuery])
+                println("searckadjof")
+                // Fetch data from the parse platform
+                query.findObjectsInBackgroundWithBlock {
+                    (objects: [AnyObject]?, error: NSError?) -> Void in
+                    println("objects: \(objects)")
+                    println("error\(error)")
+                    println("searckadjof23")
+                    
+                    // The find succeeded now rocess the found objects into the countries array
+                    if error == nil {
+                        
+                        // Clear existing country data
+                        self.votes.removeAll(keepCapacity: false)
+                        
+                        // Add country objects to our array
+                        if let object = objects as? [PFObject] {
+                            self.votes = object
+                            println("votesn \(self.votes)")
+                            // reload our data into the collection view
+                            self.collectionView.reloadData()
+                        }
+                        
+                        //self.hideActivityIndicator(self.view)
+                        
+                    } else {
+                        // Log details of the failure
+                        println("Error: \(error!) \(error!.userInfo!)")
+                        /*
+                        if self.checkAlert == 0{
+                        
+                        let alert = SCLAlertView()
+                        alert.showError("Error", subTitle:"An error occured while retrieving your clothes. Please check the Internet connection.", closeButtonTitle:"Ok")
+                        self.hideActivityIndicator(self.view)
+                        
+                        self.checkAlert = 1*/
+                        
+                    }
+                    
+                }}}
+        
+        ud.removeObjectForKey("searchKeyFromVCKey")
+        
     }
+    
+    
+    
+    
     
     /*
     ==========================================================================================
@@ -102,7 +184,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         println("votesNum\(votes.count)")
-
+        
         return self.votes.count
     }
     
@@ -112,11 +194,11 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("newview", forIndexPath: indexPath) as! NewCollectionViewCell
         let item = self.votes[indexPath.row]
-
+        
         
         let gesture = UITapGestureRecognizer(target: self, action: Selector("onDoubleTap:"))
         gesture.numberOfTapsRequired = 2
-                cell.addGestureRecognizer(gesture)
+        cell.addGestureRecognizer(gesture)
         
         
         // Display "initial" flag image
@@ -147,11 +229,11 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
             
             var height = user["height"] as! Int
             cell.heightSexLabel.text = "\(sex) \(height)cm"
-        
+            
             
             
         }
-
+        
         if let votesValue = item["votes"] as? Int
         {
             cell.votesLabel?.text = "\(votesValue)"
@@ -159,7 +241,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         
         // Fetch final flag image - if it exists
         if let value = item["imageFile"] as? PFFile {
-            println("Value \(value)") 
+            println("Value \(value)")
             cell.postsImageView.file = value
             cell.postsImageView.loadInBackground({ (image: UIImage?, error: NSError?) -> Void in
                 if error != nil {
@@ -195,17 +277,17 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         }
         else
         {
-            object["votes"] = 1 
-            object.saveInBackgroundWithBlock{ (success:Bool,error:NSError?) -> Void in 
-                println("Data saved") 
-            } 
-            cell.votesLabel?.text = "1" 
+            object["votes"] = 1
+            object.saveInBackgroundWithBlock{ (success:Bool,error:NSError?) -> Void in
+                println("Data saved")
+            }
+            cell.votesLabel?.text = "1"
         }
         
         let delay = 0.21 * Double(NSEC_PER_SEC)
         let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue(), {
-           self.tapCheck = 1
+            self.tapCheck = 1
         })
         
     }
@@ -223,43 +305,43 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         dispatch_after(time, dispatch_get_main_queue(), {
             println("dispatch after!")
             if self.tapCheck == 1{
-        
-        self.objectToSend = self.votes[indexPath.row]
-        var attributes: UICollectionViewLayoutAttributes = self.collectionView.layoutAttributesForItemAtIndexPath(indexPath)!
-        var cellRect: CGRect = attributes.frame
-        //cellRect.origin.y = cellRect.origin.y - lastContentOffset
-        
-        if self.lastContentOffset != nil{
-            var originY = cellRect.origin.y - self.lastContentOffset
-            cellRect.origin.y = originY
-        }
-        
-        //Adding for navigation bar and status bar
-        cellRect.origin.y = cellRect.origin.y + 44 + 20
-        println("cellrect \(cellRect)")
-        
-        
-        let layer = UIApplication.sharedApplication().keyWindow?.layer
-        let scale = UIScreen.mainScreen().scale
-        UIGraphicsBeginImageContextWithOptions(layer!.frame.size, false, scale);
-        
-        layer!.renderInContext(UIGraphicsGetCurrentContext())
-        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        let ud = NSUserDefaults.standardUserDefaults()
-        ud.setObject(UIImageJPEGRepresentation(screenshot, 0.6), forKey: "bgBetweenNewVCandTrendDetailVC")
-        ud.setValue(NSStringFromCGRect(cellRect), forKey: "cellPositionTopstoTrendDetailKey")
-        
-        
-        /*
-        UICollectionViewLayoutAttributes *attributes = [self.collectionView layoutAttributesForItemAtIndexPath:indexPath];
-        CGRect cellRect = attributes.frame;
-        */
-        self.performSegueWithIdentifier("showTrendImage", sender: self)
-            
+                
+                self.objectToSend = self.votes[indexPath.row]
+                var attributes: UICollectionViewLayoutAttributes = self.collectionView.layoutAttributesForItemAtIndexPath(indexPath)!
+                var cellRect: CGRect = attributes.frame
+                //cellRect.origin.y = cellRect.origin.y - lastContentOffset
+                
+                if self.lastContentOffset != nil{
+                    var originY = cellRect.origin.y - self.lastContentOffset
+                    cellRect.origin.y = originY
+                }
+                
+                //Adding for navigation bar and status bar
+                cellRect.origin.y = cellRect.origin.y + 44 + 20
+                println("cellrect \(cellRect)")
+                
+                
+                let layer = UIApplication.sharedApplication().keyWindow?.layer
+                let scale = UIScreen.mainScreen().scale
+                UIGraphicsBeginImageContextWithOptions(layer!.frame.size, false, scale);
+                
+                layer!.renderInContext(UIGraphicsGetCurrentContext())
+                let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                
+                let ud = NSUserDefaults.standardUserDefaults()
+                ud.setObject(UIImageJPEGRepresentation(screenshot, 0.6), forKey: "bgBetweenNewVCandTrendDetailVC")
+                ud.setValue(NSStringFromCGRect(cellRect), forKey: "cellPositionTopstoTrendDetailKey")
+                
+                
+                /*
+                UICollectionViewLayoutAttributes *attributes = [self.collectionView layoutAttributesForItemAtIndexPath:indexPath];
+                CGRect cellRect = attributes.frame;
+                */
+                self.performSegueWithIdentifier("showTrendImage", sender: self)
+                
             }  })
-        }
+    }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -274,9 +356,9 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         self.lastContentOffset = scrollView.contentOffset.y
     }
     
-
     
-       /*
+    
+    /*
     ==========================================================================================
     Process memory issues
     To be completed
