@@ -486,6 +486,8 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         //Posted images are in "Posts" class of parse
         var posts = PFObject(className: "Posts")
         let votesNum: NSNumber = 0
+        let flagNum: NSNumber = 0
+
         
         var newBrandTags = brandTag.tags
         var newMiscTags = miscTag.tags
@@ -506,6 +508,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         }
 
         posts["votes"] = votesNum
+        posts["flagReport"] = flagNum
         posts["imageText"] = topsLabel.text
         posts["uploader"] = PFUser.currentUser()
         posts["Tags"] = miscTag.tags
