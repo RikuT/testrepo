@@ -331,6 +331,21 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         
     }
     
+    override func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        let ud = NSUserDefaults.standardUserDefaults()
+        ud.removeObjectForKey("searchKeyFromVCKey")
+        ud.setObject(searchTextF.text, forKey: "searchKeyFromVCKey")
+
+
+        self.closeMenu()
+        self.view.endEditing(true)
+        let searchView = NewViewController()
+        searchView.loadCollectionViewData()
+        return true
+    }
+
+    
     func trendBtnTapped(){
         println("trendBtn")
     }

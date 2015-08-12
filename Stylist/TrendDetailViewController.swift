@@ -113,8 +113,8 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         swipeableView.addSubview(blurButton3)
         swipeableView.addSubview(blurButton4)
         
-
-
+        
+        
         
         //    brandArray = [NSMutableArray array];
         let screenRect = UIScreen.mainScreen().bounds
@@ -203,9 +203,9 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         dateLabel.textAlignment = NSTextAlignment.Left
         dateLabel.textColor = UIColor.darkGrayColor()
         whiteView.addSubview(dateLabel)
-
         
-      
+        
+        
         
         
         var grayLine5 = UILabel(frame: CGRectMake(0, likeNumLabel.frame.origin.y + likeNumLabel.frame.size.height + 5, self.view.frame.width, 0.3))
@@ -214,16 +214,16 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         
         var grayLine = UILabel()
         if clothesName != ""{
-        topsLabel = UILabel(frame: CGRectMake(40, grayLine5.frame.origin.y + 5, self.view.bounds.size.width - 60, 30))
-        //topsLabel.borderStyle = UITextBorderStyle.Bezel
-        topsLabel.textColor = UIColor.darkGrayColor()
-        topsLabel.font = UIFont(name: "HelveticaNeue", size: 16)
-        topsLabel.textAlignment = NSTextAlignment.Center
-        topsLabel.text = clothesName
-        
-        grayLine.frame = CGRectMake(0, topsLabel.frame.origin.y + topsLabel.frame.size.height + 5, self.view.frame.width, 0.3)
-        grayLine.backgroundColor = UIColor.lightGrayColor()
-        whiteView.addSubview(grayLine)
+            topsLabel = UILabel(frame: CGRectMake(40, grayLine5.frame.origin.y + 5, self.view.bounds.size.width - 60, 30))
+            //topsLabel.borderStyle = UITextBorderStyle.Bezel
+            topsLabel.textColor = UIColor.darkGrayColor()
+            topsLabel.font = UIFont(name: "HelveticaNeue", size: 16)
+            topsLabel.textAlignment = NSTextAlignment.Center
+            topsLabel.text = clothesName
+            
+            grayLine.frame = CGRectMake(0, topsLabel.frame.origin.y + topsLabel.frame.size.height + 5, self.view.frame.width, 0.3)
+            grayLine.backgroundColor = UIColor.lightGrayColor()
+            whiteView.addSubview(grayLine)
             whiteView.addSubview(topsLabel)
             
         }else{
@@ -323,7 +323,7 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         var grayLine4 = UILabel(frame: CGRectMake(0, calendarIconView.frame.origin.y + calendarIconView.frame.height + 4, self.view.frame.width, 0.3))
         grayLine4.backgroundColor = UIColor.lightGrayColor()
         whiteView.addSubview(grayLine4)
-
+        
         
         //Add post to public button
         var saveToClosetBtn = UIButton(frame: CGRectMake(10, grayLine4.frame.origin.y + 7, self.view.frame.width - 20, 30))
@@ -339,7 +339,7 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         
         //Add delete photo button
         var tryBtn = UIButton(frame: CGRectMake(10, saveToClosetBtn.frame.origin.y + saveToClosetBtn.frame.size.height + 10, self.view.frame.width - 20, 30))
-        tryBtn.setTitle("FIT", forState: .Normal)
+        tryBtn.setTitle("F I T", forState: .Normal)
         tryBtn.titleLabel!.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 20)
         tryBtn.setTitleColor(UIColor.grayColor(), forState: .Normal)
         tryBtn.layer.borderColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1).CGColor
@@ -348,7 +348,7 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         tryBtn.addTarget(self, action: "tryClothes", forControlEvents: UIControlEvents.TouchUpInside)
         whiteView.addSubview(tryBtn)
         
-        var flagBtn = UIButton(frame: CGRectMake(10, saveToClosetBtn.frame.origin.y + saveToClosetBtn.frame.size.height + 10, self.view.frame.width - 20, 30))
+        var flagBtn = UIButton(frame: CGRectMake(10, tryBtn.frame.origin.y + tryBtn.frame.size.height + 10, self.view.frame.width - 20, 30))
         flagBtn.setTitle("Report inappropriate", forState: .Normal)
         flagBtn.titleLabel!.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 20)
         flagBtn.setTitleColor(UIColor.grayColor(), forState: .Normal)
@@ -356,11 +356,11 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         flagBtn.layer.borderWidth = 1.0
         flagBtn.layer.cornerRadius = 3.0
         flagBtn.addTarget(self, action: "flagInap", forControlEvents: UIControlEvents.TouchUpInside)
-        whiteView.addSubview(tryBtn)
-
+        whiteView.addSubview(flagBtn)
         
         
-        var whiteViewHeightY: CGFloat = tryBtn.frame.origin.y + tryBtn.frame.height + 10
+        
+        var whiteViewHeightY: CGFloat = flagBtn.frame.origin.y + flagBtn.frame.height + 10
         whiteView.frame = CGRectMake(whiteView.frame.origin.x, whiteView.frame.origin.y - grayLine5.frame.origin.y - 20, whiteView.frame.size.width, whiteViewHeightY)
         scrollview.contentSize = CGSize (width: scrollview.frame.size.width, height: whiteView.frame.origin.y + whiteView.frame.size.height)
         swipeableViewScr.frame.size = scrollview.contentSize
@@ -389,7 +389,7 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         var swipeLeft2 = UISwipeGestureRecognizer(target: self, action: "respondToCloseGesture:")
         swipeLeft2.direction = UISwipeGestureRecognizerDirection.Left
         swipeableViewScr.addGestureRecognizer(swipeLeft2)
-*/
+        */
         
         
         self.view.backgroundColor = UIColor.whiteColor()
@@ -410,7 +410,7 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
             self.view.addSubview(imageView)
             self.view.bringSubviewToFront(swipeableView)
             self.view.addSubview(quitButton)
-
+            
             
             // アニメーション処理
             UIView.animateWithDuration(NSTimeInterval(CGFloat(0.35)),
@@ -423,7 +423,7 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
                     
                     
                 }, completion: {(Bool) -> Void in
-
+                    
                     self.addingScrollView()
                     
                     UIView.animateWithDuration(NSTimeInterval(CGFloat(0.2)),
@@ -445,7 +445,7 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-            println("swipedRight")
+        println("swipedRight")
         
         self.tryClothes()
         
@@ -457,12 +457,12 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         ud.setObject(UIImageJPEGRepresentation(imageView.image, 1), forKey: "imageShownAtTrendDetailKey")
     }
     
-
+    
     /*
     func respondToCloseGesture(gesture: UIGestureRecognizer){
-        self.quitButtonPressed()
+    self.quitButtonPressed()
     }
-*/
+    */
     
     func addingScrollView(){
         
@@ -487,8 +487,8 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         posts["season"] = seasonInfo
         posts["uploader"] = PFUser.currentUser()
         posts["imageText"] = clothesName
-
-  
+        
+        
         
         posts.saveInBackgroundWithBlock({
             (success: Bool, error: NSError?) -> Void in
@@ -536,27 +536,35 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         
         
         
-
+        
         
         
         
         
     }
-
+    
     func flagInap(){
-        var post = PFObject(className: "Posts")
-        if let flag = post["flagReport"] as? Int{
-            post["votes"] = flag + 1
-            post.saveInBackgroundWithBlock{ (success:Bool,error:NSError?) -> Void in
-                println("Flagged")
-            }
-            }
+        println("flagg")
+        if let object = currentObject{
+            if let flag = object["flagReport"] as? Int{
+                object["flagReport"] = flag + 1
+                
+                object.saveInBackgroundWithBlock{ (success:Bool,error:NSError?) -> Void in
+                    println("Flagged")
+                }
+                let successAlert = SCLAlertView()
+                successAlert.showSuccess("Reported", subTitle:"Thank you for your feedback. This post was reported successfully.", closeButtonTitle:"Close")
 
+                
+            }
         }
-
-            
         
         
+    }
+    
+    
+    
+    
     
     func quitButtonPressed(){
         //Adding for navigation bar and status bar
@@ -613,7 +621,7 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         actInd.stopAnimating()
         container.removeFromSuperview()
     }
-
+    
     
     /*
     // MARK: - Navigation

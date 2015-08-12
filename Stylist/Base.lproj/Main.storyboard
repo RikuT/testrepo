@@ -976,7 +976,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gOr-hy-7nn">
                                                             <rect key="frame" x="71" y="8" width="158" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -1141,11 +1141,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="xnA-Pc-bIb"/>
-        <segue reference="BK8-ow-a7u"/>
         <segue reference="35s-LQ-Ebd"/>
-        <segue reference="lO1-c6-9JB"/>
-        <segue reference="ElC-ds-RgJ"/>
+        <segue reference="t5G-Sf-RKd"/>
         <segue reference="z6c-Iv-rJh"/>
+        <segue reference="BK8-ow-a7u"/>
+        <segue reference="ElC-ds-RgJ"/>
+        <segue reference="xnA-Pc-bIb"/>
     </inferredMetricsTieBreakers>
 </document>
