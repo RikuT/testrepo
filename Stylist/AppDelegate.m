@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import <Rover/Rover.h>
+#import "ParseCrashReporting/ParseCrashReporting.h"
+
 
 
 @interface AppDelegate ()
@@ -22,6 +24,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [Parse enableLocalDatastore];
+    // Enable Crash Reporting
+    [ParseCrashReporting enable];
+    
+    // Setup Parse
+    [Parse setApplicationId:@"ZEczNFa87TVNAqxZWtIacRXzcxpRHscd5M2CbKrz" clientKey:@"giGCYLa2fAxnZMn9CgvgaUUZ4xsFmxjmei6DEH6n"];
+
     
     // Initialize Parse.
     [Parse setApplicationId:@"ZEczNFa87TVNAqxZWtIacRXzcxpRHscd5M2CbKrz"
@@ -34,6 +42,7 @@
     
     Rover *rover = [Rover setup:config];
     [rover startMonitoring];
+    
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {

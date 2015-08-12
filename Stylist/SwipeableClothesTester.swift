@@ -159,6 +159,7 @@ class SwipeableClothesTester: UIViewController {
             }*/
         }
     }
+
     
     func setScrView(){
         

@@ -77,6 +77,8 @@
 		B6EC661E1B3FDDC200B5BC58 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EC661D1B3FDDC200B5BC58 /* libsqlite3.dylib */; };
 		B6EC66261B3FE60C00B5BC58 /* MyConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EC66251B3FE60C00B5BC58 /* MyConnector.m */; };
 		B6EC66281B3FFA8400B5BC58 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EC66271B3FFA8400B5BC58 /* LoginViewController.swift */; };
+		B6F5E7FF1B7B2E4E0065C073 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F5E7FE1B7B2E4E0065C073 /* ParseCrashReporting.framework */; };
+		B6F5E8011B7B2FEB0065C073 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F5E8001B7B2FEB0065C073 /* libstdc++.6.dylib */; };
 		ECCCDA069314E6E4715A6B95 /* libPods-Stylist.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF2748B118D2BF9A0ADB0EA /* libPods-Stylist.a */; };
 /* End PBXBuildFile section */
 
@@ -212,6 +214,8 @@
 		B6EC66241B3FE60C00B5BC58 /* MyConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyConnector.h; sourceTree = "<group>"; };
 		B6EC66251B3FE60C00B5BC58 /* MyConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyConnector.m; sourceTree = "<group>"; };
 		B6EC66271B3FFA8400B5BC58 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B6F5E7FE1B7B2E4E0065C073 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
+		B6F5E8001B7B2FEB0065C073 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		BEF2748B118D2BF9A0ADB0EA /* libPods-Stylist.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Stylist.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8F75A09A7DAEE3E984FF2A3 /* Pods-Stylist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stylist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stylist/Pods-Stylist.debug.xcconfig"; sourceTree = "<group>"; };
 		FBE2CFDF1D363F394109BF06 /* Pods-Stylist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stylist.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stylist/Pods-Stylist.release.xcconfig"; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6F5E8011B7B2FEB0065C073 /* libstdc++.6.dylib in Frameworks */,
 				B683597B1B64EC3C002D492D /* Accounts.framework in Frameworks */,
 				B68359791B64EC13002D492D /* ImageIO.framework in Frameworks */,
 				B68359771B64EC0C002D492D /* Foundation.framework in Frameworks */,
@@ -238,6 +243,7 @@
 				B6EC66161B3FDD8D00B5BC58 /* Security.framework in Frameworks */,
 				B6EC66141B3FDD8600B5BC58 /* QuartzCore.framework in Frameworks */,
 				B6EC66121B3FDD7C00B5BC58 /* MobileCoreServices.framework in Frameworks */,
+				B6F5E7FF1B7B2E4E0065C073 /* ParseCrashReporting.framework in Frameworks */,
 				B6EC660E1B3FDD6600B5BC58 /* CoreGraphics.framework in Frameworks */,
 				B6EC660C1B3FDD5C00B5BC58 /* CFNetwork.framework in Frameworks */,
 				B6EC660A1B3FDD4800B5BC58 /* AudioToolbox.framework in Frameworks */,
@@ -517,6 +523,8 @@
 		B6EC66041B3FDD1300B5BC58 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6F5E8001B7B2FEB0065C073 /* libstdc++.6.dylib */,
+				B6F5E7FE1B7B2E4E0065C073 /* ParseCrashReporting.framework */,
 				B683597A1B64EC3C002D492D /* Accounts.framework */,
 				B68359781B64EC13002D492D /* ImageIO.framework */,
 				B68359761B64EC0C002D492D /* Foundation.framework */,
