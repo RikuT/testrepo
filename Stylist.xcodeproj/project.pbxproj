@@ -35,6 +35,8 @@
 		B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2361B417868007F8FDA /* TopsViewController.swift */; };
 		B6436C671B67698700B8DA64 /* SwiftPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6436C661B67698700B8DA64 /* SwiftPages.swift */; };
 		B65331DD1B411D1B00B19268 /* PasswordRecoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65331DC1B411D1B00B19268 /* PasswordRecoverViewController.swift */; };
+		B66EAA861B7B6398005F146B /* LoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66EAA851B7B6398005F146B /* LoveViewController.swift */; };
+		B66EAA881B7B63BA005F146B /* LoveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66EAA871B7B63BA005F146B /* LoveCollectionViewCell.swift */; };
 		B66F25971B77A323003DAB6C /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F25901B77A323003DAB6C /* MKButton.swift */; };
 		B66F25981B77A323003DAB6C /* MKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F25911B77A323003DAB6C /* MKColor.swift */; };
 		B66F25991B77A323003DAB6C /* MKImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F25921B77A323003DAB6C /* MKImageView.swift */; };
@@ -166,6 +168,8 @@
 		B655B3991B6FA1A300A8A16C /* ヒラギノ丸ゴ ProN W4.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ヒラギノ丸ゴ ProN W4.otf"; sourceTree = "<group>"; };
 		B655B39A1B6FA1A300A8A16C /* ヒラギノ明朝 Pro W3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ヒラギノ明朝 Pro W3.otf"; sourceTree = "<group>"; };
 		B655B39B1B6FA1A300A8A16C /* ヒラギノ明朝 Pro W6.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ヒラギノ明朝 Pro W6.otf"; sourceTree = "<group>"; };
+		B66EAA851B7B6398005F146B /* LoveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoveViewController.swift; sourceTree = "<group>"; };
+		B66EAA871B7B63BA005F146B /* LoveCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoveCollectionViewCell.swift; sourceTree = "<group>"; };
 		B66F25901B77A323003DAB6C /* MKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
 		B66F25911B77A323003DAB6C /* MKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKColor.swift; sourceTree = "<group>"; };
 		B66F25921B77A323003DAB6C /* MKImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKImageView.swift; sourceTree = "<group>"; };
@@ -382,6 +386,34 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		B66EAA811B7B6331005F146B /* Latest */ = {
+			isa = PBXGroup;
+			children = (
+				B6C353D11B6790E9006CF285 /* NewViewController.swift */,
+				B6C353D41B67914F006CF285 /* NewCollectionViewCell.swift */,
+			);
+			name = Latest;
+			sourceTree = "<group>";
+		};
+		B66EAA821B7B6344005F146B /* Tag */ = {
+			isa = PBXGroup;
+			children = (
+				325FA4541B77A4D800229204 /* TagViewController.swift */,
+				325FA4581B77A53B00229204 /* TagCollectionViewCell.swift */,
+				B66F259E1B78DCAF003DAB6C /* TrendDetailViewController.swift */,
+			);
+			name = Tag;
+			sourceTree = "<group>";
+		};
+		B66EAA891B7B6410005F146B /* Love */ = {
+			isa = PBXGroup;
+			children = (
+				B66EAA851B7B6398005F146B /* LoveViewController.swift */,
+				B66EAA871B7B63BA005F146B /* LoveCollectionViewCell.swift */,
+			);
+			name = Love;
+			sourceTree = "<group>";
+		};
 		B66F258F1B77A30C003DAB6C /* MaterialKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,11 +466,9 @@
 		B6C353D31B6790F2006CF285 /* Trend */ = {
 			isa = PBXGroup;
 			children = (
-				B6C353D11B6790E9006CF285 /* NewViewController.swift */,
-				B6C353D41B67914F006CF285 /* NewCollectionViewCell.swift */,
-				325FA4541B77A4D800229204 /* TagViewController.swift */,
-				325FA4581B77A53B00229204 /* TagCollectionViewCell.swift */,
-				B66F259E1B78DCAF003DAB6C /* TrendDetailViewController.swift */,
+				B66EAA891B7B6410005F146B /* Love */,
+				B66EAA821B7B6344005F146B /* Tag */,
+				B66EAA811B7B6331005F146B /* Latest */,
 			);
 			name = Trend;
 			sourceTree = "<group>";
@@ -703,6 +733,7 @@
 				B66F25971B77A323003DAB6C /* MKButton.swift in Sources */,
 				B6EC66281B3FFA8400B5BC58 /* LoginViewController.swift in Sources */,
 				32170A2F1B6CE030009F9665 /* BrandSearchTableController.swift in Sources */,
+				B66EAA881B7B63BA005F146B /* LoveCollectionViewCell.swift in Sources */,
 				B6436C671B67698700B8DA64 /* SwiftPages.swift in Sources */,
 				32862E611B63326F0070FA05 /* userSettingViewController.swift in Sources */,
 				B69677611B622B7500EC2F9A /* DetailViewController.swift in Sources */,
@@ -732,6 +763,7 @@
 				32F48E0A1B670BFA009EF135 /* TLTagsControl.m in Sources */,
 				B66F259B1B77A323003DAB6C /* MKLayer.swift in Sources */,
 				B66F25981B77A323003DAB6C /* MKColor.swift in Sources */,
+				B66EAA861B7B6398005F146B /* LoveViewController.swift in Sources */,
 				B6CD24661B3D8BD50061E451 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
