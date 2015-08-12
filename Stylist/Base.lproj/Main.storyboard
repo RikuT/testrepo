@@ -1141,11 +1141,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="vY9-8b-aib"/>
-        <segue reference="HkD-ag-DXk"/>
         <segue reference="xnA-Pc-bIb"/>
-        <segue reference="ZON-hF-NJm"/>
-        <segue reference="t5G-Sf-RKd"/>
+        <segue reference="BK8-ow-a7u"/>
         <segue reference="35s-LQ-Ebd"/>
+        <segue reference="lO1-c6-9JB"/>
+        <segue reference="ElC-ds-RgJ"/>
+        <segue reference="z6c-Iv-rJh"/>
     </inferredMetricsTieBreakers>
 </document>

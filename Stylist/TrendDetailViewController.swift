@@ -339,13 +339,23 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         
         //Add delete photo button
         var tryBtn = UIButton(frame: CGRectMake(10, saveToClosetBtn.frame.origin.y + saveToClosetBtn.frame.size.height + 10, self.view.frame.width - 20, 30))
-        tryBtn.setTitle("T R Y !", forState: .Normal)
+        tryBtn.setTitle("FIT", forState: .Normal)
         tryBtn.titleLabel!.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 20)
         tryBtn.setTitleColor(UIColor.grayColor(), forState: .Normal)
         tryBtn.layer.borderColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1).CGColor
         tryBtn.layer.borderWidth = 1.0
         tryBtn.layer.cornerRadius = 3.0
         tryBtn.addTarget(self, action: "tryClothes", forControlEvents: UIControlEvents.TouchUpInside)
+        whiteView.addSubview(tryBtn)
+        
+        var flagBtn = UIButton(frame: CGRectMake(10, saveToClosetBtn.frame.origin.y + saveToClosetBtn.frame.size.height + 10, self.view.frame.width - 20, 30))
+        flagBtn.setTitle("Report inappropriate", forState: .Normal)
+        flagBtn.titleLabel!.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 20)
+        flagBtn.setTitleColor(UIColor.grayColor(), forState: .Normal)
+        flagBtn.layer.borderColor = UIColor.grayColor().CGColor
+        flagBtn.layer.borderWidth = 1.0
+        flagBtn.layer.cornerRadius = 3.0
+        flagBtn.addTarget(self, action: "flagInap", forControlEvents: UIControlEvents.TouchUpInside)
         whiteView.addSubview(tryBtn)
 
         
@@ -447,6 +457,7 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         ud.setObject(UIImageJPEGRepresentation(imageView.image, 1), forKey: "imageShownAtTrendDetailKey")
     }
     
+
     /*
     func respondToCloseGesture(gesture: UIGestureRecognizer){
         self.quitButtonPressed()
@@ -531,6 +542,21 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
         
         
     }
+
+    func flagInap(){
+        var post = PFObject(className: "Posts")
+        if let flag = post["flagReport"] as? Int{
+            post["votes"] = flag + 1
+            post.saveInBackgroundWithBlock{ (success:Bool,error:NSError?) -> Void in
+                println("Flagged")
+            }
+            }
+
+        }
+
+            
+        
+        
     
     func quitButtonPressed(){
         //Adding for navigation bar and status bar
