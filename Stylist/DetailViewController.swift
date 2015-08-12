@@ -51,7 +51,6 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
-        
         let ud = NSUserDefaults.standardUserDefaults()
         ud.setObject("BRAND", forKey: "brandNameKey")
         viewDidAppearCheck = 1
