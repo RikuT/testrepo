@@ -44,12 +44,15 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
                     self.object = allQuestion
                     self.collectionView.reloadData()
                     
+                    if self.object.count < 10{
+                        println("no enough post")
+                    }else{
                     for var i = 0; i < 10; ++i{
                         var tagObj = self.object[i]
                         if let tagName = tagObj["TagName"] as? String{
                             tagArray.addObject(tagName)
                         }
-                        
+                        }
                         
                         
                     }

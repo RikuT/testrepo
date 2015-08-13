@@ -72,7 +72,7 @@
     float scrollViewVisibleY = (self.view.frame.size.height / 2) - 15;
     scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
-    scrollview.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height * 1.53);
+    scrollview.contentSize = CGSizeMake(self.view.frame.size.width, (self.view.frame.size.height * 1.53)-20);
 
     [scrollview addSubview:self.imageView];
     scrollview.backgroundColor = [UIColor clearColor];
@@ -102,7 +102,7 @@
     [scrollview addSubview:self.uploadButton];
     
     float containerViewY = (self.view.frame.size.height / 2) - 15;
-    UIView *whiteContainerView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.height, self.view.width, self.view.height / 1.93)];
+    UIView *whiteContainerView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.height-20, self.view.width, self.view.height / 1.93)];
     whiteContainerView.backgroundColor = [UIColor whiteColor];
     [scrollview addSubview:whiteContainerView];
     
