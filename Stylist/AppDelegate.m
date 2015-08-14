@@ -40,7 +40,6 @@
                                                                              categories:nil];
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
-        return YES;
     
     RVConfig *config = [RVConfig defaultConfig];
     config.applicationToken = @"<ba1b7681897651674c46b5adf5e0f9ed>";
@@ -49,6 +48,9 @@
     Rover *rover = [Rover setup:config];
     [rover startMonitoring];
     
+            return YES;
+
+
 }
 
 - (void)application:(UIApplication *)application

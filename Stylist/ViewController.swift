@@ -102,11 +102,12 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         
         let menuImg = UIImage(named: "Collapse Arrow-50") as UIImage?
         menuButton   = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-        menuButton.frame = CGRectMake(5, appearentNav.frame.origin.y + 2, appearentNavHeight - 4, appearentNavHeight)
+        menuButton.frame = CGRectMake(0, appearentNav.frame.origin.y, appearentNavHeight + 30, appearentNavHeight)
+        menuButton.imageEdgeInsets = UIEdgeInsets(top: 2, left: 5, bottom: 0, right: 30)
         //menuButton.center = appearentNav.center
         menuButton.setImage(menuImg, forState: .Normal)
         menuButton.tintColor = UIColor.whiteColor()
-        
+        println("menuFrame \(menuButton.frame)")
         
 
         menuButton.addTarget(self, action: "menuBtnTapped", forControlEvents: .TouchUpInside)

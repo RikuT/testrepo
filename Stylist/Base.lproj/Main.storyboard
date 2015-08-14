@@ -52,16 +52,16 @@
                     <connections>
                         <outlet property="navigationBar" destination="KnJ-3v-krq" id="2Gx-6t-BFI"/>
                         <outlet property="swiftPagesView" destination="Y4q-L0-eQu" id="SG8-bJ-Yvs"/>
-                        <segue destination="PNQ-ru-7to" kind="modal" identifier="loginView" animates="NO" id="BK8-ow-a7u"/>
+                        <segue destination="PNQ-ru-7to" kind="modal" identifier="loginView" id="BK8-ow-a7u"/>
                         <segue destination="4H1-83-9jU" kind="custom" identifier="VCtoClosetVC" customClass="goSegue" customModule="Stylist" customModuleProvider="target" id="ElC-ds-RgJ"/>
-                        <segue destination="x8p-fI-vlR" kind="modal" identifier="VCtoAccountVC" animates="NO" id="z6c-Iv-rJh"/>
+                        <segue destination="x8p-fI-vlR" kind="custom" identifier="VCtoAccountVC" customClass="goSegue" customModule="Stylist" customModuleProvider="target" id="z6c-Iv-rJh"/>
                         <segue destination="Gk5-7l-8RI" kind="custom" identifier="VCtoFittingVCSegue" customClass="goSegue" customModule="Stylist" customModuleProvider="target" id="lO1-c6-9JB"/>
-                        <segue destination="mvh-Qb-4CR" kind="modal" identifier="VCtoPhotoVC" animates="NO" id="yYV-VU-c0Y"/>
+                        <segue destination="mvh-Qb-4CR" kind="modal" identifier="VCtoPhotoVC" id="yYV-VU-c0Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1J-0Z-pgo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1069" y="617"/>
+            <point key="canvasLocation" x="980" y="1056"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="J00-nZ-Yq8">
@@ -74,12 +74,12 @@
                     </view>
                     <connections>
                         <segue destination="4H1-83-9jU" kind="modal" identifier="detailVCtoTopsVC" animates="NO" id="ZON-hF-NJm"/>
-                        <segue destination="jm7-4J-FT4" kind="modal" identifier="detailVCtoBrandSearchSegue" animates="NO" id="pXA-zW-ij0"/>
+                        <segue destination="jm7-4J-FT4" kind="modal" identifier="detailVCtoBrandSearchSegue" id="pXA-zW-ij0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6KV-Ki-CzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="79" y="-186"/>
+            <point key="canvasLocation" x="-307" y="192"/>
         </scene>
         <!--Tops View Controller-->
         <scene sceneID="9o3-eY-HEm">
@@ -175,7 +175,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6d5-AW-rn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="567" y="-1048"/>
+            <point key="canvasLocation" x="208" y="-933"/>
         </scene>
         <!--Profile Pic View Controller-->
         <scene sceneID="m1t-JV-MjG">
@@ -220,14 +220,24 @@
                                     <action selector="uploadProfilePic" destination="c50-fl-r0C" eventType="touchUpInside" id="Npg-GO-QlY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Xdw-mU-Rci">
-                                <rect key="frame" x="5" y="0.0" width="59" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BO4-M9-tUt">
+                                <rect key="frame" x="0.0" y="538" width="320" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Go back">
+                                <color key="backgroundColor" red="0.23921568630000001" green="0.64313725489999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bnU-aM-VVi">
+                                <rect key="frame" x="0.0" y="540" width="61" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="30" maxY="0.0"/>
+                                <state key="normal" image="GoBackArrow">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="goBackButt" destination="c50-fl-r0C" eventType="touchUpInside" id="VFx-wN-gu4"/>
+                                    <action selector="brandBack:" destination="jm7-4J-FT4" eventType="touchUpInside" id="Hgt-XI-vGs"/>
+                                    <action selector="goBackButt" destination="c50-fl-r0C" eventType="touchUpInside" id="5sa-sg-FGC"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -235,12 +245,12 @@
                     </view>
                     <connections>
                         <outlet property="imagePicked" destination="i14-iM-JYA" id="R3a-jC-4Sd"/>
-                        <segue destination="x8p-fI-vlR" kind="modal" identifier="updateProfilePicVCtoUserSettingVC" animates="NO" id="HkD-ag-DXk"/>
+                        <segue destination="x8p-fI-vlR" kind="custom" identifier="updateProfilePicVCtoUserSettingVC" customClass="goBackSegue" customModule="Stylist" customModuleProvider="target" id="HkD-ag-DXk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Dz-3c-02t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1644" y="-318"/>
+            <point key="canvasLocation" x="1690" y="-692"/>
         </scene>
         <!--Password Recover View Controller-->
         <scene sceneID="GAR-ma-ixj">
@@ -289,7 +299,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="userEmailTextField" destination="dgL-yM-2PO" id="gY2-eq-anL"/>
-                        <segue destination="x8p-fI-vlR" kind="modal" identifier="changePassToUserSetting" animates="NO" id="Ie9-er-xeu"/>
+                        <segue destination="x8p-fI-vlR" kind="custom" identifier="changePassToUserSetting" customClass="goBackSegue" customModule="Stylist" customModuleProvider="target" id="Ie9-er-xeu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfM-f2-VMm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -345,7 +355,7 @@
                                 </state>
                                 <connections>
                                     <action selector="changePassword" destination="x8p-fI-vlR" eventType="touchUpInside" id="r2F-ES-paX"/>
-                                    <segue destination="ki5-V5-qSf" kind="modal" animates="NO" id="XKH-ik-kmo"/>
+                                    <segue destination="ki5-V5-qSf" kind="custom" customClass="goSegue" customModule="Stylist" customModuleProvider="target" id="XKH-ik-kmo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Eif-2z-WyS">
@@ -356,7 +366,7 @@
                                 </state>
                                 <connections>
                                     <action selector="changeProfilePic" destination="x8p-fI-vlR" eventType="touchUpInside" id="DDa-UL-FMB"/>
-                                    <segue destination="c50-fl-r0C" kind="modal" animates="NO" id="Xj8-xO-qrt"/>
+                                    <segue destination="c50-fl-r0C" kind="custom" customClass="goSegue" customModule="Stylist" customModuleProvider="target" id="Xj8-xO-qrt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NL8-6X-ka8" customClass="MKButton" customModule="Stylist" customModuleProvider="target">
@@ -369,7 +379,7 @@
                                 </state>
                                 <connections>
                                     <action selector="logoutButtonTapped:" destination="x8p-fI-vlR" eventType="touchUpInside" id="0RP-df-6Mi"/>
-                                    <segue destination="PNQ-ru-7to" kind="modal" identifier="logIn" animates="NO" id="vY9-8b-aib"/>
+                                    <segue destination="PNQ-ru-7to" kind="modal" identifier="logIn" id="vY9-8b-aib"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" id="aw8-9O-Jac">
@@ -435,15 +445,16 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="D6p-mf-TWG">
-                                <rect key="frame" x="5" y="541" width="26" height="25"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Q1M-YA-YNz">
+                                <rect key="frame" x="0.0" y="540" width="61" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="30" maxY="0.0"/>
                                 <state key="normal" image="GoBackArrow">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="brandBack:" destination="jm7-4J-FT4" eventType="touchUpInside" id="yMg-fo-T0i"/>
-                                    <segue destination="8vQ-e4-Iq2" kind="modal" id="lNG-dS-BcX"/>
+                                    <action selector="brandBack:" destination="jm7-4J-FT4" eventType="touchUpInside" id="JQj-dS-dH7"/>
+                                    <segue destination="8vQ-e4-Iq2" kind="custom" customClass="goBackSegue" customModule="Stylist" customModuleProvider="target" id="GdP-NI-9aG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -475,7 +486,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1239" y="-117"/>
+            <point key="canvasLocation" x="1079" y="-191"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="14v-YN-nJg">
@@ -568,7 +579,7 @@
                         <outlet property="passwordField" destination="pan-81-KQI" id="JYt-UO-2XE"/>
                         <outlet property="signupBtn" destination="Nxz-tZ-eFr" id="MO7-RI-4AT"/>
                         <outlet property="usernameField" destination="RWr-qD-YN0" id="hTd-9c-PYa"/>
-                        <segue destination="8vQ-e4-Iq2" kind="modal" identifier="loginVCtoVC" animates="NO" id="j8y-ny-OAp"/>
+                        <segue destination="8vQ-e4-Iq2" kind="modal" identifier="loginVCtoVC" id="j8y-ny-OAp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YgJ-Mv-3hu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -787,7 +798,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqO-5T-Hk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="X8T-yD-KUp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="12" y="574"/>
+            <point key="canvasLocation" x="101" y="567"/>
         </scene>
         <!--Love View Controller-->
         <scene sceneID="Ewf-R4-c9l">
@@ -1121,14 +1132,6 @@
                                     <outlet property="delegate" destination="jm7-4J-FT4" id="A2Z-ra-XVm"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aYC-J6-eVm">
-                                <rect key="frame" x="0.0" y="538" width="320" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.23921568630000001" green="0.64313725489999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <navigationBar contentMode="scaleToFill" id="pQh-Xf-14n">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1137,9 +1140,18 @@
                                     <navigationItem id="OJW-5Z-gL4"/>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HSn-eG-PTe">
-                                <rect key="frame" x="5" y="541" width="26" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aYC-J6-eVm">
+                                <rect key="frame" x="0.0" y="539" width="320" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.23921568630000001" green="0.64313725489999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HSn-eG-PTe">
+                                <rect key="frame" x="0.0" y="541" width="61" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="30" maxY="0.0"/>
                                 <state key="normal" image="GoBackArrow">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1180,7 +1192,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SRy-8g-V7Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="-938"/>
+            <point key="canvasLocation" x="-208" y="-933"/>
         </scene>
         <!--Trend Detail View Controller-->
         <scene sceneID="DSc-13-TWr">
@@ -1218,12 +1230,12 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="XKH-ik-kmo"/>
+        <segue reference="ZON-hF-NJm"/>
         <segue reference="z6c-Iv-rJh"/>
-        <segue reference="35s-LQ-Ebd"/>
+        <segue reference="qXM-AK-tWs"/>
+        <segue reference="lO1-c6-9JB"/>
+        <segue reference="vY9-8b-aib"/>
+        <segue reference="XKH-ik-kmo"/>
         <segue reference="0Ap-MX-GR1"/>
-        <segue reference="t5G-Sf-RKd"/>
-        <segue reference="ElC-ds-RgJ"/>
-        <segue reference="BK8-ow-a7u"/>
     </inferredMetricsTieBreakers>
 </document>

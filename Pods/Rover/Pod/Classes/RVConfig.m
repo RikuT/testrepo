@@ -67,7 +67,8 @@
     if (self.beaconUUIDs) {
         _beaconUUIDs = [self.beaconUUIDs arrayByAddingObject:UUID];
     } else {
-        _beaconUUIDs = [NSArray arrayWithObject:UUID];
+        _beaconUUIDs = [NSArray arrayWithObjects:UUID, nil];
+        
     }
 }
 
