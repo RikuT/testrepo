@@ -33,8 +33,8 @@ class userSettingViewController: UIViewController {
     @IBOutlet var passwordChange: MKButton!
     @IBOutlet var logout: MKButton!
     @IBOutlet var update: MKButton!
-
-
+    
+    
     @IBOutlet var tapGesture: UITapGestureRecognizer!
     var profileImgFile = [PFFile]()
     
@@ -122,7 +122,7 @@ class userSettingViewController: UIViewController {
                     var heightCheck = user["height"] as? Int
                     if (ageCheck == nil){
                         println("empty")
-                        self.ageTextF.placeholder = "\(self.age)"
+                        self.ageTextF.placeholder = "Age"
                     }else{
                         self.age = user["age"] as! Int
                         println("age: \(self.age)")
@@ -138,7 +138,7 @@ class userSettingViewController: UIViewController {
                     }
                     if (heightCheck == nil){
                         println("empty")
-                        self.heightTextF.placeholder = "\(self.height)"
+                        self.heightTextF.placeholder = "Height"
                     }else{
                         self.height = user["height"] as! Int
                         println("Height: \(self.height)")
@@ -169,18 +169,18 @@ class userSettingViewController: UIViewController {
                         var profileImgData = profilePictObj as! NSData
                         var image = UIImage(data: profileImgData)
                         self.profileImgBut.setImage(image, forState: .Normal)
-                        ud.removeObjectForKey("tempProfilePictKey")
+                        ud.removeObjectForKey("profilePlaceHolder")
                         
                     }}
                 
                 self.hideActivityIndicator(self.view)
             }
             else{
-
+                
                 self.hideActivityIndicator(self.view)
                 let alert = SCLAlertView()
-            
-
+                
+                
                 alert.showError("Error", subTitle:"An error occured while retrieving your information. Please check the Internet connection.", closeButtonTitle:"Ok")
                 self.performSegueWithIdentifier("userSettingVCtoVCunwind", sender: self)
                 
@@ -193,7 +193,7 @@ class userSettingViewController: UIViewController {
     @IBAction func updateSetting() {
         self.showActivityIndicator(self.view)
         
-        var newAge = ageTextF.text
+        var newAge = ageTextF.text.toInt()
         var newHeight = heightTextF.text.toInt()
         var newEmail = emailTextF.text
         var newSex = sexSelect.selectedSegmentIndex
@@ -204,8 +204,12 @@ class userSettingViewController: UIViewController {
         //user["displayName"]
         
         var userFileObj = PFObject (withoutDataWithClassName: "_User", objectId: PFUser.currentUser()?.objectId)
-        userFileObj["age"] = newAge
-        userFileObj["height"] = newHeight
+        if newAge != nil{
+            userFileObj["age"] = newAge
+        }
+        if newHeight != nil{
+            userFileObj["height"] = newHeight
+        }
         userFileObj["sex"] = newSex
         
         var imageData = UIImageJPEGRepresentation(newProfilePict, 1.0)
@@ -234,9 +238,9 @@ class userSettingViewController: UIViewController {
                 println("scla to 1")
                 //        SCLAlertView().showError(self, title: kErrorTitle, subTitle: kSubtitle)
                 var timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("performSegueToHome"), userInfo: nil, repeats: true)
-
+                
                 */
-
+                
                 
             }else {
                 self.hideActivityIndicator(self.view)
@@ -244,7 +248,7 @@ class userSettingViewController: UIViewController {
                 var errorMessage:String = error!.userInfo!["error"]as! String
                 let alert = SCLAlertView()
                 alert.showError("Error", subTitle:"An error occured. \(errorMessage)", closeButtonTitle:"Ok")
-
+                
                 
             }
             
@@ -290,7 +294,7 @@ class userSettingViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-
+    
     
     func showActivityIndicator(uiView: UIView) {
         
