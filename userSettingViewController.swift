@@ -27,7 +27,7 @@ class userSettingViewController: UIViewController {
     @IBOutlet weak var profileImgBut: UIButton!
     @IBOutlet weak var sexSelect: UISegmentedControl!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet var displaynameTextF: MKTextField!
+    @IBOutlet var ageTextF: MKTextField!
     @IBOutlet var emailTextF: MKTextField!
     @IBOutlet var heightTextF: MKTextField!
     @IBOutlet var passwordChange: MKButton!
@@ -38,7 +38,7 @@ class userSettingViewController: UIViewController {
     @IBOutlet var tapGesture: UITapGestureRecognizer!
     var profileImgFile = [PFFile]()
     
-    var displayName = "platoLove132"
+    var age = 1
     var emailAdd = "xxxxx@xxx.com"
     var userName = "Aristotle"
     var profileImg = [UIImage]()
@@ -48,13 +48,13 @@ class userSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        displaynameTextF.layer.borderColor = UIColor.clearColor().CGColor
-        displaynameTextF.floatingPlaceholderEnabled = true
-        displaynameTextF.placeholder = "UserName"
-        displaynameTextF.tintColor = UIColor.MKColor.Blue
-        displaynameTextF.rippleLocation = .Right
-        displaynameTextF.cornerRadius = 0
-        displaynameTextF.bottomBorderEnabled = true
+        ageTextF.layer.borderColor = UIColor.clearColor().CGColor
+        ageTextF.floatingPlaceholderEnabled = true
+        ageTextF.placeholder = "Age"
+        ageTextF.tintColor = UIColor.MKColor.Blue
+        ageTextF.rippleLocation = .Right
+        ageTextF.cornerRadius = 0
+        ageTextF.bottomBorderEnabled = true
         
         
         emailTextF.layer.borderColor = UIColor.clearColor().CGColor
@@ -67,7 +67,7 @@ class userSettingViewController: UIViewController {
         
         heightTextF.layer.borderColor = UIColor.clearColor().CGColor
         heightTextF.floatingPlaceholderEnabled = true
-        heightTextF.placeholder = "UserName"
+        heightTextF.placeholder = "Height"
         heightTextF.tintColor = UIColor.MKColor.Blue
         heightTextF.rippleLocation = .Right
         heightTextF.cornerRadius = 0
@@ -117,16 +117,17 @@ class userSettingViewController: UIViewController {
                     
                     
                     //Check if there is a value in Parse before putting the value in displayName
-                    var displayNameCheck = user["displayName"] as? String
+                    var ageCheck = user["age"] as? Int
                     var sexCheck = user["sex"] as? Int
                     var heightCheck = user["height"] as? Int
-                    if (displayNameCheck == nil){
+                    if (ageCheck == nil){
                         println("empty")
-                        self.displaynameTextF.placeholder = self.displayName
+                        self.ageTextF.placeholder = "\(self.age)"
                     }else{
-                        self.displayName = user["displayName"] as! String
-                        println("Display name: \(self.displayName)")
-                        self.displaynameTextF.text = self.displayName
+                        self.age = user["age"] as! Int
+                        println("age: \(self.age)")
+                        self.ageTextF.text = "\(self.age)"
+                        
                     }
                     if (sexCheck == nil){
                         println("empty")
@@ -192,7 +193,7 @@ class userSettingViewController: UIViewController {
     @IBAction func updateSetting() {
         self.showActivityIndicator(self.view)
         
-        var newDisplayName = displaynameTextF.text
+        var newAge = ageTextF.text
         var newHeight = heightTextF.text.toInt()
         var newEmail = emailTextF.text
         var newSex = sexSelect.selectedSegmentIndex
@@ -203,7 +204,7 @@ class userSettingViewController: UIViewController {
         //user["displayName"]
         
         var userFileObj = PFObject (withoutDataWithClassName: "_User", objectId: PFUser.currentUser()?.objectId)
-        userFileObj["displayName"] = newDisplayName
+        userFileObj["age"] = newAge
         userFileObj["height"] = newHeight
         userFileObj["sex"] = newSex
         
