@@ -64,6 +64,7 @@
 		B6CD24711B3D8BD50061E451 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6CD24701B3D8BD50061E451 /* Images.xcassets */; };
 		B6CD24741B3D8BD50061E451 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6CD24721B3D8BD50061E451 /* LaunchScreen.xib */; };
 		B6CD24801B3D8BD50061E451 /* StylistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CD247F1B3D8BD50061E451 /* StylistTests.m */; };
+		B6E2B2D71B7CAA0400ED2BBB /* EULAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E2B2D61B7CAA0400ED2BBB /* EULAViewController.swift */; };
 		B6EC66011B3FD31900B5BC58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EC66001B3FD31900B5BC58 /* ViewController.swift */; };
 		B6EC66031B3FD4F700B5BC58 /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EC66021B3FD4F700B5BC58 /* RegisterPageViewController.swift */; };
 		B6EC66071B3FDD2700B5BC58 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EC66051B3FDD2700B5BC58 /* Bolts.framework */; };
@@ -204,6 +205,7 @@
 		B6CD24791B3D8BD50061E451 /* StylistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StylistTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6CD247E1B3D8BD50061E451 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6CD247F1B3D8BD50061E451 /* StylistTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StylistTests.m; sourceTree = "<group>"; };
+		B6E2B2D61B7CAA0400ED2BBB /* EULAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EULAViewController.swift; sourceTree = "<group>"; };
 		B6EC66001B3FD31900B5BC58 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B6EC66021B3FD4F700B5BC58 /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
 		B6EC66051B3FDD2700B5BC58 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 				B6EC66021B3FD4F700B5BC58 /* RegisterPageViewController.swift */,
 				B6EC66271B3FFA8400B5BC58 /* LoginViewController.swift */,
 				B65331DC1B411D1B00B19268 /* PasswordRecoverViewController.swift */,
+				B6E2B2D61B7CAA0400ED2BBB /* EULAViewController.swift */,
 			);
 			name = Login/Registeration;
 			sourceTree = "<group>";
@@ -748,6 +751,7 @@
 				B6EC66031B3FD4F700B5BC58 /* RegisterPageViewController.swift in Sources */,
 				32862E5E1B631B530070FA05 /* SCLButton.m in Sources */,
 				326B13B61B61D0FC003A871D /* ViewUtils.m in Sources */,
+				B6E2B2D71B7CAA0400ED2BBB /* EULAViewController.swift in Sources */,
 				326B13B21B61D0FC003A871D /* PhotoViewController.m in Sources */,
 				325FA4591B77A53B00229204 /* TagCollectionViewCell.swift in Sources */,
 				B6EC66261B3FE60C00B5BC58 /* MyConnector.m in Sources */,

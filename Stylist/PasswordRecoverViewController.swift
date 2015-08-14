@@ -11,11 +11,19 @@ import Parse
 
 class PasswordRecoverViewController: UIViewController {
     
-    @IBOutlet weak var userEmailTextField: UITextField!
+    @IBOutlet weak var userEmailTextField: MKTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        userEmailTextField.layer.borderColor = UIColor.clearColor().CGColor
+        userEmailTextField.floatingPlaceholderEnabled = true
+        userEmailTextField.placeholder = "Email Adress"
+        userEmailTextField.tintColor = UIColor.MKColor.Blue
+        userEmailTextField.rippleLocation = .Right
+        userEmailTextField.cornerRadius = 0
+        userEmailTextField.bottomBorderEnabled = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,7 +34,7 @@ class PasswordRecoverViewController: UIViewController {
         let userEmail = userEmailTextField.text
         PFUser.requestPasswordResetForEmailInBackground(userEmail){(success:Bool,error:NSError?)-> Void in
             if(success){
-                let successMessage = " Email Message was sent to you at \(userEmail)"
+                let successMessage = " Password Recovery Message was sent to you at \(userEmail)"
                 self.displayErrorMessage(successMessage)
                 return
             }
