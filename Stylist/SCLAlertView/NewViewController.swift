@@ -216,17 +216,23 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
                 }
             }
             
-            var sexInt = user["sex"] as! Int
+            var sexInt = user["sex"] as? Int
             var sex: NSString!
             if sexInt == 0 {
                 sex = "M"
             }else if sexInt == 1{
                 sex = "F"
+            }else{
+                sex = " "
             }
             
-            var height = user["height"] as! Int
-            cell.heightSexLabel.text = "\(sex) \(height)cm"
-            
+            var height = user["height"] as? Int
+            if height == nil{
+                cell.heightSexLabel.text = " "
+            }else{
+                var nonOpHeight = height as Int!
+                cell.heightSexLabel.text = "\(sex) \(nonOpHeight)cm"
+            }
             
             
         }

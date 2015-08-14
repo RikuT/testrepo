@@ -142,6 +142,10 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         myUser.username = userUserName
         myUser.password = userPasword
         myUser.email = userEmail
+        let tempProfilePict = UIImage(named: "profilePlaceHolder")
+        var imageData = UIImageJPEGRepresentation(tempProfilePict, 1.0)
+        var parseImageFile = PFFile(name: "uploaded_image.jpg", data: imageData)
+        myUser["profilePicture"] = parseImageFile
         
         
         myUser.signUpInBackgroundWithBlock { (succeeded, error) -> Void in
