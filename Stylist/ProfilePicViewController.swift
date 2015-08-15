@@ -17,7 +17,9 @@ class ProfilePicViewController: UIViewController, UIImagePickerControllerDelegat
     
     // ImageView that will show the picked image (from Camera or Photo library)
     @IBOutlet weak var imagePicked: UIImageView!
-    
+    @IBOutlet weak var cameraBtn: UIButton!
+    @IBOutlet weak var libraryBtn: UIButton!
+    @IBOutlet weak var updateBtn: UIButton!
     
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -31,6 +33,11 @@ class ProfilePicViewController: UIViewController, UIImagePickerControllerDelegat
         var currentImage = UIImage(data: currentImgData)
         imagePicked.image = currentImage
         ud.removeObjectForKey("currentProfileImgKey")
+        
+        cameraBtn.layer.cornerRadius = 5.0
+        libraryBtn.layer.cornerRadius = 5.0
+        updateBtn.layer.cornerRadius = 5.0
+
     }
     
     

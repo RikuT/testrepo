@@ -30,10 +30,10 @@ class userSettingViewController: UIViewController {
     @IBOutlet var ageTextF: MKTextField!
     @IBOutlet var emailTextF: MKTextField!
     @IBOutlet var heightTextF: MKTextField!
-    @IBOutlet var passwordChange: MKButton!
-    @IBOutlet var logout: MKButton!
-    @IBOutlet var update: MKButton!
-    
+    @IBOutlet var passwordChange: UIButton!
+    @IBOutlet var logout: UIButton!
+    @IBOutlet var update: UIButton!
+    @IBOutlet weak var mirrorSegment: UISegmentedControl!
     
     @IBOutlet var tapGesture: UITapGestureRecognizer!
     var profileImgFile = [PFFile]()
@@ -73,20 +73,41 @@ class userSettingViewController: UIViewController {
         heightTextF.cornerRadius = 0
         heightTextF.bottomBorderEnabled = true
         
+        let ud = NSUserDefaults.standardUserDefaults()
+        if (ud.objectForKey("mirrorPresentKey") == nil){
+            mirrorSegment.selectedSegmentIndex = 0
+        }else{
+            var mirrorInt = ud.integerForKey("mirrorPresentKey")
+            mirrorSegment.selectedSegmentIndex = mirrorInt
+        }
+        /*
         passwordChange.layer.shadowOpacity = 0.55
         passwordChange.layer.shadowRadius = 5.0
-        passwordChange.layer.shadowColor = UIColor.grayColor().CGColor
-        passwordChange.layer.shadowOffset = CGSize(width: 0, height: 2.5)
+        passwordChange.layer.shadowColor = UIColor.clearColor().CGColor
+        //passwordChange.layer.shadowOffset = CGSize(width: 0, height: 2.5)
         
         logout.layer.shadowOpacity = 0.55
         logout.layer.shadowRadius = 5.0
-        logout.layer.shadowColor = UIColor.grayColor().CGColor
-        logout.layer.shadowOffset = CGSize(width: 0, height: 2.5)
+        logout.layer.shadowColor = UIColor.clearColor().CGColor
+        //logout.layer.shadowOffset = CGSize(width: 0, height: 2.5)
         
         update.layer.shadowOpacity = 0.55
         update.layer.shadowRadius = 5.0
-        update.layer.shadowColor = UIColor.grayColor().CGColor
-        update.layer.shadowOffset = CGSize(width: 0, height: 2.5)
+        update.layer.shadowColor = UIColor.clearColor().CGColor
+        //update.layer.shadowOffset = CGSize(width: 0, height: 2.5)
+        */
+        
+        passwordChange.layer.borderColor = UIColor.grayColor().CGColor
+        passwordChange.layer.borderWidth = 1.0
+        passwordChange.layer.cornerRadius = 3.0
+        
+        logout.layer.borderColor = UIColor.grayColor().CGColor
+        logout.layer.borderWidth = 1.0
+        logout.layer.cornerRadius = 3.0
+        
+        update.layer.borderColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1).CGColor
+        update.layer.borderWidth = 1.0
+        update.layer.cornerRadius = 3.0
         
         
         
@@ -254,7 +275,8 @@ class userSettingViewController: UIViewController {
             
         })
         
-        
+        let ud = NSUserDefaults.standardUserDefaults()
+        ud.setInteger(mirrorSegment.selectedSegmentIndex, forKey: "mirrorPresentKey")
         
         
         

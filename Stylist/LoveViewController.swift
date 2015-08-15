@@ -258,6 +258,13 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
             })
         }
         
+        //Adjusting the position of heart image
+        cell.votesLabel!.sizeToFit()
+        cell.votesLabel!.center = CGPointMake(cell.bottomBlurView.center.x - (cell.heartImage.frame.width / 2)-1.5, cell.bottomBlurView.frame.size.height / 2)
+        cell.heartImage.frame.origin.x = cell.votesLabel!.frame.origin.x + cell.votesLabel!.frame.width + 1.5
+
+
+        
         return cell
     }
     
@@ -282,6 +289,11 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
                 
             }
             cell.votesLabel?.text = "\(likes + 1)"
+            
+            //Adjusting the position of heart image
+            cell.votesLabel!.sizeToFit()
+            cell.votesLabel!.center = CGPointMake(cell.bottomBlurView.center.x - (cell.heartImage.frame.width / 2)-1.5, cell.bottomBlurView.frame.size.height / 2)
+            cell.heartImage.frame.origin.x = cell.votesLabel!.frame.origin.x + cell.votesLabel!.frame.width + 1.5
         }
         else
         {

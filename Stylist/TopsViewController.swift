@@ -247,7 +247,7 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 		if searchTextF.text != "" {
 			//If a user is searching something...
 			tagQuery = PFQuery(className: "Tops")
-			tagQuery.whereKey("searchTag", containsString: searchTextF.text)
+			tagQuery.whereKey("searchTag", containsString: searchTextF.text.lowercaseString)
 			
 			imgTextQuery = PFQuery(className: "Tops")
 			imgTextQuery.whereKey("imageText", containsString: searchTextF.text)

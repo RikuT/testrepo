@@ -418,7 +418,8 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         userFileObj["brandTag"] = newBrandTags
         userFileObj["Tags"] = newMiscTags
         userFileObj["season"] = newSeason
-        userFileObj["searchTag"] = " ".join(aggregateTagArray)
+        var searchTagStr = " ".join(aggregateTagArray)
+        userFileObj["searchTag"] = "\(searchTagStr) \(newClothesName) \(newClothesDescrption) \(newSeason) \(user?.username)".lowercaseString
         
         userFileObj.saveInBackgroundWithBlock({(success: Bool, error: NSError?) -> Void in
             if error == nil{
@@ -514,7 +515,8 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         posts["BrandTags"] = brandTag.tags
         posts["clothesExplanation"] = clothesDesciptionTextView.text
         posts["season"] = newSeason
-        posts["searchTag"] = " ".join(aggregateTagArray)
+        var searchTagStr = " ".join(aggregateTagArray)
+        posts["searchTag"] = "\(searchTagStr) \(topsLabel.text) \(clothesDesciptionTextView.text)) \(newSeason) \(PFUser.currentUser()?.username)".lowercaseString
 
         posts.saveInBackgroundWithBlock({
             (success: Bool, error: NSError?) -> Void in
@@ -530,9 +532,12 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
                     if error == nil {
                         
                         println("finished")
+                        self.hideActivityIndicator(self.view)
+
+                        self.checkButtonPressed()
+                        
                         let successAlert = SCLAlertView()
                         successAlert.showSuccess("Posted", subTitle:"The photo was uploaded successfully!", closeButtonTitle:"Close")
-                        self.hideActivityIndicator(self.view)
                         
                         
                     }else {

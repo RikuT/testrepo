@@ -21,6 +21,7 @@ class NewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var bottomBlurView: UIView!
     @IBOutlet weak var heightSexLabel: UILabel!
     @IBOutlet weak var heartIcon: UIImageView!
+    @IBOutlet weak var heartImage: UIImageView!
     
     var complition:((Void) -> (Void))?
     
@@ -30,6 +31,13 @@ class NewCollectionViewCell: UICollectionViewCell {
         //postsLabel.textAlignment = NSTextAlignment.Center
         bottomBlurView.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 0.75)
         votesLabel!.textAlignment = NSTextAlignment.Center
+
+        
+        //Changing heart image to white color
+        var heartImg = UIImage(named: "heartBtn")
+        heartImg = heartImg?.imageWithRenderingMode(.AlwaysTemplate)
+        heartImage.tintColor = UIColor.whiteColor()
+        heartImage.image = heartImg
 
         
         heartIcon?.hidden = true

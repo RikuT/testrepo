@@ -342,7 +342,11 @@
                     posts[@"Tags"] = miscTagArray;
                     posts[@"brandTag"] = brandTagArray;
                     NSArray *aggregateTags = [miscTagArray arrayByAddingObjectsFromArray:brandTagArray];
-                    posts[@"searchTag"] = [aggregateTags componentsJoinedByString:@" "];
+                    
+                    NSString *currUserName = [PFUser currentUser].username;
+                    NSString *searchString = [NSString stringWithFormat:@"%@ %@ %@ %@ %@", [aggregateTags componentsJoinedByString:@" "], selectedSeason, clothesName,clothesDesciptionTextView.text, currUserName];
+                    posts[@"searchTag"] = searchString.lowercaseString;
+                    
                     //posts[@"tags"] =T
                     [posts saveInBackground];
                     

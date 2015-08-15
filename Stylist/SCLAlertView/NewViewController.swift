@@ -7,7 +7,7 @@
 //
 
 import Parse
-    var votes = [PFObject]()
+var postObject = [PFObject]()
 
 class NewViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -20,7 +20,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     
     // Connection to the collection view
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet var collectionView: UICollectionView!
     var lastContentOffset: CGFloat!
     
     override func viewDidLoad() {
@@ -28,22 +28,9 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         // collectionView.frame = CGRectMake(0, 29, 320, 519)
         println("collectF \(self.view.frame)")
         
-        let query = PFQuery(className: "Posts")
-        query.includeKey("uploader")
-        query.findObjectsInBackgroundWithBlock{(question:[AnyObject]?,error:NSError?) -> Void in
-            
-            if error == nil
-            {
-                if let allQuestion = question as? [PFObject]
-                {
-                    votes = allQuestion
-                    self.collectionView.reloadData()
-                }
-            }
-        }
         
         collectionViewHeight = self.view.frame.size.height - 44
-
+        
         
         // Wire up search bar delegate so that we can react to button selections
         
@@ -87,82 +74,63 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         
         println("loadscdo")
         let ud = NSUserDefaults.standardUserDefaults()
-        var searchKey = ud.objectForKey("searchKeyFromVCKey") as? String
         
-        println("searchKey \(searchKey)")
         
+        var query = PFQuery(className: "Posts")
         
         
         if ud.objectForKey("searchKeyFromVCKey") != nil{
+            var searchKey = ud.objectForKey("searchKeyFromVCKey") as! String
+            println("searchKey \(searchKey)")
 
-            // Check to see if there is a search term
-            var tagQuery: PFQuery!
-            var imgTextQuery: PFQuery!
-            var clothesExplanationQuery: PFQuery!
-            var seasonQuery: PFQuery!
-            
-            var query: PFQuery!
-            
-            
-            
             if searchKey != "" {
                 //If a user is searching something...
-                tagQuery = PFQuery(className: "Posts")
-                tagQuery.whereKey("searchTag", containsString: searchKey)
-                
-                imgTextQuery = PFQuery(className: "Posts")
-                imgTextQuery.whereKey("imageText", containsString: searchKey)
-                //query.whereKey("Tags", containsString: searchTextF.text)
-                
-                clothesExplanationQuery = PFQuery(className: "Posts")
-                clothesExplanationQuery.whereKey("clothesExplanation", containsString: searchKey)
-                
-                seasonQuery = PFQuery(className: "Posts")
-                seasonQuery.whereKey("season", containsString: searchKey)
-                
-                query = PFQuery.orQueryWithSubqueries([tagQuery, imgTextQuery, clothesExplanationQuery, seasonQuery])
-                println("searckadjof")
-                // Fetch data from the parse platform
-                query.findObjectsInBackgroundWithBlock {
-                    (objects: [AnyObject]?, error: NSError?) -> Void in
-                    println("objects: \(objects)")
-                    println("error\(error)")
-                    println("searckadjof23")
-                    
-                    // The find succeeded now rocess the found objects into the countries array
-                    if error == nil {
-                        
-                        // Clear existing country data
-                        votes.removeAll(keepCapacity: false)
-                        
-                        // Add country objects to our array
-                        if let object = objects as? [PFObject] {
-                            //votes = object
-                            votes = Array(object.generate())
-
-                            println("votesn \(votes)")
-                            // reload our data into the collection view
-                           //
-                        }
-                        self.collectionView?.reloadData()
-                        //self.hideActivityIndicator(self.view)
-                        
-                    } else {
-                        // Log details of the failure
-                        println("Error: \(error!) \(error!.userInfo!)")
-                        /*
-                        if self.checkAlert == 0{
-                        
-                        let alert = SCLAlertView()
-                        alert.showError("Error", subTitle:"An error occured while retrieving your clothes. Please check the Internet connection.", closeButtonTitle:"Ok")
-                        self.hideActivityIndicator(self.view)
-                        
-                        self.checkAlert = 1*/
-                        
-                    }
-                    
-                }}}
+                query.whereKey("searchTag", containsString: searchKey.lowercaseString)
+            }
+            println("searckadjof")
+            // Fetch data from the parse platform
+}
         
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            
+            
+            // The find succeeded now rocess the found objects into the countries array
+            if error == nil {
+                
+                // Clear existing country data
+                //postObject.removeAll(keepCapacity: false)
+                
+                // Add country objects to our array
+                if let object = objects as? [PFObject] {
+                    //votes = object
+                    postObject = object
+                    
+                    println("votesn \(postObject)")
+                    // reload our data into the collection view
+                    //self.collectionView.reloadData()
+                    
+                }
+
+                self.collectionView.reloadData()
+                
+                    //self.hideActivityIndicator(self.view)
+                
+            } else {
+                // Log details of the failure
+                println("Error: \(error!) \(error!.userInfo!)")
+                /*
+                if self.checkAlert == 0{
+                
+                let alert = SCLAlertView()
+                alert.showError("Error", subTitle:"An error occured while retrieving your clothes. Please check the Internet connection.", closeButtonTitle:"Ok")
+                self.hideActivityIndicator(self.view)
+                
+                self.checkAlert = 1*/
+                
+            }
+            
+        }
         ud.removeObjectForKey("searchKeyFromVCKey")
         
     }
@@ -180,9 +148,8 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        println("votesNum\(votes.count)")
         
-        return votes.count
+        return postObject.count
     }
     
     
@@ -190,7 +157,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("newview", forIndexPath: indexPath) as! NewCollectionViewCell
-        let item = votes[indexPath.row]
+        let item = postObject[indexPath.row]
         
         
         let gesture = UITapGestureRecognizer(target: self, action: Selector("onDoubleTap:"))
@@ -253,6 +220,12 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
             })
         }
         
+        //Adjusting the position of heart image
+        cell.votesLabel!.sizeToFit()
+        cell.votesLabel!.center = CGPointMake(cell.bottomBlurView.center.x - (cell.heartImage.frame.width / 2)-1.5, cell.bottomBlurView.frame.size.height / 2)
+        cell.heartImage.frame.origin.x = cell.votesLabel!.frame.origin.x + cell.votesLabel!.frame.width + 1.5
+        
+        
         return cell
     }
     
@@ -268,7 +241,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         tapCheck = 2
         let cell = recognizer.view as! NewCollectionViewCell
         cell.onDoubleTap()
-        let object = votes[self.collectionView.indexPathForCell(cell)!.row]
+        let object = postObject[self.collectionView.indexPathForCell(cell)!.row]
         if let likes = object["votes"] as? Int
         {
             object["votes"] = likes + 1
@@ -277,6 +250,12 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
                 
             }
             cell.votesLabel?.text = "\(likes + 1)"
+            
+            //Adjusting the position of heart image
+            cell.votesLabel!.sizeToFit()
+            cell.votesLabel!.center = CGPointMake(cell.bottomBlurView.center.x - (cell.heartImage.frame.width / 2)-1.5, cell.bottomBlurView.frame.size.height / 2)
+            cell.heartImage.frame.origin.x = cell.votesLabel!.frame.origin.x + cell.votesLabel!.frame.width + 1.5
+            
         }
         else
         {
@@ -309,7 +288,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
             println("dispatch after!")
             if self.tapCheck == 1{
                 
-                self.objectToSend = votes[indexPath.row]
+                self.objectToSend = postObject[indexPath.row]
                 var attributes: UICollectionViewLayoutAttributes = self.collectionView.layoutAttributesForItemAtIndexPath(indexPath)!
                 var cellRect: CGRect = attributes.frame
                 //cellRect.origin.y = cellRect.origin.y - lastContentOffset

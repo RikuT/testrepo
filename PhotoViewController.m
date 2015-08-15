@@ -46,7 +46,6 @@
     // attach to a view controller
     [self.camera attachToViewController:self withFrame:CGRectMake(0, 0, screenRect.size.width, screenRect.size.height)];
     
-    // read: http://stackoverflow.com/questions/5427656/ios-uiimagepickercontroller-result-image-orientation-after-upload
     // you probably will want to set this to YES, if you are going view the image outside iOS.
     self.camera.fixOrientationAfterCapture = NO;
     
@@ -101,8 +100,20 @@
     
     //////////////////////////////////////////////
     //服を合わせるためのoverlay　適当に変えといてください
-    UIImage *testImg = [UIImage imageNamed:@"pictogram.png"];
-    self.clothesGuide = [[UIImageView alloc]initWithImage:testImg];
+    UIImage *pictogram = [[UIImage alloc]init];
+    NSString *keyPresent = [ud objectForKey:@"mirrorPresentKey"];
+    if(keyPresent != nil){
+            int mirrorInt = (int)[ud integerForKey:@"mirrorPresentKey"];
+        if(mirrorInt == 0){
+            pictogram = [UIImage imageNamed:@"pictogram"];
+        }else{
+            pictogram = [UIImage imageNamed:@"noMirrorPict"];
+        }
+    }else{
+        pictogram = [UIImage imageNamed:@"pictogram"];
+    }
+    
+    self.clothesGuide = [[UIImageView alloc]initWithImage:pictogram];
     self.clothesGuide.frame = CGRectMake(0, 15, self.view.frame.size.width, self.view.frame.size.height-30);
     [self.view addSubview:self.clothesGuide];
     
@@ -145,7 +156,7 @@
     self.quitButton.frame = CGRectMake(0, 0, 21.0f + 20.0f, 21.0f + 20.0f);
     self.quitButton.tintColor = [UIColor whiteColor];
     [self.quitButton setImage:[UIImage imageNamed:@"whiteCancel.png"] forState:UIControlStateNormal];
-    self.quitButton.imageEdgeInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
+    self.quitButton.imageEdgeInsets = UIEdgeInsetsMake(12.0f, 12.0f, 12.0f, 12.0f);
     [self.quitButton addTarget:self action:@selector(quitButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.quitButton];
     

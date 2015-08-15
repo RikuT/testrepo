@@ -87,15 +87,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
             }
             else{
-                //Parse がユーザーが何も返さない場合はケンティー怒る
+
                 println("User Name or Password is not correct")
-                var myAlert = UIAlertController(title:"Alert", message: "User Name or Password is not Correct", preferredStyle:UIAlertControllerStyle.Alert)
-                
-                let okAction = UIAlertAction (title:"OK" , style: UIAlertActionStyle.Default){
-                    action in                }
-                myAlert.addAction(okAction)
-                self.presentViewController(myAlert, animated:true, completion:nil)
-                
+                let errorAlert = SCLAlertView()
+                errorAlert.showError("Error", subTitle:"Username of Password is not correct.", closeButtonTitle:"Close")
+
             }
             
             

@@ -247,7 +247,7 @@ class TrendDetailViewController: UIViewController, UINavigationControllerDelegat
             clothesDesLabel.frame.origin = CGPointMake(40, heightInWhiteView + textViewPositionHeight - 7)
             whiteView.addSubview(clothesDesLabel)
             let detailIconImg = UIImage(named: "detailsIcon")
-            var detailIconView = UIImageView(frame: CGRectMake(1, heightInWhiteView + textViewPositionHeight, 31, 31))
+            var detailIconView = UIImageView(frame: CGRectMake(1, clothesDesLabel.frame.origin.y - 8, 31, 31))
             detailIconView.image = detailIconImg
             whiteView.addSubview(detailIconView)
             

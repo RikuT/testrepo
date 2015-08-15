@@ -22,7 +22,6 @@
 		326B13BC1B61D17E003A871D /* LLSimpleCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13B91B61D17E003A871D /* LLSimpleCamera.m */; };
 		326B13BD1B61D17E003A871D /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 326B13BB1B61D17E003A871D /* UIImage+FixOrientation.m */; };
 		326B13BF1B61DA15003A871D /* whiteCancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 326B13BE1B61DA15003A871D /* whiteCancel.png */; };
-		326B13C11B61E9A4003A871D /* pictogram.png in Resources */ = {isa = PBXBuildFile; fileRef = 326B13C01B61E9A4003A871D /* pictogram.png */; };
 		32862E5B1B631B530070FA05 /* SCLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32862E511B631B530070FA05 /* SCLAlertView.m */; };
 		32862E5C1B631B530070FA05 /* SCLAlertViewResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 32862E531B631B530070FA05 /* SCLAlertViewResponder.m */; };
 		32862E5D1B631B530070FA05 /* SCLAlertViewStyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 32862E551B631B530070FA05 /* SCLAlertViewStyleKit.m */; };
@@ -120,7 +119,6 @@
 		326B13BA1B61D17E003A871D /* UIImage+FixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixOrientation.h"; sourceTree = "<group>"; };
 		326B13BB1B61D17E003A871D /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
 		326B13BE1B61DA15003A871D /* whiteCancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteCancel.png; sourceTree = "<group>"; };
-		326B13C01B61E9A4003A871D /* pictogram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pictogram.png; sourceTree = "<group>"; };
 		32862E501B631B530070FA05 /* SCLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertView.h; sourceTree = "<group>"; };
 		32862E511B631B530070FA05 /* SCLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertView.m; sourceTree = "<group>"; };
 		32862E521B631B530070FA05 /* SCLAlertViewResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertViewResponder.h; sourceTree = "<group>"; };
@@ -526,7 +524,6 @@
 				B6CD246D1B3D8BD50061E451 /* Main.storyboard */,
 				B6CD24701B3D8BD50061E451 /* Images.xcassets */,
 				326B13BE1B61DA15003A871D /* whiteCancel.png */,
-				326B13C01B61E9A4003A871D /* pictogram.png */,
 				B6CD24721B3D8BD50061E451 /* LaunchScreen.xib */,
 				B6CD24631B3D8BD50061E451 /* Supporting Files */,
 			);
@@ -675,7 +672,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6CD246F1B3D8BD50061E451 /* Main.storyboard in Resources */,
-				326B13C11B61E9A4003A871D /* pictogram.png in Resources */,
 				326B13BF1B61DA15003A871D /* whiteCancel.png in Resources */,
 				32170A311B6CE03E009F9665 /* name_list.txt in Resources */,
 				B6CD24741B3D8BD50061E451 /* LaunchScreen.xib in Resources */,

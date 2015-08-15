@@ -11,11 +11,13 @@ import Parse
 
 class PasswordRecoverViewController: UIViewController {
     
+    @IBOutlet weak var passBtn: UIButton!
     @IBOutlet weak var userEmailTextField: MKTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        passBtn.layer.cornerRadius = 5.0
         
         userEmailTextField.layer.borderColor = UIColor.clearColor().CGColor
         userEmailTextField.floatingPlaceholderEnabled = true
