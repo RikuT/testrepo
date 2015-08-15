@@ -104,7 +104,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
                 // Add country objects to our array
                 if let object = objects as? [PFObject] {
                     //votes = object
-                    postObject = object
+                        postObject = object
                     
                     println("votesn \(postObject)")
                     // reload our data into the collection view
@@ -172,7 +172,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
         // Display the country name
         if let user = item["uploader"] as? PFUser{
             item.fetchIfNeeded()
-            cell.userName!.text = user.username
+            cell.userName?.text = user.username
             
             
             var profileImgFile = user["profilePicture"] as! PFFile

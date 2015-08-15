@@ -312,6 +312,7 @@ class SwipeableClothesTester: UIViewController {
         
         
         
+        
         if ud.objectForKey("bgBetweenDetailVCandFittingKey") != nil{
             var bgPictObj: AnyObject? = ud.objectForKey("bgBetweenDetailVCandFittingKey")
             ud.removeObjectForKey("bgBetweenDetailVCandFittingKey")
@@ -319,6 +320,7 @@ class SwipeableClothesTester: UIViewController {
             detailBgImg = UIImage(data: bgImgData)
         }
         ud.removeObjectForKey("bgBetweenDetailVCandFittingKey")
+        
         /*
         //For hiding dottedline when not touching
         var dottedLineBtn = UIButton(frame: CGRectMake(0, 0, dottedLineView.frame.width, dottedLineView.frame.height))
@@ -337,8 +339,7 @@ class SwipeableClothesTester: UIViewController {
         println("ViewDidLoad appearInt = \(viewDidAppearInt)")
     }
     
-    
-    
+
     
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -367,31 +368,7 @@ class SwipeableClothesTester: UIViewController {
     }
     
     
-    /*
-    func adjustingBottomImagetoFit(){
-    //resizing bottom image to fit the screen
-    //ここで下の洋服のすべての画像処理をやらないとだめ。
-    
-    let intPictNumber = Int(self.imageArray.count)
-    let width = Int(self.view.frame.width)
-    
-    for var i = 0; i < intPictNumber; ++i {
-    //新しい画像のサイズを定義する
-    let resizedSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height);
-    UIGraphicsBeginImageContext(resizedSize);
-    //もともとの画像のarrayから一枚づつ画像を取り出す
-    var originalImage = imageArray[i]
-    println(originalImage)
-    originalImage.drawInRect(CGRectMake(0, 0, resizedSize.width, resizedSize.height))
-    var resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    println(resizedImage)
-    //画面の大きさに合わせた画像を新しいArrayに追加する
-    self.resizedImageArray.append(resizedImage)
-    }
-    
-    }
-    */
+
     
     //これは下の洋服のscrollViewの大きさが変わるごとに実行されるので、autoReleasePoolを使って軽くしたい
     func topViewMoved1(){

@@ -69,7 +69,7 @@
     self.imageView.frame = CGRectMake(0, 0, screenRect.size.width, (screenRect.size.width) * pictAspect);
     self.imageView.backgroundColor = [UIColor blackColor];
     
-    float scrollViewVisibleY = (self.view.frame.size.height / 2) - 15;
+    //float scrollViewVisibleY = (self.view.frame.size.height / 2) - 15;
     scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
  //   scrollview.contentSize = CGSizeMake(self.view.frame.size.width, (self.view.frame.size.height * 1.53)-20);
@@ -105,7 +105,7 @@
     [self.uploadButton addTarget:self action:@selector(uploadImage:)forControlEvents:UIControlEventTouchUpInside];
     [scrollview addSubview:self.uploadButton];
     
-    float containerViewY = (self.view.frame.size.height / 2) - 15;
+    //float containerViewY = (self.view.frame.size.height / 2) - 15;
     UIView *whiteContainerView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.height-20, self.view.width, 294)];
     
     whiteContainerView.backgroundColor = [UIColor whiteColor];
@@ -113,7 +113,7 @@
     
     
     self.detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 20)];
-    self.detailLabel.text = @"e d i t  d e t a i l s";
+    self.detailLabel.text = @"s w i p e  t o  e d i t";
     self.detailLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:17];
     self.detailLabel.textAlignment = NSTextAlignmentCenter;
     self.detailLabel.textColor = [UIColor whiteColor];
@@ -165,7 +165,7 @@
     [whiteContainerView addSubview:brandTag];
     UIButton *brandAddButt = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 45, buttonLocationH + brandTagPositionHeight + 5, 40, 30)];
     brandAddButt.backgroundColor = [UIColor whiteColor];
-    brandAddButt.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+    brandAddButt.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
     [brandAddButt setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [brandAddButt setTitle:@"Add" forState:UIControlStateNormal];
     [brandAddButt addTarget:self action:@selector(brandButtTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -311,7 +311,7 @@
                     posts[@"uploader"] = [PFUser currentUser];
                     posts[@"imageFile"] = parseImageFile;
                     posts[@"clothesExplanation"] = clothesDesciptionTextView.text;
-                    int seasonSelection = seasonSegment.selectedSegmentIndex;
+                    int seasonSelection = (int)seasonSegment.selectedSegmentIndex;
                     NSString *selectedSeason;
                     if (seasonSelection == 0) {
                         selectedSeason = @"Spring";
@@ -388,7 +388,6 @@
                                         
                                         for (int i = 0; i < miscTagArray.count; i++) {
                                             NSString *tagName = [miscTagArray objectAtIndex:i];
-                                            NSString *tagObjectId = [preexistingTagId objectAtIndex:i];
                                             NSNumber *numPosts = [numPostsArray objectAtIndex:i];
                                             BOOL sameTag = [preexistingTags containsObject:tagName];
                                             
