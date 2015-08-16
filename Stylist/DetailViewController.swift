@@ -128,6 +128,7 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         topsLabel.placeholder = "Add clothes name"
         topsLabel.textColor = UIColor.darkGrayColor()
         topsLabel.font = UIFont(name: "HelveticaNeue", size: 16)
+        topsLabel.textAlignment = NSTextAlignment.Center
         topsLabel.delegate = self
         whiteView.addSubview(topsLabel)
         
