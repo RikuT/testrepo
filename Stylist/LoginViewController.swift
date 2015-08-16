@@ -62,6 +62,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate,BWWalkthroughVi
 
             }
      override func viewDidAppear(animated: Bool) {
+
+        let ud = NSUserDefaults.standardUserDefaults()
+        if ud.objectForKey("tutorialCountKey") == nil{
+            ud.setInteger(1, forKey: "tutorialCountKey")
+            self.presentTutorial()
+        }
+    }
+    
+    func presentTutorial(){
         // Get view controllers and build the walkthrough
         let stb = UIStoryboard(name: "Tutorial", bundle: nil)
         let walkthrough = stb.instantiateViewControllerWithIdentifier("walk") as! BWWalkthroughViewController
@@ -77,7 +86,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate,BWWalkthroughVi
         walkthrough.addViewController(page_three)
         walkthrough.addViewController(page_four)
         self.presentViewController(walkthrough, animated: true, completion: nil)
-
+   
     }
     
     // MARK: - Walkthrough delegate -
