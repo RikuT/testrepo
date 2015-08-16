@@ -167,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6d5-AW-rn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="208" y="-933"/>
+            <point key="canvasLocation" x="732" y="1341"/>
         </scene>
         <!--Profile Pic View Controller-->
         <scene sceneID="m1t-JV-MjG">
@@ -995,11 +995,12 @@
                     <connections>
                         <outlet property="collectionView" destination="gC6-fG-Qbu" id="Pdg-SL-HtO"/>
                         <segue destination="6sh-dG-FSl" kind="modal" identifier="showTrendImage" animates="NO" id="n9Z-Lj-SxT"/>
+                        <segue destination="4H1-83-9jU" kind="modal" identifier="likeVCtoClosetVC" animates="NO" id="AjO-To-pJ2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ppV-jN-Wvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1164" y="1372"/>
+            <point key="canvasLocation" x="1209" y="1153"/>
         </scene>
         <!--New View Controller-->
         <scene sceneID="qdE-0e-U9U">
@@ -1404,12 +1405,12 @@ i. The laws of the State of California, excluding its conflicts of law rules, go
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="z6c-Iv-rJh"/>
-        <segue reference="qXM-AK-tWs"/>
+        <segue reference="PbG-0j-NXL"/>
+        <segue reference="AjO-To-pJ2"/>
+        <segue reference="n9Z-Lj-SxT"/>
+        <segue reference="t5G-Sf-RKd"/>
         <segue reference="vY9-8b-aib"/>
         <segue reference="xnA-Pc-bIb"/>
         <segue reference="ox0-Se-1I5"/>
-        <segue reference="ZON-hF-NJm"/>
-        <segue reference="n9Z-Lj-SxT"/>
-        <segue reference="t5G-Sf-RKd"/>
     </inferredMetricsTieBreakers>
 </document>

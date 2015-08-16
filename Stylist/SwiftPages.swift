@@ -215,7 +215,34 @@ class SwiftPages: UIView, UIScrollViewDelegate {
             var newPageView: UIViewController
             
             //Look for the VC by its identifier in the storyboard and add it to the scrollview
-            newPageView = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(viewControllerIDs[page]) as! UIViewController
+            // determine screen size
+            var storyBoardStr = "Main"
+            var screenHeight = UIScreen.mainScreen().bounds.height
+            switch screenHeight {
+                
+                // iPhone 4s
+            case 480:
+                storyBoardStr = "Main-4"
+                
+                // iPhone 5s
+            case 568:
+                storyBoardStr = "Main"
+                
+                // iPhone 6
+            case 667:
+                storyBoardStr = "Main-6"
+                
+                // iPhone 6 Plus
+            case 736:
+                storyBoardStr = "Main-6P"
+                
+            default:
+
+                break
+            }
+
+            
+            newPageView = UIStoryboard(name: storyBoardStr, bundle: nil).instantiateViewControllerWithIdentifier(viewControllerIDs[page]) as! UIViewController
             newPageView.view.frame = frame
             scrollView.addSubview(newPageView.view)
             
@@ -238,7 +265,33 @@ class SwiftPages: UIView, UIScrollViewDelegate {
             var newPageView: UIViewController
             
             //Look for the VC by its identifier in the storyboard and add it to the scrollview
-            newPageView = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(viewControllerIDs[page]) as! UIViewController
+            // determine screen size
+            var storyBoardStr = "Main"
+            var screenHeight = UIScreen.mainScreen().bounds.height
+            switch screenHeight {
+                
+                // iPhone 4s
+            case 480:
+                storyBoardStr = "Main-4"
+                
+                // iPhone 5s
+            case 568:
+                storyBoardStr = "Main"
+                
+                // iPhone 6
+            case 667:
+                storyBoardStr = "Main-6"
+                
+                // iPhone 6 Plus
+            case 736:
+                storyBoardStr = "Main-6P"
+                
+            default:
+                
+                break
+            }
+
+            newPageView = UIStoryboard(name: storyBoardStr, bundle: nil).instantiateViewControllerWithIdentifier(viewControllerIDs[page]) as! UIViewController
             newPageView.view.frame = frame
             scrollView.addSubview(newPageView.view)
             

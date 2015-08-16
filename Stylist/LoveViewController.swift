@@ -52,6 +52,9 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
         // Resize size of collection view items in grid so that we achieve 3 boxes across
         
         loadCollectionViewData()
+        
+        let ud = NSUserDefaults.standardUserDefaults()
+        ud.removeObjectForKey("forceClosetKey")
     }
     
     /*
@@ -72,11 +75,32 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     override func viewWillAppear(animated: Bool) {
-        println("will")
         self.view.frame.origin.y = 0
         self.view.frame.size.height = collectionViewHeight
+        println("loveCalled")
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadPagesFore", name: UIApplicationWillEnterForegroundNotification, object: nil)
         
     }
+    
+    //Reloading all pages
+    func loadPagesFore(){
+        println("loadPages")
+        //These methods are only conducted when the pages are not loaded
+        /*
+        let ud = NSUserDefaults.standardUserDefaults()
+        ud.setBool(true, forKey: "forceLoadPagesKey") //currently disabled
+        
+        
+        swiftPagesView.loadPage(0)
+        swiftPagesView.loadPage(1)
+        swiftPagesView.loadPage(2)
+        */
+        let ud = NSUserDefaults.standardUserDefaults()
+        ud.setBool(true, forKey: "forceClosetKey")
+        self.performSegueWithIdentifier("likeVCtoClosetVC", sender: self)
+        
+    }
+
     
     
     /*
@@ -185,7 +209,7 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        println("votesNum\(votes.count)")
+
         
         return self.votes.count
     }

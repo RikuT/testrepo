@@ -244,7 +244,7 @@ class ViewController: UIViewController{ //VisibleFormViewController, UITextField
         self.initializePageView()
         
         //Setting notification which will reload pages when application enters foreground
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadPagesFore", name: UIApplicationWillEnterForegroundNotification, object: nil)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadPagesFore", name: UIApplicationWillEnterForegroundNotification, object: nil)
         
     }
     
@@ -252,12 +252,15 @@ class ViewController: UIViewController{ //VisibleFormViewController, UITextField
     func loadPagesFore(){
         println("loadPages")
         //These methods are only conducted when the pages are not loaded
+        /*
         let ud = NSUserDefaults.standardUserDefaults()
         ud.setBool(true, forKey: "forceLoadPagesKey") //currently disabled
 
+        
         swiftPagesView.loadPage(0)
         swiftPagesView.loadPage(1)
         swiftPagesView.loadPage(2)
+*/
 
     }
     

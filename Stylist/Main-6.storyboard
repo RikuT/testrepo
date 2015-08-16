@@ -23,16 +23,16 @@
                                     <navigationItem id="40V-ou-3BJ"/>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lsc-jR-ivL" customClass="SwiftPages" customModule="Stylist" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="STYLIST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIM-51-ka4">
                                 <rect key="frame" x="142" y="15" width="91" height="33"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lsc-jR-ivL" customClass="SwiftPages" customModule="Stylist" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -874,10 +874,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BBg-SM-fUP">
-                                <rect key="frame" x="0.0" y="29" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="29" width="375" height="576"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="w4X-r5-XOq">
-                                    <size key="itemSize" width="145" height="278"/>
+                                    <size key="itemSize" width="168" height="322"/>
                                     <size key="headerReferenceSize" width="6" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -887,54 +887,54 @@
                                         <rect key="frame" x="10" y="10" width="145" height="278"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="145" height="278"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="168" height="322"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EWG-4B-Yl8">
-                                                    <rect key="frame" x="0.0" y="-4" width="145" height="262"/>
+                                                    <rect key="frame" x="0.0" y="-4" width="166" height="326"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y6X-OR-RUi">
-                                                    <rect key="frame" x="4" y="257" width="137" height="21"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="nfS-Gc-vNh">
-                                                            <rect key="frame" x="33" y="0.0" width="71" height="21"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="heartBtn" translatesAutoresizingMaskIntoConstraints="NO" id="muL-3m-sys">
-                                                            <rect key="frame" x="79" y="4" width="14" height="14"/>
-                                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" red="0.08235294118" green="0.64313725489999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5YB-Z2-mfs" customClass="PFImageView">
-                                                    <rect key="frame" x="4" y="32" width="137" height="225"/>
+                                                    <rect key="frame" x="2" y="32" width="163" height="267"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CeE-jc-WOZ" customClass="PFImageView">
                                                     <rect key="frame" x="4" y="2" width="29" height="29"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="1OV-sU-4bt">
-                                                    <rect key="frame" x="37" y="1" width="77" height="18"/>
+                                                    <rect key="frame" x="38" y="1" width="77" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="M 179cm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="GLo-Ou-eyC">
-                                                    <rect key="frame" x="37" y="16" width="97" height="18"/>
+                                                    <rect key="frame" x="38" y="16" width="97" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="heartPinkFillOri" translatesAutoresizingMaskIntoConstraints="NO" id="Xf5-Ib-A2F">
-                                                    <rect key="frame" x="48" y="115" width="49" height="48"/>
+                                                    <rect key="frame" x="60" y="137" width="49" height="48"/>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y6X-OR-RUi">
+                                                    <rect key="frame" x="2" y="299" width="163" height="21"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="nfS-Gc-vNh">
+                                                            <rect key="frame" x="41" y="0.0" width="71" height="21"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="heartBtn" translatesAutoresizingMaskIntoConstraints="NO" id="muL-3m-sys">
+                                                            <rect key="frame" x="87" y="4" width="14" height="14"/>
+                                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.08235294118" green="0.64313725489999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <size key="customSize" width="145" height="278"/>
+                                        <size key="customSize" width="168" height="322"/>
                                         <connections>
                                             <outlet property="bottomBlurView" destination="y6X-OR-RUi" id="mS1-M0-O0X"/>
                                             <outlet property="heartIcon" destination="Xf5-Ib-A2F" id="fF1-jt-Hhq"/>
@@ -967,7 +967,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2lE-P8-sLa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1163.5" y="1371.5"/>
+            <point key="canvasLocation" x="1128.5" y="1472.5"/>
         </scene>
         <!--New View Controller-->
         <scene sceneID="b4t-y5-53S">
@@ -982,10 +982,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Yzd-eJ-p8Q">
-                                <rect key="frame" x="0.0" y="29" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="29" width="375" height="576"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dtf-X9-dcE">
-                                    <size key="itemSize" width="145" height="278"/>
+                                    <size key="itemSize" width="168" height="322"/>
                                     <size key="headerReferenceSize" width="6" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -995,15 +995,15 @@
                                         <rect key="frame" x="10" y="10" width="145" height="278"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="145" height="278"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="168" height="322"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="07y-Zm-M9o">
-                                                    <rect key="frame" x="0.0" y="-4" width="145" height="262"/>
+                                                    <rect key="frame" x="0.0" y="-4" width="166" height="326"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="73g-xS-53h">
-                                                    <rect key="frame" x="4" y="257" width="137" height="21"/>
+                                                    <rect key="frame" x="2" y="299" width="163" height="21"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="qQ4-h2-Zkv">
                                                             <rect key="frame" x="33" y="0.0" width="71" height="21"/>
@@ -1012,37 +1012,37 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="heartBtn" translatesAutoresizingMaskIntoConstraints="NO" id="DBB-1o-zNE">
-                                                            <rect key="frame" x="90" y="4" width="14" height="14"/>
+                                                            <rect key="frame" x="80" y="4" width="14" height="14"/>
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.08235294118" green="0.64313725489999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sLf-ZR-0yw" customClass="PFImageView">
-                                                    <rect key="frame" x="4" y="32" width="137" height="225"/>
-                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="74B-Sm-kFI" customClass="PFImageView">
                                                     <rect key="frame" x="4" y="2" width="29" height="29"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="g7I-Q0-Ieb">
-                                                    <rect key="frame" x="37" y="1" width="77" height="18"/>
+                                                    <rect key="frame" x="38" y="1" width="77" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="M 179cm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="cbv-Tu-bYL">
-                                                    <rect key="frame" x="37" y="16" width="97" height="18"/>
+                                                    <rect key="frame" x="38" y="16" width="97" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="heartPinkFillOri" translatesAutoresizingMaskIntoConstraints="NO" id="0W9-82-xa2">
-                                                    <rect key="frame" x="48" y="115" width="49" height="48"/>
+                                                    <rect key="frame" x="60" y="137" width="49" height="48"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sLf-ZR-0yw" customClass="PFImageView">
+                                                    <rect key="frame" x="2" y="32" width="163" height="267"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <size key="customSize" width="145" height="278"/>
+                                        <size key="customSize" width="168" height="322"/>
                                         <connections>
                                             <outlet property="bottomBlurView" destination="73g-xS-53h" id="PYP-Sq-KED"/>
                                             <outlet property="heartIcon" destination="0W9-82-xa2" id="4NC-FV-Abc"/>
@@ -1096,7 +1096,7 @@
                                         <rect key="frame" x="0.0" y="29" width="375" height="618"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="U9g-me-DjQ">
-                                            <size key="itemSize" width="300" height="287"/>
+                                            <size key="itemSize" width="322" height="308"/>
                                             <size key="headerReferenceSize" width="6" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -1106,14 +1106,14 @@
                                                 <rect key="frame" x="10" y="10" width="300" height="287"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="287"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="322" height="308"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ex-BH-p0f">
-                                                            <rect key="frame" x="0.0" y="2" width="300" height="23"/>
+                                                            <rect key="frame" x="0.0" y="2" width="320" height="23"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKy-sL-yFD">
-                                                                    <rect key="frame" x="71" y="1" width="158" height="21"/>
+                                                                    <rect key="frame" x="83" y="1" width="158" height="21"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -1122,16 +1122,16 @@
                                                             <color key="backgroundColor" red="0.08235294118" green="0.64313725489999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                                                         </view>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GPW-Qg-juh">
-                                                            <rect key="frame" x="0.0" y="23" width="150" height="266"/>
+                                                            <rect key="frame" x="0.0" y="23" width="161" height="285"/>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S3A-Bq-4V1">
-                                                            <rect key="frame" x="150" y="23" width="150" height="266"/>
+                                                            <rect key="frame" x="159" y="23" width="161" height="285"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <size key="customSize" width="300" height="287"/>
+                                                <size key="customSize" width="322" height="308"/>
                                                 <connections>
                                                     <outlet property="tagImageView" destination="GPW-Qg-juh" id="Yxq-bx-9C1"/>
                                                     <outlet property="tagImageView2" destination="S3A-Bq-4V1" id="yEP-GE-92h"/>
@@ -1162,7 +1162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7b-Dw-zvi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1936.5" y="1413.5"/>
+            <point key="canvasLocation" x="1967.5" y="1419.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="qYE-ai-3pX">
@@ -1370,11 +1370,11 @@ i. The laws of the State of California, excluding its conflicts of law rules, go
     <inferredMetricsTieBreakers>
         <segue reference="A1V-1O-2uc"/>
         <segue reference="FlV-Pd-PYK"/>
-        <segue reference="WOp-Kj-pwD"/>
-        <segue reference="mfp-H4-TwK"/>
+        <segue reference="uXb-xl-pyD"/>
         <segue reference="wyt-U2-le0"/>
         <segue reference="BxT-EC-Ox5"/>
         <segue reference="f7u-pV-6VB"/>
         <segue reference="D17-o3-Yzm"/>
+        <segue reference="9W2-Rw-pe1"/>
     </inferredMetricsTieBreakers>
 </document>

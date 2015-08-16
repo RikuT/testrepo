@@ -40,7 +40,12 @@ class LoveCollectionViewCell: UICollectionViewCell {
         heartImage.tintColor = UIColor.whiteColor()
         heartImage.image = heartImg
         
+        //Adjusting the position of heart image
+        votesLabel!.sizeToFit()
+        votesLabel!.center = CGPointMake(bottomBlurView.center.x - (heartImage.frame.width / 2)-1.5, bottomBlurView.frame.size.height / 2)
+        heartImage.frame.origin.x = votesLabel!.frame.origin.x + votesLabel!.frame.width + 1.5
         
+
         
 
         

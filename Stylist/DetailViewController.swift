@@ -79,10 +79,10 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         quitButton.addTarget(self, action: "quitButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
         
         //Creating check button
-        checkButton = UIButton(frame: CGRectMake(self.view.frame.width - 45, 12, 40, 40))
+        checkButton = UIButton(frame: CGRectMake(self.view.frame.width - 45, 12, 60, 70))
         checkButton.tintColor = UIColor.whiteColor()
         checkButton.setImage(UIImage(named: "check70"), forState: .Normal)
-        checkButton.imageEdgeInsets = UIEdgeInsetsMake(7.5, 7.5, 7.5, 7.5)
+        checkButton.imageEdgeInsets = UIEdgeInsetsMake(7.5, 17.5, 37.5, 17.5)
         checkButton.addTarget(self, action: "checkButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
         
         

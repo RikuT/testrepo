@@ -56,6 +56,7 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 		
 		self.setupMenuBar()
 		
+		
 		// Resize size of collection view items in grid so that we achieve 3 boxes across
 		
 		loadCollectionViewData()
@@ -222,7 +223,19 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 	
 	// Load data into the collectionView when the view appears
 	override func viewDidAppear(animated: Bool) {
+
 		loadCollectionViewData()
+		
+		let ud = NSUserDefaults.standardUserDefaults()
+		var forceLoad = ud.boolForKey("forceClosetKey")
+		if ud.objectForKey("forceClosetKey") != nil{
+			if forceLoad == true {
+				println("was true")
+				ud.removeObjectForKey("forceClosetKey")
+				//self.dismissViewControllerAnimated(false, completion: nil)
+				self.gobackBtnTapped()
+			}}
+
 		
 	}
 	
@@ -303,6 +316,9 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 			}
 			
 		}
+		
+
+	
 	}
 	
 	/*
