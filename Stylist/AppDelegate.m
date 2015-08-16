@@ -85,7 +85,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
             
             // iPhone 4s
         case 480:
-            storyboard = [UIStoryboard storyboardWithName:@"Main-4s" bundle:nil];
+            storyboard = [UIStoryboard storyboardWithName:@"Main-4" bundle:nil];
             break;
             
             // iPhone 5s
@@ -100,7 +100,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
             
             // iPhone 6 Plus
         case 736:
-            storyboard = [UIStoryboard storyboardWithName:@"Main-6-Plus" bundle:nil];
+            storyboard = [UIStoryboard storyboardWithName:@"Main-6P" bundle:nil];
             break;
             
         default:

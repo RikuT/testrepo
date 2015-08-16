@@ -167,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6d5-AW-rn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="732" y="1341"/>
+            <point key="canvasLocation" x="718" y="1341"/>
         </scene>
         <!--Profile Pic View Controller-->
         <scene sceneID="m1t-JV-MjG">
@@ -896,7 +896,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="gC6-fG-Qbu">
-                                <rect key="frame" x="0.0" y="29" width="320" height="519"/>
+                                <rect key="frame" x="0.0" y="29" width="320" height="509"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="x35-cr-Ovf">
@@ -923,7 +923,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="U3D-Ee-a0i">
-                                                            <rect key="frame" x="33" y="0.0" width="71" height="21"/>
+                                                            <rect key="frame" x="34" y="0.0" width="71" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1011,7 +1011,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="7xo-c4-9Lr">
-                                <rect key="frame" x="0.0" y="29" width="320" height="519"/>
+                                <rect key="frame" x="0.0" y="29" width="320" height="509"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TLr-Se-SEf">
@@ -1129,7 +1129,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="DI9-cb-Kyt">
-                                        <rect key="frame" x="0.0" y="29" width="320" height="519"/>
+                                        <rect key="frame" x="0.0" y="29" width="320" height="509"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TIq-KU-iQc">
@@ -1404,13 +1404,13 @@ i. The laws of the State of California, excluding its conflicts of law rules, go
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="z6c-Iv-rJh"/>
-        <segue reference="PbG-0j-NXL"/>
-        <segue reference="AjO-To-pJ2"/>
+        <segue reference="35s-LQ-Ebd"/>
         <segue reference="n9Z-Lj-SxT"/>
+        <segue reference="AjO-To-pJ2"/>
         <segue reference="t5G-Sf-RKd"/>
-        <segue reference="vY9-8b-aib"/>
+        <segue reference="Ie9-er-xeu"/>
         <segue reference="xnA-Pc-bIb"/>
+        <segue reference="OFr-Mu-bbx"/>
         <segue reference="ox0-Se-1I5"/>
     </inferredMetricsTieBreakers>
 </document>
