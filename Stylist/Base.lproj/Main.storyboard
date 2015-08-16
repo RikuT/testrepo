@@ -785,7 +785,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fc4-fJ-QkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="436" y="1414"/>
+            <point key="canvasLocation" x="306" y="1341"/>
         </scene>
         <!--Swipeable Clothes Tester-->
         <scene sceneID="P6U-l5-kP1">
@@ -878,6 +878,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <segue destination="X8T-yD-KUp" kind="unwind" identifier="photoVCToVC" unwindAction="unwindToTrend:" id="ok8-49-ixB"/>
                     </connections>
@@ -885,7 +886,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqO-5T-Hk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="X8T-yD-KUp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="101" y="567"/>
+            <point key="canvasLocation" x="306" y="603"/>
         </scene>
         <!--Love View Controller-->
         <scene sceneID="Ewf-R4-c9l">
@@ -1366,7 +1367,7 @@ i. The laws of the State of California, excluding its conflicts of law rules, go
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SRy-8g-V7Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-270" y="-1003"/>
+            <point key="canvasLocation" x="498" y="-919"/>
         </scene>
         <!--Trend Detail View Controller-->
         <scene sceneID="DSc-13-TWr">
@@ -1404,13 +1405,13 @@ i. The laws of the State of California, excluding its conflicts of law rules, go
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="35s-LQ-Ebd"/>
+        <segue reference="t5G-Sf-RKd"/>
         <segue reference="n9Z-Lj-SxT"/>
         <segue reference="AjO-To-pJ2"/>
-        <segue reference="t5G-Sf-RKd"/>
-        <segue reference="Ie9-er-xeu"/>
-        <segue reference="xnA-Pc-bIb"/>
-        <segue reference="OFr-Mu-bbx"/>
         <segue reference="ox0-Se-1I5"/>
+        <segue reference="OFr-Mu-bbx"/>
+        <segue reference="xnA-Pc-bIb"/>
+        <segue reference="Ie9-er-xeu"/>
+        <segue reference="92p-7F-r2P"/>
     </inferredMetricsTieBreakers>
 </document>
