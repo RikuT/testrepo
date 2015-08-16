@@ -52,7 +52,7 @@ class PasswordRecoverViewController: UIViewController {
     func displayErrorMessage(theMessage:String)
     {
         let errorAlert = SCLAlertView()
-        errorAlert.showError("Alert", subTitle:"\(theMessage)", closeButtonTitle:"Ok")
+        errorAlert.showSuccess("Alert", subTitle:"\(theMessage)", closeButtonTitle:"Ok")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
