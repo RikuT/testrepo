@@ -39,8 +39,8 @@
 		B600E2351B41765D007F8FDA /* SingleRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2341B41765D007F8FDA /* SingleRowCell.swift */; };
 		B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2361B417868007F8FDA /* TopsViewController.swift */; };
 		B6435FCB1B80CF120015D894 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6435FCA1B80CF120015D894 /* Tutorial.storyboard */; };
+		B6435FCE1B8134430015D894 /* PasswordRecoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65331DC1B411D1B00B19268 /* PasswordRecoverViewController.swift */; };
 		B6436C671B67698700B8DA64 /* SwiftPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6436C661B67698700B8DA64 /* SwiftPages.swift */; };
-		B65331DD1B411D1B00B19268 /* PasswordRecoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65331DC1B411D1B00B19268 /* PasswordRecoverViewController.swift */; };
 		B66EAA861B7B6398005F146B /* LoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66EAA851B7B6398005F146B /* LoveViewController.swift */; };
 		B66EAA881B7B63BA005F146B /* LoveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66EAA871B7B63BA005F146B /* LoveCollectionViewCell.swift */; };
 		B66F25971B77A323003DAB6C /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F25901B77A323003DAB6C /* MKButton.swift */; };
@@ -682,6 +682,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6435FCE1B8134430015D894 /* PasswordRecoverViewController.swift in Sources */,
 				321706F91B65EFA400812648 /* ProfilePicViewController.swift in Sources */,
 				326B13BD1B61D17E003A871D /* UIImage+FixOrientation.m in Sources */,
 				32A3BFD51B7B551F0022D76D /* goSegue.swift in Sources */,
@@ -714,7 +715,6 @@
 				325FA44D1B70A7AC00229204 /* SwipeableClothesTester.swift in Sources */,
 				32862E5F1B631B530070FA05 /* UIImage+ImageEffects.m in Sources */,
 				326B13BC1B61D17E003A871D /* LLSimpleCamera.m in Sources */,
-				B65331DD1B411D1B00B19268 /* PasswordRecoverViewController.swift in Sources */,
 				B6EC66011B3FD31900B5BC58 /* ViewController.swift in Sources */,
 				B66F259A1B77A323003DAB6C /* MKLabel.swift in Sources */,
 				B66F25991B77A323003DAB6C /* MKImageView.swift in Sources */,
