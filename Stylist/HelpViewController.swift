@@ -1,20 +1,19 @@
 //
-//  EULAViewController.swift
+//  HelpViewController.swift
 //  Stylist
 //
-//  Created by 勝又健登 on 2015/08/13.
+//  Created by Kenty on 2015/08/16.
 //  Copyright (c) 2015年 xxx. All rights reserved.
 //
 
 import UIKit
 
-class EULAViewController: UIViewController {
+class HelpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,4 +33,3 @@ class EULAViewController: UIViewController {
     */
 
 }
-

@@ -2,7 +2,7 @@
 //  TopsViewController.swift
 //  Stylist
 //
-//  Created by Kenty on 2015/06/29.
+//  Created by 勝又健登  on 2015/06/29.
 //  Copyright (c) 2015年 xxx. All rights reserved.
 //
 
@@ -13,7 +13,6 @@ var tops = [PFObject]()
 
 class TopsViewController: VisibleFormViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate {
 	
-	//For showing activity indicator
 	var container: UIView = UIView()
 	var loadingView: UIView = UIView()
 	var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
@@ -46,17 +45,16 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 	var objectToSend : PFObject?
 	
 	
-	// Connection to the collection view
 	
 	@IBOutlet weak var collectionView: UICollectionView!
 	var lastContentOffset: CGFloat!
+	//コレクションビューが表示されるたびにデータを再度取得
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		self.setupMenuBar()
 		
-		// Resize size of collection view items in grid so that we achieve 3 boxes across
 		
 		loadCollectionViewData()
 		checkAlert = 0
@@ -68,14 +66,7 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 		appearentNav = UIView(frame: CGRectMake(0, 0, self.view.frame.width, appearentNavHeight))
 		appearentNav.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 0.92)
 		
-		/*
-		var appearentNavLine: UIView = UIView(frame: CGRectMake(0, 0, self.view.frame.width - 30, 3))
-		appearentNavLine.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 0.75)
-		appearentNavLine.center.x = appearentNav.center.x
-		appearentNav.addSubview(appearentNavLine)
-		//appearentNav.layer.borderColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1).CGColor
-		//appearentNav.layer.borderWidth = 2.5
-		*/
+	
 		
 		let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.ExtraLight)
 		overallNav = UIVisualEffectView(effect: blurEffect)
@@ -101,7 +92,6 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 		let menuImg = UIImage(named: "GoBackArrow") as UIImage?
 		gobackButton   = UIButton.buttonWithType(UIButtonType.System) as! UIButton
 		gobackButton.frame = CGRectMake(0, appearentNav.frame.origin.y, appearentNavHeight + 40, appearentNavHeight)
-		//gobackButton.center = appearentNav.center
 		gobackButton.imageEdgeInsets = UIEdgeInsetsMake(2, 5, 3, 40)
 		gobackButton.setImage(menuImg, forState: .Normal)
 		gobackButton.tintColor = UIColor.whiteColor()
@@ -115,7 +105,6 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 		let searchIconImg = UIImage(named: "search-50")
 		searchButton.setImage(searchIconImg, forState: UIControlState.Normal)
 		searchButton.imageEdgeInsets = UIEdgeInsetsMake(3.5, 3.5, 3.5, 3.5)
-		//searchButton.backgroundColor = UIColor.blueColor()
 		searchButton.addTarget(self, action: "searchButtonTapped", forControlEvents: .TouchUpInside)
 		appearentNav.addSubview(searchButton)
 		
@@ -130,7 +119,6 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 		
 		
 		
-		//Setting CGRect to detect whether the menu is shown
 		overallHeight = overallNav.frame.height
 		appearentNavHeight = appearentNav.frame.height
 		upPosition = CGRectMake(0, self.view.frame.height - overallHeight, self.view.frame.width, overallHeight)
@@ -147,7 +135,6 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 		
 		println("currentNavPos \(currentNavPosition)")
 		println("upPosition \(upPosition)")
-		//overallNav.layer.position = CGPointMake(0, -navDifference)
 		
 		
 		if (currentNavPosition == upPosition){
@@ -214,28 +201,20 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 	}
 	
 	
-	/*
-	==========================================================================================
-	Ensure data within the collection view is updated when ever it is displayed
-	==========================================================================================
-	*/
-	
-	// Load data into the collectionView when the view appears
+	//コレクションビューが表示されるたびにデータを再度取得
+
 	override func viewDidAppear(animated: Bool) {
 		loadCollectionViewData()
 		
 	}
 	
-	/*
-	==========================================================================================
-	Fetch data from the Parse platform
-	==========================================================================================
-	*/
-	
+	//データを再度
+
 	func loadCollectionViewData() {
 
 		println("searchText = \(searchTextF.text)")
-		// Check to see if there is a search term
+		//サーチバーの中に何も入ってないのを確認
+
 		var tagQuery: PFQuery!
 		var imgTextQuery: PFQuery!
 		var clothesExplanationQuery: PFQuery!
@@ -252,7 +231,6 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 			
 			imgTextQuery = PFQuery(className: "Tops")
 			imgTextQuery.whereKey("imageText", containsString: searchTextF.text)
-			//query.whereKey("Tags", containsString: searchTextF.text)
 			
 			clothesExplanationQuery = PFQuery(className: "Tops")
 			clothesExplanationQuery.whereKey("clothesExplanation", containsString: searchTextF.text)
@@ -263,32 +241,25 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 			query = PFQuery.orQueryWithSubqueries([tagQuery, imgTextQuery, clothesExplanationQuery, seasonQuery])
 		}
 		
-		// Build a parse query object
 		query.whereKey("uploader", equalTo: PFUser.currentUser()!)
 		
-		// Fetch data from the parse platform
 		query.findObjectsInBackgroundWithBlock {
 			(objects: [AnyObject]?, error: NSError?) -> Void in
 			println("objects: \(objects)")
 			println("error\(error)")
 			
-			// The find succeeded now rocess the found objects into the countries array
 			if error == nil {
 				
-				// Clear existing country data
 				tops.removeAll(keepCapacity: false)
 				
-				// Add country objects to our array
 				if let objects = objects as? [PFObject] {
 					tops = Array(objects.generate())
 				}
 				
-				// reload our data into the collection view
 				self.collectionView.reloadData()
 				self.hideActivityIndicator(self.view)
 				
 			} else {
-				// Log details of the failure
 				println("Error: \(error!) \(error!.userInfo!)")
 				if self.checkAlert == 0{
 					
@@ -305,11 +276,8 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 		}
 	}
 	
-	/*
-	==========================================================================================
-	UICollectionView protocol required methods
-	==========================================================================================
-	*/
+	//コレクションビュー導入のためのコード
+
 	
 	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
 		return 1
@@ -323,10 +291,8 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 		
 		
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mySingleCell", forIndexPath: indexPath) as! SingleRowCell
-		//cell.backgroundColor = UIColor.blueColor()
 		
 		
-		// Display the country name
 		if let value = tops[indexPath.row]["imageText"] as? String {
 			cell.topsLabel.text = value
 			println("it should be there")
@@ -342,19 +308,10 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 			cell.dateLabel.text = dateFormatter.stringFromDate(datelabeltext)
 		}
 		
-		// Display "initial" flag image
 		var initialThumbnail = UIImage(named: "question")
 		cell.topsImageView.image = initialThumbnail
 		
-		/*
-		var imageWidth = Float (cell.topsImageView.image!.size.width)
-		var imageHeight = Float (cell.topsImageView.image!.size.height)
-		var imageAspect = imageHeight / imageWidth
-		var imageViewHeight = Float (cell.frame.size.width) * imageAspect
-		cell.topsImageView.frame = CGRectMake(0, 0, cell.frame.size.width , CGFloat(imageViewHeight))
-		*/
-		
-		// Fetch final flag image - if it exists
+
 		if let value = tops[indexPath.row]["imageFile"] as? PFFile {
 			
 			cell.topsImageView.file = value
@@ -367,18 +324,13 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 				
 			})
 			
-			//	let finalImage = tops[indexPath.row]["tops"] as? PFFile
 			
 		}
 		
 		return cell
 	}
 	
-	/*
-	==========================================================================================
-	Segue methods
-	==========================================================================================
-	*/
+
 	
 	// Process collectionView cell selection
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -410,14 +362,10 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 		ud.setValue(NSStringFromCGRect(cellRect), forKey: "cellPositionTopstoDetailKey")
 		
 		
-		/*
-		UICollectionViewLayoutAttributes *attributes = [self.collectionView layoutAttributesForItemAtIndexPath:indexPath];
-		CGRect cellRect = attributes.frame;
-		*/
+
 		performSegueWithIdentifier("showImage", sender: self)
 	}
 	
-	// In a storyboard-based application, you will often want to do a little preparation before navigation
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		
 		if segue.identifier == "showImage" {
@@ -447,7 +395,6 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 		
 		loadingView.frame = CGRectMake(0, 0, 100, 100)
 		loadingView.center = uiView.center
-		//loadingView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
 		loadingView.clipsToBounds = true
 		loadingView.layer.cornerRadius = 10
 		
@@ -467,13 +414,6 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 	}
 	
 	
-	
-	/*
-	==========================================================================================
-	Process memory issues
-	To be completed
-	==========================================================================================
-	*/
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()

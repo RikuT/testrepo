@@ -2,7 +2,7 @@
 //  PasswordRecoverViewController.swift
 //  Stylist
 //
-//  Created by Kento Katsumata on 2015/06/29.
+//  Created by 勝又健登 on 2015/06/29.
 //  Copyright (c) 2015年 xxx. All rights reserved.
 //
 
@@ -32,6 +32,7 @@ class PasswordRecoverViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    //パスワード取得のためのバタン
     @IBAction func recoverButtonTapped(sender: AnyObject) {
         let userEmail = userEmailTextField.text
         PFUser.requestPasswordResetForEmailInBackground(userEmail){(success:Bool,error:NSError?)-> Void in
@@ -47,7 +48,7 @@ class PasswordRecoverViewController: UIViewController {
             }
             
         }}
-    
+    //エラー
     func displayErrorMessage(theMessage:String)
     {
         var myAlert = UIAlertController(title:"Alert", message: theMessage,
@@ -70,10 +71,8 @@ class PasswordRecoverViewController: UIViewController {
         
     }
 
-    
-    
+    //ユーザーがキャンセルした場合
     @IBAction func cancelButtonTapped(sender: AnyObject) {
-        //Looking up in userDefaults to detect where the user came from
         let ud = NSUserDefaults.standardUserDefaults()
         var checkOriginObject: AnyObject? = ud.objectForKey("passwordOriginCheckKey")
         var checkOrigin: NSString = "\(checkOriginObject)"

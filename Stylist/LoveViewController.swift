@@ -2,7 +2,7 @@
 //  LoveViewController.swift
 //  
 //
-//  Created by Kenty on 2015/08/12.
+//  Created by 勝又健登 on 2015/08/12.
 //
 //
 
@@ -14,18 +14,15 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
     var objectToSend : PFObject?
     var likes:[NSIndexPath:Int] = [:]
     var votes = [PFObject]()
-    // Connection to the search bar
     var collectionViewHeight: CGFloat!
     var tapCheck: Int = 0
     
-    // Connection to the collection view
     
     @IBOutlet weak var collectionView: UICollectionView!
     var lastContentOffset: CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // collectionView.frame = CGRectMake(0, 29, 320, 519)
         println("collectF \(self.view.frame)")
         
         let query = PFQuery(className: "Posts")
@@ -45,23 +42,11 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         
         collectionViewHeight = self.view.frame.size.height - 44
-        
-        
-        // Wire up search bar delegate so that we can react to button selections
-        
-        // Resize size of collection view items in grid so that we achieve 3 boxes across
-        
         loadCollectionViewData()
     }
     
-    /*
-    ==========================================================================================
-    Ensure data within the collection view is updated when ever it is displayed
-    ==========================================================================================
-    */
-    
-    // Load data into the collectionView when the view appears
-    override func viewDidAppear(animated: Bool) {
+//コレクションビューが表示されるたびにデータを再度取得
+        override func viewDidAppear(animated: Bool) {
         loadCollectionViewData()
         println("viewdidappear")
         println("collectF2 \(self.view.frame)")
@@ -79,15 +64,10 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     
-    /*
-    ==========================================================================================
-    Fetch data from the Parse platform
-    ==========================================================================================
-    */
+//データを再度
     
     func loadCollectionViewData() {
-        // Build a parse query object
-        //collectionView.frame = CGRectMake(0, 29, 320, 519)
+
         
         println("loadscdo")
         let ud = NSUserDefaults.standardUserDefaults()
@@ -99,7 +79,7 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         if ud.objectForKey("searchKeyFromVCKey") != nil{
             
-            // Check to see if there is a search term
+            //サーチバーの中に何も入ってないのを確認
             var tagQuery: PFQuery!
             var imgTextQuery: PFQuery!
             var clothesExplanationQuery: PFQuery!
@@ -111,13 +91,11 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             
             if searchKey != "" {
-                //If a user is searching something...
                 tagQuery = PFQuery(className: "Posts")
                 tagQuery.whereKey("searchTag", containsString: searchKey)
                 
                 imgTextQuery = PFQuery(className: "Posts")
                 imgTextQuery.whereKey("imageText", containsString: searchKey)
-                //query.whereKey("Tags", containsString: searchTextF.text)
                 
                 clothesExplanationQuery = PFQuery(className: "Posts")
                 clothesExplanationQuery.whereKey("clothesExplanation", containsString: searchKey)
@@ -127,40 +105,25 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
                 
                 query = PFQuery.orQueryWithSubqueries([tagQuery, imgTextQuery, clothesExplanationQuery, seasonQuery])
                 println("searckadjof")
-                // Fetch data from the parse platform
                 query.findObjectsInBackgroundWithBlock {
                     (objects: [AnyObject]?, error: NSError?) -> Void in
                     println("objects: \(objects)")
                     println("error\(error)")
                     println("searckadjof23")
                     
-                    // The find succeeded now rocess the found objects into the countries array
                     if error == nil {
                         
-                        // Clear existing country data
                         self.votes.removeAll(keepCapacity: false)
                         
-                        // Add country objects to our array
                         if let object = objects as? [PFObject] {
                             self.votes = object
                             println("votesn \(self.votes)")
-                            // reload our data into the collection view
                             self.collectionView.reloadData()
                         }
                         
-                        //self.hideActivityIndicator(self.view)
                         
                     } else {
-                        // Log details of the failure
                         println("Error: \(error!) \(error!.userInfo!)")
-                        /*
-                        if self.checkAlert == 0{
-                        
-                        let alert = SCLAlertView()
-                        alert.showError("Error", subTitle:"An error occured while retrieving your clothes. Please check the Internet connection.", closeButtonTitle:"Ok")
-                        self.hideActivityIndicator(self.view)
-                        
-                        self.checkAlert = 1*/
                         
                     }
                     
@@ -173,13 +136,7 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     
     
-    
-    /*
-    ==========================================================================================
-    UICollectionView protocol required methods
-    ==========================================================================================
-    */
-    
+//コレクションビュー導入のためのコード
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -203,14 +160,15 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
         cell.addGestureRecognizer(gesture)
         
         
-        // Display "initial" flag image
+        //ロード中のための画像
         var initialThumbnail = UIImage(named: "question")
         cell.postsImageView.image = initialThumbnail
         
-        // Display the country name
+        // ユーザーの名前を表示する
         if let user = item["uploader"] as? PFUser{
-            item.fetchIfNeeded()
+            item.fetchIfNeededInBackgroundWithBlock { (result, error) -> Void in
             cell.userName!.text = user.username
+            }
             
             
             var profileImgFile = user["profilePicture"] as! PFFile
@@ -247,7 +205,7 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
             cell.votesLabel?.text = "\(votesValue)"
         }
         
-        // Fetch final flag image - if it exists
+        // 画像を呼ぶコード
         if let value = item["imageFile"] as? PFFile {
             println("Value \(value)")
             cell.postsImageView.file = value
@@ -258,7 +216,7 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
             })
         }
         
-        //Adjusting the position of heart image
+        //♡の位置
         cell.votesLabel!.sizeToFit()
         cell.votesLabel!.center = CGPointMake(cell.bottomBlurView.center.x - (cell.heartImage.frame.width / 2)-1.5, cell.bottomBlurView.frame.size.height / 2)
         cell.heartImage.frame.origin.x = cell.votesLabel!.frame.origin.x + cell.votesLabel!.frame.width + 1.5
@@ -268,11 +226,6 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
         return cell
     }
     
-    /*
-    ==========================================================================================
-    Segue methods
-    ==========================================================================================
-    */
     
     func onDoubleTap (recognizer: UIGestureRecognizer)
     {
@@ -290,7 +243,6 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
             }
             cell.votesLabel?.text = "\(likes + 1)"
             
-            //Adjusting the position of heart image
             cell.votesLabel!.sizeToFit()
             cell.votesLabel!.center = CGPointMake(cell.bottomBlurView.center.x - (cell.heartImage.frame.width / 2)-1.5, cell.bottomBlurView.frame.size.height / 2)
             cell.heartImage.frame.origin.x = cell.votesLabel!.frame.origin.x + cell.votesLabel!.frame.width + 1.5
@@ -311,13 +263,8 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
         })
         
     }
-    /*
-    ==========================================================================================
-    Segue methods
-    ==========================================================================================
-    */
+
     
-    // Process collectionView cell selection
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         let delay = 0.2 * Double(NSEC_PER_SEC)
@@ -329,14 +276,12 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
                 self.objectToSend = self.votes[indexPath.row]
                 var attributes: UICollectionViewLayoutAttributes = self.collectionView.layoutAttributesForItemAtIndexPath(indexPath)!
                 var cellRect: CGRect = attributes.frame
-                //cellRect.origin.y = cellRect.origin.y - lastContentOffset
                 
                 if self.lastContentOffset != nil{
                     var originY = cellRect.origin.y - self.lastContentOffset
                     cellRect.origin.y = originY
                 }
                 
-                //Adding for navigation bar and status bar
                 cellRect.origin.y = cellRect.origin.y + 44 + 20
                 println("cellrect \(cellRect)")
                 
@@ -354,16 +299,13 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
                 ud.setValue(NSStringFromCGRect(cellRect), forKey: "cellPositionTopstoTrendDetailKey")
                 
                 
-                /*
-                UICollectionViewLayoutAttributes *attributes = [self.collectionView layoutAttributesForItemAtIndexPath:indexPath];
-                CGRect cellRect = attributes.frame;
-                */
+ 
                 self.performSegueWithIdentifier("showTrendImage", sender: self)
                 
             }  })
     }
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//Detailビューに表示させるためのセグエの
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "showTrendImage" {
@@ -376,14 +318,6 @@ class LoveViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.lastContentOffset = scrollView.contentOffset.y
     }
     
-    
-    
-    /*
-    ==========================================================================================
-    Process memory issues
-    To be completed
-    ==========================================================================================
-    */
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

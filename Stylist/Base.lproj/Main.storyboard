@@ -1403,13 +1403,13 @@ i. The laws of the State of California, excluding its conflicts of law rules, go
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="z6c-Iv-rJh"/>
         <segue reference="qXM-AK-tWs"/>
-        <segue reference="vY9-8b-aib"/>
+        <segue reference="z6c-Iv-rJh"/>
+        <segue reference="lO1-c6-9JB"/>
+        <segue reference="ElC-ds-RgJ"/>
+        <segue reference="BK8-ow-a7u"/>
         <segue reference="xnA-Pc-bIb"/>
-        <segue reference="ox0-Se-1I5"/>
-        <segue reference="ZON-hF-NJm"/>
         <segue reference="n9Z-Lj-SxT"/>
-        <segue reference="t5G-Sf-RKd"/>
+        <segue reference="ox0-Se-1I5"/>
     </inferredMetricsTieBreakers>
 </document>
