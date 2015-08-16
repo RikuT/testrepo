@@ -802,14 +802,14 @@
                                             </button>
                                         </subviews>
                                     </view>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dottedLine" translatesAutoresizingMaskIntoConstraints="NO" id="pRu-2w-2ON">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DottedLineSquare" translatesAutoresizingMaskIntoConstraints="NO" id="pRu-2w-2ON">
                                         <rect key="frame" x="0.0" y="203" width="320" height="73"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="RoM-KP-Nso" appends="YES" id="5Ey-Hv-YU3"/>
                                         </connections>
                                     </imageView>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dottedLine" translatesAutoresizingMaskIntoConstraints="NO" id="Wrh-vc-Rpz" userLabel="dottedLine2">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DottedLineSquare" translatesAutoresizingMaskIntoConstraints="NO" id="Wrh-vc-Rpz" userLabel="dottedLine2">
                                         <rect key="frame" x="0.0" y="79" width="320" height="73"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="uLc-4x-E7d" appends="YES" id="xFh-Tb-i1s"/>
@@ -1370,9 +1370,9 @@ i. The laws of the State of California, excluding its conflicts of law rules, go
         </scene>
     </scenes>
     <resources>
+        <image name="DottedLineSquare" width="655" height="140"/>
         <image name="GoBackArrow" width="50" height="50"/>
         <image name="Login Design 2" width="640" height="1136"/>
-        <image name="dottedLine" width="1623" height="322"/>
         <image name="heartBtn" width="256" height="256"/>
         <image name="heartPinkFillOri" width="256" height="256"/>
         <image name="profilePlaceHolder" width="600" height="600"/>

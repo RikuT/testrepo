@@ -773,14 +773,14 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UPQ-hR-pUZ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dottedLine" translatesAutoresizingMaskIntoConstraints="NO" id="UgW-kJ-908">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DottedLineSquare" translatesAutoresizingMaskIntoConstraints="NO" id="UgW-kJ-908">
                                         <rect key="frame" x="0.0" y="292" width="375" height="84"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="dJu-m1-UTj" appends="YES" id="Nch-ZE-EeM"/>
                                         </connections>
                                     </imageView>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dottedLine" translatesAutoresizingMaskIntoConstraints="NO" id="7t7-WT-J0f" userLabel="dottedLine2">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DottedLineSquare" translatesAutoresizingMaskIntoConstraints="NO" id="7t7-WT-J0f" userLabel="dottedLine2">
                                         <rect key="frame" x="0.0" y="117" width="375" height="84"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="82s-4W-cth" appends="YES" id="afj-mm-jdn"/>
@@ -1361,9 +1361,9 @@ i. The laws of the State of California, excluding its conflicts of law rules, go
         </scene>
     </scenes>
     <resources>
+        <image name="DottedLineSquare" width="655" height="140"/>
         <image name="GoBackArrow" width="50" height="50"/>
         <image name="Login Design 2" width="640" height="1136"/>
-        <image name="dottedLine" width="1623" height="322"/>
         <image name="heartBtn" width="256" height="256"/>
         <image name="heartPinkFillOri" width="256" height="256"/>
         <image name="profilePlaceHolder" width="600" height="600"/>
