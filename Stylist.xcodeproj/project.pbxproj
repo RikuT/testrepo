@@ -43,6 +43,7 @@
 		32EC3EF41B7F97DA00C3E7FC /* arrow-top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32EC3EE61B7F97DA00C3E7FC /* arrow-top@2x.png */; };
 		32EC3EF51B7F97DA00C3E7FC /* arrow-top@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32EC3EE71B7F97DA00C3E7FC /* arrow-top@3x.png */; };
 		32EC3EF61B7F97DA00C3E7FC /* MPCoachMarks.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EC3EE91B7F97DA00C3E7FC /* MPCoachMarks.m */; };
+		32EC3EFA1B80586700C3E7FC /* Main-6.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32EC3EF91B80586700C3E7FC /* Main-6.storyboard */; };
 		32F3F1F91B52BA9C0051050B /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F3F1F81B52BA9C0051050B /* SCLAlertView.swift */; };
 		32F48E0A1B670BFA009EF135 /* TLTagsControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F48E081B670BFA009EF135 /* TLTagsControl.m */; };
 		B600E2351B41765D007F8FDA /* SingleRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2341B41765D007F8FDA /* SingleRowCell.swift */; };
@@ -160,6 +161,7 @@
 		32EC3EE71B7F97DA00C3E7FC /* arrow-top@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-top@3x.png"; sourceTree = "<group>"; };
 		32EC3EE81B7F97DA00C3E7FC /* MPCoachMarks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCoachMarks.h; sourceTree = "<group>"; };
 		32EC3EE91B7F97DA00C3E7FC /* MPCoachMarks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCoachMarks.m; sourceTree = "<group>"; };
+		32EC3EF91B80586700C3E7FC /* Main-6.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Main-6.storyboard"; sourceTree = "<group>"; };
 		32F3F1F81B52BA9C0051050B /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCLAlertView.swift; path = Stylist/SCLAlertView.swift; sourceTree = SOURCE_ROOT; };
 		32F48E071B670BFA009EF135 /* TLTagsControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTagsControl.h; sourceTree = "<group>"; };
 		32F48E081B670BFA009EF135 /* TLTagsControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTagsControl.m; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 				32A3BFD41B7B551F0022D76D /* goSegue.swift */,
 				32A3BFD61B7B57660022D76D /* goBackSegue.swift */,
 				B6CD246D1B3D8BD50061E451 /* Main.storyboard */,
+				32EC3EF91B80586700C3E7FC /* Main-6.storyboard */,
 				B6CD24701B3D8BD50061E451 /* Images.xcassets */,
 				326B13BE1B61DA15003A871D /* whiteCancel.png */,
 				B6CD24721B3D8BD50061E451 /* LaunchScreen.xib */,
@@ -660,6 +663,7 @@
 			files = (
 				B6CD246F1B3D8BD50061E451 /* Main.storyboard in Resources */,
 				326B13BF1B61DA15003A871D /* whiteCancel.png in Resources */,
+				32EC3EFA1B80586700C3E7FC /* Main-6.storyboard in Resources */,
 				32EC3EF11B7F97DA00C3E7FC /* arrow-right@2x.png in Resources */,
 				32170A311B6CE03E009F9665 /* name_list.txt in Resources */,
 				B6CD24741B3D8BD50061E451 /* LaunchScreen.xib in Resources */,

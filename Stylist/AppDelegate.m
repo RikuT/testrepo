@@ -26,13 +26,13 @@
     [Parse enableLocalDatastore];
     // Enable Crash Reporting
     [ParseCrashReporting enable];
-
+    
     
     // Initialize Parse.
     [Parse setApplicationId:@"ZEczNFa87TVNAqxZWtIacRXzcxpRHscd5M2CbKrz"
                   clientKey:@"giGCYLa2fAxnZMn9CgvgaUUZ4xsFmxjmei6DEH6n"];
     
-
+    
     UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
                                                     UIUserNotificationTypeBadge |
                                                     UIUserNotificationTypeSound);
@@ -48,9 +48,17 @@
     Rover *rover = [Rover setup:config];
     [rover startMonitoring];
     
-            return YES;
-
-
+    
+    // grab correct storyboard depending on screen height
+    UIStoryboard *storyboard = [self grabStoryboard];
+    
+    // display storyboard
+    self.window.rootViewController = [storyboard instantiateInitialViewController];
+    [self.window makeKeyAndVisible];
+    
+    return YES;
+    
+    
 }
 
 - (void)application:(UIApplication *)application
@@ -67,7 +75,42 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [currentInstallation saveInBackground];
 }
 
-
+- (UIStoryboard *)grabStoryboard {
+    
+    // determine screen size
+    int screenHeight = [UIScreen mainScreen].bounds.size.height;
+    UIStoryboard *storyboard;
+    
+    switch (screenHeight) {
+            
+            // iPhone 4s
+        case 480:
+            storyboard = [UIStoryboard storyboardWithName:@"Main-4s" bundle:nil];
+            break;
+            
+            // iPhone 5s
+        case 568:
+            storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            break;
+            
+            // iPhone 6
+        case 667:
+            storyboard = [UIStoryboard storyboardWithName:@"Main-6" bundle:nil];
+            break;
+            
+            // iPhone 6 Plus
+        case 736:
+            storyboard = [UIStoryboard storyboardWithName:@"Main-6-Plus" bundle:nil];
+            break;
+            
+        default:
+            // it's an iPad
+            storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            break;
+    }
+    
+    return storyboard;
+}
 
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {

@@ -81,6 +81,9 @@ class SwipeableClothesTester: UIViewController {
     let scrView2 = UIScrollView()
     let scrView3 = UIScrollView()
     
+    var upButton = UIButton()
+    var downButton = UIButton()
+    
     var originCheckInt = 0
     
     
@@ -280,6 +283,8 @@ class SwipeableClothesTester: UIViewController {
         //var timer = NSTimer.scheduledTimerWithTimeInterval(0.0001, target: self, selector: Selector("bottomViewSet"), userInfo: nil, repeats: true)
         
         self.hideActivityIndicator(self.view)
+        self.view.bringSubviewToFront(upButton)
+        self.view.bringSubviewToFront(downButton)
     }
     
     
@@ -311,8 +316,39 @@ class SwipeableClothesTester: UIViewController {
         dottedLineView2.hidden = true
         
         
+        let extraBlur: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
         
+        //下の服の位置を微調節するためのボタン(上)
+        upButton = UIButton(frame: CGRectMake(0, 0, 40, 40))
+        upButton.layer.cornerRadius = 20.0
+        var blurUpBtn = UIVisualEffectView(effect: extraBlur)
+        blurUpBtn.frame = CGRectMake(self.view.frame.width - 50, self.view.frame.height - 145, 40, 40)
+        blurUpBtn.layer.cornerRadius = 20
+        blurUpBtn.clipsToBounds = true
+        var upImg = UIImage(named: "Collapse Arrow-100")
+        var upImgView = UIImageView(image: upImg)
+        upImgView.frame = CGRectMake(3, 2, blurUpBtn.frame.width - 6, blurUpBtn.frame.height - 6)
+        blurUpBtn.addSubview(upImgView)
+        upButton.addTarget(self, action: "upBtnTapped", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(blurUpBtn)
+        blurUpBtn.addSubview(upButton)
         
+        //下の服の位置を微調節するためのボタン(下)
+        downButton = UIButton(frame: CGRectMake(0, 0, 40, 40))
+        downButton.layer.cornerRadius = 20.0
+        var blurDownBtn = UIVisualEffectView(effect: extraBlur)
+        blurDownBtn.frame = CGRectMake(self.view.frame.width - 50, self.view.frame.height - 90, 40, 40)
+        blurDownBtn.layer.cornerRadius = 20
+        blurDownBtn.clipsToBounds = true
+        var downImg = UIImage(CGImage: upImg?.CGImage, scale: 1.0, orientation: UIImageOrientation.Down)
+        var downImgView = UIImageView(image: downImg)
+        downImgView.frame = CGRectMake(3, 4, blurUpBtn.frame.width - 6, blurUpBtn.frame.height - 6)
+        blurDownBtn.addSubview(downImgView)
+        downButton.addTarget(self, action: "downBtnTapped", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(blurDownBtn)
+        blurDownBtn.addSubview(downButton)
+        
+        //セグエの時のアニメーションに使用するためのスクリーンショットを受け取る
         if ud.objectForKey("bgBetweenDetailVCandFittingKey") != nil{
             var bgPictObj: AnyObject? = ud.objectForKey("bgBetweenDetailVCandFittingKey")
             ud.removeObjectForKey("bgBetweenDetailVCandFittingKey")
@@ -339,10 +375,19 @@ class SwipeableClothesTester: UIViewController {
         println("ViewDidLoad appearInt = \(viewDidAppearInt)")
     }
     
-
+    
     
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    func downBtnTapped(){
+        println("down")
+        scrView2.frame.origin.y = scrView2.frame.origin.y + 3
+    }
+    func upBtnTapped(){
+        println("up")
+        scrView2.frame.origin.y = scrView2.frame.origin.y - 3
     }
     
     
@@ -368,7 +413,7 @@ class SwipeableClothesTester: UIViewController {
     }
     
     
-
+    
     
     //これは下の洋服のscrollViewの大きさが変わるごとに実行されるので、autoReleasePoolを使って軽くしたい
     func topViewMoved1(){
@@ -521,16 +566,16 @@ class SwipeableClothesTester: UIViewController {
         
         var originFromTrendDetail = ud.integerForKey("OriginToTryThemOnVC")
         ud.removeObjectForKey("OriginToTryThemOnVC")
-            if originFromTrendDetail == 2{
-                let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
-                var blurView = UIVisualEffectView(effect: blurEffect)
-                blurView.frame = self.view.frame
-                let darkView = UIView(frame: blurView.frame)
-                darkView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-                blurView.alpha = 0.9
-                blurView.addSubview(darkView)
-                detailBgView.addSubview(blurView)
-            }
+        if originFromTrendDetail == 2{
+            let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+            var blurView = UIVisualEffectView(effect: blurEffect)
+            blurView.frame = self.view.frame
+            let darkView = UIView(frame: blurView.frame)
+            darkView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+            blurView.alpha = 0.9
+            blurView.addSubview(darkView)
+            detailBgView.addSubview(blurView)
+        }
         
         
         // アニメーション処理

@@ -115,6 +115,9 @@
     
     self.clothesGuide = [[UIImageView alloc]initWithImage:pictogram];
     self.clothesGuide.frame = CGRectMake(0, 15, self.view.frame.size.width, self.view.frame.size.height-30);
+    NSLog(@"framsd %f", self.view.frame.size.height);
+    NSLog(@"framsd2 %f", self.clothesGuide.frame.size.height);
+
     [self.view addSubview:self.clothesGuide];
     
     

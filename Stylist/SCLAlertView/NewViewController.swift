@@ -20,7 +20,7 @@ class NewViewController: UIViewController, UICollectionViewDataSource, UICollect
     
     // Connection to the collection view
     
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
     var lastContentOffset: CGFloat!
     
     override func viewDidLoad() {

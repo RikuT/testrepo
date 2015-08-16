@@ -13,7 +13,7 @@ import Parse
 
 
 
-class ViewController: VisibleFormViewController, UITextFieldDelegate {
+class ViewController: UIViewController{ //VisibleFormViewController, UITextFieldDelegate {
     @IBAction func unwindToTrend(segue: UIStoryboardSegue) {
     }
     @IBOutlet var swiftPagesView: SwiftPages!
@@ -34,11 +34,11 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
     var blackBlurBtn: UIButton!
     var fittingBtn: UIButton!
     
-    var searchTextF: UITextField!
+   // var searchTextF: UITextField!
 
     var menuButton: UIButton!
 
-    var overallHeight: CGFloat = 250
+    var overallHeight: CGFloat = 200
     var appearentNavHeight: CGFloat = 30
     var upPosition = CGRectMake(0, 0, 0, 0)
     
@@ -122,6 +122,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         appearentNav.addSubview(fittingBtn)
         
         
+        /*
         searchButton = UIButton(frame: CGRectMake(self.view.frame.width - appearentNavHeight, 0, appearentNavHeight, appearentNavHeight))
         searchButton.setTitle("虫", forState: .Normal)
         searchButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
@@ -141,7 +142,8 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         var grayLine4 = UILabel(frame: CGRectMake(0, searchTextF.frame.origin.y + searchTextF.frame.size.height + 6, self.view.frame.width, 0.3))
         grayLine4.backgroundColor = UIColor.lightGrayColor()
         buttonLayoutView.addSubview(grayLine4)
-        
+   */
+     
 
         
         /*
@@ -154,7 +156,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         */
         
         //Setting up closet button
-        closetButton = UIButton(frame: CGRectMake(0, actualMenuHeight / 5, self.view.frame.width, actualMenuHeight / 5))
+        closetButton = UIButton(frame: CGRectMake(0, 0, self.view.frame.width, actualMenuHeight / 4))
         closetButton.setTitle("closet", forState: .Normal)
         closetButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
         closetButton.addTarget(self, action: "closetBtnTapped", forControlEvents: .TouchUpInside)
@@ -175,7 +177,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         */
         
         //Setting up camera button
-        cameraButton = UIButton(frame: CGRectMake(0, actualMenuHeight * 2 / 5, self.view.frame.width, actualMenuHeight / 5))
+        cameraButton = UIButton(frame: CGRectMake(0, actualMenuHeight / 4, self.view.frame.width, actualMenuHeight / 4))
         cameraButton.setTitle("camera", forState: .Normal)
         cameraButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
         cameraButton.addTarget(self, action: "cameraBtnTapped", forControlEvents: .TouchUpInside)
@@ -188,7 +190,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         
         
         //Setting up account button
-        accountButton = UIButton(frame: CGRectMake(0, actualMenuHeight * 3 / 5, self.view.frame.width, actualMenuHeight / 5))
+        accountButton = UIButton(frame: CGRectMake(0, actualMenuHeight * 2 / 4, self.view.frame.width, actualMenuHeight / 4))
         accountButton.setTitle("account", forState: .Normal)
         accountButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
         accountButton.addTarget(self, action: "accountBtnTapped", forControlEvents: .TouchUpInside)
@@ -201,7 +203,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         
         
         //Setting up help button
-        helpButton = UIButton(frame: CGRectMake(0, actualMenuHeight * 4 / 5, self.view.frame.width, actualMenuHeight / 5))
+        helpButton = UIButton(frame: CGRectMake(0, actualMenuHeight * 3 / 4, self.view.frame.width, actualMenuHeight / 4))
         helpButton.setTitle("help", forState: .Normal)
         helpButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
         helpButton.addTarget(self, action: "helpBtnTapped", forControlEvents: .TouchUpInside)
@@ -219,8 +221,8 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         appearentNavHeight = appearentNav.frame.height
         upPosition = CGRectMake(0, self.view.frame.height - overallHeight, self.view.frame.width, overallHeight)
         
-        self.lastVisibleView = overallNav
-        self.visibleMargin = (-actualMenuHeight*4/5) + 40
+        //self.lastVisibleView = overallNav
+        //self.visibleMargin = (-actualMenuHeight*4/5) + 40
     }
     
     override func didReceiveMemoryWarning() {
@@ -296,7 +298,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
     
     func closeMenu(){
         println("already up")
-        searchTextF.resignFirstResponder()
+        //searchTextF.resignFirstResponder()
         // アニメーション処理
         UIView.animateWithDuration(NSTimeInterval(CGFloat(0.3)),
             animations: {() -> Void in
@@ -332,6 +334,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         
     }
     
+    /*
     override func textFieldShouldReturn(textField: UITextField) -> Bool {
         
         let ud = NSUserDefaults.standardUserDefaults()
@@ -345,8 +348,7 @@ class ViewController: VisibleFormViewController, UITextFieldDelegate {
         searchView.loadCollectionViewData()
         return true
     }
-
-    
+*/
     func trendBtnTapped(){
         println("trendBtn")
     }

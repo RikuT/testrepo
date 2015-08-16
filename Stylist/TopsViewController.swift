@@ -100,8 +100,9 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 		
 		let menuImg = UIImage(named: "GoBackArrow") as UIImage?
 		gobackButton   = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-		gobackButton.frame = CGRectMake(5, appearentNav.frame.origin.y + 2, appearentNavHeight - 4, appearentNavHeight - 5)
+		gobackButton.frame = CGRectMake(0, appearentNav.frame.origin.y, appearentNavHeight + 40, appearentNavHeight)
 		//gobackButton.center = appearentNav.center
+		gobackButton.imageEdgeInsets = UIEdgeInsetsMake(2, 5, 3, 40)
 		gobackButton.setImage(menuImg, forState: .Normal)
 		gobackButton.tintColor = UIColor.whiteColor()
 		
