@@ -59,8 +59,7 @@
     //_blurViewにVisualEffectViewを追加
     [backgroundView addSubview:effectView];
 
-    
-    self.imageView = [[UIImageView alloc] initWithImage:self.image];
+    self.imageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"badSmile4.jpg"]];
     float pictAspect = (float)self.image.size.height / self.image.size.width;
     self.imageView.frame = CGRectMake(0, 0, screenRect.size.width, (screenRect.size.width) * pictAspect);
     self.imageView.backgroundColor = [UIColor blackColor];
@@ -230,6 +229,8 @@
     [self.view addGestureRecognizer:tapBackground];
     
     self.lastVisibleView = scrollview;
+    
+    
     
 }
 
