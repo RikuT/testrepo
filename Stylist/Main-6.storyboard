@@ -859,7 +859,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PSK-Vf-fzU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Yvw-9h-hGr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="101" y="567"/>
+            <point key="canvasLocation" x="300.5" y="602.5"/>
         </scene>
         <!--Love View Controller-->
         <scene sceneID="Qdd-Yk-wRx">

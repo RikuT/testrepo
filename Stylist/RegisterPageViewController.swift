@@ -2,7 +2,7 @@
 //  RegisterPageViewController.swift
 //  Stylist
 //
-//  Created by Kento Katsumata on 2015/06/28.
+//  Created by 勝又健登 on 2015/06/28.
 //  Copyright (c) 2015年 xxx. All rights reserved.
 //
 
@@ -23,7 +23,7 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
     var container: UIView = UIView()
     var loadingView: UIView = UIView()
     var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
-    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +75,7 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         return true;
         
     }
-    
+//登録ボタンが押された時のためのコードが書いてあります.
     @IBAction func registerButtonTapped(sender: AnyObject) {
         
         let userUserName = userUserNameTextField.text
@@ -83,51 +83,36 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         let userPasword = userPasswordTextField.text
         let userRepeatPassword = repeatPasswordTextField.text
         
-        //まずはアラートのファンクション
-        
-        /*
-        func displayMyAlertMessage (userMessage: String ){
-            var myAlert = UIAlertController(title:"Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
-            let okAction = UIAlertAction (title:"OK" , style: UIAlertActionStyle.Default, handler: nil)
-            myAlert.addAction(okAction)
-            self.presentViewController(myAlert, animated:true, completion:nil)
-            
-        }
-*/
-        
-        //空白欄がないかチェックするコードでもケンティーは書くかな
+
+        //空白欄がないかチェックするコードです。
         if (userUserName.isEmpty || userEmail.isEmpty || userPasword.isEmpty || userRepeatPassword.isEmpty){
-            //ケンティー怒るからアラート表示
-            //ここではアラートをファンクションから引っ張ってくる
+            //空白欄があった場合はアラートを表示させます。
             let alert = SCLAlertView()
             alert.showError("Error", subTitle:"All fields are required.", closeButtonTitle:"Ok")
             
             return
         }
-        //ケンティー悪質ユーザー排除だぁぁぁぁああああああ
+        //ユーザーネームを四文字以上に設定するコードです。
         if (count(userUserName.utf16) <= 4){
-            //ケンティー怒るからアラート表示
-            //ここではアラートをファンクションから引っ張ってくる
+           // 四文字以下の場合はアラートを表示させます。
             let alert = SCLAlertView()
             alert.showError("Error", subTitle:"Username has to be longer than 4 letters.", closeButtonTitle:"Ok")
             
             return
         }
-        //ケンティーパスワード問題の対策を考えるざます
+        //パスワードを五文字以上に設定するコードです
         if (count(userPasword.utf16) <= 5){
-            //ケンティー怒るからアラート表示
-            //ここではアラートをファンクションから引っ張ってくる
+           //五文字以下の場合はアラートを表示させます。
             let alert = SCLAlertView()
             alert.showError("Error", subTitle:"Password has to be longer than 5 letters.", closeButtonTitle:"Ok")
             
             return
         }
         
-        //パスワードが一致するか確認して見るケンティー
+        //パスワードが一致するか確認するコードです。
         
         if (userPasword != userRepeatPassword){
-            //一致しなかったらケンティー怒るからアラート表示
-            //アラート表示するには上に書いてあるファンクションを呼ぶでー　おーい！　はいつまんないね　すいません　というかトシキ並のつまんなさ
+           //一致しない場合はアラートを表示させます
             let alert = SCLAlertView()
             alert.showError("Error", subTitle:"Password does not match.", closeButtonTitle:"Ok")
             
@@ -136,8 +121,7 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         
         self.showActivityIndicatory(self.view)
         
-        //ここでPARSE に保存させるでよ　緊張の瞬間ですぜぃ
-        
+        //以下のコードでパースに保存させます。
         let myUser:PFUser = PFUser()
         myUser.username = userUserName
         myUser.password = userPasword
@@ -150,38 +134,24 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         
         myUser.signUpInBackgroundWithBlock { (succeeded, error) -> Void in
             if error == nil {
-                println("User Successfully Registered by ケンティーの守り神")
+                println("User Successfully Registered")
                 self.hideActivityIndicator(self.view)
 
                 let alert = SCLAlertView()
                 alert.showSuccess("Success", subTitle:"Registration is successfully completed. Thank You!", closeButtonTitle:"Finish")
-                /*
-                
-                var myAlert = UIAlertController(title:"Alert", message: "Registeration is Successful. Thank you!", preferredStyle:UIAlertControllerStyle.Alert)
-                
-                let okAction = UIAlertAction (title:"OK" , style: UIAlertActionStyle.Default){
-                action in
-                self.dismissViewControllerAnimated(true, completion: nil)
-                }
-                myAlert.addAction(okAction)
-                self.presentViewController(myAlert, animated:true, completion:nil)
-                */
-                
+
                 // 「ud」というインスタンスをつくる。
                 let ud = NSUserDefaults.standardUserDefaults()
                 
                 // OKボタンを押した時に、Homeに戻るようにする
                 ud.setInteger(3, forKey: "closeAlertKey")
                 ud.removeObjectForKey("closeAlertKeyNote")
-                //        SCLAlertView().showError(self, title: kErrorTitle, subTitle: kSubtitle)
                 var timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("performSegueToHome"), userInfo: nil, repeats: true)
 
                 
             }
             else {
                 println("\(error)");
-                // Show the errorString somewhere and let the user try again.
-                //Show alert that error occured
                 var errorMessage:String = error!.userInfo!["error"]as! String
                 
                 let errorAlert = SCLAlertView()
@@ -191,7 +161,6 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
             }
             
             
-            //できた！のアラート表示　（修正済み6/29）
             
             
         }
@@ -200,7 +169,7 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
     }
     
 
-    
+    //自動的にホームへ戻ります。
     func performSegueToHome(){
             let ud = NSUserDefaults.standardUserDefaults()
             var udId : Int! = ud.integerForKey("closeAlertKeyNote")

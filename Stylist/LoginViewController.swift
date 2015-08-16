@@ -2,7 +2,7 @@
 //  LoginViewController.swift
 //  Stylist
 //
-//  Created by Kenty on 2015/06/28.
+//  Created by 勝又健登 on 2015/06/28.
 //  Copyright (c) 2015年 xxx. All rights reserved.
 //
 
@@ -70,7 +70,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true;
         
     }
-    
+//ログインボタンがタップされたら以下のコードが実行されます。
     @IBAction func loginButtonTapped(sender: AnyObject) {
         let userUserName = usernameField.text
         let userPassword = passwordField.text
@@ -79,13 +79,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         PFUser.logInWithUsernameInBackground(usernameField.text, password: passwordField.text) {
             (user: PFUser?, error: NSError?) -> Void in
             if user != nil{
-                //ログインできた！！
+                //ログイン
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isUserLoggedIn")
                 NSUserDefaults.standardUserDefaults().synchronize()
                 self.performSegueWithIdentifier("loginVCtoVC", sender: self)
-                //self.dismissViewControllerAnimated(true, completion: nil)
                 
             }
+                
+        //ユーザーネームとパスワードが一致しない場合
             else{
 
                 println("User Name or Password is not correct")

@@ -80,6 +80,9 @@
 		B6CD24741B3D8BD50061E451 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6CD24721B3D8BD50061E451 /* LaunchScreen.xib */; };
 		B6CD24801B3D8BD50061E451 /* StylistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CD247F1B3D8BD50061E451 /* StylistTests.m */; };
 		B6E2B2D71B7CAA0400ED2BBB /* EULAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E2B2D61B7CAA0400ED2BBB /* EULAViewController.swift */; };
+		B6E8027E1B80B61E00DAC527 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E8027D1B80B61E00DAC527 /* HelpViewController.swift */; };
+		B6E802811B80C31C00DAC527 /* BWWalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E8027F1B80C31C00DAC527 /* BWWalkthroughPageViewController.swift */; };
+		B6E802821B80C31C00DAC527 /* BWWalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E802801B80C31C00DAC527 /* BWWalkthroughViewController.swift */; };
 		B6EC66011B3FD31900B5BC58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EC66001B3FD31900B5BC58 /* ViewController.swift */; };
 		B6EC66031B3FD4F700B5BC58 /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EC66021B3FD4F700B5BC58 /* RegisterPageViewController.swift */; };
 		B6EC66071B3FDD2700B5BC58 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EC66051B3FDD2700B5BC58 /* Bolts.framework */; };
@@ -206,6 +209,9 @@
 		B6CD247E1B3D8BD50061E451 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6CD247F1B3D8BD50061E451 /* StylistTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StylistTests.m; sourceTree = "<group>"; };
 		B6E2B2D61B7CAA0400ED2BBB /* EULAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EULAViewController.swift; sourceTree = "<group>"; };
+		B6E8027D1B80B61E00DAC527 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		B6E8027F1B80C31C00DAC527 /* BWWalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughPageViewController.swift; sourceTree = "<group>"; };
+		B6E802801B80C31C00DAC527 /* BWWalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughViewController.swift; sourceTree = "<group>"; };
 		B6EC66001B3FD31900B5BC58 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B6EC66021B3FD4F700B5BC58 /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
 		B6EC66051B3FDD2700B5BC58 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -501,6 +507,8 @@
 				B6EC66251B3FE60C00B5BC58 /* MyConnector.m */,
 				B6EC66001B3FD31900B5BC58 /* ViewController.swift */,
 				B6436C661B67698700B8DA64 /* SwiftPages.swift */,
+				B6E8027F1B80C31C00DAC527 /* BWWalkthroughPageViewController.swift */,
+				B6E802801B80C31C00DAC527 /* BWWalkthroughViewController.swift */,
 				B6C353D31B6790F2006CF285 /* Trend */,
 				B696775E1B6218E600EC2F9A /* Camera */,
 				B696775F1B6229A300EC2F9A /* CollectionView */,
@@ -737,6 +745,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6E8027E1B80B61E00DAC527 /* HelpViewController.swift in Sources */,
 				321706F91B65EFA400812648 /* ProfilePicViewController.swift in Sources */,
 				326B13BD1B61D17E003A871D /* UIImage+FixOrientation.m in Sources */,
 				32A3BFD51B7B551F0022D76D /* goSegue.swift in Sources */,
@@ -745,6 +754,7 @@
 				325FA4551B77A4D900229204 /* TagViewController.swift in Sources */,
 				32862E5D1B631B530070FA05 /* SCLAlertViewStyleKit.m in Sources */,
 				B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */,
+				B6E802811B80C31C00DAC527 /* BWWalkthroughPageViewController.swift in Sources */,
 				B6C353D51B67914F006CF285 /* NewCollectionViewCell.swift in Sources */,
 				325FA44B1B708E7400229204 /* VisibleFormViewController.m in Sources */,
 				B66F25971B77A323003DAB6C /* MKButton.swift in Sources */,
@@ -785,6 +795,7 @@
 				B66F25981B77A323003DAB6C /* MKColor.swift in Sources */,
 				B66EAA861B7B6398005F146B /* LoveViewController.swift in Sources */,
 				B6CD24661B3D8BD50061E451 /* main.m in Sources */,
+				B6E802821B80C31C00DAC527 /* BWWalkthroughViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
