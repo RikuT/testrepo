@@ -38,7 +38,6 @@
 		B600E2351B41765D007F8FDA /* SingleRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2341B41765D007F8FDA /* SingleRowCell.swift */; };
 		B600E2371B417868007F8FDA /* TopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600E2361B417868007F8FDA /* TopsViewController.swift */; };
 		B6435FCB1B80CF120015D894 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6435FCA1B80CF120015D894 /* Tutorial.storyboard */; };
-		B6435FCD1B80CFAC0015D894 /* スクリーンショット 2015-08-16 23.02.56.png in Resources */ = {isa = PBXBuildFile; fileRef = B6435FCC1B80CFAC0015D894 /* スクリーンショット 2015-08-16 23.02.56.png */; };
 		B6436C671B67698700B8DA64 /* SwiftPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6436C661B67698700B8DA64 /* SwiftPages.swift */; };
 		B65331DD1B411D1B00B19268 /* PasswordRecoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65331DC1B411D1B00B19268 /* PasswordRecoverViewController.swift */; };
 		B66EAA861B7B6398005F146B /* LoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66EAA851B7B6398005F146B /* LoveViewController.swift */; };
@@ -149,7 +148,6 @@
 		B600E2341B41765D007F8FDA /* SingleRowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleRowCell.swift; sourceTree = "<group>"; };
 		B600E2361B417868007F8FDA /* TopsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopsViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		B6435FCA1B80CF120015D894 /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
-		B6435FCC1B80CFAC0015D894 /* スクリーンショット 2015-08-16 23.02.56.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "スクリーンショット 2015-08-16 23.02.56.png"; sourceTree = "<group>"; };
 		B6436C661B67698700B8DA64 /* SwiftPages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPages.swift; sourceTree = "<group>"; };
 		B65331DC1B411D1B00B19268 /* PasswordRecoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordRecoverViewController.swift; sourceTree = "<group>"; };
 		B66EAA851B7B6398005F146B /* LoveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoveViewController.swift; sourceTree = "<group>"; };
@@ -474,7 +472,6 @@
 				32256FF31B80C53E009AAC58 /* Main-6P.storyboard */,
 				B6CD24701B3D8BD50061E451 /* Images.xcassets */,
 				326B13BE1B61DA15003A871D /* whiteCancel.png */,
-				B6435FCC1B80CFAC0015D894 /* スクリーンショット 2015-08-16 23.02.56.png */,
 				B6CD24721B3D8BD50061E451 /* LaunchScreen.xib */,
 				B6CD24631B3D8BD50061E451 /* Supporting Files */,
 			);
@@ -628,14 +625,6 @@
 				32EC3EFA1B80586700C3E7FC /* Main-6.storyboard in Resources */,
 				32170A311B6CE03E009F9665 /* name_list.txt in Resources */,
 				B6CD24741B3D8BD50061E451 /* LaunchScreen.xib in Resources */,
-				B6435FCD1B80CFAC0015D894 /* スクリーンショット 2015-08-16 23.02.56.png in Resources */,
-				32EC3EF31B7F97DA00C3E7FC /* arrow-top.png in Resources */,
-				32EC3EED1B7F97DA00C3E7FC /* arrow-left.png in Resources */,
-				32EC3EF21B7F97DA00C3E7FC /* arrow-right@3x.png in Resources */,
-				32EC3EF51B7F97DA00C3E7FC /* arrow-top@3x.png in Resources */,
-				32EC3EF41B7F97DA00C3E7FC /* arrow-top@2x.png in Resources */,
-				32EC3EEE1B7F97DA00C3E7FC /* arrow-left@2x.png in Resources */,
-				32EC3EEF1B7F97DA00C3E7FC /* arrow-left@3x.png in Resources */,
 				32256FF41B80C53E009AAC58 /* Main-6P.storyboard in Resources */,
 				B6CD24711B3D8BD50061E451 /* Images.xcassets in Resources */,
 				32EC3EFC1B80BBA100C3E7FC /* Main-4.storyboard in Resources */,

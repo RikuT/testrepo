@@ -878,6 +878,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <segue destination="X8T-yD-KUp" kind="unwind" identifier="photoVCToVC" unwindAction="unwindToTrend:" id="ok8-49-ixB"/>
                     </connections>
