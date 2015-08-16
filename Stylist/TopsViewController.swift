@@ -204,7 +204,19 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 	//コレクションビューが表示されるたびにデータを再度取得
 
 	override func viewDidAppear(animated: Bool) {
+
 		loadCollectionViewData()
+		
+		let ud = NSUserDefaults.standardUserDefaults()
+		var forceLoad = ud.boolForKey("forceClosetKey")
+		if ud.objectForKey("forceClosetKey") != nil{
+			if forceLoad == true {
+				println("was true")
+				ud.removeObjectForKey("forceClosetKey")
+				//self.dismissViewControllerAnimated(false, completion: nil)
+				self.gobackBtnTapped()
+			}}
+
 		
 	}
 	
@@ -274,6 +286,9 @@ class TopsViewController: VisibleFormViewController, UICollectionViewDataSource,
 			}
 			
 		}
+		
+
+	
 	}
 	
 	//コレクションビュー導入のためのコード
