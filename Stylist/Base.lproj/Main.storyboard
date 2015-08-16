@@ -822,19 +822,19 @@
                                             </button>
                                         </subviews>
                                     </view>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dottedLine" id="2pP-ef-qiv">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DottedLineSquare" id="CW2-5s-bjt" userLabel="dottedLine2">
+                                        <rect key="frame" x="0.0" y="119" width="320" height="73"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="eJD-Lx-1Rr" appends="YES" id="Hkm-ZZ-v4g"/>
+                                        </connections>
+                                    </imageView>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DottedLineSquare" id="2pP-ef-qiv">
                                         <rect key="frame" x="0.0" y="247" width="320" height="73"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="scS-AB-22V" appends="YES" id="gYN-gM-0K1"/>
-                                        </connections>
-                                    </imageView>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dottedLine" id="CW2-5s-bjt" userLabel="dottedLine2">
-                                        <rect key="frame" x="0.0" y="119" width="320" height="73"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="eJD-Lx-1Rr" appends="YES" id="Hkm-ZZ-v4g"/>
                                         </connections>
                                     </imageView>
                                 </subviews>
@@ -1391,9 +1391,9 @@ i. The laws of the State of California, excluding its conflicts of law rules, go
         </scene>
     </scenes>
     <resources>
+        <image name="DottedLineSquare" width="655" height="140"/>
         <image name="GoBackArrow" width="50" height="50"/>
         <image name="Login Design 2" width="640" height="1136"/>
-        <image name="dottedLine" width="1623" height="322"/>
         <image name="heartBtn" width="256" height="256"/>
         <image name="heartPinkFillOri" width="256" height="256"/>
         <image name="profilePlaceHolder" width="600" height="600"/>
