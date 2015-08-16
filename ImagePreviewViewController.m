@@ -8,9 +8,7 @@
 #import "ImagePreviewViewController.h"
 #import "ViewUtils.h"
 #import "SCLAlertView.h"
-//#import "Stylist-Swift.h"
-//#import "BrandSearchTableController.swift"
-//#import "UIImage+Crop.h"
+
 
 @interface ImagePreviewViewController ()
 @property (strong, nonatomic) UIImage *image;
@@ -20,14 +18,12 @@
 @property (strong, nonatomic) UITextField *clothesNameTextField;
 @property (strong, nonatomic) UILabel *detailLabel;
 
-//@property (strong, nonatomic) NSMutableArray *tagArray;
 
 @end
 
 @implementation ImagePreviewViewController
 
-/////*******ADD HIDE ACTIVITY INDICATOR
-///////Dismiss other type of keyboard when another one appears
+
 
 - (instancetype)initWithImage:(UIImage *)image {
     self = [super initWithNibName:nil bundle:nil];

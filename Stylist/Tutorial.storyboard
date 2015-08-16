@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fittingRoom" translatesAutoresizingMaskIntoConstraints="NO" id="6BJ-zA-dxw">
-                                <rect key="frame" x="-49" y="249" width="698" height="331"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="fittingRoom" translatesAutoresizingMaskIntoConstraints="NO" id="6BJ-zA-dxw">
+                                <rect key="frame" x="-49" y="245" width="698" height="335"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wfh-RD-nuF">
                                 <rect key="frame" x="148" y="39" width="305" height="110"/>
@@ -30,8 +30,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Fitting Room はスワイプ一つでコーディネート。下の矢印と線でウエストを調節。" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7Qn-ou-Ibq">
-                                <rect key="frame" x="197" y="157" width="207" height="71"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="Fitting Room はスワイプ一つでコーディネート。下の矢印と線で服を調節して着こなそう。" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7Qn-ou-Ibq">
+                                <rect key="frame" x="197" y="157" width="207" height="67"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="71" id="2FZ-hM-n75"/>
                                     <constraint firstAttribute="width" constant="207" id="l1B-3e-dhm"/>
@@ -90,7 +90,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="ガイドにそって撮影" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Gnb-ZY-DNi">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="ガイドにそって撮影しよう。" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Gnb-ZY-DNi">
                                 <rect key="frame" x="203" y="157" width="195" height="71"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="71" id="Qbl-Xp-VRR"/>
@@ -150,7 +150,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trendPull" translatesAutoresizingMaskIntoConstraints="NO" id="xpO-Wb-WmE">
                                 <rect key="frame" x="-49" y="249" width="698" height="331"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="トレンドを使い流行に乗ろう！好きな投稿が見つかったらダブルタップして何度でもラブを送ろう。" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yjH-TW-UCe">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="トレンドで流行に乗ろう！好きな投稿を見つけたらダブルタップで何度でもラブを送ろう。" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yjH-TW-UCe">
                                 <rect key="frame" x="197" y="144" width="207" height="83"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="83" id="9pS-bZ-fhL"/>
@@ -210,7 +210,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trend2" translatesAutoresizingMaskIntoConstraints="NO" id="H9g-Qq-MVB">
                                 <rect key="frame" x="-49" y="249" width="698" height="331"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="気に入った投稿があればタップして詳細を確認。画像を右にスワイプして自分に合わせてみよう！" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GMY-b6-nFt">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="気に入った投稿があればタップして詳細を確認。画像を右にスワイプして自分に合わせよう！" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GMY-b6-nFt">
                                 <rect key="frame" x="197" y="139" width="207" height="83"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="83" id="Yi1-f0-tqu"/>

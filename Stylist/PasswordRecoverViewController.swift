@@ -51,15 +51,9 @@ class PasswordRecoverViewController: UIViewController {
     //エラー
     func displayErrorMessage(theMessage:String)
     {
-        var myAlert = UIAlertController(title:"Alert", message: theMessage,
-            preferredStyle:UIAlertControllerStyle.Alert)
-        
-        let okAction = UIAlertAction (title:"OK" , style: UIAlertActionStyle.Default){
-            action in
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
-        myAlert.addAction(okAction)
-        self.presentViewController(myAlert, animated:true, completion:nil)
+        let errorAlert = SCLAlertView()
+        errorAlert.showError("Alert", subTitle:"\(theMessage)", closeButtonTitle:"Ok")
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     

@@ -133,14 +133,17 @@ class SwipeableClothesTester: UIViewController {
                         }
                     }
                 }
-            }
+            }else{
+                if self.errorNumber != 1{
+                    self.hideActivityIndicator(self.view)
+                    var errorMessage:String = error!.userInfo!["error"]as! String
+                    SCLAlertView().showError("Error", subTitle:"An error occured. \(errorMessage)", closeButtonTitle:"OK")
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+                println("failure")
+}
             
-            println("failure")
-            /*
-            if(self.errorNumber != 1){
-            self.errorNumber = 2
-            self.showError()
-            }*/
+
         }
     }
     
