@@ -13,7 +13,7 @@ import Parse
 
 
 
-class ViewController: UIViewController{ //VisibleFormViewController, UITextFieldDelegate {
+class ViewController: UIViewController, BWWalkthroughViewControllerDelegate{ //VisibleFormViewController, UITextFieldDelegate {
     @IBAction func unwindToTrend(segue: UIStoryboardSegue) {
     }
     @IBOutlet var swiftPagesView: SwiftPages!
@@ -389,8 +389,38 @@ class ViewController: UIViewController{ //VisibleFormViewController, UITextField
     }
     func helpBtnTapped(){
         println("help")
+        self.presentHelp()
     }
     
+    func presentHelp(){
+        // Get view controllers and build the walkthrough
+        let stb = UIStoryboard(name: "Tutorial", bundle: nil)
+        let walkthrough = stb.instantiateViewControllerWithIdentifier("walk") as! BWWalkthroughViewController
+        let page_one = stb.instantiateViewControllerWithIdentifier("walk1") as! UIViewController
+        let page_two = stb.instantiateViewControllerWithIdentifier("walk2")as! UIViewController
+        let page_three = stb.instantiateViewControllerWithIdentifier("walk3") as! UIViewController
+        let page_four = stb.instantiateViewControllerWithIdentifier("walk4")as! UIViewController
+        
+        // Attach the pages to the master
+        walkthrough.delegate = self
+        walkthrough.addViewController(page_one)
+        walkthrough.addViewController(page_two)
+        walkthrough.addViewController(page_three)
+        walkthrough.addViewController(page_four)
+        self.presentViewController(walkthrough, animated: true, completion: nil)
+        
+    }
+    
+    // MARK: - Walkthrough delegate -
+    
+    func walkthroughPageDidChange(pageNumber: Int) {
+        println("Current Page \(pageNumber)")
+    }
+    
+    func walkthroughCloseButtonPressed() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
     
     func blackBlurTapped(){
         println("blackblur")

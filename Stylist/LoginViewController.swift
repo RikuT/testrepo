@@ -106,10 +106,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate,BWWalkthroughVi
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
-        
         return true;
-        
     }
+    
     //ログインボタンがタップされたら以下のコードが実行されます。
     @IBAction func loginButtonTapped(sender: AnyObject) {
         let userUserName = usernameField.text
