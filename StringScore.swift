@@ -41,31 +41,25 @@ extension String {
 		
 		for i in 0..<wordLength {
 			// 一文字づつ、検索していく
-            //Find next first case-insensitive match of word's i-th character.
-			// The search in "string" begins at "startAt".
 			if let range = lString.rangeOfString(
 				String( lWord[advance(lWord.startIndex, i)] as Character ),
 				options: nil,
 				range: Range<String.Index>( start: startAt, end: lString.endIndex),
 				locale: nil
 			){
-				// start index of word's i-th character in string.
 				idxOf = range.startIndex
 				if startAt == idxOf {
-					// Consecutive letter & start-of-string Bonus
+					// 最初の文字が同じだと、0.7ポイント
 					charScore = 0.7
 				} else {
 					charScore = 0.1
 					
-					// Acronym Bonus
-					// Weighing Logic: Typing the first character of an acronym is as if you
-					// preceded it with two perfect character matches.
 					if string[advance(idxOf, -1)] == " " { charScore += 0.8 }
 				}
 			} else {
-				// Character not found.
+				// 文字が見つからない場合、0点を返す
 				if fuzzinessIsNil {
-					// Fuzziness is nil. Return 0.
+					
 					return 0
 				} else {
 					fuzzies += fuzzyFactor
@@ -73,17 +67,16 @@ extension String {
 				}
 			}
 			
-			// Same case bonus.
 			if ( string[idxOf] == word[advance(word.startIndex, i)] ) {
 				charScore += 0.1
 			}
 			
-			// Update scores and startAt position for next round of indexOf
+			//文字の類似性スコアをアップデートする
 			runningScore += charScore
 			startAt = advance(idxOf, 1)
 		}
 		
-		// Reduce penalty for longer strings.
+		// 検索ワードが長い場合は、似ていない際の、削除されるスコアを少なくする
 		finalScore = 0.5 * (runningScore / Double(strLength) + runningScore / Double(wordLength)) / fuzzies
 		
 		if (lWord[lWord.startIndex] == lString[lString.startIndex]) && (finalScore < 0.85) {

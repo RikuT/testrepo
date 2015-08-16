@@ -70,16 +70,16 @@ class PasswordRecoverViewController: UIViewController {
         return true;
         
     }
-
+    
     //ユーザーがキャンセルした場合
     @IBAction func cancelButtonTapped(sender: AnyObject) {
         let ud = NSUserDefaults.standardUserDefaults()
         var checkOriginObject: AnyObject? = ud.objectForKey("passwordOriginCheckKey")
         var checkOrigin: NSString = "\(checkOriginObject)"
         if checkOrigin == "fromUserSettingVC"{
-        performSegueWithIdentifier("changePassToUserSetting", sender: self)
+            performSegueWithIdentifier("changePassToUserSetting", sender: self)
         }else{
-        self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
         ud.removeObjectForKey("passwordOriginCheckKey")
     }

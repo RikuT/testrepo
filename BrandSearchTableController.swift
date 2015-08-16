@@ -18,6 +18,7 @@ class BrandSearchTableController : UIViewController, UISearchBarDelegate, UISear
     
     @IBOutlet weak var navBar: UINavigationBar!
     
+    //ブランド一覧を撮ってきて、スコア別にソートできるようにする
     lazy var dataSourceArray:[String] = {
         if let path = NSBundle.mainBundle().pathForResource("name_list", ofType: "txt") {
             if let data = NSData(contentsOfFile: path) {
@@ -40,7 +41,6 @@ class BrandSearchTableController : UIViewController, UISearchBarDelegate, UISear
     var resultsTableController: ResultsTableController!
     
     var checkInt: Int = 0
-    
     var checkUpdate = 0
     
     func commonInit(){
@@ -56,7 +56,6 @@ class BrandSearchTableController : UIViewController, UISearchBarDelegate, UISear
     
     override func viewWillAppear(animated: Bool) {
         currentView = 0;
-        
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -64,19 +63,16 @@ class BrandSearchTableController : UIViewController, UISearchBarDelegate, UISear
         commonInit()
     }
     
+    //戻るボタンの設定
     @IBAction func brandBack(sender: AnyObject) {
-        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    /*
-    override init() {
-    super.init()
-    commonInit()
-    }*/
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         checkUpdate = 0
+        //バックグラウンドを、スキューバブルーに設定
         navBar.backgroundColor = UIColor(red: 0, green: 0.698, blue: 0.792, alpha: 1)
         resultsTableController = ResultsTableController()
         
@@ -90,12 +86,10 @@ class BrandSearchTableController : UIViewController, UISearchBarDelegate, UISear
         tableView.tableHeaderView = searchController.searchBar
         
         searchController.delegate = self
-        searchController.dimsBackgroundDuringPresentation = false // default is YES
-        searchController.searchBar.delegate = self    // so we can monitor text changes + others
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
         
-        // Search is now just presenting a view controller. As such, normal view controller
-        // presentation semantics apply. Namely that presentation will walk up the view controller
-        // hierarchy until it finds the root view controller or one that defines a presentation context.
+        
         definesPresentationContext = true
         
         
@@ -157,6 +151,7 @@ class BrandSearchTableController : UIViewController, UISearchBarDelegate, UISear
     
     // MARK: UISearchResultsUpdating
     
+    //検索キーワードが変更された場合
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         checkUpdate = 1
         let searchText = searchController.searchBar.text
@@ -172,7 +167,7 @@ class BrandSearchTableController : UIViewController, UISearchBarDelegate, UISear
             a.score > b.score
         }
         
-        // Hand over the filtered results to our search results table.
+        // 検索結果をtableviewcontrollerに引き渡す。
         let resultsController = searchController.searchResultsController as! ResultsTableController
         resultsController.searchResultArray = resultArray
         
@@ -197,10 +192,7 @@ class BrandSearchTableController : UIViewController, UISearchBarDelegate, UISear
     
     // Cell が選択された場合
     func tableView(table: UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath) {
-        // [indexPath.row] から画像名を探し、UImage を設定
-        //selectedImage = UIImage(named:"\(imgArray[indexPath.row])")
-        // SubViewController へ遷移するために Segue を呼び出す
-        //performSegueWithIdentifier("toSubViewController",sender: nil)
+        //タップされたブランド名をuserdefaultsを使って引き渡す
         var tapResult: NSString = "BRAND"
         if(checkUpdate == 0){
             tapResult = dataSourceArray[indexPath.row]
@@ -226,7 +218,7 @@ class BrandSearchTableController : UIViewController, UISearchBarDelegate, UISear
         }
         
     }
-
+    
     
 }
 
@@ -267,7 +259,6 @@ class ResultsTableController : UITableViewController, UISearchControllerDelegate
         let t = searchResultArray[indexPath.row]
         
         cell.textLabel?.text = t.name
-        //cell.detailTextLabel?.text = t.score.yz_toString()
         
         let maxBlackProportion:CGFloat = 0.7
         cell.textLabel?.textColor = UIColor(white: maxBlackProportion * CGFloat(1 - t.score), alpha: 1.0)

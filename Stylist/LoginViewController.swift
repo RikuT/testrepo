@@ -17,9 +17,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var loginBtn: MKButton!
     @IBOutlet var signupBtn: MKButton!
     @IBOutlet weak var logoLabel: UILabel!
-
-
-
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +70,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true;
         
     }
-//ログインボタンがタップされたら以下のコードが実行されます。
+    //ログインボタンがタップされたら以下のコードが実行されます。
     @IBAction func loginButtonTapped(sender: AnyObject) {
         let userUserName = usernameField.text
         let userPassword = passwordField.text
@@ -86,13 +86,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
             }
                 
-        //ユーザーネームとパスワードが一致しない場合
+                //ユーザーネームとパスワードが一致しない場合
             else{
-
+                
                 println("User Name or Password is not correct")
                 let errorAlert = SCLAlertView()
                 errorAlert.showError("Error", subTitle:"Username of Password is not correct.", closeButtonTitle:"Close")
-
+                
             }
             
             

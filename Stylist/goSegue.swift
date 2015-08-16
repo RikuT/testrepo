@@ -8,6 +8,7 @@
 
 import UIKit
 
+//どこかに行くときのセグエ
 class goSegue: UIStoryboardSegue {
     override func perform() {
         // Assign the source and destination views to local variables.

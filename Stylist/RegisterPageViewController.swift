@@ -13,7 +13,7 @@ import Parse
 
 class RegisterPageViewController: UIViewController, UITextFieldDelegate {
     
-
+    
     @IBOutlet weak var userUserNameTextField: MKTextField!
     @IBOutlet weak var userEmailTextField: MKTextField!
     @IBOutlet weak var userPasswordTextField: MKTextField!
@@ -23,8 +23,8 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
     var container: UIView = UIView()
     var loadingView: UIView = UIView()
     var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         userUserNameTextField.layer.borderColor = UIColor.clearColor().CGColor
@@ -75,7 +75,7 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         return true;
         
     }
-//登録ボタンが押された時のためのコードが書いてあります.
+    //登録ボタンが押された時のためのコードが書いてあります.
     @IBAction func registerButtonTapped(sender: AnyObject) {
         
         let userUserName = userUserNameTextField.text
@@ -83,7 +83,7 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         let userPasword = userPasswordTextField.text
         let userRepeatPassword = repeatPasswordTextField.text
         
-
+        
         //空白欄がないかチェックするコードです。
         if (userUserName.isEmpty || userEmail.isEmpty || userPasword.isEmpty || userRepeatPassword.isEmpty){
             //空白欄があった場合はアラートを表示させます。
@@ -94,7 +94,7 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         }
         //ユーザーネームを四文字以上に設定するコードです。
         if (count(userUserName.utf16) <= 4){
-           // 四文字以下の場合はアラートを表示させます。
+            // 四文字以下の場合はアラートを表示させます。
             let alert = SCLAlertView()
             alert.showError("Error", subTitle:"Username has to be longer than 4 letters.", closeButtonTitle:"Ok")
             
@@ -102,7 +102,7 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         }
         //パスワードを五文字以上に設定するコードです
         if (count(userPasword.utf16) <= 5){
-           //五文字以下の場合はアラートを表示させます。
+            //五文字以下の場合はアラートを表示させます。
             let alert = SCLAlertView()
             alert.showError("Error", subTitle:"Password has to be longer than 5 letters.", closeButtonTitle:"Ok")
             
@@ -112,7 +112,7 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         //パスワードが一致するか確認するコードです。
         
         if (userPasword != userRepeatPassword){
-           //一致しない場合はアラートを表示させます
+            //一致しない場合はアラートを表示させます
             let alert = SCLAlertView()
             alert.showError("Error", subTitle:"Password does not match.", closeButtonTitle:"Ok")
             
@@ -136,10 +136,10 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
             if error == nil {
                 println("User Successfully Registered")
                 self.hideActivityIndicator(self.view)
-
+                
                 let alert = SCLAlertView()
                 alert.showSuccess("Success", subTitle:"Registration is successfully completed. Thank You!", closeButtonTitle:"Finish")
-
+                
                 // 「ud」というインスタンスをつくる。
                 let ud = NSUserDefaults.standardUserDefaults()
                 
@@ -147,7 +147,7 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
                 ud.setInteger(3, forKey: "closeAlertKey")
                 ud.removeObjectForKey("closeAlertKeyNote")
                 var timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("performSegueToHome"), userInfo: nil, repeats: true)
-
+                
                 
             }
             else {
@@ -168,20 +168,20 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-
+    
     //自動的にホームへ戻ります。
     func performSegueToHome(){
-            let ud = NSUserDefaults.standardUserDefaults()
-            var udId : Int! = ud.integerForKey("closeAlertKeyNote")
-            if(udId == 1){
-                ud.removeObjectForKey("closeAlertKeyNote")
-                ud.removeObjectForKey("closeAlertKey")
-                self.dismissViewControllerAnimated(true, completion: nil)
-                
-                println("self to 0")
-            }
+        let ud = NSUserDefaults.standardUserDefaults()
+        var udId : Int! = ud.integerForKey("closeAlertKeyNote")
+        if(udId == 1){
+            ud.removeObjectForKey("closeAlertKeyNote")
+            ud.removeObjectForKey("closeAlertKey")
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+            println("self to 0")
+        }
     }
-
+    
     
     func showActivityIndicatory(uiView: UIView) {
         
@@ -209,7 +209,7 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         actInd.stopAnimating()
         container.removeFromSuperview()
     }
-
+    
     
 }
 

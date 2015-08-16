@@ -67,13 +67,11 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         imageView = PFImageView(frame: initialImageFrame)
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         
-        //bgImgView.alpha = 0.0
         self.view.addSubview(bgImgView)
         
         //Creating quit button
         quitButton = UIButton(frame: CGRectMake(5, 10, 40, 40))
         quitButton.tintColor = UIColor.whiteColor()
-        //quitButton.buttonType = UIButtonType.System
         quitButton.setImage(UIImage(named: "whiteCancel.png"), forState: .Normal)
         quitButton.imageEdgeInsets = UIEdgeInsetsMake(12, 12, 12, 12)
         quitButton.addTarget(self, action: "quitButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
@@ -303,6 +301,16 @@ class DetailViewController: VisibleFormViewController, UINavigationControllerDel
         
         self.lastVisibleView = scrollview
         self.visibleMargin = 0.0
+        
+        
+        var tapBackground = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        tapBackground.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(tapBackground)
+
+    }
+    
+    func dismissKeyboard(){
+        self.view.endEditing(true)
     }
     
     override func viewDidAppear(animated: Bool) {

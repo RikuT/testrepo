@@ -14,20 +14,16 @@ public class BrandScoreStyleKit : NSObject {
 		return UIFont(name: "HelveticaNeue-LightItalic", size: 20)!
 	}
 	
-	//// Cache
+	//キャッシュ
 	
 	private struct Cache {
 		static var imageDict : [String:UIImage] = Dictionary()
-		//        static var oneTargets: [AnyObject]?
 	}
 	
-	//// Drawing Methods
-	
+	//各ボックスの仕様を設定
 	public class func draw(#string:String) {
-		//// General Declarations
 		let context = UIGraphicsGetCurrentContext()
 		
-		//// Text Drawing
 		let textRect = CGRectMake(0, 0, 25, 25)
 		var textTextContent = NSString(string: string)
 		let textStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
@@ -42,7 +38,6 @@ public class BrandScoreStyleKit : NSObject {
 		CGContextRestoreGState(context)
 	}
 	
-	//// Generated Images
 	
 	public class func imageOf(#string:String) -> UIImage {
 		if let image = Cache.imageDict[string] {
