@@ -1200,7 +1200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xQ4-ye-tiO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1033.0666666666666" y="1338.5866666666666"/>
+            <point key="canvasLocation" x="1162" y="1343"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="zMo-20-BmR">
@@ -1273,7 +1273,7 @@ i. The laws of the State of California, excluding its conflicts of law rules, go
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vM-XH-OS1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1264.5333333333333" y="1344.2666666666667"/>
+            <point key="canvasLocation" x="1486" y="1338"/>
         </scene>
         <!--Brand Search Table Controller-->
         <scene sceneID="Q7c-RE-E0c">
@@ -1404,12 +1404,12 @@ i. The laws of the State of California, excluding its conflicts of law rules, go
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Pht-R0-pfY"/>
-        <segue reference="j6k-Oo-hf8"/>
+        <segue reference="fmf-4a-AKg"/>
+        <segue reference="ok7-Wi-dBM"/>
         <segue reference="Hcm-Wr-yL3"/>
-        <segue reference="eoe-2A-BQq"/>
-        <segue reference="EVB-u9-hsD"/>
         <segue reference="hhA-TA-vSB"/>
         <segue reference="Plc-gP-gba"/>
+        <segue reference="j6k-Oo-hf8"/>
         <segue reference="MJn-lw-Lam"/>
     </inferredMetricsTieBreakers>
 </document>
