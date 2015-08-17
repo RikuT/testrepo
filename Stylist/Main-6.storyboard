@@ -102,7 +102,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mySingleCell" id="x9C-Q1-X1A" customClass="SingleRowCell" customModule="Stylist" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="145" height="286"/>
+                                        <rect key="frame" x="10" y="10" width="171" height="337"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="171" height="337"/>
@@ -168,7 +168,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bJC-qL-Jxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-46.133333333333333" y="1425.2066666666667"/>
+            <point key="canvasLocation" x="-342.5" y="1400.5"/>
         </scene>
         <!--Profile Pic View Controller-->
         <scene sceneID="OqG-qn-uL0">
@@ -270,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y4A-Hl-DM1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="901.06666666666661" y="-655.56666666666661"/>
+            <point key="canvasLocation" x="1840.5" y="-668.5"/>
         </scene>
         <!--Password Recover View Controller-->
         <scene sceneID="Kfn-kU-gZH">
@@ -568,8 +568,49 @@
                                 <rect key="frame" x="-5" y="0.0" width="380" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nhH-Ew-Ivo" customClass="MKButton" customModule="Stylist" customModuleProvider="target">
+                                <rect key="frame" x="32" y="270" width="126" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Forgot Password?">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="aWE-0z-BwH" kind="modal" animates="NO" id="A1V-1O-2uc"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" id="Oed-Wy-gSj" customClass="MKTextField" customModule="Stylist" customModuleProvider="target">
+                                <rect key="frame" x="32" y="308" width="313" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8RX-Al-BOW" id="nEi-7Q-Sha"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STYLIST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fkT-0F-5fT">
+                                <rect key="frame" x="5" y="65" width="364" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="69"/>
+                                <color key="textColor" red="0.23921568630000001" green="0.64313725489999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" id="GPM-Ya-tu7" customClass="MKTextField" customModule="Stylist" customModuleProvider="target">
+                                <rect key="frame" x="30" y="215" width="313" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="padding">
+                                        <size key="value" width="8" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="8RX-Al-BOW" id="5Ar-hk-YaX"/>
+                                </connections>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pnd-jz-FnK" customClass="MKButton" customModule="Stylist" customModuleProvider="target">
-                                <rect key="frame" x="74" y="464" width="222" height="42"/>
+                                <rect key="frame" x="74" y="413" width="222" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.08235294118" green="0.64313725489999995" blue="0.84648064609999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Login">
@@ -584,7 +625,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MJm-GO-oUM" customClass="MKButton" customModule="Stylist" customModuleProvider="target">
-                                <rect key="frame" x="74" y="536" width="222" height="42"/>
+                                <rect key="frame" x="74" y="485" width="222" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.2274509804" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Sign Up">
@@ -595,47 +636,6 @@
                                     <segue destination="cY6-xb-5rB" kind="modal" identifier="registerView" animates="NO" id="D17-o3-Yzm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nhH-Ew-Ivo" customClass="MKButton" customModule="Stylist" customModuleProvider="target">
-                                <rect key="frame" x="31" y="327" width="126" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Forgot Password?">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="aWE-0z-BwH" kind="modal" animates="NO" id="A1V-1O-2uc"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" id="Oed-Wy-gSj" customClass="MKTextField" customModule="Stylist" customModuleProvider="target">
-                                <rect key="frame" x="31" y="365" width="313" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="8RX-Al-BOW" id="nEi-7Q-Sha"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STYLIST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fkT-0F-5fT">
-                                <rect key="frame" x="5" y="61" width="364" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="69"/>
-                                <color key="textColor" red="0.23921568630000001" green="0.64313725489999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" id="GPM-Ya-tu7" customClass="MKTextField" customModule="Stylist" customModuleProvider="target">
-                                <rect key="frame" x="29" y="272" width="313" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="padding">
-                                        <size key="value" width="8" height="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="delegate" destination="8RX-Al-BOW" id="5Ar-hk-YaX"/>
-                                </connections>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -667,7 +667,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" id="4J3-pH-Bce" customClass="MKTextField" customModule="Stylist" customModuleProvider="target">
-                                <rect key="frame" x="46" y="212" width="282" height="50"/>
+                                <rect key="frame" x="44" y="204" width="282" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
@@ -676,7 +676,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" id="0ek-gJ-hNm" customClass="MKTextField" customModule="Stylist" customModuleProvider="target">
-                                <rect key="frame" x="46" y="294" width="282" height="50"/>
+                                <rect key="frame" x="44" y="286" width="282" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -685,7 +685,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" id="Seh-cO-5Hx" customClass="MKTextField" customModule="Stylist" customModuleProvider="target">
-                                <rect key="frame" x="46" y="371" width="282" height="50"/>
+                                <rect key="frame" x="44" y="363" width="282" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -694,7 +694,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" id="gV4-fw-VOu" customClass="MKTextField" customModule="Stylist" customModuleProvider="target">
-                                <rect key="frame" x="46" y="130" width="282" height="50"/>
+                                <rect key="frame" x="44" y="122" width="282" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -703,7 +703,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ean-Bj-EBZ" customClass="MKButton" customModule="Stylist" customModuleProvider="target">
-                                <rect key="frame" x="74" y="464" width="222" height="42"/>
+                                <rect key="frame" x="74" y="455" width="222" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1169860452" green="0.7453768395" blue="0.83835668269999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Register">
@@ -715,7 +715,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="viK-yS-bvk" customClass="MKButton" customModule="Stylist" customModuleProvider="target">
-                                <rect key="frame" x="74" y="536" width="222" height="42"/>
+                                <rect key="frame" x="74" y="527" width="222" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.2274509804" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Sign In">
@@ -727,7 +727,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VZF-r9-USJ">
-                                <rect key="frame" x="142" y="604" width="90" height="30"/>
+                                <rect key="frame" x="144" y="577" width="90" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Terms of Use">
                                     <color key="titleColor" red="0.1019607843" green="0.57254901960000004" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -738,7 +738,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0zb-De-E9Y">
-                                <rect key="frame" x="108" y="43" width="158" height="50"/>
+                                <rect key="frame" x="106" y="27" width="158" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -757,7 +757,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZY-TC-aIF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1282.4000000000001" y="221.99333333333334"/>
+            <point key="canvasLocation" x="1454.5" y="263.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tyM-fJ-ltI">
@@ -879,7 +879,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PSK-Vf-fzU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Yvw-9h-hGr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="160.26666666666665" y="570.36666666666667"/>
+            <point key="canvasLocation" x="-912.5" y="609.5"/>
         </scene>
         <!--Love View Controller-->
         <scene sceneID="Qdd-Yk-wRx">
@@ -901,7 +901,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="loveView" id="j59-Pm-ukx" customClass="LoveCollectionViewCell" customModule="Stylist" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="145" height="278"/>
+                                        <rect key="frame" x="10" y="10" width="168" height="322"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="168" height="322"/>
@@ -994,7 +994,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2lE-P8-sLa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="550.13333333333333" y="1328.6466666666668"/>
+            <point key="canvasLocation" x="1565.5" y="2109.5"/>
         </scene>
         <!--New View Controller-->
         <scene sceneID="b4t-y5-53S">
@@ -1016,7 +1016,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="newview" id="v7a-zw-5zq" customClass="NewCollectionViewCell" customModule="Stylist" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="145" height="278"/>
+                                        <rect key="frame" x="10" y="10" width="168" height="322"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="168" height="322"/>
@@ -1108,7 +1108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OpK-p7-WVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="834.39999999999998" y="1338.1133333333332"/>
+            <point key="canvasLocation" x="905.5" y="1297.5"/>
         </scene>
         <!--Tag View Controller-->
         <scene sceneID="mr4-JF-E81">
@@ -1134,7 +1134,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tagview" id="MRh-4w-gBu" customClass="TagCollectionViewCell" customModule="Stylist" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="10" width="300" height="287"/>
+                                                <rect key="frame" x="27" y="10" width="322" height="308"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="322" height="308"/>
@@ -1197,7 +1197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7b-Dw-zvi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1072.8" y="1315.3933333333334"/>
+            <point key="canvasLocation" x="1508.5" y="1302.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="qYE-ai-3pX">
@@ -1270,7 +1270,7 @@ i. The laws of the State of California, excluding its conflicts of law rules, go
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="am8-Nr-cba" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1264.2666666666667" y="1343.7933333333333"/>
+            <point key="canvasLocation" x="2047.5" y="1319.5"/>
         </scene>
         <!--Brand Search Table Controller-->
         <scene sceneID="jr0-qR-as5">
@@ -1286,10 +1286,10 @@ i. The laws of the State of California, excluding its conflicts of law rules, go
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Thg-zh-gko">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Thg-zh-gko" id="sbV-h0-pQZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1346,7 +1346,7 @@ i. The laws of the State of California, excluding its conflicts of law rules, go
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o1w-aH-2ku" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="579.4666666666667" y="-883.71333333333337"/>
+            <point key="canvasLocation" x="618.5" y="-1060.5"/>
         </scene>
         <!--Image Preview View Controller-->
         <scene sceneID="hnS-nn-Cee">
@@ -1400,13 +1400,13 @@ i. The laws of the State of California, excluding its conflicts of law rules, go
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="A1V-1O-2uc"/>
-        <segue reference="Aad-4o-DUL"/>
-        <segue reference="D17-o3-Yzm"/>
-        <segue reference="ktD-Y6-Ehl"/>
-        <segue reference="qJp-65-Fkr"/>
-        <segue reference="mfp-H4-TwK"/>
         <segue reference="2yf-ZZ-QXV"/>
+        <segue reference="mfp-H4-TwK"/>
+        <segue reference="D17-o3-Yzm"/>
+        <segue reference="RKx-YB-aJA"/>
+        <segue reference="ktD-Y6-Ehl"/>
+        <segue reference="A1V-1O-2uc"/>
+        <segue reference="eG0-ky-Zjt"/>
         <segue reference="B7e-gv-qRh"/>
     </inferredMetricsTieBreakers>
 </document>
